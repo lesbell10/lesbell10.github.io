@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.3s linear;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.mini-container .nav-links li a {
+  color: white;
+}
+
+.mini-container .nav-links li a:hover {
+  color: orange;
+}
+
+h1 {
+    font-family: "Kaushan Script", cursive;
+  margin: 1rem 0 0 23rem;
+  font-size: 3rem;
+  text-align: left;
+  color: orange;
+}
+
+.cards {
+  margin-top: 2rem;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  padding-bottom: 3rem;
+  margin: 2rem;
+  margin-left: 2rem;
+  width: 24rem;
+  height: 32rem;
+  background-color: whitesmoke;
+  text-align: center;
+  border: 1px solid grey;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.desc {
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.learn-button {
+  padding: 1rem 2rem;
+  background-color: orange;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+img {
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem;
+}
+
+img:hover {
+  transform: scale(1.4);
+}
+
+@media (max-width: 767px) {
+  .sport {
+    margin-top: 22rem;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    margin:0;
+  }
+  
+}

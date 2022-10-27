@@ -1,0 +1,136 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.3s linear;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.mini-container .nav-links li a {
+  color: white;
+  padding: 0.5rem 0;
+}
+
+.nav-links li a:hover {
+  color: white;
+}
+
+.mayor {
+  height: 100vh;
+  display: flex;
+}
+
+.mayor .left {
+  margin: 8rem 2rem 0 8rem;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+p {
+  line-height: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.left img {
+  padding: 3rem;
+}
+
+.left .learn-button {
+  padding: 1rem 2rem;
+  background-color: orange;
+  margin-left: 5.5rem;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.right .learn-button {
+  padding: 1rem 2rem;
+  background-color: orange;
+  margin-left: 9rem;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.text .learn-button {
+  padding: 1rem 2rem;
+  background-color: orange;
+  margin-left: 24rem;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.first-img {
+  margin-top: 3rem;
+}
+
+.mayor .right {
+  margin: 22rem 0 0 2rem;
+}
+
+.council {
+  display: flex;
+  margin: 2rem;
+}
+
+.council img {
+  width: 30rem;
+  height: 30rem;
+  display: block;
+  margin: 2rem;
+}
+
+@media (max-width: 767px) {
+  .mayor {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mayor .left {
+    margin: 2rem;
+  }
+
+  .second-img {
+    margin-top: 15rem;
+    margin-left: -18rem;
+  }
+
+  .right h1 {
+    margin-top: -20rem;
+  }
+
+  .right .learn-button {
+    margin: 0 5rem;
+  }
+
+  .text .learn-button {
+    margin: 0 3rem;
+  }
+
+  .text {
+    margin-top: 65rem;
+    text-align: center;
+  }
+
+  .second-img {
+    margin-top: 30rem;
+  }
+
+  .council {
+    width: 32rem;
+    margin-left: 3rem;
+    height:200vh;
+  }
+}

@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.5s;
+}
+
+body {
+  background-image: linear-gradient(to right, black, white);
+  color: white;
+  font-size: 30px;
+}
+
+.content-table {
+  border-collapse: collapse;
+  font-size: 20px;
+  width: 70vw;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  margin: 0 auto;
+  table-layout: fixed;
+}
+
+.container h1,
+.container .group {
+  margin: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.container h1 {
+  font-family: "Kaushan Script", cursive;
+  font-size: 75px;
+}
+
+.group label {
+  margin-right: 10px;
+  margin-top: 0.4rem;
+}
+
+.group input {
+  font-size: 24px;
+  width: 60%;
+}
+
+.content-table tr td,
+.content-table tr th {
+  padding: 20px;
+  text-align: left;
+  border: 1px solid white;
+}
+
+.content-table tr th {
+  text-decoration: underline;
+}
+
+.button {
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  top: 150px;
+  left: 234px;
+  background: white;
+  color: black;
+  font-size: 20px;
+  border: black solid 3px;
+  border-radius: 40px;
+  font-weight: bold;
+}
+
+.button:hover {
+  color: white;
+  background: black;
+  border: black solid 3px;
+  cursor: pointer;
+}
+
+.submit {
+  margin-left: 1rem;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  font-size: 1.3rem;
+  background-color: white;
+  position: absolute;
+  top: 11.6rem;
+  left: 62rem;
+}
+
+.submit:hover {
+  color: white;
+  background: black;
+  border: black solid 3px;
+  cursor: pointer;
+}
+
+@media (max-width: 825px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .content-table {
+    width: 95vw;
+    font-size: 20px;
+  }
+
+  .button {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-table {
+    font-size: 14px;
+    width: 95vw;
+  }
+
+  .container h1 {
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+
+  .button {
+    left: 135px;
+    top: 85px;
+    width: 110px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .container h1 {
+    margin-top: 0;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submit {
+    width: 60%;
+    margin-left: 4rem;
+  }
+
+  .group label {
+  margin-right: 10px;
+  margin: 0.4rem ;
+  font-size: 20px;
+}
+
+  .group input {
+    font-size: 24px;
+    width: 45%;
+    margin: .8rem 0;
+  }
+}
