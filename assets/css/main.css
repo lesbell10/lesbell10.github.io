@@ -4773,6 +4773,10 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
   color: #212931;
 }
 
+.post p {
+  font-family: arial;
+}
+
 @media screen and (max-width: 736px) {
   #navPanel .close {
     height: 4rem;
