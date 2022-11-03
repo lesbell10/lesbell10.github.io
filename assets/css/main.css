@@ -3877,7 +3877,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 @media screen and (max-width: 980px) {
   #nav {
     /* display: none; */
-    margin-top: 2rem;
+    margin-top: .01rem;
   }
 }
 
