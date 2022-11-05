@@ -29,14 +29,14 @@ html {
 }
 
 .mayor .left {
-  margin: 8rem 2rem 0 8rem;
+  margin: 8rem 2rem 0 4rem;
 }
 
-h1 {
+.mayor h1 {
   margin-bottom: 2rem;
 }
 
-p {
+.mayor p {
   line-height: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -54,35 +54,37 @@ p {
   font-weight: bold;
 }
 
-.right .learn-button {
-  padding: 1rem 2rem;
-  background-color: orange;
-  margin-left: 9rem;
-  border-radius: 3rem;
-  color: white;
-  font-weight: bold;
-}
-
-.text .learn-button {
-  padding: 1rem 2rem;
-  background-color: orange;
-  margin-left: 24rem;
-  border-radius: 3rem;
-  color: white;
-  font-weight: bold;
-}
-
 .first-img {
   margin-top: 3rem;
 }
 
 .mayor .right {
-  margin: 22rem 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+.right .learn-button {
+  padding: 1rem 2rem;
+  background-color: orange;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
+  width: 25%;
+  margin-left: 35%;
+}
+
+.text .learn-button {
+  padding: 1rem 2rem;
+  background-color: orange;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
 }
 
 .council {
   display: flex;
-  margin: 2rem;
 }
 
 .council img {
@@ -94,6 +96,32 @@ p {
 
 @media (max-width: 767px) {
   .mayor {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mayor .left {
+    margin: 2rem;
+  }
+
+  .mayor h1 {
+    text-align: center;
+  }
+
+  .council {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .council h1 {
+    margin: 0 2rem;
+  }
+
+  .council p {
+    margin: 2rem;
+  }
+
+  /* .mayor {
     display: flex;
     flex-direction: column;
   }
@@ -132,5 +160,5 @@ p {
     width: 32rem;
     margin-left: 3rem;
     height:200vh;
-  }
+  } */
 }
