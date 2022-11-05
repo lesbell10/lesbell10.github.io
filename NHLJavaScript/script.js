@@ -175,8 +175,7 @@ element.addEventListener("change", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Leon_Draisaitl";
     });
 
-    
-      player.textContent = "Leon Draisaitl";
+    player.textContent = "Leon Draisaitl";
   }
 
   if (value === "Plus/Minus") {
@@ -203,8 +202,7 @@ element.addEventListener("change", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Cale_Makar";
     });
 
-    
-      player.textContent = "Cale Makar";
+    player.textContent = "Cale Makar";
   }
 
   if (value === "Penalty Minutes") {
@@ -230,8 +228,8 @@ element.addEventListener("change", (e) => {
     sidepic.addEventListener("click", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Mark_Borowiecki";
     });
-    
-      player.textContent = "Mark Borowiecki";
+
+    player.textContent = "Mark Borowiecki";
   }
 
   if (value === "Points per Game") {
@@ -257,8 +255,8 @@ element.addEventListener("change", (e) => {
     sidepic.addEventListener("click", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Nikita_Kucherov";
     });
-    
-      player.textContent = "Nikita Kucherov";
+
+    player.textContent = "Nikita Kucherov";
   }
 
   if (value === "Shorthanded goals") {
@@ -284,8 +282,8 @@ element.addEventListener("change", (e) => {
     sidepic.addEventListener("click", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Alex_Formenton";
     });
-    
-      player.textContent = "Alex Formenton";
+
+    player.textContent = "Alex Formenton";
   }
 
   if (value === "Overtime Goals") {
@@ -311,8 +309,8 @@ element.addEventListener("change", (e) => {
     sidepic.addEventListener("click", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Alex_DeBrincat";
     });
-    
-      player.textContent = "Alex DeBrincat";
+
+    player.textContent = "Alex DeBrincat";
   }
 
   if (value === "Game Winning Goals") {
@@ -338,8 +336,8 @@ element.addEventListener("change", (e) => {
     sidepic.addEventListener("click", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Steven_Stamkos";
     });
-    
-      player.textContent = "Steven Stamkos";
+
+    player.textContent = "Steven Stamkos";
   }
 
   if (value === "Most Shots") {
@@ -364,8 +362,8 @@ element.addEventListener("change", (e) => {
     sidepic.addEventListener("click", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Alexander_Ovechkin";
     });
-    
-      player.textContent = "Alexander Ovechkin";
+
+    player.textContent = "Alexander Ovechkin";
   }
 
   if (value === "Time on Ice per Game") {
@@ -390,7 +388,7 @@ element.addEventListener("change", (e) => {
     sidepic.addEventListener("click", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Patrick_Kane";
     });
-    
-      player.textContent = "Patrick Kane";
+
+    player.textContent = "Patrick Kane";
   }
 });
