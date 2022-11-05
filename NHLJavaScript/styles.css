@@ -79,7 +79,7 @@ option {
   font-size: 36px;
   font-weight: bold;
   color: white;
-  text-align: center;
+  text-align: left;
 }
 
 .RW {
@@ -162,33 +162,34 @@ h2 {
 }
 
 .df {
-margin-top: 14rem;
+  margin-top: 14rem;
 }
 
 .player {
-  font-size: 36px;  
+  font-size: 36px;
   font-weight: bold;
-  position:absolute;
-  right:110px;
+  position: absolute;
+  right: 110px;
   bottom: 130px;
 }
 
 @media (max-width: 767px) {
   .select-stats {
     font-size: 25px;
-    top:100px;
-    left:120px;
+    top: 100px;
+    left: 120px;
   }
 
   h1 {
     font-size: 45px;
     margin: 20px 50px;
     padding: 7px;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     text-align: center;
   }
 
-  h2, .select-stats {
+  h2,
+  .select-stats {
     display: none;
   }
 
