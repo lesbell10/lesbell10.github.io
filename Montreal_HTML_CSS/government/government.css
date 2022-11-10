@@ -71,8 +71,25 @@ html {
   border-radius: 3rem;
   color: white;
   font-weight: bold;
-  width: 25%;
+  width: 36%;
   margin-left: 35%;
+}
+
+.council {
+  margin-top: 5rem;
+}
+
+.text {
+  margin-left: 4rem;
+}
+
+.text h1 {
+  margin-bottom: 2rem;
+}
+
+.text p {
+  line-height: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .text .learn-button {
@@ -110,55 +127,25 @@ html {
 
   .council {
     display: flex;
-    flex-direction: column;
-  }
-
-  .council h1 {
-    margin: 0 2rem;
-  }
-
-  .council p {
-    margin: 2rem;
-  }
-
-  /* .mayor {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mayor .left {
-    margin: 2rem;
-  }
-
-  .second-img {
-    margin-top: 15rem;
-    margin-left: -18rem;
+    flex-direction: column-reverse;
+    margin-top: 18rem;
   }
 
   .right h1 {
-    margin-top: -20rem;
+    margin-top: 2rem;
   }
 
   .right .learn-button {
-    margin: 0 5rem;
+    width: 48%;
+    margin: 0 auto
   }
 
   .text .learn-button {
-    margin: 0 3rem;
+    width: 48%;
+    margin-left: 20%;
   }
 
-  .text {
-    margin-top: 65rem;
-    text-align: center;
+  .text p {
+    margin-right: 4rem;
   }
-
-  .second-img {
-    margin-top: 30rem;
-  }
-
-  .council {
-    width: 32rem;
-    margin-left: 3rem;
-    height:200vh;
-  } */
 }
