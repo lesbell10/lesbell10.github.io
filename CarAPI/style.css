@@ -92,6 +92,10 @@ body {
   cursor: pointer;
 }
 
+.search-result {
+  text-align: center;
+}
+
 @media (max-width: 825px) {
   body {
     overflow-x: hidden;

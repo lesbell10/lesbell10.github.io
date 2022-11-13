@@ -18,16 +18,15 @@ fetch(
     const myForm = document.querySelector("form");
     const searchResult = document.querySelector(".search-result");
     const viewAll = document.querySelector(".button");
-    const search = document.querySelector(".submit");
-
     myForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
       searchInput = e.target.querySelector("input").value;
-
-      let searchQuery = "";
+      searchResult.innerHTML = "No car available";
 
       response.map((values) => {
+        let searchQuery = "";
+
         if (values.make.toLowerCase() === searchInput.toLowerCase()) {
           searchQuery += `<table class="content-table">
           <tbody>
