@@ -4666,7 +4666,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 
 @media screen and (max-width: 980px) {
   #navPanelToggle {
-    display: block;
+    display: none;
   }
 }
 
