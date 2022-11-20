@@ -540,6 +540,7 @@ article:before,
 }
 
 .header span {
+  font-size: 55px;
   border-bottom: solid white 3px;
 }
 .wrap-col2.item img {
@@ -554,6 +555,20 @@ article:before,
 }
 h5 {
   text-align: center;
+}
+
+.box-3 h3 {
+  font-size: 32px;
+  line-height: 2.5rem;
+}
+
+.box-3 p {
+  font-size: 20px;
+  line-height: 1.5rem;
+}
+
+.box-3 .btn {
+  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 1200px) {
