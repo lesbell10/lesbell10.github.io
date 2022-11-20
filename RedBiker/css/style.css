@@ -502,8 +502,22 @@ article:before,
 
 /************main*****************/
 
+.box-3 h3 {
+  font-size: 32px;
+  line-height: 2rem;
+}
+
+.box-3 p {
+  font-size: 20px;
+}
+
+.box-3 .btn {
+  font-size: 24px;
+}
+
 .item-content {
   height: 15rem;
+  text-align: center;
 }
 
 .item-content .btn {
