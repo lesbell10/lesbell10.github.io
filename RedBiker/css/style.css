@@ -48,7 +48,7 @@ header .logo img {
 .slider {
   position: relative;
   width: 100%;
-  height: 630px;
+  height: 720px;
   background-color: black;
   overflow: hidden;
 }
@@ -56,7 +56,7 @@ header .logo img {
   display: block;
   position: relative;
   z-index: 1;
-  height: 496px;
+  height: 620px;
   width: 100%;
   border: 0;
   overflow: hidden;
@@ -71,14 +71,12 @@ header .logo img {
   text-shadow: none;
   color: #fff;
   background: rgba(0, 0, 0, 0.7);
-  padding-top: 30px;
   text-align: center;
   margin: 0;
-  max-width: none;
 }
 .caption h1 {
   font-size: 40px;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 
 /**********************content***********************/
@@ -165,12 +163,20 @@ header .logo img {
 
 /*********************  ***********************/
 
-.content-box.box-2 {
-  background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/408452e3-03fc-4d53-887f-feae146e610b/d93rv1y-30426c05-5a52-470b-8b52-5feacf5dce75.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQwODQ1MmUzLTAzZmMtNGQ1My04ODdmLWZlYWUxNDZlNjEwYlwvZDkzcnYxeS0zMDQyNmMwNS01YTUyLTQ3MGItOGI1Mi01ZmVhY2Y1ZGNlNzUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.QZHgl4thQqfNA9ZDaCuPY9MjsBrSn18dU5XKEiYgGWA);
-  padding: 40px 0;
-  text-align: center;
-  min-height: 380px;
-  color: #fff !important;
+.box-2 img {
+z-index: -1;
+height:400px;
+min-width: 1200px;
+}
+
+.box-2 .heading {
+  z-index: 1;
+  position:relative;
+  bottom: 250px;
+  left: 300px;
+  font-size: 50px;
+  margin-right: 100px;
+  margin-bottom: 1rem;
 }
 .content-box.box-2 p {
   color: #fff;
@@ -551,7 +557,7 @@ article:before,
 
 .wrap-col2 h3 {
   color: white;
-  margin: 1rem;
+  margin: 0 1rem 1rem 0;
   background-color: black;
   border: solid white 4px;
   padding: 0.5rem 1rem;
@@ -560,15 +566,12 @@ article:before,
 .header span {
   border-bottom: solid white 3px;
 }
-.wrap-col2.item img {
-  width: 300px;
-  min-height: 300px;
-}
 
 .wrap-col2 img {
   border: solid white 4px;
-  width: 280px;
-  min-height: 280px;
+  width: 400px;
+  max-height: 140px;
+  margin: 0 1rem 1rem 0;
 }
 h5 {
   text-align: center;
@@ -583,13 +586,49 @@ h5 {
   width: 50%;
 }
 @media only screen and (max-width: 1200px) {
+
+
+  main {
+    max-width: 1520px;
+  }
+
   .container,
   .slider {
     min-width: 140%;
   }
 
+  .box-2 {
+    margin-top: 22rem;
+    margin-left: 20rem;
+  }
+
+
   .content-box.box-2 .row {
     max-width: 100%;
+  }
+
+  .box-2 img {
+    width: 1600px;
+    height:500px;
+    margin-left: 1250px;
+  }
+
+  
+
+  .box-2 .heading {
+  z-index: 1;
+  position:relative;
+  bottom: 350px;
+  left: 500px;
+  font-size: 50px;
+  width: 555px;
+  }
+
+  .box-2 span {
+    z-index: 2;
+  position:absolute;
+  top: .1px;
+  left:7px;
   }
 
   .row {
@@ -615,7 +654,7 @@ h5 {
   .adjust-1 {
     max-width: 100%;
     padding-bottom: 20rem;
-        margin-top: 8rem;
+    margin-top: 8rem;
   }
 
   .one,
@@ -652,8 +691,9 @@ h5 {
 
   .btn {
     font-size: 4rem;
+    width: 40%;
     position: absolute;
-    left: 20%;
+    left: 30%;
   }
 
   .content-box .box-2 {
