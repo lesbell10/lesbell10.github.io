@@ -571,54 +571,12 @@ h5 {
 }
 
 @media only screen and (max-width: 1200px) {
- 
 
-  .slider h1 {
-    padding-top: 2rem;
-  }
+.container {
+  max-width: 100%;
+}
 
-  .item-content {
-    height: 15rem;
-    width: 250px;
-  }
-
-  div .zoom-container {
-    width: 0;
-  }
-
-  .wrap-col .zoom-container img {
-    max-width: 250px;
-    height: 160px;
-  }
-
-  .wrap-col h1 {
-    font-size: 1.1rem;
-  }
-
-  .item-content .btn {
-    margin-left: -0.01rem;
-  }
-
-  .btn.one {
-    margin-top: 0.5rem;
-  }
-
-  .btn.two {
-    margin-top: 0.5rem;
-  }
-
-  .btn.three {
-    margin-top: 0.5rem;
-  }
-  .row {
-    margin-left: 200px;
-  }
-
-  div.adjust-1 {
-    max-width: 250px;
-  }
-
-  .box-3 img {
-    max-width: 100%;
-  }
+.content-box.box-2 .row {
+  max-width: 100%;
+}
 }
