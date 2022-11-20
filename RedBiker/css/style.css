@@ -99,7 +99,6 @@ header .logo img {
 }
 .heading {
   background: #000;
-  border-right: 6px solid #f3542d;
   color: #fff;
   display: inline-block;
   font-size: 36px;
@@ -513,6 +512,10 @@ article:before,
 
 .box-3 .btn {
   font-size: 24px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 4rem;
 }
 
 .item-content {
@@ -520,7 +523,7 @@ article:before,
   text-align: center;
 }
 
-.item-content .btn {
+.btn {
   font-size: 1.2rem;
 }
 
@@ -545,16 +548,16 @@ article:before,
   font-weight: 100;
 }
 
-.wrap-col2 h3{
+.wrap-col2 h3 {
   color: white;
   margin: 1rem;
   background-color: black;
-  border: solid white 4px; 
-  padding: .5rem 1rem;
+  border: solid white 4px;
+  padding: 0.5rem 1rem;
 }
 
 .header span {
-  border-bottom: solid white 3px;
+  font-size: 4rem;
 }
 .wrap-col2.item img {
   width: 300px;
@@ -570,13 +573,86 @@ h5 {
   text-align: center;
 }
 
+.btn.one {
+  margin-top: 4rem;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
 @media only screen and (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+  }
 
-.container {
-  max-width: 100%;
-}
+  .content-box.box-2 .row {
+    max-width: 100%;
+  }
 
-.content-box.box-2 .row {
-  max-width: 100%;
-}
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -40rem;
+    margin-bottom: 5rem;
+  }
+
+  .item-content {
+    width: 85%
+  }
+
+  .wrap-col {
+    min-width: 200%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+
+  .adjust-1 {
+    max-width: 100%;
+    padding-bottom: 20rem;
+  }
+
+  .one,
+  .two,
+  .three {
+    margin-bottom: 2rem;
+  }
+
+  .slider h1 {
+    font-size: 4rem;
+  }
+
+  .box-1 span {
+    font-size: 4rem;
+  }
+
+  .wrap-col h1 {
+    margin-top: 1rem;
+    font-size: 5rem;
+  }
+
+  .wrap-col h5 {
+    margin-top: 3rem;
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+
+  .btn {
+    font-size: 4rem;
+    position: absolute;
+    left: 20%
+  }
+  
+  .content-box .box-2 {
+    margin-top: -2rem;
+  }
+  .header span {
+    font-size: 5rem;
+    margin-left: 40rem;
+    margin-top: 4rem;
+    min-width: 50rem;
+  }
 }
