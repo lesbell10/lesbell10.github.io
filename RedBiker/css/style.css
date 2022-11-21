@@ -553,6 +553,7 @@ article:before,
 .item-content h5 {
   margin: 0.7rem 0;
   font-weight: 100;
+  color:black;
 }
 
 .wrap-col2 h3 {
@@ -626,11 +627,14 @@ h5 {
 
   .post {
     display: flex;
+    min-height: 800px;
   }
 
-  .adjust-2 {
-    display: flex;
-  }
+.post .btn {
+  font-size: 64px;
+  margin-top: .1rem;
+  margin-left: 160px;
+}
 
   .wrapper h3 {
     font-size: 70px;
@@ -640,6 +644,14 @@ h5 {
   .wrapper p {
     font-size: 55px;
     line-height: 3.5rem;
+  }
+
+  .adjust-2 {
+    display: flex;
+  }
+
+  .adjust-2 img {
+    min-height: 100%;
   }
 
   .row {
