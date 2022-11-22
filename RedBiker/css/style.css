@@ -587,14 +587,17 @@ h5 {
   width: 50%;
 }
 @media screen and (max-width: 415px) {
-  body {
-    max-width: 415px;
-  }
+
   .slider {
-    position: relative;
-    width: 1200px;
+     max-height: 300px;
+  }
+  .slider img{
+    min-height: 100%;
   }
 
+  .content-box {
+    margin-left: -400px;
+  }
   .box-1 .row {
     display: flex;
     flex-direction: column;
@@ -603,21 +606,22 @@ h5 {
   }
 
   .caption h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .box-2 .container .row img {
-    max-width: 415px;
+    max-width: 10%;
+    margin-left: 23rem;
   }
 
   .heading {
     position: relative;
-    min-width: 40%;
+    min-width: 25%;
   }
 
   .heading span {
     font-size: 24px;
-    margin-left: 15rem;
+    margin-left: 5rem;
     position: absolute;
   }
 
@@ -639,6 +643,10 @@ h5 {
   .two {
     font-size: 16px;
     margin-right: 15rem;
+  }
+
+  .box-4 {
+    margin-top: -4rem;
   }
   .everything {
     display: flex;
