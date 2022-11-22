@@ -599,8 +599,10 @@ h5 {
     max-width: 100%;
   }
 
+  .caption h1 {
+    font-size:25px;
+  }
+
   .box-1 .row .adjust-1 {
-    min-width: 75%;
-    border: solid blue 5px;
   }
 }
