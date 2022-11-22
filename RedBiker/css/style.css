@@ -588,6 +588,9 @@ h5 {
 }
 @media screen and (max-width: 415px) {
 
+  body {
+    max-width: 415px;
+  }
   .slider {
      max-height: 300px;
   }
