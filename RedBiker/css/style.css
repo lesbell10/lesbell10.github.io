@@ -553,7 +553,7 @@ article:before,
 .item-content h5 {
   margin: 0.7rem 0;
   font-weight: 100;
-  color:black;
+  color: black;
 }
 
 .wrap-col2 h3 {
@@ -586,139 +586,21 @@ h5 {
   justify-content: center;
   width: 50%;
 }
-@media only screen and (max-width: 1200px) {
-  main {
-    max-width: 1520px;
-  }
-
-  .container,
+@media screen and (max-width: 415px) {
   .slider {
-    min-width: 140%;
-  }
-
-  .box-2 {
-    margin-top: 22rem;
-    margin-left: 20rem;
-  }
-
-  .content-box.box-2 .row {
-    max-width: 100%;
-  }
-
-  .box-2 img {
-    width: 1600px;
-    height: 500px;
-    margin-left: 1250px;
-  }
-
-  .box-2 .heading {
-    z-index: 1;
     position: relative;
-    bottom: 350px;
-    left: 500px;
-    font-size: 70px;
-    width: 700px;
+    width: 1200px;
   }
 
-  .box-3 .container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .post {
-    display: flex;
-    min-height: 800px;
-  }
-
-.post .btn {
-  font-size: 64px;
-  margin-top: .1rem;
-  margin-left: 160px;
-}
-
-  .wrapper h3 {
-    font-size: 70px;
-    line-height: 3.8rem;
-  }
-
-  .wrapper p {
-    font-size: 55px;
-    line-height: 3.5rem;
-  }
-
-  .adjust-2 {
-    display: flex;
-  }
-
-  .adjust-2 img {
-    min-height: 100%;
-  }
-
-  .row {
+  .box-1 .row {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: -40rem;
-    margin-bottom: 5rem;
-  }
-
-  .item-content {
-    width: 85%;
-  }
-
-  .wrap-col {
-    min-width: 200%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 4rem;
-  }
-
-  .adjust-1 {
     max-width: 100%;
-    padding-bottom: 20rem;
-    margin-top: 8rem;
   }
 
-  .one,
-  .two,
-  .three {
-    margin-bottom: 2rem;
-  }
-
-  .slider h1 {
-    font-size: 5rem;
-  }
-
-  .wrap-col h1 {
-    margin-top: 3rem;
-    font-size: 7rem;
-  }
-
-  .wrap-col h5 {
-    margin-top: 5rem;
-    font-size: 4.5rem;
-    line-height: 4.5rem;
-  }
-
-  .btn {
-    font-size: 4rem;
-    width: 40%;
-    position: absolute;
-    left: 30%;
-  }
-
-  .content-box .box-2 {
-    margin-top: 10rem;
-  }
-  .header span {
-    font-size: 5rem;
-    margin-left: 40rem;
-    margin-top: 4rem;
-    min-width: 50rem;
-  }
-
-  .box-3 {
-    margin: 0 40rem;
+  .box-1 .row .adjust-1 {
+    min-width: 75%;
+    border: solid blue 5px;
   }
 }
