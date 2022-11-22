@@ -598,6 +598,9 @@ h5 {
     min-height: 100%;
   }
 
+ .row .second img {
+  }
+
   .content-box {
     margin-left: -400px;
   }
@@ -610,11 +613,6 @@ h5 {
 
   .caption h1 {
     font-size: 20px;
-  }
-
-  .box-2 .container .row img {
-    max-width: 10%;
-    margin-left: 23rem;
   }
 
   .heading {
@@ -637,10 +635,6 @@ h5 {
 
   .btn {
     width: 60%;
-  }
-
-  .adjust-2 img {
-    max-width: 100%;
   }
 
   .two {
