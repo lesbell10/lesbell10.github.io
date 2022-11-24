@@ -14,6 +14,8 @@ body {
   background: #fff;
   color: #3f3f3f;
   font: 14px/25px Arial;
+  display: flex;
+  justify-content: center;
 }
 * {
   box-sizing: border-box;
@@ -48,7 +50,7 @@ header .logo img {
 .slider {
   position: relative;
   width: 100%;
-  height: 630px;
+  height: 720px;
   background-color: black;
   overflow: hidden;
 }
@@ -56,7 +58,7 @@ header .logo img {
   display: block;
   position: relative;
   z-index: 1;
-  height: 496px;
+  height: 620px;
   width: 100%;
   border: 0;
   overflow: hidden;
@@ -71,14 +73,12 @@ header .logo img {
   text-shadow: none;
   color: #fff;
   background: rgba(0, 0, 0, 0.7);
-  padding-top: 30px;
   text-align: center;
   margin: 0;
-  max-width: none;
 }
 .caption h1 {
   font-size: 40px;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 
 /**********************content***********************/
@@ -127,12 +127,12 @@ header .logo img {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  width: 100% !important;
+  width: 100%;
 }
 
 .content-box .item img {
   display: block;
-  width: 100% !important;
+  width: 100%;
   height: auto;
   transition: all 0.5s ease;
 }
@@ -165,12 +165,20 @@ header .logo img {
 
 /*********************  ***********************/
 
-.content-box.box-2 {
-  background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/408452e3-03fc-4d53-887f-feae146e610b/d93rv1y-30426c05-5a52-470b-8b52-5feacf5dce75.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQwODQ1MmUzLTAzZmMtNGQ1My04ODdmLWZlYWUxNDZlNjEwYlwvZDkzcnYxeS0zMDQyNmMwNS01YTUyLTQ3MGItOGI1Mi01ZmVhY2Y1ZGNlNzUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.QZHgl4thQqfNA9ZDaCuPY9MjsBrSn18dU5XKEiYgGWA);
-  padding: 40px 0;
-  text-align: center;
-  min-height: 380px;
-  color: #fff !important;
+.box-2 img {
+  z-index: -1;
+  height: 400px;
+  min-width: 1200px;
+}
+
+.box-2 .heading {
+  z-index: 1;
+  position: relative;
+  bottom: 250px;
+  left: 300px;
+  font-size: 50px;
+  margin-right: 100px;
+  margin-bottom: 1rem;
 }
 .content-box.box-2 p {
   color: #fff;
@@ -502,11 +510,33 @@ article:before,
 
 /************main*****************/
 
-.item-content {
-  height: 15rem;
+.slider {
+  max-width: 1200px;
 }
 
-.item-content .btn {
+.box-3 h3 {
+  font-size: 32px;
+  line-height: 2rem;
+}
+
+.box-3 p {
+  font-size: 20px;
+}
+
+.box-3 .btn {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.item-content {
+  height: 15rem;
+  text-align: center;
+}
+
+.btn {
   font-size: 1.2rem;
 }
 
@@ -529,82 +559,189 @@ article:before,
 .item-content h5 {
   margin: 0.7rem 0;
   font-weight: 100;
+  color: black;
 }
 
-.wrap-col2 h3{
+.wrap-col2 h3 {
   color: white;
-  margin: 1rem;
+  margin: 0 1rem 1rem 0;
   background-color: black;
-  border: solid white 4px; 
-  padding: .5rem 1rem;
+  border: solid white 4px;
+  padding: 0.5rem 1rem;
 }
 
 .header span {
   border-bottom: solid white 3px;
 }
-.wrap-col2.item img {
-  width: 300px;
-  min-height: 300px;
-}
 
 .wrap-col2 img {
   border: solid white 4px;
-  width: 280px;
-  min-height: 280px;
+  width: 400px;
+  max-height: 140px;
+  margin: 0 1rem 1rem 0;
 }
 h5 {
   text-align: center;
 }
 
-@media only screen and (max-width: 1200px) {
- 
+.btn.one {
+  margin-top: 4rem;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+@media screen and (max-width: 1200px) {
+  .slider {
+    max-width: 66.5%;
+    margin-left: 15rem;
+  }
+
+  .wrap-col .zoom-container img,
+  .item-content,
+  .box-2 img,
+  .box-3 .post {
+    max-width: 70%;
+    margin-left: 7rem;
+  }
+
+  .wrap-col .zoom-container img,
+  .wrap-col .item-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adjust-1 {
+    margin-right: -55px;
+  }
+
+  .wrap-col .three {
+    margin-top: 0;
+  }
+
+  .content-box .item .item-content {
+    border: none;
+  }
+
+  .one,
+  .two,
+  .three {
+    padding: 0.5rem 5rem;
+    position: relative;
+    right: 4rem;
+  }
+
+  .box-2 img {
+    min-width: 80%;
+    margin-top: 2rem;
+  }
+
+  .box-3 .post {
+    min-width: 80%;
+  }
+
+  .box-4 {
+    max-width: 67.5%;
+    margin-left: 14rem;
+  }
+
+  .adjust-3 {
+    max-width: 70%;
+  }
+
+  .everything {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-box .item:hover .zoom-container img {
+    transform: scale(0.9) rotate(5deg);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .slider {
+    max-width: 50%;
+    height: 20rem;
+    margin-left: 22.5rem;
+  }
 
   .slider h1 {
-    padding-top: 2rem;
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-left: 3rem;
   }
 
-  .item-content {
-    height: 15rem;
-    width: 250px;
+  .adjust-1 {
+    min-width: 85%;
   }
 
-  div .zoom-container {
-    width: 0;
-  }
-
-  .wrap-col .zoom-container img {
-    max-width: 250px;
-    height: 160px;
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .wrap-col h1 {
-    font-size: 1.1rem;
+    font-size: 2.5rem;
   }
 
-  .item-content .btn {
-    margin-left: -0.01rem;
+  .wrap-col h5 {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    margin-bottom: 0;
   }
 
-  .btn.one {
-    margin-top: 0.5rem;
+  .one,
+  .two,
+  .three {
+    padding: .5rem .2rem;
+    width: 30%;
+    position: relative;
+    left: 10rem;
   }
 
-  .btn.two {
-    margin-top: 0.5rem;
+  .three {
+    position: relative;
+    top:3rem;
+    left: 10rem
   }
 
-  .btn.three {
-    margin-top: 0.5rem;
-  }
-  .row {
-    margin-left: 200px;
-  }
-
-  div.adjust-1 {
-    max-width: 250px;
+  .box-2 img {
+    min-width: 40%;
+    margin-top: 2rem;
+    margin-left: -1.3rem;
   }
 
-  .box-3 img {
-    max-width: 100%;
+  .box-2 .heading {
+    position: absolute;
+    left: 21rem;
+    top: 10rem;
+    width: 30%;
+    font-size: 2rem;
+  }
+
+  .box-3 .post {
+    min-width: 80%;
+  }
+
+  .box-4 {
+    max-width: 67.5%;
+    margin-left: 14rem;
+  }
+
+  .adjust-3 {
+    max-width: 70%;
+  }
+
+  .everything {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-box .item:hover .zoom-container img {
+    transform: scale(0.9) rotate(5deg);
   }
 }

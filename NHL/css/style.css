@@ -49,7 +49,7 @@ header .logo img {
 
 .slider {
   position: relative;
-  width: 100%;
+  width: 200%;
   height: 720px;
   background-color: black;
   overflow: hidden;
@@ -510,8 +510,12 @@ article:before,
 
 /************main*****************/
 
-.slider {
-  max-width: 1200px;
+.content-box {
+  width: 100vw;
+}
+
+.content-box .row {
+  width: 100vw;
 }
 
 .box-3 h3 {
@@ -593,14 +597,46 @@ h5 {
   width: 50%;
 }
 
-@media screen and (max-width: 1200px) {
+.box-1 {
+  margin-left: 0rem;
+}
 
+.slider {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.wrap-col {
+  max-width: 300px;
+}
+
+.card-3{
+  position: relative;
+  right: 7.5rem;
+}
+
+.card-2 {
+  position: relative;
+  right: 5rem;
+}
+
+.card-1 {
+  position: relative;
+  right: 1.5rem;
+}
+
+.item-content .three {
+  position:relative;
+  bottom: 2rem
+}
+
+@media screen and (max-width: 1200px) {
   .slider {
     max-width: 66.5%;
     margin-left: 15rem;
   }
 
-   .wrap-col .zoom-container img,
+  .wrap-col .zoom-container img,
   .item-content,
   .box-2 img,
   .box-3 .post {
@@ -651,12 +687,10 @@ h5 {
   .adjust-3 {
     max-width: 70%;
   }
-  .item1 {
-    margin-left: 1rem;
-  }
+
   .everything {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
   }
 
   .content-box .item:hover .zoom-container img {
@@ -664,191 +698,87 @@ h5 {
   }
 }
 
-/* @media screen and (max-width: 1200px) {
-  .wrap-col img, .wrap-col .item-content {
-    max-width: 75%;
-  }
-}
-
 @media screen and (max-width: 1000px) {
-  .box-1 {
-    display: flex;
-    flex-direction:column;
-  }
-
-    .adjust-1 {
-      margin-left: 1rem;
-    }
-  .wrap-col img, .wrap-col .item-content {
-    max-width:50%;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  body {
-    max-width: 800px;
-    display: flex;
-    justify-content: center;
-  }
   .slider {
-    max-height: 300px;
-    max-width: 800px;
-    margin-left: 12rem;
-  }
-  .slider img {
-    min-height: 100%;
+    max-width: 50%;
+    height: 20rem;
+    margin-left: 22.5rem;
   }
 
-  .box-1 .row {
-    display: flex;
-    flex-direction: column;
-  }
-  .caption h1 {
-    font-size: 30px;
-    padding-top: 2rem;
-  }
-
-  .item-content {
-     min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 0 -4rem;
-  }
-
-  .wrap-col img {
-    min-width: 75%;
-    font-size: 20px;
-    margin-left: 5rem;
-  }
-
-  .heading {
-    position: relative;
-    min-width: 30%;
-    margin: 0 auto;
-  }
-
-  .heading span {
-    font-size: 24px;
-    left: 5.5rem;
-    position: absolute;
-    width: 200px;
-  }
-
-  .adjust-1 {
-    margin-left: 15rem;
-    min-width: 60%;
-  }
-
-  .post {
-    margin-top: -7rem;
-    display: flex;
-    flex-direction: column;
-    margin-left: 25rem;
-  }
-  .box-2 img {
-    min-width: 200px;
-    margin-left: 5.5rem;
-  }
-
-  .btn {
-    width: 60%;
-  }
-
-  .two {
-    font-size: 16px;
-    margin-right: 15rem;
-  }
-
-  .box-4 {
-    margin-top: -4rem;
-  }
-  .everything {
-    display: flex;
-    flex-direction: column;
-    margin-left: 28rem;
-    min-width: 100%;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  body {
-    max-width: 500px;
-    display: flex;
-    justify-content: center;
-  }
-  .slider {
-    max-height: 300px;
-  }
-  .slider img {
-    min-height: 100%;
-  }
-
-  .box-1 .adjust-1 {
-    margin-right: 22rem;
-  }
-  .box-1 .row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 100%;
-  }
-
-  .box-2 .row {
+  .slider h1 {
+    font-size: 2rem;
+    margin-top: 2rem;
     margin-left: 3rem;
   }
 
-  .box-3 .row {
-    margin-right: 3rem;
-    max-width: 100%;
-  }
-  .caption h1 {
-    font-size: 24px;
-    padding-top: 2rem;
+  .adjust-1 {
+    min-width: 85%;
   }
 
-  .heading {
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wrap-col h1 {
+    font-size: 2.5rem;
+  }
+
+  .wrap-col h5 {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .one,
+  .two,
+  .three {
+    padding: 0.5rem 0.2rem;
+    width: 30%;
     position: relative;
-    min-width: 30%;
-    margin: 0 auto;
+    left: 10rem;
   }
 
-  .heading span {
-    font-size: 24px;
-    left: 7rem;
-    position: absolute;
-    width: 200px;
+  .three {
+    position: relative;
+    top: 3rem;
+    left: 10rem;
   }
 
-
-  .box-3 .row {
-    width: 100%;
-    max-width: 100%;
-  }
   .box-2 img {
-    min-width: 200px;
-    margin-left: 5.5rem;
+    min-width: 40%;
+    margin-top: 2rem;
+    margin-left: -1.3rem;
   }
 
-  .btn {
-    width: 60%;
+  .box-2 .heading {
+    position: absolute;
+    left: 21rem;
+    top: 10rem;
+    width: 30%;
+    font-size: 2rem;
   }
 
-  .two {
-    font-size: 16px;
-    margin-right: 15rem;
+  .box-3 .post {
+    min-width: 80%;
   }
 
   .box-4 {
-    margin-top: -4rem;
-  }
-  .everything {
-    display: flex;
-    flex-direction: column;
-    margin-left: 28rem;
-    min-width: 100%;
+    max-width: 67.5%;
+    margin-left: 14rem;
   }
 
   .adjust-3 {
-        justify-content: space-between;
+    max-width: 70%;
   }
-} */
+
+  .everything {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-box .item:hover .zoom-container img {
+    transform: scale(0.9) rotate(5deg);
+  }
+}
