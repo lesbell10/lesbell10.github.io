@@ -563,8 +563,9 @@ article:before,
 }
 
 .row .post-2 {
-    flex-direction: row-reverse;
-  }
+  display: flex;
+  flex-direction: row-reverse;
+}
 
 .wrap-col2 h3 {
   color: white;
@@ -584,6 +585,7 @@ article:before,
   max-height: 140px;
   margin: 0 1rem 1rem 0;
 }
+
 h5 {
   text-align: center;
 }
@@ -636,6 +638,11 @@ h5 {
     right: 4rem;
   }
 
+  .box-2 .heading {
+    position: relative;
+    left: 500px;
+  }
+
   .box-2 img {
     min-width: 80%;
     margin-top: 2rem;
@@ -647,14 +654,19 @@ h5 {
     left: 110px;
   }
 
+.row .post-2 {
+  display: flex;
+  flex-direction: column;
+}
+
   .box-4 {
     max-width: 67.5%;
     margin-left: 14rem;
   }
 
-  .header span {
-  margin-left: -15rem;
-}
+  .heading {
+    margin-left: -14rem;
+  }
 
   .adjust-3 {
     max-width: 70%;
@@ -727,12 +739,10 @@ h5 {
     left: 100px;
   }
 
-  .box-2 .heading {
-    position: absolute;
-    left: 21rem;
-    top: 10rem;
-    width: 40%;
-    font-size: 2rem;
+    .box-2 .heading {
+    position: relative;
+    left: 150px;
+    font-size: 2.5rem;
   }
 
   .adjust-2 {
@@ -765,7 +775,7 @@ h5 {
 
   .row .h-two {
     position: relative;
-    left: 100px
+    left: 100px;
   }
 
   .group-2 {
@@ -777,7 +787,7 @@ h5 {
   .wrap-col2 img {
     font-size: 28px;
     position: relative;
-    right:47px;
+    right: 47px;
     min-width: 335%;
   }
   .wrap-col2 img {
@@ -1006,22 +1016,24 @@ h5 {
     font-size: 1.8rem;
   }
 
-  .adjust-2 img, .adjust-2 .wrapper {
-    max-width:58%;
+  .adjust-2 img,
+  .adjust-2 .wrapper {
+    max-width: 58%;
     position: relative;
-    right: .3rem;
+    right: 0.3rem;
   }
-  
-.wrapper .btn {
-  padding: 0 5rem;
-  margin-top: 1rem;
-}
 
-.wrapper h3,.wrapper p {
-  width: 340px;
-  position: relative;
-  right: 3.7rem
-}
+  .wrapper .btn {
+    padding: 0 5rem;
+    margin-top: 1rem;
+  }
+
+  .wrapper h3,
+  .wrapper p {
+    width: 340px;
+    position: relative;
+    right: 3.7rem;
+  }
 
   .f-right {
     float: left;
@@ -1063,6 +1075,10 @@ h5 {
   .wrap-col2 img {
     min-height: 55vh;
     margin-top: 0;
+  }
+
+  .header span {
+    font-size: 1.2rem;
   }
 
   .everything {
