@@ -562,6 +562,10 @@ article:before,
   color: black;
 }
 
+.row .post-2 {
+    flex-direction: row-reverse;
+  }
+
 .wrap-col2 h3 {
   color: white;
   margin: 0 1rem 1rem 0;
@@ -647,6 +651,10 @@ h5 {
     max-width: 67.5%;
     margin-left: 14rem;
   }
+
+  .header span {
+  margin-left: -15rem;
+}
 
   .adjust-3 {
     max-width: 70%;
@@ -737,11 +745,11 @@ h5 {
   }
 
   .f-right {
-    float: left;
+    float: right;
   }
 
   .box-4 {
-    max-width: 60%;
+    max-width: 80%;
   }
 
   .box-4 .header {
@@ -755,6 +763,11 @@ h5 {
     flex-direction: column;
   }
 
+  .row .h-two {
+    position: relative;
+    left: 100px
+  }
+
   .group-2 {
     display: flex;
     flex-direction: column;
@@ -764,8 +777,8 @@ h5 {
   .wrap-col2 img {
     font-size: 28px;
     position: relative;
-    right: 169px;
-    min-width: 470%;
+    right:47px;
+    min-width: 335%;
   }
   .wrap-col2 img {
     min-height: 55vh;
