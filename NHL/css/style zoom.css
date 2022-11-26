@@ -49,7 +49,7 @@ header .logo img {
 
 .slider {
   position: relative;
-  width: 100%;
+  width: 200%;
   height: 720px;
   background-color: black;
   overflow: hidden;
@@ -510,8 +510,20 @@ article:before,
 
 /************main*****************/
 
-.slider {
-  max-width: 1200px;
+.content-box {
+  width: 100vw;
+}
+
+.content-box .row {
+  width: 120vw;
+}
+
+.wrap-col {
+  min-width: 300px;
+}
+
+.box-1 {
+  margin-left: 2%;
 }
 
 .box-3 h3 {
@@ -593,19 +605,118 @@ h5 {
   width: 50%;
 }
 
+.slider {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.wrap-col {
+  max-width: 350px;
+}
+
+.adjust-1 {
+  max-width: 23%;
+}
+/* 
+.card-3{
+  position: relative;
+  right: 8.8rem;
+}
+
+.card-2 {
+  position: relative;
+  right: 5rem;
+}
+
+.card-1 {
+  position: relative;
+  right:.5rem
+} */
+
+.item-content .three {
+  position: relative;
+  bottom: 2rem;
+}
+
+.row img {
+  min-width: 80%;
+  position: relative;
+  right: 1rem;
+}
+
+.box-3 .row {
+  width: 101%;
+}
+
+.box-3 .post {
+  margin: 0;
+}
+
+.box-2 img {
+  min-width: 65%;
+  position: relative;
+  left: 3rem;
+}
+
+.box-3 .post {
+  max-width: 98vw;
+  position: relative;
+  left: 4rem;
+}
+
+.everything img {
+  max-width: 20px;
+}
+
+.everything h3 {
+  max-width: 350px;
+}
+
+.everything {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-4 {
+  margin-right: -10rem;
+}
+
 @media screen and (max-width: 1200px) {
   .slider {
-    max-width: 66.5%;
-    margin-left: 15rem;
+    min-width: 100%;
   }
 
-  .wrap-col .zoom-container img,
+  .wrap-col {
+    min-width: 120%;
+  }
+  .box-2 img {
+    min-width: 100%;
+    position: relative;
+    left: -3rem;
+  }
+
+  .adjust-1 {
+    min-width: 28vw;
+    position: relative;
+    right: 1.5rem;
+  }
+
+  .box-3 .post {
+    min-width: 95vw;
+    position: relative;
+    left: -.05rem;
+  }
+
+
+}
+
+/* .wrap-col .zoom-container img,
   .item-content,
   .box-2 img,
   .box-3 .post {
-    max-width: 70%;
+    max-width: 100%;
     margin-left: 7rem;
-  }
+  } 
 
   .wrap-col .zoom-container img,
   .wrap-col .item-content {
@@ -659,9 +770,9 @@ h5 {
   .content-box .item:hover .zoom-container img {
     transform: scale(0.9) rotate(5deg);
   }
-}
+} */
 
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
   .slider {
     max-width: 50%;
     height: 20rem;
@@ -697,7 +808,7 @@ h5 {
   .one,
   .two,
   .three {
-    padding: .5rem .2rem;
+    padding: 0.5rem 0.2rem;
     width: 30%;
     position: relative;
     left: 10rem;
@@ -705,8 +816,8 @@ h5 {
 
   .three {
     position: relative;
-    top:3rem;
-    left: 10rem
+    top: 3rem;
+    left: 10rem;
   }
 
   .box-2 img {
@@ -744,4 +855,4 @@ h5 {
   .content-box .item:hover .zoom-container img {
     transform: scale(0.9) rotate(5deg);
   }
-}
+} */
