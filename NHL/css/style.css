@@ -805,6 +805,7 @@ h5 {
   .everything {
     display: flex;
     flex-direction: column;
+    margin-right: 6rem;
   }
 
   .content-box .item:hover .zoom-container img {
@@ -958,8 +959,8 @@ h5 {
     right: 8.5rem;
   }
 
-  .box-1 span {
-    font-size: 1.7rem;
+  .box-1 .header span {
+    font-size: 2rem;
   }
 
   .row .wrap-col {
