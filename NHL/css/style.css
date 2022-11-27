@@ -1008,13 +1008,14 @@ h5 {
     top: 25rem;
   }
 
-  .two {
+  .wrap-col .two {
     padding: 0.5rem 0.2rem;
     font-size: 25px;
     width: 20%;
     position: absolute;
     left: 7rem;
     top: 26rem;
+    color: red;
   }
 
   .three {
@@ -1030,7 +1031,7 @@ h5 {
     max-width: 34.5%;
     position: relative;
     left: 140px;
-    max-height: 50vh;
+    max-height: 30vh;
   }
 
   .box-2 .heading {
@@ -1038,7 +1039,7 @@ h5 {
     left: 21rem;
     top: 8rem;
     width: 70%;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .adjust-2 img,
