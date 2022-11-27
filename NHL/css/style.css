@@ -16,7 +16,6 @@ body {
   font: 14px/25px Arial;
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
 }
 * {
   box-sizing: border-box;
@@ -1025,7 +1024,7 @@ h5 {
     padding: 0.5rem 0.2rem;
     font-size: 25px;
     width: 70%;
-    margin-left: -7rem;
+    margin-left: -5rem;
     top: -2rem;
   }
 
