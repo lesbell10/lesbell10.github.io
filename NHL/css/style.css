@@ -769,8 +769,9 @@ h5 {
     margin: 0;
   }
 
-  .f-right {
-    float: right;
+  .row .post-2{
+    display: flex;
+    flex-direction: column;
   }
 
   .box-4 {
