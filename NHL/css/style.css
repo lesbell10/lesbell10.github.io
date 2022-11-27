@@ -16,6 +16,7 @@ body {
   font: 14px/25px Arial;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 * {
   box-sizing: border-box;
@@ -604,6 +605,10 @@ h5 {
 }
 
 @media screen and (max-width: 1200px) {
+
+  body {
+    margin-left: 4rem;
+  }
   .slider {
     max-width: 66.5%;
     margin-left: 15rem;
@@ -648,14 +653,14 @@ h5 {
     padding: 0.5rem 5rem;
     position: relative;
     right: 4rem;
-    bottom: .8rem;
+    bottom: 0.8rem;
   }
 
   .three {
     padding: 0.5rem 5rem;
     position: relative;
     right: 4rem;
-    top: 1.4rem
+    top: 1.4rem;
   }
 
   .box-2 .heading {
@@ -769,7 +774,7 @@ h5 {
     margin: 0;
   }
 
-  .row .post-2{
+  .row .post-2 {
     display: flex;
     flex-direction: column;
   }
@@ -872,19 +877,26 @@ h5 {
     font-size: 25px;
     width: 30%;
     position: relative;
-    left: 10rem;
+    left: 8rem;
+  }
+
+  .one {
+    position: relative;
+    top: -1rem;
+    left: 8rem;
   }
 
   .three {
     position: relative;
     top: 3rem;
-    left: 10rem;
+    left: 8rem;
   }
 
   .box-2 .row {
     max-width: 61%;
     position: relative;
     left: 120px;
+    height: 30vh;
   }
 
   .box-2 .heading {
@@ -906,7 +918,7 @@ h5 {
   }
 
   .box-4 {
-    max-width: 52%;
+    max-width: 56%;
   }
 
   .box-4 .header {
