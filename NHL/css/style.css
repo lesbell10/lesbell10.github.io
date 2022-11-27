@@ -610,8 +610,8 @@ h5 {
   }
 
   .box-1 .header {
-    margin-left:14rem;
-}
+    margin-left: 14rem;
+  }
 
   .wrap-col .zoom-container img,
   .item-content,
@@ -662,10 +662,10 @@ h5 {
     left: 110px;
   }
 
-.row .post-2 {
-  display: flex;
-  flex-direction: column;
-}
+  .row .post-2 {
+    display: flex;
+    flex-direction: column;
+  }
 
   .box-4 {
     max-width: 67.5%;
@@ -747,7 +747,7 @@ h5 {
     left: 100px;
   }
 
-    .box-2 .heading {
+  .box-2 .heading {
     position: relative;
     left: 150px;
     font-size: 2.5rem;
@@ -774,6 +774,9 @@ h5 {
     position: relative;
     right: 130px;
     border-bottom: none;
+  }
+  .box-4 span {
+    margin-left: 5rem;
   }
 
   .group-1 {
@@ -805,7 +808,6 @@ h5 {
   .everything {
     display: flex;
     flex-direction: column;
-    margin-right: 6rem;
   }
 
   .content-box .item:hover .zoom-container img {
@@ -830,8 +832,8 @@ h5 {
     margin-left: 3rem;
   }
   .box-1 .header {
-    margin-left:8rem;
-}
+    margin-left: 8rem;
+  }
   .row .wrap-col {
     max-width: 81%;
   }
@@ -879,7 +881,7 @@ h5 {
 
   .box-2 .heading {
     position: absolute;
-    left: 12rem;
+    left: 25rem;
     top: 10rem;
     width: 50%;
     font-size: 2rem;
@@ -995,7 +997,7 @@ h5 {
     width: 20%;
     position: absolute;
     left: 7rem;
-    top:25rem;
+    top: 25rem;
   }
 
   .two {
@@ -1044,7 +1046,7 @@ h5 {
 
   .btn-3 {
     position: relative;
-    top:2rem;
+    top: 2rem;
   }
 
   .wrapper .btn {
@@ -1093,8 +1095,6 @@ h5 {
     min-height: 20vh;
     margin-top: 0;
   }
-
-  
 
   .header span {
     font-size: 1rem;
