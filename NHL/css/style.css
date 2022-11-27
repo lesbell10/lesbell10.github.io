@@ -510,7 +510,9 @@ article:before,
 }
 
 /************main*****************/
-
+section {
+  margin: 0 3rem;
+}
 .slider {
   max-width: 1200px;
 }
@@ -609,6 +611,10 @@ h5 {
   body {
     margin-left: 4rem;
   }
+
+  section {
+  margin: 0 5rem 0 1rem;
+}
   .slider {
     max-width: 66.5%;
     margin-left: 15rem;
@@ -703,6 +709,10 @@ h5 {
 }
 
 @media screen and (max-width: 1000px) {
+
+  section {
+  margin: 0 3rem 0 -1remrem;
+}
   .slider {
     max-width: 50%;
     height: 20rem;
@@ -833,6 +843,9 @@ h5 {
   body {
     margin-left: 3.3rem;
   }
+  section {
+  margin: 0 2rem 0 2rem;
+}
   .slider {
     max-width: 40%;
     height: 20rem;
