@@ -514,6 +514,10 @@ article:before,
   max-width: 1200px;
 }
 
+.box-1 .header {
+  text-align: center;
+}
+
 .box-3 h3 {
   font-size: 32px;
   line-height: 2rem;
@@ -549,7 +553,7 @@ article:before,
   margin-left: 5rem;
 }
 .item-content .three {
-  margin-top: 2.7rem;
+  margin-top: 3.2rem;
   margin-left: 5rem;
 }
 
@@ -604,6 +608,10 @@ h5 {
     max-width: 66.5%;
     margin-left: 15rem;
   }
+
+  .box-1 .header {
+    margin-left:14rem;
+}
 
   .wrap-col .zoom-container img,
   .item-content,
@@ -820,7 +828,9 @@ h5 {
     margin-top: 2rem;
     margin-left: 3rem;
   }
-
+  .box-1 .header {
+    margin-left:8rem;
+}
   .row .wrap-col {
     max-width: 81%;
   }
@@ -928,16 +938,16 @@ h5 {
 
 @media screen and (max-width: 600px) {
   body {
-    margin-left: 11.5rem;
+    margin-left: 12rem;
   }
   .slider {
-    max-width: 23%;
+    max-width: 22%;
     height: 12rem;
     position: relative;
   }
 
   .slider h1 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     position: relative;
     right: 1.6rem;
   }
@@ -945,7 +955,7 @@ h5 {
   .box-1 .header {
     font-size: 1rem;
     position: relative;
-    right: 11rem;
+    right: 8.5rem;
   }
 
   .box-1 span {
@@ -953,13 +963,17 @@ h5 {
   }
 
   .row .wrap-col {
-    max-width: 46%;
+    max-width: 44%;
   }
 
   .row {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .adjust-1 {
+    margin-top: 2.5rem;
   }
 
   .wrap-col h1 {
@@ -980,7 +994,7 @@ h5 {
     width: 20%;
     position: absolute;
     left: 7rem;
-    bottom: 1rem;
+    top:25rem;
   }
 
   .two {
@@ -989,7 +1003,7 @@ h5 {
     width: 20%;
     position: absolute;
     left: 7rem;
-    top: 25rem;
+    top: 26rem;
   }
 
   .three {
@@ -998,11 +1012,11 @@ h5 {
     width: 20%;
     position: absolute;
     left: 7rem;
-    top: 30.5rem;
+    top: 29.5rem;
   }
 
   .box-2 .row {
-    max-width: 36%;
+    max-width: 34.5%;
     position: relative;
     left: 140px;
     max-height: 50vh;
@@ -1010,7 +1024,7 @@ h5 {
 
   .box-2 .heading {
     position: absolute;
-    left: 7rem;
+    left: 21rem;
     top: 8rem;
     width: 70%;
     font-size: 1.8rem;
@@ -1018,9 +1032,18 @@ h5 {
 
   .adjust-2 img,
   .adjust-2 .wrapper {
-    max-width: 58%;
+    max-width: 55.5%;
     position: relative;
     right: 0.3rem;
+  }
+
+  .f-right {
+    margin: 0 300px 0 0;
+  }
+
+  .btn-3 {
+    position: relative;
+    top:2rem;
   }
 
   .wrapper .btn {
@@ -1030,21 +1053,13 @@ h5 {
 
   .wrapper h3,
   .wrapper p {
-    width: 340px;
+    width: 335px;
     position: relative;
     right: 3.7rem;
   }
 
-  .f-right {
-    float: left;
-  }
-
   section .box-4 {
     min-width: 1200px;
-  }
-
-  .header span {
-    font-size: 1.3rem;
   }
 
   .box-4 .header {
@@ -1066,19 +1081,22 @@ h5 {
 
   .wrap-col2 h3,
   .wrap-col2 img {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     position: relative;
-    right: 245px;
+    right: 275px;
     bottom: 75px;
-    min-width: 310%;
+    min-width: 320%;
   }
   .wrap-col2 img {
-    min-height: 55vh;
+    min-height: 20vh;
     margin-top: 0;
   }
 
+  
+
   .header span {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-size: bold;
   }
 
   .everything {
