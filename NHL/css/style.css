@@ -821,6 +821,7 @@ h5 {
   .everything {
     display: flex;
     flex-direction: column;
+    max-width: 600px;
   }
 
   .content-box .item:hover .zoom-container img {
@@ -851,7 +852,7 @@ h5 {
     max-width: 81%;
   }
 
-  .row {
+  .box-2 .row {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -896,7 +897,7 @@ h5 {
     max-width: 61%;
     position: relative;
     left: 120px;
-    height: 30vh;
+    height: 50vh;
   }
 
   .box-2 .heading {
