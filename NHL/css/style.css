@@ -166,11 +166,11 @@ header .logo img {
 
 /*********************  ***********************/
 
-.box-2 img {
+/* .box-2 img {
   z-index: -1;
   height: 400px;
   min-width: 1200px;
-}
+} */
 
 .box-2 .heading {
   z-index: 1;
@@ -511,12 +511,32 @@ article:before,
 
 /************main*****************/
 
+body {
+  margin-left: 2rem;
+}
 .slider {
-  max-width: 1200px;
+  max-width: 95%;
 }
 
 .box-1 .header {
   text-align: center;
+}
+
+.wrap-col {
+  max-width: 83%;
+}
+
+.box-2 img {
+  max-width: 95%;
+}
+
+.post {
+  max-width: 95%;
+}
+
+.everything {
+  max-width: 94%;
+  margin-left: 2.5rem;
 }
 
 .box-3 h3 {
@@ -605,9 +625,8 @@ h5 {
 }
 
 @media screen and (max-width: 1200px) {
-
   body {
-    margin-left: 4rem;
+    margin-left: 1rem;
   }
   .slider {
     max-width: 66.5%;
@@ -618,11 +637,9 @@ h5 {
     margin-left: 14rem;
   }
 
-  .wrap-col .zoom-container img,
-  .item-content,
-  .box-2 img {
-    max-width: 70%;
-    margin-left: 7rem;
+  .box-1 .row {
+    margin-left: 9rem;
+    max-width: 95%;
   }
 
   .wrap-col .zoom-container img,
@@ -653,14 +670,13 @@ h5 {
     padding: 0.5rem 5rem;
     position: relative;
     right: 4rem;
-    bottom: 0.8rem;
   }
 
   .three {
     padding: 0.5rem 5rem;
     position: relative;
     right: 4rem;
-    top: 1.4rem;
+    top: 0.4rem;
   }
 
   .box-2 .heading {
@@ -669,12 +685,14 @@ h5 {
   }
 
   .box-2 img {
-    min-width: 80%;
+    margin-left: 10rem;
+    max-width: 75%;
     margin-top: 2rem;
   }
 
   .box-3 .post {
-    max-width: 80%;
+    margin-left: 3rem;
+    max-width: 75%;
     position: relative;
     left: 110px;
   }
@@ -697,6 +715,10 @@ h5 {
     flex-direction: column;
   }
 
+  .box-4 .row {
+    margin-left: 5rem;
+  }
+
   .content-box .item:hover .zoom-container img {
     transform: scale(0.9) rotate(5deg);
   }
@@ -704,9 +726,9 @@ h5 {
 
 @media screen and (max-width: 1000px) {
   .slider {
-    max-width: 50%;
+    max-width: 48%;
     height: 20rem;
-    margin-left: 22.5rem;
+    margin-left: 22rem;
   }
 
   .slider h1 {
@@ -716,15 +738,19 @@ h5 {
   }
 
   .adjust-1 {
-    min-width: 87%;
+    min-width: 75%;
     position: relative;
-    left: 20px;
+    left: -60px;
   }
 
   .row {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .box-2 .row {
+    margin-left: -3rem;
   }
 
   .wrap-col h1 {
@@ -771,7 +797,7 @@ h5 {
     left: 15px;
   }
   .container .row .post {
-    margin: 0;
+    margin-right: 7rem;
   }
 
   .row .post-2 {
@@ -831,10 +857,10 @@ h5 {
 
 @media screen and (max-width: 750px) {
   body {
-    margin-left: 3.3rem;
+    margin-left: 4.5rem;
   }
   .slider {
-    max-width: 40%;
+    max-width: 39%;
     height: 20rem;
     position: relative;
     left: 12px;
@@ -849,7 +875,7 @@ h5 {
     margin-left: 8rem;
   }
   .row .wrap-col {
-    max-width: 81%;
+    max-width: 78%;
   }
 
   .box-2 .row {
@@ -876,7 +902,7 @@ h5 {
   .three {
     padding: 0.5rem 0.2rem;
     font-size: 25px;
-    width: 30%;
+    width: 40%;
     position: relative;
     left: 8rem;
   }
@@ -884,17 +910,23 @@ h5 {
   .one {
     position: relative;
     top: -1rem;
-    left: 8rem;
+    left: 6rem;
+  }
+
+  .two {
+    position: relative;
+    top: -1rem;
+    left: 6rem;
   }
 
   .three {
     position: relative;
     top: 3rem;
-    left: 8rem;
+    left: 6rem;
   }
 
   .box-2 .row {
-    max-width: 61%;
+    max-width: 60%;
     position: relative;
     left: 120px;
     height: 50vh;
@@ -909,7 +941,7 @@ h5 {
   }
 
   .adjust-2 {
-    min-width: 62%;
+    min-width: 60.5%;
     position: relative;
     left: 15px;
   }
@@ -955,6 +987,13 @@ h5 {
     flex-direction: column;
   }
 
+  .box-4 .row {
+    margin-left: -2rem;
+  }
+
+  .row span {
+    margin-left: -0.1rem;
+  }
   .content-box .item:hover .zoom-container img {
     transform: scale(0.9) rotate(5deg);
   }
