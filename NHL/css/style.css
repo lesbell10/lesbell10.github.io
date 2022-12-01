@@ -512,8 +512,7 @@ article:before,
 /************main*****************/
 
 body {
-  margin-left: 2rem;
-  max-width: 95vw;
+  max-width: 90vw;
 }
 .slider {
   max-width: 95%;
