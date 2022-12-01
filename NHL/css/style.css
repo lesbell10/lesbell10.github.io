@@ -810,15 +810,6 @@ h5 {
     max-width: 80%;
   }
 
-  .box-4 .header {
-    position: relative;
-    right: 130px;
-    border-bottom: none;
-  }
-  .box-4 span {
-    margin-left: 5rem;
-  }
-
   .group-1 {
     display: flex;
     flex-direction: column;
@@ -826,7 +817,7 @@ h5 {
 
   .row .h-two {
     position: relative;
-    left: 100px;
+    right:70px;
   }
 
   .group-2 {
@@ -848,8 +839,9 @@ h5 {
   .everything {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    margin-right: 180px;
   }
+
 
   .content-box .item:hover .zoom-container img {
     transform: scale(0.9) rotate(5deg);
@@ -956,12 +948,6 @@ h5 {
     max-width: 56%;
   }
 
-  .box-4 .header {
-    position: relative;
-    right: 170px;
-    border-bottom: none;
-  }
-
   .group-1 {
     display: flex;
     flex-direction: column;
@@ -990,12 +976,13 @@ h5 {
   }
 
   .box-4 .row {
-    margin-left: -2rem;
+    margin-left: 18rem;
+    max-width:65%;
+  }
+  .header .h-two {
+    margin-right: 7rem;
   }
 
-  .row span {
-    margin-left: -0.1rem;
-  }
   .content-box .item:hover .zoom-container img {
     transform: scale(0.9) rotate(5deg);
   }
@@ -1144,10 +1131,10 @@ h5 {
 
   .box-4 .header {
     position: relative;
-    right: 290px;
+    right: 200px;
     bottom: 3rem;
     border-bottom: none;
-    width:100%;
+    width:120%;
   }
 
   .group-1 {
@@ -1174,14 +1161,14 @@ h5 {
   }
 
   .header span {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-size: bold;
-    margin-left: -1.5rem;
   }
 
   .everything {
     display: flex;
     flex-direction: column;
+    margin-left: 6rem;
   }
 
   .content-box .item:hover .zoom-container img {
