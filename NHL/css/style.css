@@ -512,22 +512,96 @@ article:before,
 /************main*****************/
 
 body {
-  max-width: 90vw;
+  margin-left: 45px;
 }
+
+section .row {
+  max-width: 90%;
+  margin: 0 1rem;
+}
+
 .slider {
-  max-width: 95%;
+  max-width: 85%;
 }
 
 .box-1 .header {
   text-align: center;
 }
 
-.wrap-col {
-  max-width: 83%;
+.forwards {
+  margin-left: -2rem;
 }
 
-.box-2 img {
-  max-width: 95%;
+.defenders {
+  margin-left: 20%;
+}
+
+.goalie {
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.wrap-col h1 {
+  font-size: 2rem;
+}
+
+.wrap-col {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+}
+
+.item-content {
+  height: 20rem;
+  text-align: center;
+}
+
+.item-content .one {
+  margin-top: 2.5rem;
+  margin-left: 3.5rem;
+}
+.item-content .two {
+  margin-top: 3rem;
+  margin-left: 3.5rem;
+}
+.item-content .three {
+  margin-top: 1rem;
+  margin-left: 3.5rem;
+}
+
+.item-content .four {
+  margin-top: 2rem;
+  margin-left: 3.5rem;
+}
+.item-content .five {
+  margin-top: 1.3rem;
+  margin-left: 5rem;
+}
+.item-content .six {
+  margin-top: 2rem;
+  margin-left: 5rem;
+}
+
+.item-content h1 {
+  font-weight: bold;
+}
+.item-content h5 {
+  margin: 0.7rem 0;
+  font-weight: 100;
+  color: black;
+}
+
+.wrap-col h5 {
+  text-align: center;
+}
+
+.adjust-1 {
+  padding-bottom: 35px;
+}
+
+.card-4 {
+  margin-right: 5rem;
 }
 
 .post {
@@ -550,41 +624,13 @@ body {
 
 .box-3 .btn {
   font-size: 24px;
-  display: flex;
-  justify-content: center;
   margin: 0 auto;
   margin-top: 4rem;
 }
 
-.item-content {
-  height: 15rem;
-  text-align: center;
-}
-
 .btn {
   font-size: 1.2rem;
-}
-
-.item-content .one {
-  margin-top: 2rem;
-  margin-left: 5rem;
-}
-.item-content .two {
-  margin-top: 3rem;
-  margin-left: 5rem;
-}
-.item-content .three {
-  margin-top: 3.2rem;
-  margin-left: 5rem;
-}
-
-.item-content h1 {
-  font-weight: bold;
-}
-.item-content h5 {
-  margin: 0.7rem 0;
-  font-weight: 100;
-  color: black;
+  padding: 0.5rem 4rem;
 }
 
 .row .post-2 {
@@ -611,10 +657,6 @@ body {
   margin: 0 1rem 1rem 0;
 }
 
-h5 {
-  text-align: center;
-}
-
 .btn.one {
   margin-top: 4rem;
 }
@@ -624,559 +666,39 @@ h5 {
   width: 50%;
 }
 
-@media screen and (max-width: 1200px) {
-  body {
-    margin-left: 1rem;
-  }
-  .slider {
-    max-width: 66.5%;
-    margin-left: 15rem;
-  }
-
-  .box-1 .header {
-    margin-left: 14rem;
-  }
-
-  .box-1 .row {
-    margin-left: 9rem;
-    max-width: 95%;
-  }
-
-  .wrap-col .zoom-container img,
-  .wrap-col .item-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .adjust-1 {
-    margin-right: -55px;
-  }
-
-  .wrap-col .three {
-    margin-top: 0;
-  }
-
-  .content-box .item .item-content {
-    border: none;
-  }
-
-  .one {
-    padding: 0.5rem 5rem;
-    position: relative;
-    right: 4rem;
-  }
-
-  .two {
-    padding: 0.5rem 5rem;
-    position: relative;
-    right: 4rem;
-  }
-
-  .three {
-    padding: 0.5rem 5rem;
-    position: relative;
-    right: 4rem;
-    top: 0.4rem;
-  }
-
-  .box-2 .heading {
-    position: relative;
-    left: 500px;
-  }
-
-  .box-2 img {
-    margin-left: 10rem;
-    max-width: 75%;
-    margin-top: 2rem;
-  }
-
-  .box-3 .post {
-    margin-left: 3rem;
-    max-width: 75%;
-    position: relative;
-    left: 110px;
-  }
-
-  .box-4 {
-    max-width: 67.5%;
-    margin-left: 14rem;
-  }
-
-  .heading {
-    margin-left: -14rem;
-  }
-
-  .adjust-3 {
-    max-width: 70%;
-  }
-
-  .everything {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .box-4 .row {
-    margin-left: 5rem;
-  }
-
-  .content-box .item:hover .zoom-container img {
-    transform: scale(0.9) rotate(5deg);
-  }
+.box-1 .row {
+  display: flex;
+  flex-direction: column;
 }
 
-@media screen and (max-width: 1000px) {
-  .slider {
-    max-width: 48%;
-    height: 20rem;
-    margin-left: 22rem;
-  }
-
-  .slider h1 {
-    font-size: 2rem;
-    margin-top: 2rem;
-    margin-left: 3rem;
-  }
-
-  .adjust-1 {
-    min-width: 75%;
-    position: relative;
-    left: -60px;
-  }
-
-  .row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .box-2 .row {
-    margin-left: -3rem;
-  }
-
-  .wrap-col h1 {
-    font-size: 2.5rem;
-  }
-
-  .wrap-col h5 {
-    font-size: 1.3rem;
-    line-height: 1.5rem;
-    margin-bottom: 0;
-  }
-
-  .one,
-  .two,
-  .three {
-    padding: 0.5rem 0.2rem;
-    font-size: 25px;
-    width: 30%;
-    position: relative;
-    left: 10rem;
-  }
-
-  .three {
-    position: relative;
-    top: 3rem;
-    left: 10rem;
-  }
-
-  .box-2 .row {
-    max-width: 75%;
-    position: relative;
-    left: 100px;
-  }
-
-  .box-2 .heading {
-    position: relative;
-    left: 150px;
-    font-size: 2.5rem;
-  }
-
-  .adjust-2 {
-    min-width: 75%;
-    position: relative;
-    left: 15px;
-  }
-  .container .row .post {
-    margin-right: 7rem;
-  }
-
-  .row .post-2 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .box-4 {
-    max-width: 80%;
-  }
-
-  .group-1 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .row .h-two {
-    position: relative;
-    right:70px;
-  }
-
-  .group-2 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .wrap-col2 h3,
-  .wrap-col2 img {
-    font-size: 28px;
-    position: relative;
-    right: 47px;
-    min-width: 335%;
-  }
-  .wrap-col2 img {
-    min-height: 55vh;
-  }
-
-  .everything {
-    display: flex;
-    flex-direction: column;
-    margin-right: 180px;
-  }
-
-
-  .content-box .item:hover .zoom-container img {
-    transform: scale(0.9) rotate(5deg);
-  }
+img {
+  min-height: 250px;
 }
 
-@media screen and (max-width: 750px) {
-  body {
-    margin-left: 4.5rem;
-  }
-  .slider {
-    max-width: 39%;
-    height: 20rem;
-    position: relative;
-    left: 12px;
-  }
-
-  .slider h1 {
-    font-size: 2rem;
-    margin-top: 2rem;
-    margin-left: 3rem;
-  }
-  .box-1 .header {
-    margin-left: 8rem;
-  }
-  .row .wrap-col {
-    max-width: 70%;
-  }
-
-  .box-2 .row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 62%;
-  }
-
-  .wrap-col h1 {
-    font-size: 2.5rem;
-    position: relative;
-    left: 40px;
-  }
-
-  .wrap-col h5 {
-    font-size: 1.3rem;
-    line-height: 1.5rem;
-    margin-bottom: 0;
-    margin-left: 2rem;
-  }
-
-  .one,
-  .two,
-  .three {
-    padding: 0.5rem 0.2rem;
-    font-size: 25px;
-    width: 40%;
-    position: relative;
-    left: 8rem;
-  }
-
-  .one {
-    position: relative;
-    top: -1rem;
-    left: 6rem;
-  }
-
-  .two {
-    position: relative;
-    top: -1rem;
-    left: 6rem;
-  }
-
-  .three {
-    position: relative;
-    top: 3rem;
-    left: 6rem;
-  }
-
-  .box-2 .row {
-    max-width: 60%;
-    position: relative;
-    left: 120px;
-    height: 50vh;
-  }
-
-  .box-2 .heading {
-    position: absolute;
-    left: 25rem;
-    top: 10rem;
-    width: 50%;
-    font-size: 2rem;
-  }
-
-  .adjust-2 {
-    min-width: 60.5%;
-    position: relative;
-    left: 15px;
-  }
-
-  .f-right {
-    float: left;
-  }
-
-  .box-4 {
-    max-width: 56%;
-  }
-
-  .group-1 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .group-2 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .wrap-col2 h3,
-  .wrap-col2 img {
-    font-size: 28px;
-    position: relative;
-    right: 146px;
-    min-width: 377%;
-  }
-  .wrap-col2 img {
-    min-height: 55vh;
-    margin-top: 0;
-  }
-
-  .everything {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .box-4 .row {
-    margin-left: 18rem;
-    max-width:65%;
-  }
-  .header .h-two {
-    margin-right: 7rem;
-  }
-
-  .content-box .item:hover .zoom-container img {
-    transform: scale(0.9) rotate(5deg);
-  }
+.box-1 img {
+  min-width: 310px;
 }
 
-@media screen and (max-width: 600px) {
-  body {
-    margin-left: 12rem;
-  }
-  .slider {
-    max-width: 25%;
-    height: 12rem;
-    position: relative;
-  }
-
-  .slider h1 {
-    font-size: 1.2rem;
-    position: relative;
-    right: 1.6rem;
-  }
-
-  .box-1 .header {
-    font-size: 1rem;
-    position: relative;
-    right: 8.5rem;
-  }
-
-  .box-1 .header span {
-    font-size: 2rem;
-  }
-
-  .row .wrap-col {
-    max-width: 44%;
-  }
-
-  .box-2 img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 65vw;
-    margin-right: 200px;
-  }
-
-  .heading {
-    max-width: 40%;
-    margin-right: -3rem;
-  }
-
-  .heading span {
-    font-size: 20px;
-  }
-
-  .adjust-1 {
-    margin-top: 2.5rem;
-  }
-
-  .wrap-col h1 {
-    font-size: 2rem;
-    line-height: 2rem;
-    position: relative;
-    left: 10px;
-  }
-
-  .wrap-col h5 {
-    font-size: 1.1rem;
-    line-height: 1.3rem;
-  }
-
-  .one {
-    padding: 0.5rem 0.2rem;
-    font-size: 25px;
-    width: 20%;
-    position: absolute;
-    left: 2rem;
-    top: 21rem;
-  }
-
-  .wrap-col .two {
-    padding: 0.5rem 0.2rem;
-    font-size: 25px;
-    width: 70%;
-    margin-left: -3rem;
-    top: -2rem;
-  }
-
-  .three {
-    padding: 0.5rem 0.2rem;
-    font-size: 25px;
-    width: 26%;
-    position: absolute;
-    left: 1rem;
-    top: 29.5rem;
-  }
-
-  .box-2 .row {
-    max-width: 34.5%;
-    position: relative;
-    left: 120px;
-    max-height: 30vh;
-  }
-
-  .box-2 .heading {
-    position: absolute;
-    left: 27rem;
-    top: 8rem;
-    width: 40%;
-    font-size: 1.2rem;
-  }
-
-  .box-2 .heading span {
-    font-size:1.2rem;
-  }
-
-  .adjust-2 img,
-  .adjust-2 .wrapper {
-    max-width: 66%;
-    position: relative;
-    margin-top: 2rem;
-  }
-
-  .f-right {
-    margin: 0 300px 0 0;
-  }
-
-  .btn-3 {
-    position: relative;
-    top: 2rem;
-  }
-
-  .wrapper .btn {
-    padding: 0 5rem;
-    margin-top: 1rem;
-  }
-
-  .wrapper h3,
-  .wrapper p {
-    width: 335px;
-    position: relative;
-    right: 3.7rem;
-  }
-
-  section .box-4 {
-    min-width: 1200px;
-    margin-left: 15.5rem;
-  }
-
-  .box-4 .header {
-    position: relative;
-    right: 200px;
-    bottom: 3rem;
-    border-bottom: none;
-    width:120%;
-  }
-
-  .group-1 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .group-2 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .wrap-col2 h3,
-  .wrap-col2 img {
-    font-size: 1.2rem;
-    position: relative;
-    right: 275px;
-    bottom: 75px;
-    min-width: 320%;
-  }
-  .wrap-col2 img {
-    min-height: 20vh;
-    margin-top: 0;
-  }
-
-  .header span {
-    font-size: 1.2rem;
-    font-size: bold;
-  }
-
-  .everything {
-    display: flex;
-    flex-direction: column;
-    margin-left: 6rem;
-  }
-
-  .content-box .item:hover .zoom-container img {
-    transform: scale(0.9) rotate(5deg);
-  }
+.box-2 img {
+  max-width: 100%;
 }
 
-@media only screen and (orientation: landscape) {
-  body {
-    margin-left: 5.2rem;
-  }
+.box-3 img {
+  min-height: 600px;
+}
+
+.post-2 img {
+  min-width: 70px;
+}
+
+.post h3 {
+  text-transform: uppercase;
+}
+
+.wrap-col2 {
+  margin: 20px;
+  min-width: 240px;
+}
+
+@media screen and (max-width: 980px) {
 }

@@ -1,1 +1,0 @@
-# 5 hockey players divided by statistics in 13 categories with JavaScript.
