@@ -544,6 +544,8 @@ section .row {
 
 .wrap-col h1 {
   font-size: 2rem;
+  
+  line-height:2rem;
 }
 
 .wrap-col {
@@ -586,6 +588,7 @@ section .row {
 .item-content h1 {
   font-weight: bold;
 }
+
 .item-content h5 {
   margin: 0.7rem 0;
   font-weight: 100;
