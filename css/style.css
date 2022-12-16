@@ -512,24 +512,15 @@ article:before,
 /************main*****************/
 
 body {
-  margin-left: 45px;
-}
-
-section .row {
-  max-width: 90%;
-  margin: 0 1rem;
-}
-
-.slider {
-  max-width: 85%;
+  margin: 0 auto;
 }
 
 .box-1 .header {
   text-align: center;
 }
 
-.forwards {
-  margin-left: -2rem;
+.header .heading {
+  margin-right: 175px;
 }
 
 .defenders {
@@ -544,14 +535,12 @@ section .row {
 
 .wrap-col h1 {
   font-size: 2rem;
-  
-  line-height:2rem;
+  line-height: 2rem;
 }
 
 .wrap-col {
   display: flex;
   flex-direction: column;
-  width: 18rem;
 }
 
 .item-content {
@@ -578,11 +567,11 @@ section .row {
 }
 .item-content .five {
   margin-top: 1.3rem;
-  margin-left: 5rem;
+  margin-left: 3rem;
 }
 .item-content .six {
   margin-top: 2rem;
-  margin-left: 5rem;
+  margin-left: 4rem;
 }
 
 .item-content h1 {
@@ -649,8 +638,9 @@ section .row {
   padding: 0.5rem 1rem;
 }
 
-.header span {
+.header .heading {
   border-bottom: solid white 3px;
+  margin-left: 175px;
 }
 
 .wrap-col2 img {
@@ -674,14 +664,6 @@ section .row {
   flex-direction: column;
 }
 
-img {
-  min-height: 250px;
-}
-
-.box-1 img {
-  min-width: 310px;
-}
-
 .box-2 img {
   max-width: 100%;
 }
@@ -694,6 +676,14 @@ img {
   min-width: 70px;
 }
 
+.zoom-container img {
+  min-height: 250px;
+}
+
+.item-content .four {
+  margin-top: 3rem;
+}
+
 .post h3 {
   text-transform: uppercase;
 }
@@ -703,5 +693,46 @@ img {
   min-width: 240px;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1210px) {
+  .slider {
+    max-width: 70%;
+    margin-left: 175px;
+  }
+
+  .slider,
+  .forwards,
+  .defenders,
+  .goalie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .wrap-col .item-content,
+  .wrap-col .zoom-container {
+    min-width: 222%;
+    margin-left: -235px;
+  }
+
+  .header .heading {
+    font-size: 50px;
+  }
+
+  .wrap-col h1 {
+    font-size: 60px;
+  }
+
+  .wrap-col h5 {
+    font-size: 40px;
+    line-height: 2.5rem;
+  }
+
+  .wrap-col .btn {
+    font-size: 40px;
+    margin: 0 auto
+  }
+
+  .item-content {
+  height: 30rem;
+  text-align: center;
+}
 }
