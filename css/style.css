@@ -716,7 +716,7 @@ body {
   .header .heading {
     font-size: 50px;
   }
-
+/* 
   .wrap-col h1 {
     font-size: 60px;
   }
@@ -729,7 +729,7 @@ body {
   .wrap-col .btn {
     font-size: 40px;
     margin: 0 auto
-  }
+  } */
 
   .item-content {
   height: 30rem;
