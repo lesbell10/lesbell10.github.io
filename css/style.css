@@ -775,8 +775,8 @@ body {
 
 @media screen and (max-width: 720px) {
   .slider {
-    max-width: 16.7%;
-    margin-left: 765px;
+    max-width: 14.9%;
+    margin-left: 895px;
   }
 
   .slider h1 {
@@ -875,11 +875,11 @@ body {
   }
 
   .adjust-3 {
-    min-width: 60%;
-    margin-left: 3rem;
+    min-width: 20%;
+    margin-left: -2rem;
   }
 
   .wrap-col2 img {
-    min-height: 20rem;
+    min-height: 10rem;
   }
 }
