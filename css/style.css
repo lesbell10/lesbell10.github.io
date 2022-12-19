@@ -396,10 +396,6 @@ img {
   vertical-align: top;
 }
 
-.f-right {
-  float: right;
-}
-
 .orange {
   color: #ff970b !important;
   font-size: 27px;
@@ -523,18 +519,13 @@ body {
   margin-right: 175px;
 }
 
-.defenders {
-  margin-left: 20%;
-}
-
 .goalie {
-  margin-left: 5%;
   display: flex;
   justify-content: center;
 }
 
 .wrap-col h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 2rem;
 }
 
@@ -544,34 +535,42 @@ body {
 }
 
 .item-content {
-  height: 20rem;
+  height: 27rem;
   text-align: center;
+}
+
+.card-4 {
+  margin-left: 200px;
+}
+
+.for {
+  height: 20rem;
 }
 
 .item-content .one {
   margin-top: 2.5rem;
-  margin-left: 3.5rem;
+  margin-left: 6rem;
 }
 .item-content .two {
   margin-top: 3rem;
-  margin-left: 3.5rem;
+  margin-left: 6rem;
 }
 .item-content .three {
-  margin-top: 1rem;
-  margin-left: 3.5rem;
+  margin-top: 1.6rem;
+  margin-left: 6rem;
 }
 
 .item-content .four {
-  margin-top: 2rem;
-  margin-left: 3.5rem;
+  margin-top: 3rem;
+  margin-left: 6rem;
 }
 .item-content .five {
-  margin-top: 1.3rem;
-  margin-left: 3rem;
+  margin-top: 2rem;
+  margin-left: 6rem;
 }
 .item-content .six {
-  margin-top: 2rem;
-  margin-left: 4rem;
+  margin-top: 3rem;
+  margin-left: 5rem;
 }
 
 .item-content h1 {
@@ -590,10 +589,6 @@ body {
 
 .adjust-1 {
   padding-bottom: 35px;
-}
-
-.card-4 {
-  margin-right: 5rem;
 }
 
 .post {
@@ -643,6 +638,11 @@ body {
   margin-left: 175px;
 }
 
+.item-content h5 {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+}
+
 .wrap-col2 img {
   border: solid white 4px;
   width: 400px;
@@ -656,7 +656,7 @@ body {
 .btn {
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 30%;
 }
 
 .box-1 .row {
@@ -677,11 +677,8 @@ body {
 }
 
 .zoom-container img {
+  max-height: 250px;
   min-height: 250px;
-}
-
-.item-content .four {
-  margin-top: 3rem;
 }
 
 .post h3 {
@@ -693,10 +690,10 @@ body {
   min-width: 240px;
 }
 
-@media screen and (max-width: 1210px) {
+@media screen and (max-width: 1220px) {
   .slider {
-    max-width: 70%;
-    margin-left: 175px;
+    max-width: 55%;
+    margin-left: 350px;
   }
 
   .slider,
@@ -707,32 +704,177 @@ body {
     flex-direction: column;
     align-items: center;
   }
+  
+  .card-4 {
+    margin-right: 12rem;
+  }
+
+  .adjust-1 img {
+    min-height: 400px;
+  }
+
   .wrap-col .item-content,
   .wrap-col .zoom-container {
     min-width: 222%;
     margin-left: -235px;
   }
 
-  .header .heading {
-    font-size: 50px;
-  }
-/* 
-  .wrap-col h1 {
-    font-size: 60px;
-  }
-
-  .wrap-col h5 {
-    font-size: 40px;
-    line-height: 2.5rem;
+  .defenders {
+    max-width: 100%;
   }
 
   .wrap-col .btn {
-    font-size: 40px;
-    margin: 0 auto
-  } */
+    margin: 0 auto;
+  }
 
   .item-content {
-  height: 30rem;
-  text-align: center;
+    height: 20rem;
+    text-align: center;
+  }
+
+  .box-2 img {
+    max-width: 70%;
+    margin-left: 11.1rem;
+  }
+
+  .post,
+  .row .post-2 {
+    display: flex;
+    flex-direction: column;
+    min-width: 140%;
+    margin-left: 11.1rem;
+  }
+
+  .box-4 {
+    max-width: 55%;
+    margin-left: 21.5rem;
+  }
+
+  .box-4 .h-two {
+    margin-left: -10rem;
+  }
+
+  .wrap-col2 h3 {
+    min-width: 100%;
+  }
+
+  .everything {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adjust-3 {
+    min-width: 60%;
+    margin-left: 3rem;
+  }
+
+  .wrap-col2 img {
+    min-height: 20rem;
+  }
 }
+
+
+@media screen and (max-width: 870px) {
+   .slider {
+    max-width: 22%;
+    margin-left: 600px;
+  }
+
+  .slider h1 {
+    line-height: 3rem;
+  }
+
+  .box-1 img {
+    min-height: 20px;
+  } 
+
+  .slider,
+  .forwards,
+  .defenders,
+  .goalie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wrap-col .item-content,
+  .wrap-col .zoom-container {
+    min-width: 40%;
+    max-width: 88%;
+    margin-left: 28px;
+  }
+
+  .defenders {
+    max-width: 100%;
+  }
+
+  .wrap-col .btn {
+    margin: 0 auto;
+  }
+
+  .item-content {
+    height: 23rem;
+    text-align: center;
+  }
+
+  .box-2 img {
+    max-width: 28%;
+    margin-left: 27.5rem;
+    margin-top: -3rem;
+  }
+
+.box-2 .heading {
+  font-size: 1rem;
+  position: absolute;
+  left:42%;
+  top: 25%;
+}
+
+  .post,
+  .row .post-2 {
+    display: flex;
+    flex-direction: column;
+    max-width: 56%;
+    min-width: 56%;
+    margin-left: 27.5rem;
+  }
+
+  .post img {
+    min-height: 20px;
+  }
+
+.adjust-2 {
+  min-width: 65%;
+  margin-left: -50px;
+}
+
+.post .btn {
+  width: 55%;
+}
+  .box-4 {
+    max-width: 30%;
+    margin-left: 40rem;
+  }
+
+  .box-4 .h-two {
+    margin-left: -10rem;
+  }
+
+  .wrap-col2 h3 {
+    min-width: 100%;
+  }
+
+  .everything {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adjust-3 {
+    min-width: 60%;
+    margin-left: 3rem;
+  }
+
+  .wrap-col2 img {
+    min-height: 20rem;
+  }
 }
