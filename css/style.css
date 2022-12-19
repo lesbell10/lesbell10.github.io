@@ -692,8 +692,8 @@ body {
 
 @media screen and (max-width: 1220px) {
   .slider {
-    max-width: 55%;
-    margin-left: 350px;
+    max-width: 45%;
+    margin-left: 425px;
   }
 
   .slider,
@@ -704,7 +704,7 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .card-4 {
     margin-right: 12rem;
   }
@@ -715,8 +715,8 @@ body {
 
   .wrap-col .item-content,
   .wrap-col .zoom-container {
-    min-width: 222%;
-    margin-left: -235px;
+    min-width: 182%;
+    margin-left: -150px;
   }
 
   .defenders {
@@ -733,25 +733,25 @@ body {
   }
 
   .box-2 img {
-    max-width: 70%;
-    margin-left: 11.1rem;
+    max-width: 58%;
+    margin-left: 16rem;
   }
 
   .post,
   .row .post-2 {
     display: flex;
     flex-direction: column;
-    min-width: 140%;
-    margin-left: 11.1rem;
+    min-width: 116%;
+    margin-left: 16rem;
   }
 
   .box-4 {
-    max-width: 55%;
-    margin-left: 21.5rem;
+    max-width: 45%;
+    margin-left: 27rem;
   }
 
   .box-4 .h-two {
-    margin-left: -10rem;
+    margin-left: -16rem;
   }
 
   .wrap-col2 h3 {
@@ -765,7 +765,7 @@ body {
 
   .adjust-3 {
     min-width: 60%;
-    margin-left: 3rem;
+    margin-left: -1rem;
   }
 
   .wrap-col2 img {
@@ -773,11 +773,10 @@ body {
   }
 }
 
-
-@media screen and (max-width: 870px) {
-   .slider {
-    max-width: 22%;
-    margin-left: 600px;
+@media screen and (max-width: 720px) {
+  .slider {
+    max-width: 16.7%;
+    margin-left: 765px;
   }
 
   .slider h1 {
@@ -786,7 +785,11 @@ body {
 
   .box-1 img {
     min-height: 20px;
-  } 
+  }
+  .box-1 .heading {
+    width: 23%;
+    font-size: 30px;
+  }
 
   .slider,
   .forwards,
@@ -800,8 +803,8 @@ body {
   .wrap-col .item-content,
   .wrap-col .zoom-container {
     min-width: 40%;
-    max-width: 88%;
-    margin-left: 28px;
+    max-width: 81%;
+    margin-left: 33px;
   }
 
   .defenders {
@@ -813,51 +816,53 @@ body {
   }
 
   .item-content {
-    height: 23rem;
+    height: 24rem;
     text-align: center;
   }
 
   .box-2 img {
-    max-width: 28%;
-    margin-left: 27.5rem;
+    max-width: 25%;
+    margin-left: 28rem;
     margin-top: -3rem;
   }
 
-.box-2 .heading {
-  font-size: 1rem;
-  position: absolute;
-  left:42%;
-  top: 25%;
-}
+  .box-2 .heading {
+    font-size: 1.2rem;
+    position: absolute;
+    left: 41%;
+    top: 25%;
+  }
 
   .post,
   .row .post-2 {
     display: flex;
     flex-direction: column;
-    max-width: 56%;
-    min-width: 56%;
-    margin-left: 27.5rem;
+    max-width: 50%;
+    min-width: 50%;
+    margin-left: 28rem;
   }
 
   .post img {
     min-height: 20px;
   }
 
-.adjust-2 {
-  min-width: 65%;
-  margin-left: -50px;
-}
+  .post .wrapper {
+    min-width: 130%;
+    margin-left: -50px;
+  }
 
-.post .btn {
-  width: 55%;
-}
+  .post .btn {
+    width: 60%;
+  }
+
   .box-4 {
-    max-width: 30%;
-    margin-left: 40rem;
+    max-width: 13.7%;
+    margin-left: 56.8rem;
   }
 
   .box-4 .h-two {
-    margin-left: -10rem;
+    margin-left: -45rem;
+    font-size: 23px;
   }
 
   .wrap-col2 h3 {
