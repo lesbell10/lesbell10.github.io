@@ -899,4 +899,8 @@ body {
   .wrap-col2 img {
     min-height: 10rem;
   }
+
+  .item1 {
+    margin-top: -160px;
+  }
 }
