@@ -691,6 +691,10 @@ body {
   min-width: 240px;
 }
 
+.item1 img {
+  min-height: 139px;
+}
+
 @media screen and (max-width: 1220px) {
   .slider {
     max-width: 42%;
