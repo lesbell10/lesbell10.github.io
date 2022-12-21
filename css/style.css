@@ -697,8 +697,8 @@ body {
 
 @media screen and (max-width: 1220px) {
   .slider {
-    max-width: 42%;
-    margin-left: 480px;
+    max-width: 40%;
+    margin-left: 515px;
   }
   
   div.slider {
