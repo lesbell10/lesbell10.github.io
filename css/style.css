@@ -583,6 +583,15 @@ body {
   color: black;
 }
 
+/* 689 x 387 */
+/* 570 x  320*/
+
+
+.adjust-2 img {
+  min-height: 600px;
+  object-fit: cover;
+}
+
 .wrap-col h5 {
   text-align: center;
 }
@@ -669,9 +678,6 @@ body {
   max-width: 100%;
 }
 
-.box-3 img {
-  min-height: 600px;
-}
 
 .post-2 img {
   min-width: 70px;
