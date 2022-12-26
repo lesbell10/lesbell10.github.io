@@ -18,9 +18,9 @@ body {
   justify-content: center;
   overflow-x: hidden;
 }
+
 * {
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 /************header*****************/
