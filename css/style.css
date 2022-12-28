@@ -149,7 +149,7 @@ header .logo img {
   color: #000;
 }
 .content-box .item:hover .zoom-container img {
-  transform: scale(1.25) rotate(5deg);
+  transform: scale(1.25) /* rotate(5deg);*/
 }
 .content-box .item:hover .item-content {
   background: #f3542d;
