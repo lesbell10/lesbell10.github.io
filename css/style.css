@@ -16,7 +16,7 @@ body {
   font: 14px/25px Arial;
   display: flex;
   justify-content: center;
-  overflow-x: hidden !important;
+  overflow-x: hidden;
 }
 
 * {
@@ -508,8 +508,8 @@ article:before,
 
 /************main*****************/
 
-body {
-  margin: 0 auto;
+html, body {
+  overflow-x: hidden;
 }
 
 .box-1 .header {
