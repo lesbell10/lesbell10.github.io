@@ -559,9 +559,27 @@ html, body {
 }
 
 .extra-wrap dt {
-	font-size: 20px;
+	margin-top: 10px;
+	font-size: 36px;
+	line-height: 30px;
 }
 
 .extra-wrap dd {
-	font-size: 20px;
+	margin-top: 10px;
+	font-size: 28px;
+	line-height: 30px;
+}
+
+.price-item {
+	font-size: 24px;
+	line-height: 30px;
+}
+
+.wrap-col h2 {
+	font-size: 40px;
+}
+
+.wrap-col .str-2, .wrap-col .p1 {
+	font-size: 24px;
+	line-height: 25px;
 }
