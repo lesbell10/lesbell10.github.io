@@ -554,20 +554,14 @@ html, body {
   overflow-x: hidden;
 }
 
+.wrap-col .p2 {
+	min-width: 140%;
+}
+
 .extra-wrap dt {
 	font-size: 20px;
 }
 
 .extra-wrap dd {
 	font-size: 20px;
-}
-
-@media screen and (max-width: 1220px) {
-
-	
-}
-
-@media screen and (max-width: 720px) {
-
-
 }
