@@ -505,6 +505,8 @@ header h1 {
 
 .button {
 	letter-spacing: 2px;
+	font-weight: bold;
+	font-size: 28px;
 }
 
 .wrap-col span {
@@ -513,9 +515,12 @@ header h1 {
 
 .adjust-3 .wrap-col {
 	font-size: 24px;
-	font-weight: 100;
 }
 
 h2 {
 	font-size: 40px;
+}
+
+p {
+	color: black;
 }
