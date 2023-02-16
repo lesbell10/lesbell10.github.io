@@ -560,22 +560,22 @@ html, body {
 
 .extra-wrap dt {
 	margin-top: 10px;
-	font-size: 3.5vh;
-	line-height: 3.5vh;
+	font-size: 2.75vh;
+	line-height: 3vh;
 }
 
 .extra-wrap dd {
 	margin-top: 10px;
-	font-size: 2.5vh;
-	line-height: 3vh;
+	font-size: 2.2vh;
+	line-height: 2.5vh;
 }
 
 .price-item {
-	font-size: 2.5vh;
-	line-height: 3vh;
+	font-size: 2.2vh;
+	line-height: 2.5vh;
 }
 
-.wrap-col h2 {
+h2 {
 	font-size: 5vh;
 		line-height: 5vh;
 }
