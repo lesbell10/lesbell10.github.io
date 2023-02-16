@@ -584,3 +584,36 @@ h2 {
 	font-size: 2.5vh;
 	line-height: 3vh;
 }
+
+@media (max-width: 970px) {
+
+	header, .container {
+		max-width: 95vw;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.adjust-4 {
+		min-width: 100%;
+	}
+
+	.wrapper img {
+		margin-left: 100px;
+	}
+
+	.wrapper dt {
+		margin-left: 100px;
+	}
+
+	.wrapper dd {
+		margin-left: 68px;
+		margin-right: 250px;
+	}
+
+}
