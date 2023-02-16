@@ -566,12 +566,12 @@ html, body {
 
 .extra-wrap dd {
 	margin-top: 10px;
-	font-size: 2.5vh;
+	font-size: 2.75vh;
 	line-height: 3vh;
 }
 
 .price-item {
-	font-size: 2.5vh;
+	font-size: 2.75vh;
 	line-height: 3vh;
 }
 
@@ -581,6 +581,6 @@ html, body {
 }
 
 .wrap-col .str-2, .wrap-col .p1 {
-	font-size: 2.5vh;
+	font-size: 2.75vh;
 	line-height: 3vh;
 }
