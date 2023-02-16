@@ -561,25 +561,25 @@ html, body {
 .extra-wrap dt {
 	margin-top: 10px;
 	font-size: 1.5rem;
-	line-height: 30px;
+	line-height: 1.5rem;
 }
 
 .extra-wrap dd {
 	margin-top: 10px;
-	font-size: 1rem;
+	font-size: 1.25rem;
 	line-height: 1.5rem;
 }
 
 .price-item {
-	font-size: 24px;
-	line-height: 30px;
+	font-size: 1.25rem;
+	line-height: 1.5rem;
 }
 
 .wrap-col h2 {
-	font-size: 40px;
+	font-size: 2.5rem;
 }
 
 .wrap-col .str-2, .wrap-col .p1 {
-	font-size: 24px;
-	line-height: 25px;
+	font-size: 1.25rem;
+	line-height: 1.5rem;
 }
