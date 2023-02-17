@@ -113,10 +113,3 @@ header, .container {
         font-size: 24px;
     }
 }
-
-@media screen and (orientation: landscape) {
-
-    header, .container {
-		max-width: 170vh;
-	}
-}

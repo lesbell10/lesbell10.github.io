@@ -91,10 +91,3 @@ header, .container {
         margin-left: -25px;
     }
 }
-
-@media screen and (orientation: landscape) {
-
-    header, .container {
-		max-width: 170vh;
-	}
-}
