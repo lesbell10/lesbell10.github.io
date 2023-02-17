@@ -95,6 +95,6 @@ header, .container {
 @media screen and (min-width: 600px) and (max-width: 900px) {
 
     header, .container {
-		max-width: 170vh;
+		min-width: 95vh;
 	}
 }
