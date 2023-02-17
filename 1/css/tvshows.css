@@ -1,0 +1,72 @@
+
+html, body {
+  overflow-x: hidden;
+}
+
+h2 {
+	font-size: 5vh;
+		line-height: 5vh;
+}
+
+.wrap-col img {
+	width: 20vh;
+	height: 26vh;
+}
+
+
+@media (max-width: 970px) {
+	header, .container {
+		max-width: 95vh;
+	}
+
+    .wrapper .wrap-col {
+        display: grid;
+  grid-template-columns: repeat(1fr);
+    }
+}
+@media (max-width: 700px) {
+
+header, .container {
+		max-width: 65vh;
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+    .content-bg h2 {
+        text-align: center;
+    }
+
+    .wrapper .wrap-col {
+        margin-left: 140px;
+    }
+}
+
+@media (max-width: 450px) {
+
+header, .container {
+		max-width: 40vh;
+	}
+
+	nav .menu {
+		display: flex;
+		flex-direction: row;
+	}
+
+	nav li a {
+		margin-right: -25px
+	}
+
+    .container h2 {
+        font-size: 26px;
+    }
+
+     .wrapper .wrap-col {
+        margin-left: 50px;
+    }
+    .inner h1 {
+        margin-left: -25px;
+    }
+}

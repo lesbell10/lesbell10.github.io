@@ -1,0 +1,115 @@
+
+html, body {
+  overflow-x: hidden;
+}
+
+.inner h1 {
+	margin-left: -25px;
+}
+
+.price-item {
+	font-size: 2vh;
+	line-height: 2.2vh;
+}
+
+h2 {
+	font-size: 5vh;
+		line-height: 5vh;
+}
+
+.wrap-col .str-2, .wrap-col .p1 {
+	font-size: 2vh;
+	line-height: 2.2vh;
+}
+
+.wrap-col img {
+	width: 20vh;
+	height: 26vh;
+}
+
+
+@media (max-width: 970px) {
+	header, .container {
+		max-width: 95vh;
+	}
+
+    .wrapper .wrap-col {
+        display: grid;
+  grid-template-columns: repeat(1fr);
+    }
+}
+@media (max-width: 700px) {
+
+header, .container {
+		max-width: 65vh;
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+    .content-bg h2 {
+        text-align: center;
+    }
+
+    .adjust-3 .wrap-col {
+        min-width: 60vh;
+    }
+
+    .adjust-4 .wrap-col {
+        min-width: 60vh;
+    }
+
+    .wrap-col img {
+        margin-left: 125px;
+    }
+
+    .wrap-col h2 {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 450px) {
+
+header, .container {
+		max-width: 40vh;
+	}
+
+	nav .menu {
+		display: flex;
+		flex-direction: row;
+	}
+
+	nav li a {
+		margin-right: -25px
+	}
+
+    .wrap-col h2 {
+        font-size: 32px;
+    }
+
+    .container h2 {
+        font-size: 26px;
+    }
+
+    .content-bg h2 {
+        text-align: left;
+    }
+
+    .wrap-col .p1 {
+        max-width: 35vh;
+    }
+
+    .adjust-4 .wrap-col {
+        min-width: 60vh;
+    }
+
+    .wrap-col img {
+        margin-left: 40px;
+    }
+
+    .wrap-col h2 {
+        font-size: 24px;
+    }
+}

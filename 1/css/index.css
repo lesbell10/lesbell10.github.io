@@ -1,0 +1,87 @@
+
+html, body {
+  overflow-x: hidden;
+}
+
+.wrap-col .p2 {
+	min-width: 140%;
+}
+
+.extra-wrap dt {
+	margin-top: 10px;
+	font-size: 2.25vh;
+	line-height: 2.5vh;
+}
+
+.extra-wrap dd {
+	font-size: 2vh;
+	line-height: 2.2vh;
+}
+
+h2 {
+	font-size: 5vh;
+		line-height: 5vh;
+}
+
+.wrap-col img {
+	width: 20vh;
+	height: 26vh;
+}
+
+
+@media (max-width: 970px) {
+	header, .container {
+		max-width: 95vh;
+	}
+}
+@media (max-width: 700px) {
+
+header, .container {
+		max-width: 65vh;
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.adjust-4 {
+		min-width: 100vh;
+	}
+
+    .adjust-4 .pad-left {
+        max-width: 50vh;
+    }
+}
+
+@media (max-width: 450px) {
+
+header, .container {
+		max-width: 40vh;
+	}
+
+	nav .menu {
+		display: flex;
+		flex-direction: row;
+	}
+
+	nav li a {
+		margin-right: -25px
+	}
+
+    .wrap-col h2 {
+        font-size: 32px;
+    }
+
+    .adjust-4 .pad-left {
+        max-width: 25vh;
+    }
+
+    .container h2 {
+        font-size: 26px;
+    }
+
+    .inner h1 {
+        margin-left: -25px;
+    }
+}
