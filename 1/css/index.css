@@ -9,8 +9,8 @@ html, body {
 
 .extra-wrap dt {
 	margin-top: 10px;
-	font-size: 16px;
-	line-height: 16px;
+	font-size: 20px;
+	line-height: 20px;
 }
 
 .extra-wrap dd {
@@ -38,7 +38,7 @@ h2 {
 @media (max-width: 700px) {
 
 header, .container {
-		max-width: 65vh;
+		max-width: 80vw;
 	}
 
 	.wrapper {
@@ -47,11 +47,11 @@ header, .container {
 	}
 
 	.adjust-4 {
-		min-width: 100vh;
+		min-width: 100vw;
 	}
 
     .adjust-4 .pad-left {
-        max-width: 50vh;
+        max-width: 60vw;
     }
 
     nav li a {
@@ -62,7 +62,7 @@ header, .container {
 @media (max-width: 450px) {
 
 header, .container {
-		max-width: 40vh;
+		max-width: 75vw;
 	}
 
 	nav .menu {
@@ -71,15 +71,15 @@ header, .container {
 	}
 
 	nav li a {
-		margin-right: -35px
+		margin-right: -35px;
 	}
 
     .wrap-col h2 {
         font-size: 32px;
     }
 
-    .adjust-4 .pad-left {
-        max-width: 25vh;
+     .adjust-4 .pad-left {
+        max-width: 50vw;
     }
 
     .container h2 {
@@ -89,6 +89,10 @@ header, .container {
     .inner h1 {
         font-size: 32px;
         margin-left: -25px;
+    }
+
+    .p2 dt {
+        max-width: 40%;
     }
 }
 
