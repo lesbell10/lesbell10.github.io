@@ -8,9 +8,20 @@ h2 {
 		line-height: 5vh;
 }
 
+.extra-wrap dt {
+	margin-top: 10px;
+	font-size: 16px;
+	line-height: 16px;
+}
+
+.extra-wrap dd {
+	font-size: 14px;
+	line-height: 14px;
+}
+
 .wrap-col img {
-	width: 20vh;
-	height: 26vh;
+	width: 140px;
+	height: 200px;
 }
 
 
@@ -68,5 +79,28 @@ header, .container {
     }
     .inner h1 {
         margin-left: -25px;
+    }
+}
+
+@media screen and (orientation: landscape) {
+
+    header, .container {
+		max-width: 170vh;
+	}
+
+    .content-bg h2 {
+        font-size: 32px;
+    }
+
+    .adjust-3 .wrap-col {
+        margin-left: 225px;
+    }
+    
+    .wrapper .wrap-col {
+        margin: 0px;
+    }
+
+    .wrap-col dd {
+        width: 50%;
     }
 }

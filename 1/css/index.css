@@ -9,23 +9,23 @@ html, body {
 
 .extra-wrap dt {
 	margin-top: 10px;
-	font-size: 2.25vh;
-	line-height: 2.5vh;
+	font-size: 16px;
+	line-height: 16px;
 }
 
 .extra-wrap dd {
-	font-size: 2vh;
-	line-height: 2.2vh;
+	font-size: 14px;
+	line-height: 14px;
 }
 
 h2 {
-	font-size: 5vh;
-		line-height: 5vh;
+	font-size: 32px;
+		line-height: 32px;
 }
 
 .wrap-col img {
-	width: 20vh;
-	height: 26vh;
+	width: 140px;
+	height: 200px;
 }
 
 
@@ -34,7 +34,8 @@ h2 {
 		max-width: 95vh;
 	}
 }
-@media (max-width: 700px) {
+
+@media (max-width: 666px) {
 
 header, .container {
 		max-width: 65vh;
@@ -52,6 +53,10 @@ header, .container {
     .adjust-4 .pad-left {
         max-width: 50vh;
     }
+
+    nav li a {
+		margin-right: -25px;
+	}
 }
 
 @media (max-width: 450px) {
@@ -66,7 +71,7 @@ header, .container {
 	}
 
 	nav li a {
-		margin-right: -25px
+		margin-right: -35px
 	}
 
     .wrap-col h2 {
@@ -78,10 +83,18 @@ header, .container {
     }
 
     .container h2 {
-        font-size: 26px;
+        font-size: 23px;
     }
 
     .inner h1 {
+        font-size: 32px;
         margin-left: -25px;
     }
+}
+
+@media screen and (orientation: landscape) {
+
+    header, .container {
+		max-width: 170vh;
+	}
 }
