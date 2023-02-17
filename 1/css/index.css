@@ -31,7 +31,7 @@ h2 {
 
 @media (max-width: 970px) {
 	header, .container {
-		max-width: 95vh;
+		max-width: 95vw;
 	}
 }
 
