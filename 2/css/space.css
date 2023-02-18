@@ -32,3 +32,96 @@ header h1 {
     font-size: 14px;
     line-height: 16px;
 }
+
+@media (max-width: 1000px) {
+	.container {
+		max-width: 70vw;
+	}
+
+	.wrap-col h2 {
+		min-width: 100vw;
+	}
+
+		.adjust-2 {
+		margin-left: -100px;
+	}
+
+	.top-5 p, .top-6 p {
+		min-width: 130%;
+	}
+}
+
+@media (max-width: 800px) {
+	.container {
+		max-width: 35vw;
+	}
+
+	.top-5 p, .top-6 p {
+		min-width: 85vw;
+	}
+
+	.adjust-2 {
+		min-width: 95vw;
+		margin-left: -150px;
+	}
+
+	.adjust-3 {
+		min-width: 80vw;
+		margin-left: -150px;
+	}
+
+	.top-5 .link, .top-5 p {
+		margin-bottom: 275px;
+	}
+
+	.top-6 .link, .top-6 p {
+		margin-bottom: 275px;
+	}
+
+	header h1 {
+        margin-left: 30px;
+        font-size: 36px;
+    }
+
+    nav .menu {
+        margin-right: -125px;
+    }
+}
+
+@media (max-width: 510px) {
+	.container {
+		max-width: 25vw;
+	}
+
+	.wrap-col .box-5 {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.top-5, .top-6{
+		display: flex;
+		flex-direction: column;
+	}
+
+	img {
+		max-width:200px;
+		max-height: 150px;
+	}
+
+	.adjust-2 .wrap-col {
+		margin-left: 50px;
+	}
+
+	.adjust-3 .wrap-col {
+		margin-left: 50px;
+	}
+
+	.top-5 .link, .top-5 p {
+		margin-bottom: 0;
+	}
+
+	.top-6 .link, .top-6 p {
+		margin-bottom: 0;
+		margin-right: 100px;
+	}
+}
