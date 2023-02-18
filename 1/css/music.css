@@ -8,8 +8,8 @@ html, body {
 }
 
 .price-item {
-	font-size: 14px;
-	line-height: 14px;
+	font-size: 16px;
+	line-height: 18px;
 }
 
 h2 {
@@ -18,8 +18,8 @@ h2 {
 }
 
 .wrap-col .str-2, .wrap-col .p1 {
-	font-size: 14px;
-	line-height: 14px;
+	font-size: 16px;
+	line-height: 18px;
 }
 
 .wrap-col img {
