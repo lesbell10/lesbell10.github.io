@@ -380,11 +380,11 @@ margin-top: 14rem;
   }
 
   h1 {
-    font-size: 32px;
-    max-width: 50%;
-    margin-left: 38px;
+    font-size: 30px;
+    max-width: 100%;
     padding: 7px;
     border-radius: 30px;
+    margin-top: 60px;
     text-align: center;
   }
 
@@ -396,8 +396,8 @@ margin-top: 14rem;
     position: absolute;
     top: 150px;
     left: 15px;
-    width: 60%;
-    font-size: 20px;
+    width: 90%;
+    font-size: 22px;
     text-align: center;
   }
 
@@ -405,13 +405,8 @@ margin-top: 14rem;
     min-width: 150px;
     max-height: 150px;
     position: absolute;
-    top: 45%;
-    right: 45%;
-  }
-
-  img {
-    min-width: 80px;
-    min-height: 80px;
+    top: 50%;
+    right: 30%;
   }
 
   .positions {
@@ -421,77 +416,74 @@ margin-top: 14rem;
   }
 
   .positions img {
-    min-width: 20%;
+    min-width: 25%;
+    min-height: 15%;
   }
 
   .RW {
     position: absolute;
-   left:67%;
-   top:48.5%;
+   left:74%;
+   top:51%;
   }
 
   .C {
     position: absolute;
    left:42%;
-   top:48.5%;
+   top:51%;
   }
 
   .LW {
     position: absolute;
-   left:16%;
-   top:48.5%;
+   left:9%;
+   top:51%;
   }
 
   .RD {
     position: absolute;
-     left:54%;
-   top:67.5%;
+     left:58%;
+   top:72%;
   }
 
   .LD {
     position: absolute;
-  left:29%;
-   top:67.5%;
+  left:25%;
+   top:72%;
   }
 
   .imgRW {
    position: absolute;
-   left:48%;
+   left:70%;
    top:36%;
   }
 
   .imgC {
     position: absolute;
-   left:25%;
+   left:38%;
    top:36%;
   }
 
   .imgLW {
     position: absolute;
-   left:2%;
+   left:5%;
    top:36%;
   }
 
   .imgRD {
     position: absolute;
-   left:36%;
-   top:55%;
+   left:54%;
+   top:57%;
   }
 
   .imgLD {
     position: absolute;
-  left:12%;
-   top:55%;
-  }
-
-  .positions li {
-    font-size: 14px;
-    margin-left: -57px;
+  left:21%;
+   top:57%;
   }
 
   .player {
     font-size: 22px;
-    left: 50px;
-    bottom: 15px;
+    min-width: 100%;
+    left: 100px;
+    bottom: -50px;
   }
 }
