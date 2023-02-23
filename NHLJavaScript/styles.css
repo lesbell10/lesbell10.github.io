@@ -25,7 +25,7 @@ html, body {
 h1 {
   font-size: 38px;
   margin: 15px 10px;
-  padding: 20px;
+  padding: 10px;
   display: inline-block;
   border: 3px solid white;
   background-image: linear-gradient(to right, blue, grey);
@@ -188,6 +188,7 @@ margin-top: 14rem;
 
   .container {
     max-width: 100vw;
+    min-height: 160vh;
   }
 
   .fw, .df {
@@ -195,22 +196,118 @@ margin-top: 14rem;
   }
 
   .sidepic {
-    position: absolute;
-    min-height: 4px;
-    top: 710px;
-    left: 450px;
+    position: static;
+    min-width: 300px;
+    min-height: 200px;
+    margin-left: 200px;
+    margin-top:700px;
+  }
+
+  .positions img, .positions li {
+    margin-left: -300px;
+    margin-top: 100px;
+  }
+
+  select {
+    margin-left: -100px;
+    margin-top: 100px;
+  }
+
+  .select-stats {
+    margin-left: -160px;
+    margin-top: 100px;
+  }
+
+  h1 {
+    margin-left: 130px;
   }
 
   .player {
-    position: absolute;
-    right: 600px;
+    position: static;
+    margin-left:215px;
   }
 
 }
+
+@media (max-width: 740px) {
+    .container {
+  min-height: 150vh;
+}
+  .positions img {
+    width: 25%;
+    height: 25%;
+  }
+
+  .positions li {
+    position:absolute;
+    margin-top: 75px;
+    font-size: 28px;
+  }
+
+.RW {
+  position: absolute;
+  left: 770px;
+  top: 280px;
+}
+
+.C {
+  position: absolute;
+  left: 580px;
+  top: 280px;
+}
+
+.LW {
+  position: absolute;
+  left: 390px;
+  top: 280px;
+}
+
+.RD {
+  position: absolute;
+  left: 690px;
+  top: 530px;
+}
+
+.LD {
+  position: absolute;
+  left: 495px;
+  top: 530px;
+}
+
+.imgRW {
+  position: absolute;
+  left:750px;
+  top: 105px;
+}
+
+.imgLW {
+  position: absolute;
+  left: 370px;
+  top: 105px;
+}
+
+.imgRD {
+  position: absolute;
+  left: 670px;
+  top: 350px;
+}
+
+.imgLD {
+  position: absolute;
+  left: 475px;
+  top: 350px;
+}
+
+.sidepic {
+  position: static;
+  margin-top:600px;
+}
+
+}
+
 @media (max-width: 500px) {
 
   .container {
-  max-width: 90vh;
   min-height: 150vh;
 }
 
@@ -243,11 +340,11 @@ margin-top: 14rem;
   }
 
   .sidepic {
-    min-width: 150px;
+    min-width: 200px;
     max-height: 150px;
-    position: absolute;
-    top: 50%;
-    right: 30%;
+    position: static;
+    margin-top: 110%;
+    margin-left: 25%;
   }
 
   .positions {
@@ -325,6 +422,6 @@ margin-top: 14rem;
     font-size: 22px;
     min-width: 100%;
     left: 100px;
-    bottom: -50px;
+    bottom: -40px;
   }
 }
