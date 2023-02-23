@@ -63,15 +63,16 @@ option {
   font-weight: bold;
   position: absolute;
   top: 5.5%;
-  left: 35%;
+  left: 37%;
 }
 
 .sidepic {
   position: absolute;
   top: 20%;
-  right: 2%;
-  width: 30%;
-  height: 55%;
+  right: 4%;
+  min-width: 30%;
+  max-width: 30%;
+  min-height: 55%;
   border-radius: 50%;
   border: none;
   border: 5px solid black;
@@ -148,191 +149,9 @@ option {
   position: absolute;
   left: 410px;
   top: 400px;
-}
-
-img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 5px solid white;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-}
-img:hover {
-  transform: scale(1.4);
-}
-
-h2 {
-  font-size: 45px;
-  margin-left: 2rem;
-}
-
-.fw {
-  margin-top: 4rem;
-}
-
-.df {
-margin-top: 14rem;
-}
-
-.player {
-  font-size: 36px;  
-  font-weight: bold;
-  position:absolute;
-  right:110px;
-  bottom: 130px;
-}
-
-@media (max-width: 1500px) {
-.container {
-  max-width: 80vw;
-  background-image: linear-gradient(to right, blue, grey);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  max-height: 150vh;
-  max-width: 100vw;
-}
-
-h1 {
-  font-size: 38px;
-  margin: 15px 10px;
-  padding: 20px;
-  display: inline-block;
-  border: 3px solid white;
-  background-image: linear-gradient(to right, blue, grey);
-  border-radius: 25px;
-  cursor: pointer;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-}
-
-h1:hover {
-  transform: scale(1.2);
-}
-
-select {
-  font-weight: bold;
-  position: absolute;
-  top: 5%;
-  left: 40%;
-  height: 40px;
-  width: 400px;
-  padding: 0 40px;
-  font-size: 32px;
-  border: 3px solid white;
-  background-image: linear-gradient(to right, blue, grey);
-  background-color: blue;
-  cursor: pointer;
-}
-
-option {
-  font-weight: bold;
-}
-
-.select-stats {
-  font-size: 30px;
-  font-weight: bold;
-  position: absolute;
-  top: 5.5%;
-  left: 35%;
-}
-
-.sidepic {
-  position: static;
-  width: 30%;
-  height: 55%;
-  margin-left: 450px;
-  margin-top: 200px;
-  border-radius: 50%;
-  border: none;
-  border: 5px solid black;
-  cursor: pointer;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-}
-.sidepic:hover {
-  transform: scale(1.2);
-}
-
-.positions {
-  font-size: 36px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
 }
 
 .positions img {
-  object-fit: cover;
-  max-width: 10%;
-  max-height:10%;
-}
-
-.container .fw, .container .df {
-  font-size: 32px;
-}
-
-.RW {
-  position: absolute;
-  left: 840px;
-  top: 305px;
-}
-
-.C {
-  position: absolute;
-  left: 590px;
-  top: 305px;
-}
-
-.LW {
-  position: absolute;
-  left: 335px;
-  top: 305px;
-}
-
-.RD {
-  position: absolute;
-  left: 740px;
-  top: 605px;
-}
-
-.LD {
-  position: absolute;
-  left: 445px;
-  top: 605px;
-}
-
-.imgRW {
-  position: absolute;
-  left: 810px;
-  top: 105px;
-}
-
-.imgC {
-  position: absolute;
-  left: 560px;
-  top: 105px;
-}
-
-.imgLW {
-  position: absolute;
-  left: 310px;
-  top: 105px;
-}
-
-.imgRD {
-  position: absolute;
-  left: 700px;
-  top: 400px;
-}
-
-.imgLD {
-  position: absolute;
-  left: 410px;
-  top: 400px;
-}
-
-img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -340,7 +159,7 @@ img {
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
 }
-img:hover {
+.positions img:hover {
   transform: scale(1.4);
 }
 
@@ -364,8 +183,30 @@ margin-top: 14rem;
   right:110px;
   bottom: 130px;
 }
-}
 
+@media (max-width: 1400px) {
+
+  .container {
+    max-width: 100vw;
+  }
+
+  .fw, .df {
+    display: none;
+  }
+
+  .sidepic {
+    position: absolute;
+    min-height: 4px;
+    top: 710px;
+    left: 450px;
+  }
+
+  .player {
+    position: absolute;
+    right: 600px;
+  }
+
+}
 @media (max-width: 500px) {
 
   .container {
@@ -416,8 +257,8 @@ margin-top: 14rem;
   }
 
   .positions img {
-    min-width: 25%;
-    min-height: 15%;
+    max-width: 25%;
+    max-height: 15%;
   }
 
   .RW {
