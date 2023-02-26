@@ -26,12 +26,10 @@ header h1 {
 .wrap-col .clr-6 {
 	color: black;
 	font-size: 16px;
-	text-align: justify;
 }
 
 .wrap-col .top-3 {
 	font-size: 16px;
-	text-align: justify;
 }
 
 .lists .list-2 {
@@ -100,6 +98,10 @@ margin-bottom: 30px;
 
 	.p6 {
 		line-height: 28px;
+	}
+
+	.wrap-col .texto {
+		max-width: 42vw;
 	}
 }
 

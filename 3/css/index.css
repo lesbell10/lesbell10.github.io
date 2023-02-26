@@ -34,7 +34,6 @@ header h1 {
 
 .wrap-col .p3 {
 	color: grey;
-	text-align: justify;
 }
 
 .wrap-col .text-1 {
@@ -155,16 +154,22 @@ nav .menu li a {
 	.block h2 {
 		margin-left: -25px;
 	}
-	
-	.adjust-3 .text-2 {
-		margin-left: -80px;
-	}
 
 	.adjust-3 .text-2 {
 	margin-left: -25px;
 	min-width: 160%;
 }
+
 .adjust-3 img {
 	margin-top: 30px;
 }
+
+.wrap-col .p2, .wrap-col .p3 {
+	margin-left: -25px;
+}
+
+.pad-1 .p2 , .pad-1 .text-1 {
+	margin-left: -50px;
+}
+
 }
