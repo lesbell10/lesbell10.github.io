@@ -474,3 +474,7 @@ h2{
 	header .menu li a {
 	min-width: 150%;
 }
+
+header h1 a {
+	color: whitesmoke;
+}

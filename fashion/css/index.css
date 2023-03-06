@@ -151,7 +151,7 @@ nav .menu li a {
 	}
 
 	.adjust-3 .img-border {
-		margin-left: 45%;
+		margin-left: 20%;
 		width: 100%;
 	}
 
@@ -164,7 +164,7 @@ nav .menu li a {
 	}
 
 	.adjust-3 .text-2 {
-	margin-left: 35%;
+	margin-left: 20%;
 	min-width: 160%;
 }
 
@@ -174,15 +174,14 @@ nav .menu li a {
 
 	.wrap-col .p2{
 		margin-left: 5px;
-		width: 160%;
+		min-width: 120%;
 	}
 
 	.wrap-col .text-1 {
 		margin-left: 5px;
 	}
 
-	.block .clr-6 {
-		margin-left: 130px;
+	.pad-1 .p2 {
+		max-width: 170%;
 	}
-
 }
