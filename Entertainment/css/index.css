@@ -1,0 +1,100 @@
+
+html, body {
+  overflow-x: hidden;
+}
+
+header, .container {
+		max-width: 100vw;
+	}
+
+.wrap-col .p2 {
+	min-width: 140%;
+}
+
+.extra-wrap dt {
+	margin-top: 10px;
+	font-size: 20px;
+	line-height: 20px;
+}
+
+.extra-wrap dd {
+	font-size: 16px;
+	line-height: 18px;
+}
+
+h2 {
+	font-size: 36px;
+		line-height: 32px;
+}
+
+.wrap-col img {
+	width: 140px;
+	height: 200px;
+}
+
+@media (max-width: 700px) {
+
+header, .container {
+		max-width: 100vw;
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+}
+
+@media (max-width: 450px) {
+
+header, .container {
+		max-width: 100vw;
+		display: flex;
+		justify-content: center;
+	}
+
+	.inner .logo {
+		margin-left: 5%;
+	}
+
+	.menu li a {
+		min-width: 150%;
+	}
+
+	nav .menu {
+		display: flex;
+		flex-direction: row;
+	}
+
+    .wrap-col h2 {
+        font-size: 32px;
+    }
+
+     .adjust-4 .pad-left {
+        max-width: 100%;
+    }
+
+    .container h2 {
+        font-size: 23px;
+    }
+
+    .inner a {
+        font-size: 40px;
+        margin-left: -10%;
+    }
+
+    .p2 dt {
+        max-width: 40%;
+    }
+}
+
+/* @media screen and (min-width: 600px) and (max-width: 900px) {
+
+    header, .container {
+		min-width: 95vw;
+	}
+} */

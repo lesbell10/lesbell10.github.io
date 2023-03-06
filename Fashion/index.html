@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Clothes</title>
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+	<link href="css/grid.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link href='https://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+
+		<!--------------------- header --------------------------->
+
+		<header class="container">
+
+			<h1>FASHION</h1>
+
+			<nav>
+				<div class="slide">
+					<div class="slider">
+						<img src="https://images3.alphacoders.com/274/thumb-1920-274899.jpg">
+					</div>
+					<!-- <a href="#" class="prev"></a>
+			<a href="#" class="next"></a> -->
+				</div>
+
+				<ul class="menu">
+					<li class="current"> <a href="index.html" class="clr-1">clothes</a> </li>
+					<li> <a href="luxury.html" class="clr-2">luxury</a> </li>
+					<li> <a href="cars.html" class="clr-3">cars</a> </li>
+				</ul>
+					<div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+			</nav>
+
+		</header>
+
+		<!--------------------- content --------------------------->
+
+		<section class="content-bg">
+			<div class="container">
+
+				<aside class="adjust-1">
+					<div class="wrap-col">
+
+						<!-- <div class="art"></div> -->
+						<h2 class="top-1 p2">Did You Know ?</h2>
+						<p class="text-1 p3">Clothing brands often mark up their prices significantly: Many clothing
+							brands charge high prices for their products in
+							order to create an image of luxury and exclusivity. However, the actual cost of producing
+							the clothing might be much
+							lower than the retail price.</p>
+
+						<p class="text-1 top-2 p3">The same clothing items are often sold in different stores under
+							different brand names: Some clothing items are produced
+							in large quantities and then sold to multiple retailers under different brand names, even
+							though the items are
+							identical.
+						</p>
+
+					</div>
+				</aside>
+
+				<div class="adjust-2">
+					<div class="wrap-col">
+
+						<div class="pad-1">
+							<h2 class="p2">Welcome to Clothing Brands Collection</h2>
+							<p class="text-1">Here are some of the most popular enpensive clothing brands.</p>
+						</div>
+
+						<div class="block">
+							<h2 class="p4 clr-6">Our Brands</h2>
+							<div class="row">
+
+								<div class="adjust-3">
+									<a href="https://www.gucci.com/ca/en/" class="img-border"> <img
+											src="images/rsz_1gucci.png">
+									</a>
+									<p class="text-2" style="padding-left:10px;">Gucci</p>
+								</div>
+
+								<div class="adjust-3">
+									<a href="https://www.versace.com/international/en/home/" class="img-border"> <img
+											src="images/rsz_versace.png"> </a>
+									<p class="text-2" style="padding-left:10px;">Versace</p>
+								</div>
+
+
+							</div>
+
+							<div class="row">
+
+								<div class="adjust-3">
+									<a href="https://ca.louisvuitton.com/eng-ca/homepage" class="img-border"> <img
+											src="images/rsz_louis_vuitton.png">
+									</a>
+									<p class="text-2" style="padding-left:10px;">Louis Vuitton</p>
+								</div>
+
+								<div class="adjust-3">
+									<a href="https://www.chanel.com/en_CA/" class="img-border"> <img
+											src="images/rsz_chanel.png">
+									</a>
+									<p class="text-2" style="padding-left:10px;">Chanel</p>
+								</div>
+							</div>
+
+							<!-- <div class="row pad-2">
+			<a href="#" class="link-2">FULL GALLERY</a>
+			</div> -->
+
+						</div>
+
+
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+	<script>
+		const hamburger = document.querySelector('.hamburger');
+		const menu = document.querySelector('.menu');
+
+		hamburger.addEventListener('click', () => {
+			menu.classList.toggle('active');
+		});
+	</script>
+</body>
+
+</html>

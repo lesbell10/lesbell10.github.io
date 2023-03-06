@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Luxury</title>
+	<link href="css/style.css" type="text/css" rel="stylesheet">
+	<link href="css/grid.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="css/luxury.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link href='https://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Zeyada&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+
+		<!--------------------- header --------------------------->
+
+		<header class="container">
+
+			<h1>FASHION</h1>
+
+			<nav>
+				<div class="slide">
+					<div class="slider">
+						<img src="https://images3.alphacoders.com/274/thumb-1920-274899.jpg">
+					</div>
+					<!-- <a href="#" class="prev"></a>
+					<a href="#" class="next"></a> -->
+				</div>
+
+				<ul class="menu">
+					<li> <a href="index.html" class="clr-1">clothes</a> </li>
+					<li class="current"> <a href="luxury.html" class="clr-2">luxury</a> </li>
+					<li> <a href="cars.html" class="clr-3">cars</a> </li>
+				</ul>
+					<div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+			</nav>
+
+		</header>
+
+		<!--------------------- content --------------------------->
+
+		<section class="content-bg">
+			<div class="container">
+
+				<aside class="adjust-1">
+					<div class="wrap-col">
+						<h2 class="top-6 p2">Best Designers</h2>
+
+						<p class="top-2 text-1 p3">Coco Chanel</p>
+						<p class="top-3">Coco Chanel is a legendary designer who revolutionized women's fashion with her
+							timeless and sophisticated designs,
+							including the iconic Chanel suit and little black dress. <a href="https://en.wikipedia.org/wiki/Coco_Chanel"
+								class="link">More...</a></p>
+
+						<p class="top-2 p3 text-1">Yves Saint Laurent</p>
+						<p class="top-3">Yves Saint Laurent was a French designer who is known for his innovative and
+							avant-garde designs, including the iconic
+							Le Smoking tuxedo for women. <a href="https://en.wikipedia.org/wiki/Yves_Saint_Laurent_(designer)" class="link">More...</a></p>
+
+						<p class="top-2 p3 text-1">Christian Dior</p>
+						<p class="top-3">Christian Dior was a French designer who is known for his elegant and feminine
+							designs, including the iconic New Look
+							silhouette. <a href="https://en.wikipedia.org/wiki/Christian_Dior" class="link">More...</a></p>
+
+					</div>
+				</aside>
+
+				<div class="adjust-2">
+					<div class="wrap-col">
+
+						<div class="block top-5">
+							<h2 class="clr-6 p6">A Few Words About Luxury</h2>
+
+							<p class="clr-6">Luxury refers to something that is expensive, high-quality, and exclusive.
+								It is often associated with a certain
+								lifestyle that is characterized by opulence, extravagance, and sophistication. Luxury
+								goods and services are typically
+								beyond the means of most people, and are often associated with status and social
+								prestige.</p>
+
+							<div class="row">
+								<div class="adjust-1">
+									<div class="wrap-col">
+										<img src="https://www.investopedia.com/thmb/1HGLb7Ee3kb5_wNvB8ng6ZAznFQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1054017850-7ef42af7b8044d7a86cfb2bff8641e1d.jpg"
+											class="img-border img-indent">
+
+									</div>
+								</div>
+
+								<div class="adjust-2">
+									<div class="wrap-col">
+										<p class="clr-6 texto">The concept of luxury can be subjective and varies from person
+											to person based on their individual tastes and
+											preferences. Some people may view luxury as something material, while others
+											may view it as an intangible quality that
+											adds value to their experiences.</p>
+									</div>
+								</div>
+							</div>
+
+							<h2 class="clr-6 p6">Different Types of Luxury</h2>
+
+							<div class="lists">
+
+								<ul class="list-2">
+									<li><a href="#">Bracelets</a></li>
+									<li><a href="#">Watches</a></li>
+									<li><a href="#">Cars</a></li>
+									<li><a href="#">Yachts</a></li>
+									<li><a href="#">Private jets</a></li>
+								</ul>
+
+								<ul class="list-3">
+									<li><a href="#">Hotels</a></li>
+									<li><a href="#">Antiques</a></li>
+									<li><a href="#">Money</a></li>
+									<li><a href="#">Chains</a></li>
+									<li><a href="#">Earrings</a></li>
+								</ul>
+
+							</div>
+
+							<!-- <div class="pad-2">
+			<a href="#" class="link-2">Read More</a>
+			</div> -->
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+	<script>
+		const hamburger = document.querySelector('.hamburger');
+		const menu = document.querySelector('.menu');
+
+		hamburger.addEventListener('click', () => {
+			menu.classList.toggle('active');
+		});
+	</script>
+</body>
+
+</html>
