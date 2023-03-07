@@ -426,9 +426,8 @@ nav .menu li a {
 }
 
 nav img {
-	width: 1000px;
-	height: 571px;
-	object-fit: cover;
+	width: 100%;
+	height: 140%;
 }
 
 header h1 {
@@ -436,4 +435,37 @@ header h1 {
 	font-family: 'Zeyada', cursive;
 	font-size: 80px;
 	margin-top: 50px;
+}
+@media (max-width: 1000px) {
+
+	nav img {
+	width: 93vw;
+	height: 140%;
+	object-fit: cover;
+}
+}
+
+@media (max-width: 800px) {
+	nav img {
+	width: 92vw;
+	height: 140%;
+	object-fit: cover;
+}
+}
+
+@media (max-width: 600px) {
+	nav img {
+	width: 90vw;
+	height: 140%;
+	object-fit: cover;
+}
+}
+
+@media (max-width: 500px) {
+
+	nav img {
+	width: 85vw;
+	height: 140%;
+	object-fit: cover;
+}
 }
