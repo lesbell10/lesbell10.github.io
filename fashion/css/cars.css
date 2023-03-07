@@ -3,13 +3,12 @@ html, body {
 }
 
 .container {
-		max-width: 90vw;
+		max-width: 100vw;
 	}
 	
 .wrap-col .block {
-    margin-right: -55%;
+    margin-right: -65%;
 }
-
 
 nav .menu {
 		margin-left:200px;

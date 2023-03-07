@@ -3,7 +3,7 @@ html, body {
 }
 
 	nav img, .container {
-		max-width: 90vw;
+		max-width: 100vw;
 	}
 
 .wrap-col img {
@@ -40,7 +40,7 @@ margin-bottom: 30px;
 @media (max-width: 1050px) {
 
 	nav img, .container {
-		max-width: 90vw;
+		max-width: 100vw;
 	}
 
 		.wrap-col .texto {
@@ -57,12 +57,14 @@ margin-bottom: 30px;
 		margin-left:10%;
 	}
 
-	.lists {display: flex;}
+	.lists {
+		display: flex;
+	}
 }
 
 @media (max-width: 600px) {
 	.container {
-		max-width: 90vw;
+		max-width: 100vw;
 		display: flex;
 		flex-direction: column;
 	}
@@ -72,16 +74,28 @@ margin-bottom: 30px;
 		margin-left: -10%;
 	}
 
-	.wrap-col .texto {
-		max-width: 12%;
-	}
+.adjust-1 {
+	margin-left: 3%;
+}
+
+.adjust-1 .wrap-col {
+		max-width: 285%;
+}
+
 .block .clr-6 {
 	width: 52%;
+	margin-left: 2%;
 }
+
+	.wrap-col .texto {
+		margin-left: 4.5%;
+		max-width:25%;
+	}
 
 	.wrap-col img {
 		width: 30%;
 		height: 100%;
+		margin-left: 2%;
 	}
 
 		nav .menu li a {
@@ -118,10 +132,6 @@ nav .menu li a {
 	}
 
 .wrap-col .texto {
-		max-width: 10%;
-	}
-
-	.adjust-1, .adjust-2 {
-	margin-left: 20px;	
+		max-width: 20%;
 	}
 }

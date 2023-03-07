@@ -2,7 +2,7 @@ html, body {
   overflow-x: hidden;
 }
 .container {
-    max-width: 90vw;
+    max-width: 100vw;
 }
 /* .row .logo {
     font-family: bilbo;
@@ -26,6 +26,7 @@ html, body {
     font-size: 24px;    
     color: white;
     font-weight: bold;
+    max-width: 95%;
 }
 
 .art-content p {
@@ -53,7 +54,7 @@ html, body {
 
 @media (max-width: 900px) {
  .container {
-    max-width: 95vw;
+    max-width: 100vw;
 }
 
 div.row {
@@ -92,8 +93,8 @@ div.row {
 }
 
 @media (max-width: 500px) {
-.row .logo {
-    margin-left: 0;
+.container {
+    max-width: 100vw;
 }
     .menu.active ul li a {
         margin-left: 160%;

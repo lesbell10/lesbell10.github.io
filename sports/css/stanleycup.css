@@ -2,8 +2,10 @@ html, body {
   overflow-x: hidden;
 }
 .container {
-    max-width: 90vw;
+    max-width: 100vw;
 }
+
+
 /* .row .logo {
     font-family: bilbo;
     font-size: 60px;
@@ -31,7 +33,7 @@ html, body {
 p {
     font-size: 16px;
     color: black;
-    width: 150%;
+    max-width: 95%;
 }
 
 img {
@@ -58,7 +60,7 @@ img {
 
 @media (max-width: 670px) {
 .header .container {
-    max-width: 90vw;
+    max-width: 100vw;
 }
 
 div.row {
@@ -106,7 +108,7 @@ div.row {
 .info p {
     font-size: 16px;
     color: black;
-    width: 150%;
+    min-width: 150%;
 }
     .sub-header p {
         width: 105%;
@@ -118,11 +120,15 @@ div.row {
         min-width: 150%;
     }
 
+    article p {
+        min-width: 150%;
+    }
+
 }
 
 @media (max-width: 500px) {
-.row .logo {
-    margin-left: -5%;
+    .container {
+    max-width: 100vw;
 }
     .menu.active ul li a {
         margin-left: 150%;
