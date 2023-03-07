@@ -139,9 +139,11 @@ header h1 {
 
 	.top-5 .link, .top-5 p {
 		margin-bottom: 10%;
+		min-width: 80%;
 	}
 
 	.top-6 .link, .top-6 p {
 		margin-bottom: 10%;
+		min-width: 80%;
 	}
 }
