@@ -106,12 +106,12 @@ nav .menu {
 
 
 	.row .text-2 {
-		margin-left: 15%;
+		margin-left: 18%;
 		margin-bottom: -5%;
 	}
 
 	 .wrap-col .text-6 {
-		margin-left: 15%;
+		margin-left: 18%;
 	 }
 
 .wrap-col .pags {
@@ -160,4 +160,12 @@ nav .menu {
 		font-size: 25px;
 		margin-left:10%;
 	}
+
+	.row .text-2 {
+		margin-left: -15%;
+	}
+
+	 .wrap-col .text-6 {
+		margin-left: -15%;
+	 }
 }

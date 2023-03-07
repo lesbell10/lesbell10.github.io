@@ -120,4 +120,8 @@ nav .menu li a {
 .wrap-col .texto {
 		max-width: 10%;
 	}
+
+	.adjust-1, .adjust-2 {
+	margin-left: 20px;	
+	}
 }
