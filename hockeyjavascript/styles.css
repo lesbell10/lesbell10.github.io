@@ -17,7 +17,7 @@ html, body {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 110vh;
+  min-height: 120vh;
 }
 
 .wrapper {
@@ -176,7 +176,10 @@ option {
 
 @media (max-width: 800px) {
 
-  .sidepic {display: none;}
+  .sidepic {
+    margin-top: 200%;
+    margin-left: -175%;
+  }
 }
 
 @media (max-width: 600px) {
