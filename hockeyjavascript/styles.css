@@ -172,6 +172,16 @@ option {
       right: 95px;
       min-width: 150%;
     }
+
+    .forwards {
+        margin-top: -360px;
+        margin-left: -15px;
+  }
+
+  .defenders {
+    margin:50px;
+    margin-top: 60px;
+  }
 }
 
 @media (max-width: 800px) {
