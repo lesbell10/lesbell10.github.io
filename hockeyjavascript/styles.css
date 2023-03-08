@@ -176,7 +176,7 @@ option {
 
 @media (max-width: 800px) {
 .container {
-  min-height: 140vh;
+  min-height: 180vh;
 }
 
   .sidepic {
