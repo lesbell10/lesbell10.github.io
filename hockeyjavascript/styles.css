@@ -17,7 +17,7 @@ html, body {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  min-height: 120vh;
+  min-height: 130vh;
 }
 
 .wrapper {
@@ -85,7 +85,7 @@ option {
 }
 
 .player {
-  font-size: 36px;
+  font-size: 0px;
   font-weight: bold;
   margin-top: 215px;
 }
@@ -114,7 +114,7 @@ option {
 .forwards {
     display: flex;
     font-size: 28px;
-    margin-top: -375px;
+    margin-top: -325px;
 }
 
 .forwards img {
@@ -144,7 +144,7 @@ option {
 }
 
 @media (max-width: 1000px) {
-
+.container {min-height: 100vh;}
     h1 {
       font-size: 20px;
     }
@@ -166,15 +166,14 @@ option {
     }
 
     .player {
-      font-size: 0;
-    }
-
-    .positions {
-      margin-top: 45px;
+      font-size: 0px;
     }
 }
 
 @media (max-width: 800px) {
+.container {
+  min-height: 130vh;
+}
 
   .sidepic {
     margin-top: 200%;
@@ -183,6 +182,8 @@ option {
 }
 
 @media (max-width: 600px) {
+
+  .container {min-height: 100vh;}
 
   h1 {
     font-size: 18px;
@@ -212,7 +213,7 @@ option {
   }
 
     .forwards {
-        margin-top: -450px;
+        margin-top: -400px;
         margin-left: -15px;
   }
 

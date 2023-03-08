@@ -71,11 +71,13 @@ header h1 {
 }
 
 .wrap-col p {
-    width: 315%;
+    width:260%;
+	margin-left: 35%;
 }
 
 .wrap-col h2, .button {
     width: 150%;
+	margin-left: 35%;
 }
 
 .top .row img {
