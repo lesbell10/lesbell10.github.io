@@ -179,6 +179,10 @@ option {
     margin-top: 200%;
     margin-left: -175%;
   }
+   select {
+    font-size: 18px;
+    max-width: 75%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -187,7 +191,7 @@ option {
 
   h1 {
     font-size: 18px;
-
+    padding: 15px 22px;
   }
 
   .select-stats {
@@ -196,7 +200,8 @@ option {
 
   select {
     font-size: 18px;
-    min-width: 100%;
+    max-width: 54%;
+    margin-left: 3%;
   }
 
   .stat {
