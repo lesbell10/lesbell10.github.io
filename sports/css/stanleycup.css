@@ -54,7 +54,7 @@ img {
 .hamburger i {
     font-size: 32px;
     position: absolute;
-    right: 30px;
+    right: 15px;
     top:10px;
 }
 
@@ -134,4 +134,8 @@ div.row {
         margin-left: 150%;
         width: 100%;
     }
+    .row .logo {
+    margin-left: 5%;
+    margin-top: 5%;
+}
 }
