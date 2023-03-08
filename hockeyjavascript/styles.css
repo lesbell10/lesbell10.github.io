@@ -85,7 +85,7 @@ option {
 }
 
 .player {
-  font-size: 0px;
+  font-size: 32px;
   font-weight: bold;
   margin-top: 215px;
 }
@@ -114,7 +114,7 @@ option {
 .forwards {
     display: flex;
     font-size: 28px;
-    margin-top: -325px;
+    margin-top: -350px;
 }
 
 .forwards img {
@@ -166,13 +166,17 @@ option {
     }
 
     .player {
-      font-size: 0px;
+      font-size: 28px;
+      position: relative;
+      bottom: 60px;
+      right: 95px;
+      min-width: 150%;
     }
 }
 
 @media (max-width: 800px) {
 .container {
-  min-height: 130vh;
+  min-height: 140vh;
 }
 
   .sidepic {
@@ -183,11 +187,19 @@ option {
     font-size: 18px;
     max-width: 75%;
   }
+
+  .player {
+      font-size: 24px;
+      position: relative;
+      top: 345px;
+      right: 470px;
+      min-width: 150%;
+    }
 }
 
 @media (max-width: 600px) {
 
-  .container {min-height: 100vh;}
+  .container {min-height: 180vh;}
 
   h1 {
     font-size: 18px;
@@ -218,7 +230,7 @@ option {
   }
 
     .forwards {
-        margin-top: -400px;
+        margin-top: -425px;
         margin-left: -15px;
   }
 
@@ -237,4 +249,12 @@ option {
   .positions li {
     font-size: 20px;
   }
+
+  .player {
+      font-size: 20px;
+      position: relative;
+      top: 95px;
+      right: 535px;
+      min-width: 150%;
+    }
 }

@@ -39,7 +39,11 @@ window.addEventListener("load", () => {
   });
 
   player.textContent = "Connor McDavid";
-  player.style.marginLeft = "650px" 
+  player.style.marginLeft = "675px" 
+
+  if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "650px"
+    }
 
 });
 
@@ -72,7 +76,11 @@ element.addEventListener("change", (e) => {
     });
 
     player.textContent = "Connor McDavid";
-    player.style.marginLeft = "650px" 
+    player.style.marginLeft = "675px" 
+
+    if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "650px"
+    }
   }
 
   if (value === "Most Points") {
@@ -100,7 +108,8 @@ element.addEventListener("change", (e) => {
     });
 
     player.textContent = "Johnny Gaudreau";
-    player.style.marginLeft = "650px" 
+    player.style.marginLeft = "650px"
+
   }
 
   if (value === "Most Goals") {
@@ -156,7 +165,15 @@ element.addEventListener("change", (e) => {
     });
 
     player.textContent = "Jonathan Huberdeau";
-    player.style.marginLeft = "600px" 
+    player.style.marginLeft = "650px" 
+
+    if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "600px"
+    }
+
+    if (window.innerWidth <= 800) { 
+      player.style.marginLeft = "625px"
+    }
   }
 
   if (value === "Power Play Points") {
@@ -186,6 +203,10 @@ element.addEventListener("change", (e) => {
     
     player.textContent = "Leon Draisaitl";
     player.style.marginLeft = "675px" 
+
+    if (window.innerWidth <= 600) { 
+      player.style.marginLeft = "650px"
+    }
   }
 
   if (value === "Plus/Minus") {
@@ -214,7 +235,11 @@ element.addEventListener("change", (e) => {
 
     
       player.textContent = "Cale Makar";
-      player.style.marginLeft = "700px" 
+    player.style.marginLeft = "700px" 
+    
+    if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "675px"
+    }
   }
 
   if (value === "Penalty Minutes") {
@@ -269,7 +294,12 @@ element.addEventListener("change", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Nikita_Kucherov";
     });
     
-      player.textContent = "Nikita Kucherov";
+    player.textContent = "Nikita Kucherov";
+    player.style.marginLeft = "675px" 
+
+    if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "650px"
+    }
   }
 
   if (value === "Shorthanded goals") {
@@ -298,6 +328,10 @@ element.addEventListener("change", (e) => {
     
     player.textContent = "Alex Formenton";
     player.style.marginLeft = "675px" 
+
+    if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "650px"
+    }
   }
 
   if (value === "Overtime Goals") {
@@ -324,7 +358,12 @@ element.addEventListener("change", (e) => {
       window.location = "https://en.wikipedia.org/wiki/Alex_DeBrincat";
     });
     
-      player.textContent = "Alex DeBrincat";
+    player.textContent = "Alex DeBrincat";
+    player.style.marginLeft = "700px"
+
+    if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "650px"
+    }
   }
 
   if (value === "Game Winning Goals") {
@@ -353,6 +392,10 @@ element.addEventListener("change", (e) => {
     
     player.textContent = "Steven Stamkos";
     player.style.marginLeft = "675px" 
+    
+     if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "650px"
+    }
   }
 
   if (value === "Most Shots") {
@@ -379,7 +422,11 @@ element.addEventListener("change", (e) => {
     });
     
     player.textContent = "Alexander Ovechkin";
-    player.style.marginLeft = "625px" 
+    player.style.marginLeft = "650px" 
+
+     if (window.innerWidth <= 1000) { 
+      player.style.marginLeft = "625px"
+    }
   }
 
   if (value === "Time on Ice per Game") {
@@ -407,5 +454,6 @@ element.addEventListener("change", (e) => {
     
     player.textContent = "Patrick Kane";
     player.style.marginLeft = "675px" 
+
   }
 });
