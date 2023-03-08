@@ -209,7 +209,7 @@ option {
 
 @media (max-width: 600px) {
 
-  .container {min-height: 180vh;}
+  .container {min-height: 130vh;}
 
   h1 {
     font-size: 18px;
