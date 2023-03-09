@@ -208,7 +208,7 @@ option {
 
 @media (max-width: 600px) {
 .container {
-  height:110vh;
+  height:100vh;
 }
   h1 {
     font-size: 18px;
