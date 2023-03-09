@@ -181,10 +181,6 @@ option {
     margin:50px;
     margin-top: 60px;
   }
-
-  .RD, .LD {
-    margin-bottom: -5px;
-  }
 }
 
 @media (max-width: 800px) {
