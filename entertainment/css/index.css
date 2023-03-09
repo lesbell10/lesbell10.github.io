@@ -18,7 +18,7 @@ header, .container {
 }
 
 .extra-wrap dd {
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 18px;
 }
 
@@ -88,7 +88,7 @@ header, .container {
     }
 
     .p2 dt {
-        max-width: 40%;
+        max-width: 100%;
     }
 }
 
