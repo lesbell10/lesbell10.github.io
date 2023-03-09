@@ -143,7 +143,7 @@ option {
 }
 
 @media (max-width: 1000px) {
-.container {height: 175vh;}
+.container {height: 165vh;}
     h1 {
       font-size: 20px;
     }
@@ -208,7 +208,7 @@ option {
 
 @media (max-width: 600px) {
 .container {
-  height:150vh;
+  height:120vh;
 }
   h1 {
     font-size: 18px;
