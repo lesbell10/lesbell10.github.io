@@ -13,7 +13,11 @@ let imgLD = document.querySelector(".imgLD");
 let sidepic = document.querySelector(".sidepic");
 let player = document.querySelector(".player");
 
-
+imgRW.style.cursor = 'pointer';
+imgC.style.cursor = 'pointer';
+imgLW.style.cursor = 'pointer';
+imgRD.style.cursor = 'pointer';
+imgLD.style.cursor = 'pointer';
 
 window.addEventListener("load", () => {
   imgRW.src =
@@ -116,9 +120,15 @@ element.addEventListener("change", (e) => {
     imgRW.src =
       "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8477934.jpg";
     RW.innerHTML = "Draisaitl <br> 55 g";
+    imgRW.addEventListener("click", (e) => {
+    window.location = "https://www.nhl.com/player/leon-draisaitl-8477934";
+  });
     imgC.src =
       "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8479318.jpg";
     C.innerHTML = "Matthews <br> 60 g";
+    imgC.addEventListener("click", (e) => {
+    window.location = "https://www.nhl.com/player/auston-matthews-8479318";
+  });
     imgLW.src =
       "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8475184.jpg";
     LW.innerHTML = "Kreider <br> 52 g";
