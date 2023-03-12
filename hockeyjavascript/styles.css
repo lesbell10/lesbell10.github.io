@@ -142,6 +142,10 @@ option {
   display: flex;
 }
 
+.imgLW, .imgC, .imgRW, .imgLD, .imgRD {
+  cursor: pointer;
+}
+
 @media (max-width: 1000px) {
 .container {height: 175vh;}
     h1 {

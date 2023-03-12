@@ -13,12 +13,6 @@ let imgLD = document.querySelector(".imgLD");
 let sidepic = document.querySelector(".sidepic");
 let player = document.querySelector(".player");
 
-imgRW.style.cursor = 'pointer';
-imgC.style.cursor = 'pointer';
-imgLW.style.cursor = 'pointer';
-imgRD.style.cursor = 'pointer';
-imgLD.style.cursor = 'pointer';
-
 window.addEventListener("load", () => {
 
   imgRW.src = "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8471675@2x.jpg";
