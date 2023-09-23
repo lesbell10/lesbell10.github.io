@@ -1,0 +1,945 @@
+html {
+    box-sizing:border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: Calibri;
+    background-color: whitesmoke;
+}
+
+body {
+   display: flex;
+}
+
+.little-container, .container-sm, .little-soccer-bar {
+    display: none;
+}
+
+/*TOPNAV */
+
+.top-nav {
+    position: fixed;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-btn {
+    margin: 50px 30px 50px 10px;
+    min-width: 120px;
+    border-radius: 50px;
+    font-weight: bold;
+    padding: 7px;
+    border: 1px solid grey;
+    cursor: pointer;
+    z-index: 300;
+}
+
+.nav-btn i {
+    margin-left: 5px;
+    font-size: 10px;
+    color: blue;
+}
+
+.top-nav .title {
+    min-width: 12%;
+    border-left: 1px solid black;
+    font-weight: bold;
+    padding: 40px 10px;
+}
+
+/*STATS */
+
+.top-nav .stats {
+    display: flex;
+    cursor: pointer;
+}
+
+.top-nav .stat {
+    display: flex;
+    justify-content: space-between;
+    min-width: 120px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    font-weight: bold;
+}
+
+.top-nav .time {
+    margin-bottom: 3px;
+}
+
+.top-nav img {
+    width: 16px;
+    margin-right: 8px;
+}
+
+.top-nav .score0 {
+    color: whitesmoke;
+}
+
+.top-nav .teams {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.top-nav .score {
+    margin-top: 5px;
+}
+
+/* ESPN BAR */
+
+.espn-bar {
+    top: 60px;
+    left: 0;
+    position: fixed;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    height: 40px;
+    width: 100%;
+    z-index: 100;
+}
+
+.espn-bar .nav-left, .espn-bar .nav-right {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.espn-bar li {
+    margin-right: 10px;
+    font-weight: 100;
+}
+
+.espn-bar i {
+    margin-right: 10px;
+    font-size: 8px;
+}
+
+.espn-bar .nav-right .img-i {
+    display: flex;
+}
+
+.espn-bar .nav-right .img-i i {
+    font-size: 20px;
+}
+
+.espn-bar .nav-right .img-i:last-child {
+    margin-right: 60px;
+}
+
+.espn-bar img {
+    width:70px;
+    max-height: 35px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* SOCCER BAR */
+
+.soccer-bar {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: black;
+    height: 40px;
+    border-bottom: 1px solid grey ;
+      box-shadow: 0px 6px 8px -6px rgba(0, 0, 0, 0.5), 0px -6px 8px -6px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+}
+
+.soccer-bar .nav-left, .soccer-bar .nav-right {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.soccer-bar .nav-left li {
+    margin-left: 15px;
+    position: relative;
+}
+
+.soccer-bar .nav-left li:first-of-type {
+    padding-left: 15px;
+    border-left: 1px solid black;
+}
+
+.soccer-bar .nav-right img {
+    width: 200px;
+    margin-right: 80px;
+}
+
+.soccer-bar .nav-left li:hover {
+    color: grey;
+}
+
+.soccer-bar .nav-left li:hover::after {
+    content: '';
+    position: absolute;
+    top:27px;
+    left: 0px;
+    height: 3px;
+    width:100%;
+    background-color: red;
+}
+
+.soccer-bar .nav-left i {
+    margin-left: 10px;
+    font-size: 10px;
+}
+
+.soccer-bar .nav-left .ball {
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+/* CONTENT */
+
+.container {
+    width: 85%;
+    margin: 150px auto;
+    height: 200vh;
+    display: flex;
+}
+
+/* ASIDE LEFT */
+
+aside.left-side {
+    width: 25%;
+    height: 200vh;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+.left-side h1 {
+    margin-left: 20px;
+    font-size:48px;
+    letter-spacing: 3px;
+}
+
+.left-side .logo {
+    display: flex;
+}
+
+.left-side .first img {
+    width: 90px;
+    margin-bottom: -5px;
+    margin-left: 10px;
+}
+.left-side .first .wrap-subscribe {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 10px;
+}
+
+.left-side .orange {
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.left-side .links li {
+    list-style-type: none;
+    margin-left: -40px;
+    margin-right: 20px;
+    font-size: 14px;
+    line-height:3;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.left-side .links img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.left-side .first {
+    max-height: 700px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.left-side .second {
+     max-height: 700px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.left-side .quick-links {
+    padding: 5px 0 0 5px;
+}
+
+.left-side .quick-links ul {
+    margin-top: -20px;
+}
+
+.second .quick-links li {
+    list-style-type: none;
+    margin-left: -40px;
+    margin-right: 20px;
+    font-size: 14px;
+    line-height:3;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.second .quick-links h4 {
+    margin-left: 10px;
+    margin-right: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.second .quick-links img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-bottom: -5px;
+    cursor: pointer;
+}
+
+.favorites {
+    width: 100%;
+    height: 120px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.favorite {
+    display: flex;
+    justify-content: space-between;
+}
+
+.favorite h4 {
+    margin-left: 10px;
+    padding-right: 75px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.favorites img {
+    width: 20px;
+    height: 20px;
+    margin-top: 25px;
+    margin-right: 20px;
+    padding-left: 100px;
+    padding-bottom: 15.5px;
+    border-bottom: 1px solid lightgrey;
+    cursor: pointer;
+}
+
+.favorites .link {
+    text-align: center;
+    color: blue;
+    font-weight: bold;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.customize {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0 0 15px 15px; 
+    border-radius: 10px;
+}
+
+.customize h4 {
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 10px;
+    margin-right: 20px;
+}
+
+.customize .blue {
+    background-color: blue;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.customize .white {
+    border: 1px solid blue;
+    background-color: white;
+    color: blue;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.customize .blue:hover {
+    background-color: darkblue;
+}
+
+.customize .white:hover {
+    background-color: lightblue;
+}
+
+.espn-sites {
+    background-color: white;
+    padding: 1px 20px 15px 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.espn-sites h4 {
+    font-size: 17px;
+    padding-bottom: 10px;
+    margin-bottom: -5px;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.espn-sites li {
+    list-style: none;
+    font-size: 14px;
+    border-bottom: 1px solid whitesmoke;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.espn-sites li:last-of-type {
+    border: none;
+}
+
+.espn-sites img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-bottom: -20px;
+    padding: 12px 0;
+    cursor: pointer;
+}
+
+.espn-apps {
+    background-color: white;
+    padding: 1px 20px 15px 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.espn-apps h4 {
+    font-size: 17px;
+    padding-bottom: 10px;
+    margin-bottom: -5px;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.espn-apps li {
+    list-style: none;
+    font-size: 14px;
+    border-bottom: 1px solid whitesmoke;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.espn-apps img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-bottom: -10px;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.espn-apps li:nth-child(2) {
+    border: none;
+}
+
+.media {
+    background-color: white;
+    padding: 1px 20px 15px 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.media h4 {
+    font-size: 17px;
+    padding-bottom: 10px;
+    margin-bottom: -5px;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.media li {
+    list-style: none;
+    font-size: 14px;
+    border-bottom: 1px solid whitesmoke;
+    padding: 5px 0 10px 0;
+    cursor: pointer;
+}
+
+.media img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-bottom: -10px;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+/* MAIN */
+
+main.main {
+    width: 55%;
+    height: 200vh;
+    background-color: whitesmoke;
+    margin-left: 25px;
+    border-radius: 20px;
+    z-index: 0;
+}
+
+/* SOCCER PIC */
+
+
+.main .hero h1 {
+      background: linear-gradient(to right, grey, black);
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      font-weight: 100;
+      margin-left: 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      padding: 3px;
+      width:90%;
+}
+
+.main .hero .stat {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.main .hero h2:first-of-type {
+    color: grey;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.main .hero h2:last-of-type {
+    color: grey;
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+.main img {
+    width: 50px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.main img:last-of-type {
+    width: 50px;
+    object-fit: cover;
+}
+
+.main .hero .score {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.main .hero .score span {
+    font-weight: bold;
+}
+
+.main .hero .score small {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.main .hero .score i {
+    margin-right: -20px;
+}
+
+.main .hero {
+    margin-bottom: 15px;
+}
+
+.card-img {
+    cursor: pointer;
+    position: relative;
+}
+
+.main .card-img img {
+    margin-top: 5px;
+    min-width: 91.5%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 20px;
+}
+.main .subtitle {
+    height: 60px;
+    width: 86%;
+    margin-left: 20px;
+    margin-top: -5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    box-shadow: 0px 6px 8px -6px rgba(0, 0, 0, 1.5), 0px -6px 8px -6px rgba(0, 0, 0, 1.9);
+    padding: 15px;
+    font-weight: bold;
+}
+
+.hero h3 {
+    margin-top: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* NFL PIC */
+
+.main .nfl .subtitle {
+    height:170px;
+    width: 89%;
+    margin-left: 20px;
+    margin-top: -5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    box-shadow: 0px 6px 8px -6px rgba(0, 0, 0, 1.5), 0px -6px 8px -6px rgba(0, 0, 0, 1.9);
+    padding: 5px;
+    font-weight: bold;
+}
+
+.main .nfl p {
+    color: grey;
+}
+
+.main .nfl {
+    margin-bottom: 15px;
+}
+
+/* NFL2 PIC */
+
+.nfl2 {
+    position: relative;
+}
+
+.nfl2 .white {
+    position: relative;
+    bottom: 100px;
+    color: white;
+    width: 90%;
+    margin-left: 30px;
+}
+
+.card-nfl2 img{
+    border-radius: 10px;
+}
+
+/* TENNIS PIC */
+
+.tennis {
+    margin-bottom: 15px;
+    min-height:100px;
+}
+
+/* ASIDE RIGHT */
+
+aside.right-side {
+    width: 35%;
+    height: 200vh;
+    border-radius: 20px;
+}
+
+/* RIGHT LINKS */
+
+
+.right-side .links {
+    padding: 2px;
+    min-height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+
+.right-side li {
+    line-height: 2.5;
+    cursor: pointer;
+}
+
+.right-side li:hover {
+    color: blue;
+}
+
+.right-side h4 {
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.right-side hr {
+    margin: 0 20px;
+}
+
+/* NHL RIGHT */
+
+.right-side .card {
+    padding: 2px;
+    margin-top: 15px;
+    min-height:300px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+
+.right-side .card img {
+    width: 95%;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    display: flex;
+    cursor: pointer;
+}
+
+.right-side .card h5 {
+    font-size: 15px;
+    margin: 8px 8px 0 8px;
+}
+
+.right-side .card h6 {
+    color: grey;
+    font-size: 14px;
+    margin: 0px 8px 0 8px;
+}
+
+@media (max-width: 1240px) {
+
+    .container, .espn-bar, .soccer-bar {
+        display: none;
+    }
+
+    .little-soccer-bar {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: black;
+    height: 40px;
+    border: 1px solid grey ;
+    z-index: 100;
+    
+    }
+
+    .little-soccer-bar .nav-left, .soccer-bar .nav-right {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .little-soccer-bar .nav-left li {
+        margin-left: 15px;
+        position: relative;
+    }
+
+    .nav-left i {
+        margin: 0 15px;
+    }
+    
+    .little-container {
+        display: flex;
+        margin-top: 150px;
+    }
+    
+
+    .main {
+        min-width: 100%;
+    }
+
+    .main .stat {
+        margin-left: -30px;
+    }
+
+    aside {
+        min-width: 90%;
+    }
+
+    .right-side {
+        max-height: 350px;
+    }
+
+    .right-side .title {
+        display: flex;
+        text-transform: uppercase;
+    }
+
+    .right-side h4 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-left: -10px;
+    }
+    
+    .card-img .subtitle {
+        width: 86.5%;
+    }
+
+    .right-side .links {
+        margin-left: 20px;
+        width: 100%;
+    }
+
+    .right-side .headlines {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 30px;
+    }
+}
+
+@media (max-width: 880px) {
+
+    *,html {
+        overflow-x: hidden;
+    }
+
+    .little-container {
+        display: none;
+    }
+
+    .container-sm {
+        display: flex;
+        margin-top: 90px;
+    }
+
+    .main-sm .hero-sm h1 {
+      background: linear-gradient(to right, grey, black);
+      font-size: 24px;
+      text-align: center;
+      color: white;
+      font-weight: 100;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      padding: 3px;
+      width: 99%;
+    }
+
+        .stat-sm img:first-of-type{
+        width: 60px;
+        margin-right: 20px;
+    }
+
+        .stat-sm img:last-of-type {
+        width: 60px;
+        margin-left: 20px;
+    }
+
+        .main-sm .card-img-sm img {
+        margin-top: 2px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+        .main-sm .hero-sm .stat-sm {
+        display: flex;
+        justify-content: center;
+        width: 87%;
+        margin-left:20px;
+    }
+
+    .main-sm .hero-sm .score-sm {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .main-sm .hero-sm .score-sm span {
+        font-weight: bold;
+        margin: -15px;
+    }
+
+    .main-sm .hero-sm .score-sm small {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .main-sm .hero-sm .score-sm i {
+        display: none;
+    }
+
+    .stat-sm h2 {
+        display: none;
+    }
+
+    .title-sm {
+        display: flex;
+        text-transform: uppercase;
+    }
+
+    .title-sm h4 {
+        margin-bottom:20px;
+    }
+
+    .title-sm img {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        margin-top: 10px;
+    }
+        
+    .headlines-sm .right-sm {
+        margin-top: -15px;
+    }
+
+    .nfl2-sm {
+        position: relative;
+    }
+
+    .nfl2-sm .white-sm {
+        position: relative;
+        bottom: 100px;
+        color: white;
+        width: 90%;
+        margin-left: 30px;
+    }
+
+    .headlines-sm li {
+        list-style-type: disc;
+        margin-left: -35px;
+    }
+
+}
+
+@media (max-width: 415px) {
+    
+    .nfl-sm h2, .tennis-sm h2, .nfl2-sm h2 {
+        font-size: 20px;
+    }
+
+        .nfl2-sm .white-sm {
+            bottom: 80px;
+        }
+}
