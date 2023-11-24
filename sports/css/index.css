@@ -80,6 +80,10 @@ html, body {
         margin-left: 20%;
     }
     
+    .adjust-2 img  {
+        background-color: blue;
+        min-height: 150%;
+    }
 
 .header .heading-2 {
     color: black;
