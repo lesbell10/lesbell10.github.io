@@ -25,7 +25,7 @@ imgRW.addEventListener("click", (e) => {
 
     imgC.src = "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8478402.jpg";
     
-    C.innerHTML = "McDavid <br> 95%";
+    C.innerHTML = "McDog <br> 95%";
 
     imgC.addEventListener("click", (e) => {
     window.location = "https://www.nhl.com/player/connor-mcdavid-8478402";
