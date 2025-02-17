@@ -61,7 +61,7 @@ imgRD.addEventListener("click", (e) => {
     window.location = "https://en.wikipedia.org/wiki/Connor_McDavid";
   });
 
-  player.textContent = "Connor McDavid";
+  player.textContent = "Connor McDog";
 
   player.style.marginLeft = "675px" 
 
