@@ -1,0 +1,108 @@
+html, body {
+  overflow-x: hidden;
+}
+.container {
+    max-width: 100vw;
+}
+/* .row .logo {
+    font-family: bilbo;
+    font-size: 60px;
+    margin-left: 100px;
+}
+
+.menu li a {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: orange !important;
+}
+
+.menu li a:hover {
+    color: white !important;
+    background-color: orange !important;
+} */
+
+.sub-header h1 {
+    font-size: 24px;    
+    color: white;
+    font-weight: bold;
+    max-width: 95%;
+}
+
+.art-content p {
+    font-size: 16px;
+    text-align: justify;
+}
+
+.art-content img {
+    width: 285px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 32px;
+    position: absolute;
+    right: 15px;
+    top:10px;
+}
+
+
+@media (max-width: 900px) {
+ .container {
+    max-width: 100vw;
+}
+
+div.row {
+    margin-bottom: 5%;
+}
+
+.menu ul {
+          display: flex;
+        flex-direction: column;
+     }
+
+    .menu ul li a {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu.active ul li a {
+        display: block;
+        cursor: pointer;
+        min-width: 200%;
+        font-size: 16px;
+        margin-top: 10%;
+        margin-left: 100%;
+        padding: 1.5%;
+        text-align: center;
+        color: orange;
+    }
+
+    .menu.active {
+        transform: translateX(-325px);
+        transition: transform 0.5s ease;
+    } 
+}
+
+@media (max-width: 500px) {
+.container {
+    max-width: 100vw;
+}
+    .menu.active ul li a {
+        margin-left: 160%;
+        width: 100%;
+    }
+
+    .row .logo {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+}

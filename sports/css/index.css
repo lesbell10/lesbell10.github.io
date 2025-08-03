@@ -1,0 +1,308 @@
+html, body {
+  overflow-x: hidden;
+}
+
+.container {
+    max-width: 100vw;
+}
+
+
+.box-1 .row {
+    display: flex;
+    flex-direction: row;
+}
+
+.box-4 .row {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu {
+    margin-top: -20px;
+}
+
+.row .logo {
+    font-family: bilbo;
+    font-size: 60px;
+    margin-top: 3%;
+    margin-left: 50px;
+    display: flex;
+}
+
+.slider img {
+    min-height: 100%;
+}
+
+/* .menu li a {
+      margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: orange !important;
+}
+
+.menu li a:hover {
+    color: white !important;
+    background-color: orange !important;
+} */
+
+.zoom-container {
+    width: 70%;
+}
+
+.zoom-container img {
+    max-width: 90%;
+    margin-top: 10px
+}
+
+.item-content {
+    width: 90%;
+}
+
+.item-content span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.zoom-container span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    min-width: 300%;
+}
+
+.item-content p {
+    font-size: 16px;
+    color: black;
+}
+
+.item-content .btn {
+    font-size: 18px;
+        margin-left: 20%;
+    }
+    
+    .adjust-2 img  {
+        background-color: blue;
+        min-height: 150%;
+    }
+
+.header .heading-2 {
+    color: black;
+    margin-top: 50px;
+    font-size: 60px;
+    line-height: 100%;
+}
+
+.row .post {
+    margin-top: -30px;
+}
+
+
+.wrapper h1 {
+    font-size: 32px;
+    margin-top: -50px;
+    margin-bottom: 20px;
+}
+
+.wrapper li {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.item h3 {
+    margin-top: 15px;
+}
+
+.adjust-3 img {
+    max-width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 32px;
+    position: absolute;
+    right: 15px;
+    top:10px;
+}
+
+.slider img {
+    object-fit: cover;
+}
+
+@media (max-width: 880px) {
+
+.container {
+    max-width: 100vw;
+}
+
+.box-1 .row {
+    display: flex;
+    flex-direction: column;
+}
+
+.row .menu li a {
+    margin-left: 110%;
+}
+
+div.row {
+    min-height: 70px;
+}
+
+.adjust-3 img {
+    max-width: 100%;
+}
+
+.menu ul {
+          display: flex;
+        flex-direction: column;
+     }
+
+    .menu ul li a {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu.active ul li a {
+        display: block;
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 60%;
+        padding: 1.5%;
+        text-align: center;
+        color: orange;
+    }
+
+    .menu.active {
+        min-height: 130px;
+        margin-left: 400px;
+        min-width: 100%;
+        transform: translateX(-75px);
+        transition: transform 0.5s ease;
+    }
+
+    .menu.active.show {
+        transform: translateX(0%);
+    }
+/*
+    .menu ul li a:hover {
+        color: black;
+        background-color: white;
+        padding: 0 5%;
+    } */
+
+/* .slider, .caption {
+    width:20px;
+} */
+
+.adjust-1 {
+    margin-left: 10%;
+    min-width:150%;
+    min-height: 100px;
+}
+
+.item-content {
+    max-width:50%;
+}
+
+.item-content .btn {
+    margin-left: 200px;
+}
+
+.zoom-container img {
+    max-width: 50%;
+    height: 100%;
+}
+
+
+.row .post {
+    display: flex;
+    flex-direction: column;
+    width: 120%;
+    margin-left: -10%;
+}
+
+ul {
+    margin-left: 5%;
+}
+
+.adjust-2 img {
+    margin-left: 10%;
+    min-width: 175%;
+}
+
+.wrapper {
+    min-width: 220%;
+}
+
+.wrapper h1 {
+    margin-left: -15%;
+}
+
+
+}
+
+@media (max-width: 500px) {
+
+    .container {
+    max-width: 100vw;
+}
+
+    .adjust-1 {
+    margin-left: 5%;
+    min-width:150%;
+    min-height: 100px;
+    }
+
+    .caption h1 {
+        line-height: 100%;
+    }
+
+    .heading span {
+        font-size: 30px;
+    }
+
+    .item-content {
+    max-width: 60%;
+    }
+
+    .zoom-container img {
+        max-width: 60%;
+    }
+
+    .item-content .btn {
+        margin-left: 30%;
+    }
+
+    .box-4 .row {
+    display: flex;
+    flex-direction: column;
+}
+
+.adjust-3 img {
+    min-width: 400%;
+    margin-left: 35%;
+}
+
+.adjust-3 h3 {
+    min-width: 200%;
+    margin-left: 10px;
+}
+
+.row .logo {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+    .menu.active ul li a {
+        margin-left: 40%;
+        width: 100%;
+    }
+
+}

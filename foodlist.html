@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Checklist</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #2c3e50;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.5);
+        }
+
+        li:hover {
+            color: #3498db;
+        }
+
+        .summary {
+            grid-column: span 4;
+            background: #d1f5d3;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 40px;
+            font-weight: bold;
+            color: #2d6a4f;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        @media (max-width: 1000px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧠 Nutrition Checklist</h1>
+
+    <div class="grid">
+        <div class="section">
+            <div class="category">🍳 Protein</div>
+            <ul>
+                <li><input type="checkbox"> 🥚 Eggs</li>
+                <li><input type="checkbox"> 🧃 Protein shake #1</li>
+                <li><input type="checkbox"> 🧃 Protein shake #2</li>
+                <li><input type="checkbox"> 🐟 Salmon (or lean protein)</li>
+                <li><input type="checkbox"> 🧀 Cheese (optional)</li>
+                <li><input type="checkbox"> 🫘 Legumes</li>
+                <li><input type="checkbox"> 🥛 Yogurt</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="category">🍎 Fruits & Veggies</div>
+            <ul>
+                <li><input type="checkbox"> 🍊 Clementine</li>
+                <li><input type="checkbox"> 🍎 Fruits (rotate types)</li>
+                <li><input type="checkbox"> 🥦 Vegetables</li>
+                <li><input type="checkbox"> 🥬 Iron-rich foods</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="category">🥖 Carbs & Fats</div>
+            <ul>
+                <li><input type="checkbox"> 🥣 All-Bran cereal</li>
+                <li><input type="checkbox"> 🌾 Complex carbs</li>
+                <li><input type="checkbox"> 🥑 Healthy fats</li>
+                <li><input type="checkbox"> 🍫 Dark chocolate</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="category">💧 Hydration</div>
+            <ul>
+                <li><input type="checkbox"> 💧 Crystal Light #1</li>
+                <li><input type="checkbox"> 💧 Crystal Light #2</li>
+                <li><input type="checkbox"> 💧 Crystal Light #3</li>
+                <li><input type="checkbox"> 💧 Crystal Light #4</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            ✅ 2–3L water/day • ✅ Protein • ✅ Fiber • ✅ Fruits & Veggies • ✅ Healthy fats • ✅ Clean carbs
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('li');
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

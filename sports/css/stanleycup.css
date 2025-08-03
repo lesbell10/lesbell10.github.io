@@ -1,0 +1,141 @@
+html, body {
+  overflow-x: hidden;
+}
+.container {
+    max-width: 100vw;
+}
+
+
+/* .row .logo {
+    font-family: bilbo;
+    font-size: 60px;
+    margin-left: 50px;
+}
+
+.menu li a {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: orange !important;
+}
+
+.menu li a:hover {
+    color: white !important;
+    background-color: orange !important;
+} */
+
+.sub-header h1, .sub-header p {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    color: black;
+    max-width: 95%;
+}
+
+img {
+    width: 360px;
+}
+
+    .sub-header p {
+        width: 105%;
+    }
+
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 32px;
+    position: absolute;
+    right: 15px;
+    top:10px;
+}
+
+@media (max-width: 670px) {
+.header .container {
+    max-width: 100vw;
+}
+
+div.row {
+    margin-bottom: 5%;
+}
+
+.menu ul {
+          display: flex;
+        flex-direction: column;
+     }
+
+    .menu ul li a {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+     .menu.active ul li a {
+        display: block;
+        cursor: pointer;
+        min-width: 200%;
+        font-size: 16px;
+        margin-top: 10%;
+        margin-left: 100%;
+        padding: 1.5%;
+        text-align: center;
+        color: orange;
+    }
+
+    .menu.active {
+        transform: translateX(-300px);
+        transition: transform 0.5s ease;
+    } 
+
+    article {
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+    }
+
+.info p {
+    font-size: 16px;
+    color: black;
+    min-width: 150%;
+}
+    .sub-header p {
+        width: 105%;
+        line-height: 100%;
+        font-size: 20px;
+    }
+
+    .art-header {
+        min-width: 150%;
+    }
+
+    article p {
+        min-width: 150%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .container {
+    max-width: 100vw;
+}
+    .menu.active ul li a {
+        margin-left: 150%;
+        width: 100%;
+    }
+    .row .logo {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+}

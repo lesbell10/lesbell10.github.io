@@ -4811,3 +4811,13 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
     visibility: visible;
   }
 }
+
+/* ***********************main************************ */
+
+ .post.featured p {
+  font-size: 32px !important
+}
+
+.posts p {
+  font-weight: bold;
+}
