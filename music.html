@@ -111,20 +111,6 @@
                 div.textContent = track.title;
                 if (track.selected) div.classList.add("selected");
 
-                // 🗑️ Add delete button
-                const delBtn = document.createElement("button");
-                delBtn.textContent = "Delete";
-                delBtn.style.marginLeft = "10px";
-                delBtn.addEventListener("click", (e) => {
-                    e.stopPropagation(); // stop from toggling selection
-                    deleteTrack(track.id, div);
-                });
-
-                div.appendChild(delBtn);
-                div.addEventListener("click", () => toggle(div));
-                list.appendChild(div);
-            });
-
 
             // Toggle selection
             async function toggle(el) {
@@ -134,17 +120,6 @@
 
                 await supabase.from("tracks").update({ selected: newVal }).eq("id", id);
                 el.classList.toggle("selected", newVal);
-            }
-
-            // Delete track
-            async function deleteTrack(id, el) {
-                const { error } = await supabase.from("tracks").delete().eq("id", id);
-                if (error) {
-                    console.error("Delete error:", error);
-                    alert("Could not delete track");
-                } else {
-                    el.remove(); // remove from DOM
-                }
             }
 
             // Reset all
