@@ -186,13 +186,21 @@
         resetBtn.addEventListener('click', async () => {
             resetBtn.disabled = true;
             setStatus('Resetting…');
-            const { error } = await supabase.from('tracks').update({ selected: false });
+
+            // ✅ Supabase requires a filter on UPDATE; use a catch‑all filter
+            const { error } = await supabase
+                .from('tracks')
+                .update({ selected: false })
+                .not('id', 'is', null); // applies to all rows
+
             if (error) {
                 console.error('Reset failed:', error);
                 setStatus('Reset failed. Check console.');
                 resetBtn.disabled = false;
                 return;
             }
+
+            // Repaint UI
             document.querySelectorAll('.item.selected').forEach(el => el.classList.remove('selected'));
             setStatus('All selections cleared.');
             setTimeout(() => setStatus(''), 1500);
