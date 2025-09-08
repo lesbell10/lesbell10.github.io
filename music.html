@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Track Picker (Supabase)</title>
     <style>
+        :root {
+            --accent: #e11d48;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: #fafafa;
@@ -24,6 +32,7 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         button {
@@ -33,10 +42,21 @@
             cursor: pointer;
             background: #fff;
             font-size: 24px;
+            transition: .15s;
         }
 
         button:hover {
             background: #eee;
+        }
+
+        button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        #status {
+            font-size: 18px;
+            color: #666;
         }
 
         #list {
@@ -60,14 +80,18 @@
         }
 
         .item.selected {
-            background: #e11d48;
+            background: var(--accent);
             color: #fff;
-            border-color: #e11d48;
+            border-color: var(--accent);
         }
 
         .note {
             color: #666;
-            font-size: 24px;
+            font-size: 20px;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -76,59 +100,107 @@
     <h1>Music for Project</h1>
     <div class="actions">
         <button id="resetBtn">Reset</button>
-        <span class="note">Click to toggle red. Selections are saved in Supabase.</span>
+        <span class="note">Click a card to toggle red. Selections are saved in Supabase.</span>
+        <span id="status" class="hidden"></span>
     </div>
 
-    <div id="list"></div>
+    <div id="list" aria-live="polite"></div>
 
     <script type="module">
         import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-        // 🔗 Replace with your own Supabase project URL + anon key
+        // ✅ Replace with your own Supabase project URL + anon key
         const SUPABASE_URL = "https://gxaslanfvezjrlrqkjli.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4YXNsYW5mdmV6anJscnFramxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4MTk4NTgsImV4cCI6MjA3MjM5NTg1OH0.BHPAA7Wpt9kk75pdp17xXAGKt2NtG8yCT4iiWwMy3_g";
         const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        document.addEventListener("DOMContentLoaded", async () => {
-            const list = document.getElementById("list");
+        const list = document.getElementById("list");
+        const resetBtn = document.getElementById("resetBtn");
+        const statusEl = document.getElementById("status");
 
-            // Fetch tracks
-            let { data: tracks, error } = await supabase
-                .from("tracks")
-                .select("*")
-                .order("title", { ascending: true });
+        function setStatus(msg) {
+            if (!msg) { statusEl.classList.add('hidden'); statusEl.textContent = ''; return; }
+            statusEl.textContent = msg;
+            statusEl.classList.remove('hidden');
+        }
+
+        async function loadTracks() {
+            setStatus('Loading…');
+            list.innerHTML = '';
+            const { data: tracks, error } = await supabase
+                .from('tracks')
+                .select('*')
+                .order('title', { ascending: true });
 
             if (error) {
-                console.error("Error loading tracks:", error);
+                console.error('Error loading tracks:', error);
+                setStatus('Error loading tracks. Check console.');
                 return;
             }
 
-            // Render track items
-            tracks.forEach(track => {
-                const div = document.createElement("div");
-                div.className = "item";
+            const frag = document.createDocumentFragment();
+            for (const track of tracks) {
+                const div = document.createElement('div');
+                div.className = 'item' + (track.selected ? ' selected' : '');
                 div.dataset.id = track.id;
+                div.dataset.selected = String(!!track.selected);
                 div.textContent = track.title;
-                if (track.selected) div.classList.add("selected");
-            });
-
-
-            // Toggle selection
-            async function toggle(el) {
-                const id = Number(el.dataset.id);
-                const isSelected = el.classList.contains("selected");
-                const newVal = !isSelected;
-
-                await supabase.from("tracks").update({ selected: newVal }).eq("id", id);
-                el.classList.toggle("selected", newVal);
+                frag.appendChild(div);
             }
+            list.appendChild(frag);
+            setStatus('');
+        }
 
-            // Reset all
-            document.getElementById("resetBtn").addEventListener("click", async () => {
-                await supabase.from("tracks").update({ selected: false });
-                document.querySelectorAll(".item.selected").forEach(el => el.classList.remove("selected"));
-            });
+        async function toggle(el) {
+            if (!el?.classList.contains('item')) return;
+            const id = Number(el.dataset.id);
+            const isSelected = el.classList.contains('selected');
+            const newVal = !isSelected;
+
+            // Optimistic UI
+            el.classList.toggle('selected', newVal);
+            el.dataset.selected = String(newVal);
+
+            const { error } = await supabase
+                .from('tracks')
+                .update({ selected: newVal })
+                .eq('id', id);
+
+            if (error) {
+                console.error('Update failed:', error);
+                // revert on error
+                el.classList.toggle('selected', isSelected);
+                el.dataset.selected = String(isSelected);
+                setStatus('Could not save. Try again.');
+                return;
+            }
+        }
+
+        // Event delegation for clicks
+        list.addEventListener('click', (e) => {
+            const card = e.target.closest('.item');
+            toggle(card);
         });
+
+        // Reset all selections
+        resetBtn.addEventListener('click', async () => {
+            resetBtn.disabled = true;
+            setStatus('Resetting…');
+            const { error } = await supabase.from('tracks').update({ selected: false });
+            if (error) {
+                console.error('Reset failed:', error);
+                setStatus('Reset failed. Check console.');
+                resetBtn.disabled = false;
+                return;
+            }
+            document.querySelectorAll('.item.selected').forEach(el => el.classList.remove('selected'));
+            setStatus('All selections cleared.');
+            setTimeout(() => setStatus(''), 1500);
+            resetBtn.disabled = false;
+        });
+
+        // Initial load
+        loadTracks();
     </script>
 </body>
 
