@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Track Picker (Supabase)</title>
-    <link rel="icon" href="https://images.emojiterra.com/google/android-10/512px/1f3a7.png" type="image/x-icon" />
+    <title>Category Picker (Supabase)</title>
+    <link rel="icon" href="https://images.emojiterra.com/google/android-10/512px/1f408.png" type="image/x-icon" />
     <style>
         :root {
             --accent: #e11d48;
@@ -61,19 +61,25 @@
         }
 
         #list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 0 auto;
+           max-width: 20%;
+           font-size: 65px;
+            text-transform: uppercase;
         }
 
         .item {
             padding: 10px;
+            margin: 10px;
             background: #fff;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 20px;
             cursor: pointer;
             transition: .15s;
             user-select: none;
+            border: 3px solid black;
         }
 
         .item:hover {
@@ -98,7 +104,7 @@
 </head>
 
 <body>
-    <h1>Music for Project</h1>
+    <h1>Categories for Project</h1>
     <div class="actions">
         <button id="resetBtn">Reset</button>
         <span class="note">Click a card to toggle red. Selections are saved in Supabase.</span>
@@ -125,27 +131,27 @@
             statusEl.classList.remove('hidden');
         }
 
-        async function loadTracks() {
+        async function loadCats() {
             setStatus('Loading…');
             list.innerHTML = '';
-            const { data: tracks, error } = await supabase
-                .from('tracks')
+            const { data: cats, error } = await supabase
+                .from('cats')   // 🔴 changed table name
                 .select('*')
-                .order('title', { ascending: true });
+             .order('sort_order', { ascending: true })  // 🔴 now using manual order
 
             if (error) {
-                console.error('Error loading tracks:', error);
-                setStatus('Error loading tracks. Check console.');
+                console.error('Error loading categories:', error);
+                setStatus('Error loading categories. Check console.');
                 return;
             }
 
             const frag = document.createDocumentFragment();
-            for (const track of tracks) {
+            for (const cat of cats) {
                 const div = document.createElement('div');
-                div.className = 'item' + (track.selected ? ' selected' : '');
-                div.dataset.id = track.id;
-                div.dataset.selected = String(!!track.selected);
-                div.textContent = track.title;
+                div.className = 'item' + (cat.selected ? ' selected' : '');
+                div.dataset.id = cat.id;
+                div.dataset.selected = String(!!cat.selected);
+                div.textContent = cat.title;   // 🔴 still using title column
                 frag.appendChild(div);
             }
             list.appendChild(frag);
@@ -163,7 +169,7 @@
             el.dataset.selected = String(newVal);
 
             const { error } = await supabase
-                .from('tracks')
+                .from('cats')   // 🔴 changed table name
                 .update({ selected: newVal })
                 .eq('id', id);
 
@@ -188,9 +194,8 @@
             resetBtn.disabled = true;
             setStatus('Resetting…');
 
-            // ✅ Supabase requires a filter on UPDATE; use a catch‑all filter
             const { error } = await supabase
-                .from('tracks')
+                .from('cats')   // 🔴 changed table name
                 .update({ selected: false })
                 .not('id', 'is', null); // applies to all rows
 
@@ -209,7 +214,7 @@
         });
 
         // Initial load
-        loadTracks();
+        loadCats();
     </script>
 </body>
 
