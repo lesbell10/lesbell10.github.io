@@ -6,9 +6,13 @@
   <title>Todo List</title>
   <style>
     /* ===== Base ===== */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: "Poppins", sans-serif;
-      background: radial-gradient(circle at top, #121212, #000);
+      background: radial-gradient(circle at top, #0d0d0d, #000);
       color: #fff;
       margin: 0;
       padding: 0;
@@ -20,51 +24,53 @@
 
     /* ===== Header ===== */
     h1 {
-      margin-top: 50px;
-      font-size: 2.5em;
+      margin-top: 40px;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
       background: linear-gradient(90deg, #00f5ff, #00ff85);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-transform: uppercase;
       letter-spacing: 2px;
+      text-align: center;
     }
 
     /* ===== Container ===== */
     .todo-container {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(10px);
       box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
-      padding: 20px 25px;
+      padding: 20px;
       border-radius: 15px;
       width: 90%;
-      max-width: 400px;
-      margin-top: 30px;
+      max-width: 420px;
+      margin: 25px auto;
     }
 
     /* ===== Input + Button Row ===== */
     .input-row {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     input {
       flex: 1;
-      padding: 10px 15px;
+      padding: 12px 15px;
       border: none;
       border-radius: 8px;
       background: #1f1f1f;
       color: white;
-      font-size: 1em;
+      font-size: 1rem;
       outline: none;
       transition: 0.3s;
     }
 
     input:focus {
-      box-shadow: 0 0 8px #00ffb3;
+      box-shadow: 0 0 10px #00ffb3;
     }
 
     button {
-      padding: 10px 15px;
+      padding: 12px 15px;
       border: none;
       border-radius: 8px;
       background: linear-gradient(90deg, #00c6ff, #0072ff);
@@ -72,6 +78,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
+      flex-shrink: 0;
     }
 
     button:hover {
@@ -79,22 +86,29 @@
       box-shadow: 0 0 10px #00aaff;
     }
 
+    button:active {
+      transform: scale(0.97);
+    }
+
     /* ===== List Styling ===== */
     ul {
       list-style: none;
       margin-top: 15px;
       padding: 0;
+      max-height: 60vh;
+      overflow-y: auto;
     }
 
     li {
-      background: rgba(255, 255, 255, 0.07);
-      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 12px 15px;
       border-radius: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       transition: 0.3s;
+      word-break: break-word;
     }
 
     li:hover {
@@ -111,10 +125,10 @@
       background: linear-gradient(90deg, #ff416c, #ff4b2b);
       border: none;
       border-radius: 6px;
-      padding: 5px 10px;
+      padding: 6px 10px;
       cursor: pointer;
       color: white;
-      font-size: 0.8em;
+      font-size: 0.85em;
       transition: 0.3s;
     }
 
@@ -123,7 +137,6 @@
       box-shadow: 0 0 10px #ff4b2b;
     }
 
-    /* ===== Fade Animation ===== */
     .fade-in {
       animation: fadeIn 0.4s ease forwards;
     }
@@ -139,6 +152,39 @@
       }
     }
 
+    /* ===== Scrollbar (Mobile friendly) ===== */
+    ul::-webkit-scrollbar {
+      width: 6px;
+    }
+    ul::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+
+    /* ===== Mobile Optimization ===== */
+    @media (max-width: 480px) {
+      .todo-container {
+        padding: 15px;
+      }
+
+      input {
+        font-size: 0.95rem;
+      }
+
+      button {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+
+      li {
+        font-size: 0.95rem;
+      }
+
+      .delete-btn {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
