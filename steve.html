@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <style>
+    /* ===== Base ===== */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #121212, #000);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ===== Header ===== */
+    h1 {
+      margin-top: 50px;
+      font-size: 2.5em;
+      background: linear-gradient(90deg, #00f5ff, #00ff85);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ===== Container ===== */
+    .todo-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+      padding: 20px 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      margin-top: 30px;
+    }
+
+    /* ===== Input + Button Row ===== */
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #1f1f1f;
+      color: white;
+      font-size: 1em;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      box-shadow: 0 0 8px #00ffb3;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00aaff;
+    }
+
+    /* ===== List Styling ===== */
+    ul {
+      list-style: none;
+      margin-top: 15px;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.07);
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    li:hover {
+      transform: translateX(4px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .delete-btn {
+      background: linear-gradient(90deg, #ff416c, #ff4b2b);
+      border: none;
+      border-radius: 6px;
+      padding: 5px 10px;
+      cursor: pointer;
+      color: white;
+      font-size: 0.8em;
+      transition: 0.3s;
+    }
+
+    .delete-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #ff4b2b;
+    }
+
+    /* ===== Fade Animation ===== */
+    .fade-in {
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Steve Todos</h1>
+
+  <div class="todo-container">
+    <div class="input-row">
+      <input type="text" id="input" placeholder="Add a new todo..." />
+      <button id="add">Add</button>
+    </div>
+
+    <ul id="list"></ul>
+  </div>
+
+  <script>
+    const input = document.getElementById("input");
+    const add = document.getElementById("add");
+    const list = document.getElementById("list");
+
+    function createTodoItem(text) {
+      const li = document.createElement("li");
+      li.classList.add("fade-in");
+      li.innerHTML = `
+        <span>${text}</span>
+        <button class="delete-btn">X</button>
+      `;
+      list.appendChild(li);
+    }
+
+    add.addEventListener("click", () => {
+      const todo = input.value.trim();
+      if (todo !== "") {
+        createTodoItem(todo);
+        input.value = "";
+      }
+    });
+
+    input.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") add.click();
+    });
+
+    list.addEventListener("click", (event) => {
+      if (event.target.tagName === "SPAN") {
+        event.target.classList.toggle("completed");
+      }
+      if (event.target.classList.contains("delete-btn")) {
+        event.target.parentElement.remove();
+      }
+    });
+  </script>
+</body>
+</html>
