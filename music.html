@@ -108,7 +108,7 @@
     <div id="list" aria-live="polite"></div>
 
     <script type="module">
-        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
         // ✅ Replace with your own Supabase project URL + anon key
         const SUPABASE_URL = "https://gxaslanfvezjrlrqkjli.supabase.co";
@@ -166,7 +166,7 @@
                 .from('tracks')
                 .update({ selected: newVal })
                 .eq('id', id);
-
+`
             if (error) {
                 console.error('Update failed:', error);
                 // revert on error
