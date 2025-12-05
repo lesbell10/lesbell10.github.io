@@ -166,7 +166,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
                 .from('tracks')
                 .update({ selected: newVal })
                 .eq('id', id);
-`
+
             if (error) {
                 console.error('Update failed:', error);
                 // revert on error
