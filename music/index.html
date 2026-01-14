@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My YouTube Music</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --reset-color: #2ecc71;
+            --active-color: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: underline; /* Underlined title */
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .music-btn {
+            width: 600px;
+            height: 80px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 100px;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 32px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .music-btn.active {
+            background-color: var(--active-color);
+            border-color: var(--active-color);
+        }
+
+        .reset-btn {
+            background-color: var(--reset-color);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 40px;
+            transition: transform 0.2s;
+        }
+
+        .reset-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 500px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My YouTube Music</h1>
+
+    <div class="grid-container">
+        <button class="music-btn" data-id="1">Faint - Anno Domini Beats</button>
+        <button class="music-btn" data-id="2">Future - Anno Domini Beats</button>
+        <button class="music-btn" data-id="3">Glitter and Gold - Patrick Patrikios</button>
+        <button class="music-btn" data-id="4">Like That - Anno Domini Beats</button>
+        <button class="music-btn" data-id="5">Never Play - Jeremy Blake</button>
+        <button class="music-btn" data-id="6">Pila Pala Paradise - Rachel K Collier</button>
+    </div>
+
+    <button class="reset-btn" id="reset">RESET</button>
+
+    <script>
+        const buttons = document.querySelectorAll('.music-btn');
+        const resetBtn = document.getElementById('reset');
+
+        // Load data from localStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            buttons.forEach(btn => {
+                const id = btn.getAttribute('data-id');
+                const savedState = localStorage.getItem(`yt_music_btn_${id}`);
+                if (savedState === 'active') {
+                    btn.classList.add('active');
+                }
+            });
+        });
+
+        // Toggle and Save
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+                const id = btn.getAttribute('data-id');
+                
+                if (btn.classList.contains('active')) {
+                    localStorage.setItem(`yt_music_btn_${id}`, 'active');
+                } else {
+                    localStorage.removeItem(`yt_music_btn_${id}`);
+                }
+            });
+        });
+
+        // Reset and Clear Storage
+        resetBtn.addEventListener('click', () => {
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                const id = btn.getAttribute('data-id');
+                localStorage.removeItem(`yt_music_btn_${id}`);
+            });
+        });
+    </script>
+
+</body>
+</html>
