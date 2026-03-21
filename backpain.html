@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workout Plan</title>
+  <style>
+    :root {
+      --bg-1: #07131d;
+      --bg-2: #0f2a3a;
+      --bg-3: #123f47;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-border: rgba(255, 255, 255, 0.16);
+      --text: #f6fbff;
+      --muted: #c6d6df;
+      --accent: #ffd166;
+      --accent-2: #72e4ff;
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(114, 228, 255, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255, 209, 102, 0.18), transparent 30%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+    }
+
+    .card {
+      width: min(1400px, 100%);
+      padding: 42px;
+      border-radius: 36px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
+      line-height: 1.7;
+      max-width: 900px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .block {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .time {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 209, 102, 0.14);
+      color: var(--accent);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1;
+    }
+
+    .rounds {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    li {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: clamp(1.25rem, 2.2vw, 2rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 14px;
+      }
+
+      .card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .block {
+        padding: 20px;
+      }
+
+      li {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <p class="eyebrow">30-Min Follow-Along</p>
+      <h1>No Lower Back Burn</h1>
+      <p class="subtitle">Big clean layout for your workout plan: warm-up, HIIT, and abs.</p>
+
+      <div class="grid">
+        <article class="block">
+          <div class="time">0:00 - 5:00</div>
+          <h2>Warm-Up</h2>
+          <p class="rounds">1 round</p>
+          <ul>
+            <li>Cat-Cow</li>
+            <li>Arm Circles</li>
+            <li>Torso Twists</li>
+            <li>Hip Hinge Drill</li>
+            <li>Dead Bug Hold</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <div class="time">5:00 - 20:00</div>
+          <h2>HIIT</h2>
+          <p class="rounds">3 rounds</p>
+          <ul>
+            <li>Knee Drive</li>
+            <li>Woodchop (Light)</li>
+            <li>Overhead Knee Raise</li>
+            <li>Stance Rotation</li>
+            <li>Bodyweight Squats</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <div class="time">20:00 - 30:00</div>
+          <h2>Abs</h2>
+          <p class="rounds">2 rounds</p>
+          <ul>
+            <li>Reverse Crunch</li>
+            <li>Heel Taps</li>
+            <li>Plank</li>
+            <li>Hollow Hold</li>
+            <li>Side Plank</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
