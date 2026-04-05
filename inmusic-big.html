@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Track Picker (BIG)</title>
-    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT24ZNvZi2ZHpSKhbEQCJzW0S6ImR3BnNk3wg&s" type="image/png" />
+    <link rel="icon" href="https://images.emojiterra.com/google/android-10/512px/1f3a7.png" type="image/x-icon" />
     <style>
         :root {
             --accent: #e11d48;
@@ -132,14 +132,25 @@
         }
 
         async function readTracks() {
+            const seedTracks = await readSeedData();
             const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                return JSON.parse(saved);
+
+            if (!saved) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(seedTracks));
+                return seedTracks;
             }
 
-            const tracks = await readSeedData();
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(tracks));
-            return tracks;
+            const savedTracks = JSON.parse(saved);
+            const savedMap = new Map(savedTracks.map((track) => [track.id, track]));
+            const mergedTracks = seedTracks.map((track) => {
+                const savedTrack = savedMap.get(track.id);
+                return savedTrack
+                    ? { ...track, selected: Boolean(savedTrack.selected) }
+                    : track;
+            });
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(mergedTracks));
+            return mergedTracks;
         }
 
         function saveTracks(tracks) {
