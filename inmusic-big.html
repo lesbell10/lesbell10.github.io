@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Track Picker (Local CRUD)</title>
+    <title>Track Picker (BIG)</title>
     <link rel="icon" href="https://images.emojiterra.com/google/android-10/512px/1f3a7.png" type="image/x-icon" />
     <style>
         :root {
@@ -106,7 +106,7 @@
     <div id="list" aria-live="polite"></div>
 
     <script type="module">
-        const STORAGE_KEY = "track-picker-local-crud";
+        const STORAGE_KEY = "track-picker-local-crud-big";
         const list = document.getElementById("list");
         const resetBtn = document.getElementById("resetBtn");
         const statusEl = document.getElementById("status");
@@ -123,9 +123,9 @@
         }
 
         async function readSeedData() {
-            const response = await fetch("./tracks.json");
+            const response = await fetch("./tracks-big.json");
             if (!response.ok) {
-                throw new Error("Could not load tracks.json");
+                throw new Error("Could not load tracks-big.json");
             }
 
             return response.json();
@@ -166,13 +166,13 @@
                 const frag = document.createDocumentFragment();
 
                 shuffleTracks(tracks).forEach((track) => {
-                        const div = document.createElement("div");
-                        div.className = "item" + (track.selected ? " selected" : "");
-                        div.dataset.id = String(track.id);
-                        div.dataset.selected = String(Boolean(track.selected));
-                        div.textContent = track.title;
-                        frag.appendChild(div);
-                    });
+                    const div = document.createElement("div");
+                    div.className = "item" + (track.selected ? " selected" : "");
+                    div.dataset.id = String(track.id);
+                    div.dataset.selected = String(Boolean(track.selected));
+                    div.textContent = track.title;
+                    frag.appendChild(div);
+                });
 
                 list.appendChild(frag);
                 setStatus("");
