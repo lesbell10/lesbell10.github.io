@@ -123,9 +123,9 @@
         }
 
         async function readSeedData() {
-            const response = await fetch("./techtracks.json");
+            const response = await fetch("./longer.json");
             if (!response.ok) {
-                throw new Error("Could not load techtracks.json");
+                throw new Error("Could not load longer.json");
             }
 
             return response.json();
