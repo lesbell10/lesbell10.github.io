@@ -123,7 +123,7 @@
         }
 
         async function readSeedData() {
-            const response = await fetch("./longer.json");
+            const response = await fetch("longer.json");
             if (!response.ok) {
                 throw new Error("Could not load longer.json");
             }
