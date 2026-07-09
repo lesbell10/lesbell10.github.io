@@ -1,0 +1,58 @@
+.sports-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.sport-column {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.sport-column h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.project-card {
+    display: block;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0, 255, 120, 0.35);
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
+
+.project-card h3 {
+    font-size: 1rem;
+    margin-top: 0.7rem;
+    color: white;
+}
+
+/* Mobile */
+@media screen and (max-width: 980px) {
+    .sports-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card img {
+        height: auto;
+    }
+}

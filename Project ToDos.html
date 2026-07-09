@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Todo Card</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #111827, #1e293b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .todo-card {
+            width: 90%;
+            max-width: 1000px;
+            background: #0f172a;
+            border-radius: 35px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+            border: 3px solid rgba(255, 255, 255, 0.12);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 52px;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+        }
+
+        .todo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .todo {
+            background: red;
+            color: white;
+            font-size: 34px;
+            font-weight: 900;
+            padding: 22px 28px;
+            border-radius: 22px;
+            cursor: text;
+            user-select: text;
+            outline: none;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            transition: 0.25s ease;
+        }
+
+        .todo:hover {
+            transform: scale(1.015);
+            cursor: text;
+        }
+
+        .todo:active {
+            cursor: text;
+        }
+
+        .todo[contenteditable="true"]:focus {
+            outline: 4px solid white;
+        }
+
+        .dragging {
+            opacity: 0.45;
+            transform: scale(0.95);
+        }
+
+        .hint {
+            color: #cbd5e1;
+            text-align: center;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 700px) {
+            .todo-card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .todo {
+                font-size: 26px;
+                padding: 18px 22px;
+            }
+
+            .hint {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="todo-card" id="todoCard">
+        <h1>TODO LIST</h1>
+
+        <div class="todo-list" id="todoList">
+            <div class="todo" contenteditable="true" draggable="true">Create Italy Thumbnail</div>
+            <div class="todo" contenteditable="true" draggable="true">Upload Football Short</div>
+            <div class="todo" contenteditable="true" draggable="true">Edit Squad Lineup</div>
+            <div class="todo" contenteditable="true" draggable="true">Check YouTube Analytics</div>
+            <div class="todo" contenteditable="true" draggable="true">Make Portugal Video</div>
+            <div class="todo" contenteditable="true" draggable="true">Design New Banner</div>
+            <div class="todo" contenteditable="true" draggable="true">Write Video Description</div>
+            <div class="todo" contenteditable="true" draggable="true">Prepare Player List</div>
+            <div class="todo" contenteditable="true" draggable="true">Post Next Short</div>
+            <div class="todo" contenteditable="true" draggable="true">Review Best Titles</div>
+        </div>
+
+        <p class="hint">Click to edit • Double click to change color • Drag outside card to remove</p>
+    </div>
+
+    <script>
+        const todoCard = document.getElementById("todoCard");
+        const todos = document.querySelectorAll(".todo");
+
+        todos.forEach(todo => {
+            todo.dataset.colorStep = "red";
+
+            todo.addEventListener("dblclick", () => {
+                if (todo.dataset.colorStep === "red") {
+                    todo.style.background = "blue";
+                    todo.dataset.colorStep = "blue";
+                } 
+                else if (todo.dataset.colorStep === "blue") {
+                    todo.style.background = "green";
+                    todo.dataset.colorStep = "green";
+                } 
+                else {
+                    todo.style.background = "red";
+                    todo.dataset.colorStep = "red";
+                }
+            });
+
+            todo.addEventListener("dragstart", () => {
+                todo.classList.add("dragging");
+            });
+
+            todo.addEventListener("dragend", event => {
+                todo.classList.remove("dragging");
+
+                const cardBox = todoCard.getBoundingClientRect();
+
+                const droppedOutside =
+                    event.clientX < cardBox.left ||
+                    event.clientX > cardBox.right ||
+                    event.clientY < cardBox.top ||
+                    event.clientY > cardBox.bottom;
+
+                if (droppedOutside) {
+                  todo.remove();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
