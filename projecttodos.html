@@ -47,30 +47,59 @@
         }
 
         .todo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             background: red;
             color: white;
             font-size: 34px;
             font-weight: 900;
             padding: 22px 28px;
             border-radius: 22px;
-            cursor: text;
-            user-select: text;
-            outline: none;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
             transition: 0.25s ease;
         }
 
         .todo:hover {
             transform: scale(1.015);
-            cursor: text;
         }
 
-        .todo:active {
+        .todo-text {
+            flex: 1;
+            min-width: 0;
             cursor: text;
+            user-select: text;
+            outline: none;
         }
 
-        .todo[contenteditable="true"]:focus {
+        .todo-text:focus {
             outline: 4px solid white;
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        .delete-btn {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .delete-btn:hover {
+            background: #111;
+            transform: scale(1.08);
+        }
+
+        .delete-btn:active {
+            transform: scale(0.96);
         }
 
         .dragging {
@@ -99,6 +128,13 @@
                 padding: 18px 22px;
             }
 
+            .delete-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 26px;
+                border-radius: 12px;
+            }
+
             .hint {
                 font-size: 16px;
             }
@@ -108,44 +144,111 @@
 <body>
 
     <div class="todo-card" id="todoCard">
-        <h1>TODO LISTSSSSS</h1>
+        <h1>FIFA | NHL | NBA</h1>
 
-        <div class="todo-list" id="todoList">
-            <div class="todo" contenteditable="true">Create Italy Thumbnail</div>
-            <div class="todo" contenteditable="true">Upload Football Short</div>
-            <div class="todo" contenteditable="true">Edit Squad Lineup</div>
-            <div class="todo" contenteditable="true">Check YouTube Analytics</div>
-            <div class="todo" contenteditable="true">Make Portugal Video</div>
-            <div class="todo" contenteditable="true">Design New Banner</div>
-            <div class="todo" contenteditable="true">Write Video Description</div>
-            <div class="todo" contenteditable="true">Prepare Player List</div>
-            <div class="todo" contenteditable="true">Post Next Short</div>
-            <div class="todo" contenteditable="true">Review Best Titles</div>
-        </div>
+        <div class="todo-list" id="todoList"></div>
 
-        <p class="hint">Click to edit • Double click to change color • Drag outside card to remove</p>
+        <p class="hint">Click to edit • Enter to add below • Double click to change color • Press × to delete</p>
     </div>
 
     <script>
+        const STORAGE_KEY = "projectTodos";
         const todoCard = document.getElementById("todoCard");
-        const todos = document.querySelectorAll(".todo");
+        const todoList = document.getElementById("todoList");
 
-        todos.forEach(todo => {
-            todo.dataset.colorStep = "red";
+        const DEFAULT_TODOS = [
+            { text: "Create Italy Thumbnail", color: "red" },
+            { text: "Upload Football Short", color: "red" },
+            { text: "Edit Squad Lineup", color: "red" },
+            { text: "Check YouTube Analytics", color: "red" },
+            { text: "Make Portugal Video", color: "red" },
+            { text: "Design New Banner", color: "red" },
+            { text: "Write Video Description", color: "red" },
+            { text: "Prepare Player List", color: "red" },
+            { text: "Post Next Short", color: "red" },
+            { text: "Review Best Titles", color: "red" }
+        ];
 
-            todo.addEventListener("dblclick", () => {
+        function applyColor(todo, color) {
+            const next = color || "red";
+            todo.dataset.colorStep = next;
+            todo.style.background = next;
+        }
+
+        function saveTodos() {
+            const todos = [...todoList.querySelectorAll(".todo")].map(todo => ({
+                text: todo.querySelector(".todo-text").textContent.trim(),
+                color: todo.dataset.colorStep || "red"
+            }));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+        }
+
+        function loadTodos() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                if (Array.isArray(saved) && saved.length) return saved;
+            } catch (error) {}
+            return DEFAULT_TODOS;
+        }
+
+        function createTodo(text = "", color = "red") {
+            const todo = document.createElement("div");
+            todo.className = "todo";
+            todo.innerHTML = `
+                <span class="todo-text" contenteditable="true"></span>
+                <button class="delete-btn" type="button" aria-label="Delete todo">×</button>
+            `;
+            todo.querySelector(".todo-text").textContent = text;
+            applyColor(todo, color);
+            setupTodo(todo);
+            return todo;
+        }
+
+        function setupTodo(todo) {
+            if (todo.dataset.setup) return;
+            todo.dataset.setup = "true";
+            if (!todo.dataset.colorStep) applyColor(todo, "red");
+
+            const textEl = todo.querySelector(".todo-text");
+            const deleteBtn = todo.querySelector(".delete-btn");
+
+            deleteBtn.addEventListener("click", () => {
+                todo.remove();
+                saveTodos();
+            });
+
+            todo.addEventListener("dblclick", event => {
+                if (event.target.closest(".delete-btn")) return;
+
                 if (todo.dataset.colorStep === "red") {
-                    todo.style.background = "blue";
-                    todo.dataset.colorStep = "blue";
-                } 
-                else if (todo.dataset.colorStep === "blue") {
-                    todo.style.background = "green";
-                    todo.dataset.colorStep = "green";
-                } 
-                else {
-                    todo.style.background = "red";
-                    todo.dataset.colorStep = "red";
+                    applyColor(todo, "blue");
+                } else if (todo.dataset.colorStep === "blue") {
+                    applyColor(todo, "green");
+                } else {
+                    applyColor(todo, "red");
                 }
+                saveTodos();
+            });
+
+            textEl.addEventListener("input", saveTodos);
+
+            textEl.addEventListener("keydown", event => {
+                if (event.key !== "Enter") return;
+                event.preventDefault();
+
+                const newTodo = createTodo("");
+                todo.after(newTodo);
+                saveTodos();
+
+                const newText = newTodo.querySelector(".todo-text");
+                newText.focus();
+
+                const range = document.createRange();
+                range.selectNodeContents(newText);
+                range.collapse(true);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
             });
 
             todo.addEventListener("dragstart", () => {
@@ -156,7 +259,6 @@
                 todo.classList.remove("dragging");
 
                 const cardBox = todoCard.getBoundingClientRect();
-
                 const droppedOutside =
                     event.clientX < cardBox.left ||
                     event.clientX > cardBox.right ||
@@ -164,9 +266,14 @@
                     event.clientY > cardBox.bottom;
 
                 if (droppedOutside) {
-                  todo.remove();
+                    todo.remove();
+                    saveTodos();
                 }
             });
+        }
+
+        loadTodos().forEach(({ text, color }) => {
+            todoList.appendChild(createTodo(text, color));
         });
     </script>
 
