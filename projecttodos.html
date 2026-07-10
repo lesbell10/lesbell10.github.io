@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editable Todo Card</title>
+    <title>Project ToDos</title>
 
     <style>
         * {
@@ -58,10 +59,17 @@
             border-radius: 22px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
             transition: 0.25s ease;
+            cursor: grab;
         }
 
         .todo:hover {
             transform: scale(1.015);
+        }
+
+        .todo.dragging {
+            opacity: 0.45;
+            transform: scale(0.95);
+            cursor: grabbing;
         }
 
         .todo-text {
@@ -102,11 +110,6 @@
             transform: scale(0.96);
         }
 
-        .dragging {
-            opacity: 0.45;
-            transform: scale(0.95);
-        }
-
         .hint {
             color: #cbd5e1;
             text-align: center;
@@ -141,6 +144,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="todo-card" id="todoCard">
@@ -148,11 +152,12 @@
 
         <div class="todo-list" id="todoList"></div>
 
-        <p class="hint">Click to edit • Enter to add below • Double click to change color • Press × to delete</p>
+        <p class="hint">Click to edit • Enter to add below • Double click to change color • Press × to delete • Drag outside card to remove</p>
     </div>
 
     <script>
         const STORAGE_KEY = "projectTodos";
+        const COLORS = ["red", "blue", "green"];
         const todoCard = document.getElementById("todoCard");
         const todoList = document.getElementById("todoList");
 
@@ -170,7 +175,7 @@
         ];
 
         function applyColor(todo, color) {
-            const next = color || "red";
+            const next = COLORS.includes(color) ? color : "red";
             todo.dataset.colorStep = next;
             todo.style.background = next;
         }
@@ -191,9 +196,20 @@
             return DEFAULT_TODOS;
         }
 
+        function focusText(textEl) {
+            textEl.focus();
+            const range = document.createRange();
+            range.selectNodeContents(textEl);
+            range.collapse(true);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+
         function createTodo(text = "", color = "red") {
             const todo = document.createElement("div");
             todo.className = "todo";
+            todo.draggable = true;
             todo.innerHTML = `
                 <span class="todo-text" contenteditable="true"></span>
                 <button class="delete-btn" type="button" aria-label="Delete todo">×</button>
@@ -205,10 +221,6 @@
         }
 
         function setupTodo(todo) {
-            if (todo.dataset.setup) return;
-            todo.dataset.setup = "true";
-            if (!todo.dataset.colorStep) applyColor(todo, "red");
-
             const textEl = todo.querySelector(".todo-text");
             const deleteBtn = todo.querySelector(".delete-btn");
 
@@ -218,15 +230,19 @@
             });
 
             todo.addEventListener("dblclick", event => {
-                if (event.target.closest(".delete-btn")) return;
+                if (event.target.closest(".delete-btn") || event.target.closest(".todo-text")) return;
 
-                if (todo.dataset.colorStep === "red") {
-                    applyColor(todo, "blue");
-                } else if (todo.dataset.colorStep === "blue") {
-                    applyColor(todo, "green");
-                } else {
-                    applyColor(todo, "red");
-                }
+                const current = todo.dataset.colorStep || "red";
+                const next = COLORS[(COLORS.indexOf(current) + 1) % COLORS.length];
+                applyColor(todo, next);
+                saveTodos();
+            });
+
+            textEl.addEventListener("dblclick", event => {
+                event.stopPropagation();
+                const current = todo.dataset.colorStep || "red";
+                const next = COLORS[(COLORS.indexOf(current) + 1) % COLORS.length];
+                applyColor(todo, next);
                 saveTodos();
             });
 
@@ -239,19 +255,26 @@
                 const newTodo = createTodo("");
                 todo.after(newTodo);
                 saveTodos();
-
-                const newText = newTodo.querySelector(".todo-text");
-                newText.focus();
-
-                const range = document.createRange();
-                range.selectNodeContents(newText);
-                range.collapse(true);
-                const selection = window.getSelection();
-                selection.removeAllRanges();
-                selection.addRange(range);
+                focusText(newTodo.querySelector(".todo-text"));
             });
 
-            todo.addEventListener("dragstart", () => {
+            textEl.addEventListener("mousedown", () => {
+                todo.draggable = false;
+            });
+
+            textEl.addEventListener("mouseup", () => {
+                todo.draggable = true;
+            });
+
+            textEl.addEventListener("blur", () => {
+                todo.draggable = true;
+            });
+
+            todo.addEventListener("dragstart", event => {
+                if (event.target.closest(".todo-text") || event.target.closest(".delete-btn")) {
+                    event.preventDefault();
+                    return;
+                }
                 todo.classList.add("dragging");
             });
 
@@ -278,4 +301,5 @@
     </script>
 
 </body>
+
 </html>
