@@ -19,7 +19,7 @@
             background: linear-gradient(135deg, #111827, #1e293b);
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: start;
             padding: 28px;
         }
 
@@ -159,11 +159,12 @@
 
         <div class="todo-list" id="todoList"></div>
 
-        <p class="hint">lolllllllll</p>
+        <p class="hint">Click to edit • Enter to add below • Double click to change color • Press × to delete • Drag outside card to remove • At least 3 todos required</p>
     </div>
 
     <script>
         const STORAGE_KEY = "projectTodos";
+        const MIN_TODOS = 3;
         const COLORS = ["red", "blue", "green"];
         const todoCard = document.getElementById("todoCard");
         const todoList = document.getElementById("todoList");
@@ -187,11 +188,27 @@
             todo.style.background = next;
         }
 
+        function getTodoCount() {
+            return todoList.querySelectorAll(".todo").length;
+        }
+
+        function ensureMinTodos(todos) {
+            const list = Array.isArray(todos) ? [...todos] : [];
+            while (list.length < MIN_TODOS) {
+                list.push({ text: "", color: "red" });
+            }
+            return list;
+        }
+
+        function canRemoveTodo() {
+            return getTodoCount() > MIN_TODOS;
+        }
+
         function saveTodos() {
-            const todos = [...todoList.querySelectorAll(".todo")].map(todo => ({
+            const todos = ensureMinTodos([...todoList.querySelectorAll(".todo")].map(todo => ({
                 text: todo.querySelector(".todo-text").textContent.trim(),
                 color: todo.dataset.colorStep || "red"
-            }));
+            })));
             localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
         }
 
@@ -200,7 +217,7 @@
                 const raw = localStorage.getItem(STORAGE_KEY);
                 if (raw === null) return DEFAULT_TODOS;
                 const saved = JSON.parse(raw);
-                if (Array.isArray(saved)) return saved;
+                if (Array.isArray(saved)) return ensureMinTodos(saved);
             } catch (error) {}
             return DEFAULT_TODOS;
         }
@@ -234,6 +251,7 @@
             const deleteBtn = todo.querySelector(".delete-btn");
 
             deleteBtn.addEventListener("click", () => {
+                if (!canRemoveTodo()) return;
                 todo.remove();
                 saveTodos();
             });
@@ -297,7 +315,7 @@
                     event.clientY < cardBox.top ||
                     event.clientY > cardBox.bottom;
 
-                if (droppedOutside) {
+                if (droppedOutside && canRemoveTodo()) {
                     todo.remove();
                     saveTodos();
                 }
