@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="loadingOverlay" class="loading-overlay hidden" role="status" aria-live="polite">
+    <span class="loading-spinner" aria-hidden="true"></span>
+    <span class="sr-only">Loading video cards</span>
+  </div>
+
   <header class="site-header" id="top">
     <nav class="top-nav container" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Lineups10 home">
@@ -243,7 +248,7 @@
       <p class="eyebrow">3 SPORTS · THOUSANDS OF LINEUPS · ONE LIBRARY</p>
       <h1>Find the exact sports video you want.</h1>
       <p class="hero-copy">
-        Browse clubs, national teams, transfers, historic seasons, future squads, NHL teams, NBA teams, and more.
+        Browse FIFA,  NHL, NBA, clubs, national teams, transfers,<br> historic seasons, future squads, and more.
       </p>
 
       <div class="search-wrap">
@@ -259,12 +264,13 @@
       </div>
 
       <div class="hero-shortcuts" aria-label="Popular categories">
-        <button type="button" data-filter-key="football-world-cup">World Cup</button>
-        <button type="button" data-filter-key="football-transfers">Transfers</button>
-        <button type="button" data-filter-key="since-2000">Since 2000</button>
-        <button type="button" data-filter-key="year-2032">Projected 2032</button>
+        <button type="button" data-filter-key="football">FIFA &amp; Football</button>
         <button type="button" data-filter-key="hockey">NHL & Hockey</button>
         <button type="button" data-filter-key="basketball">NBA & Basketball</button>
+        <button type="button" data-filter-key="since-2000">Since 2000</button>
+        <button type="button" data-filter-key="year-2032">Projected 2032</button>
+        <button type="button" data-filter-key="football-transfers">Transfers</button>
+        <button type="button" data-filter-key="football-world-cup">World Cup</button>
       </div>
     </div>
   </section>

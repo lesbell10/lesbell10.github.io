@@ -1,6 +1,6 @@
 const CONFIG = {
   // Create an API key in Google Cloud, then paste it between the quotation marks.
-  API_KEY: "PASTE_YOUR_YOUTUBE_API_KEY_HERE",
+  API_KEY: "AIzaSyAUgER7i3ENGo9aRmDhEuz-ct_2UJ1JS80",
 
   // Lineups10 channel ID
   CHANNEL_ID: "UCAC3-d9xkkivdGzKZeNV4QQ",
@@ -89,6 +89,8 @@ const state = {
   videos: [],
   activeFilter: "all",
   searchTerm: "",
+  searchLoadTimer: null,
+  searchLoadRequested: false,
   sortMode: "newest",
   isLoading: false,
   activeMenu: "",
@@ -96,6 +98,7 @@ const state = {
 
 const elements = {
   setupPanel: document.querySelector("#setupPanel"),
+  loadingOverlay: document.querySelector("#loadingOverlay"),
   searchInput: document.querySelector("#searchInput"),
   clearSearchButton: document.querySelector("#clearSearchButton"),
   videoCount: document.querySelector("#videoCount"),
@@ -265,12 +268,21 @@ async function loadNextPage() {
   } finally {
     state.isLoading = false;
     setButtonsLoading(false);
+
+    if (state.searchLoadRequested && state.searchTerm && state.nextPageToken) {
+      state.searchLoadRequested = false;
+      loadAllVideos();
+    }
   }
 }
 
 async function loadAllVideos() {
-  if (state.isLoading) return;
+  if (state.isLoading) {
+    state.searchLoadRequested = true;
+    return;
+  }
 
+  state.searchLoadRequested = false;
   state.isLoading = true;
   setButtonsLoading(true);
 
@@ -603,6 +615,8 @@ function updateControls() {
 function setButtonsLoading(isLoading) {
   elements.loadMoreButton.disabled = isLoading;
   elements.loadAllButton.disabled = isLoading;
+  elements.loadingOverlay.classList.toggle("hidden", !isLoading);
+  elements.loadingOverlay.setAttribute("aria-busy", String(isLoading));
 }
 
 function openMegaMenu(menuName) {
@@ -661,9 +675,18 @@ document.addEventListener("click", (event) => {
 elements.searchInput.addEventListener("input", (event) => {
   state.searchTerm = normalizeTitle(event.target.value);
   renderAll();
+
+  clearTimeout(state.searchLoadTimer);
+  if (state.searchTerm && (state.nextPageToken || state.isLoading)) {
+    state.searchLoadTimer = setTimeout(() => {
+      loadAllVideos();
+    }, 350);
+  }
 });
 
 elements.clearSearchButton.addEventListener("click", () => {
+  clearTimeout(state.searchLoadTimer);
+  state.searchLoadRequested = false;
   state.searchTerm = "";
   elements.searchInput.value = "";
   renderAll();
