@@ -1,11 +1,14 @@
 const CONFIG = {
   // Create an API key in Google Cloud, then paste it between the quotation marks.
-  API_KEY: "AIzaSyAUgER7i3ENGo9aRmDhEuz-ct_2UJ1JS80",
+  API_KEY: "PASTE_YOUR_YOUTUBE_API_KEY_HERE",
 
   // Lineups10 channel ID
   CHANNEL_ID: "UCAC3-d9xkkivdGzKZeNV4QQ",
 
   RESULTS_PER_PAGE: 50,
+
+  // GitHub Pages loads this generated file first.
+  DATA_FILE: "./videos.json",
 };
 
 const FILTERS = {
@@ -89,16 +92,14 @@ const state = {
   videos: [],
   activeFilter: "all",
   searchTerm: "",
-  searchLoadTimer: null,
-  searchLoadRequested: false,
   sortMode: "newest",
   isLoading: false,
   activeMenu: "",
+  staticDataLoaded: false,
 };
 
 const elements = {
   setupPanel: document.querySelector("#setupPanel"),
-  loadingOverlay: document.querySelector("#loadingOverlay"),
   searchInput: document.querySelector("#searchInput"),
   clearSearchButton: document.querySelector("#clearSearchButton"),
   videoCount: document.querySelector("#videoCount"),
@@ -117,6 +118,9 @@ const elements = {
   megaMenu: document.querySelector("#megaMenu"),
   primaryNav: document.querySelector("#primaryNav"),
   mobileNavToggle: document.querySelector("#mobileNavToggle"),
+  setupTitle: document.querySelector("#setupTitle"),
+  setupMessage: document.querySelector("#setupMessage"),
+  referrerHelp: document.querySelector("#referrerHelp"),
 };
 
 function sportFilter(sport, title, description) {
@@ -175,6 +179,83 @@ function sportFormatFilter(sport, format, title, description) {
 
 function hasApiKey() {
   return CONFIG.API_KEY && CONFIG.API_KEY !== "PASTE_YOUR_YOUTUBE_API_KEY_HERE";
+}
+
+function hydrateStoredVideo(raw) {
+  const title = raw.title || "Untitled video";
+  const normalizedTitle = normalizeTitle(title);
+  const durationSeconds = Number(raw.durationSeconds || 0);
+  const sport = raw.sport || detectSport(normalizedTitle);
+  const tags = Array.isArray(raw.tags) ? raw.tags : detectTags(normalizedTitle, sport);
+  const id = raw.id || raw.videoId || "";
+
+  return {
+    id,
+    title,
+    normalizedTitle,
+    publishedAt: raw.publishedAt || "",
+    publishedTimestamp: raw.publishedAt ? new Date(raw.publishedAt).getTime() : 0,
+    thumbnail: raw.thumbnail || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+    url: raw.url || `https://www.youtube.com/watch?v=${id}`,
+    sport,
+    tags,
+    durationSeconds,
+    format: raw.format || (durationSeconds > 180 ? "long" : "short"),
+    viewCount: Number(raw.viewCount || 0),
+  };
+}
+
+async function loadStaticLibrary() {
+  try {
+    const response = await fetch(`${CONFIG.DATA_FILE}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) return false;
+
+    const payload = await response.json();
+    const records = Array.isArray(payload) ? payload : payload.videos;
+    if (!Array.isArray(records) || records.length === 0) return false;
+
+    state.videos = records.map(hydrateStoredVideo).filter((video) => video.id);
+    state.staticDataLoaded = true;
+    state.nextPageToken = "";
+    renderAll();
+    updateControls();
+
+    if (payload.starterOnly) {
+      elements.setupPanel.classList.remove("hidden");
+      elements.setupTitle.textContent = "Starter library is online";
+      elements.setupMessage.innerHTML =
+        `The site is working on GitHub Pages with ${state.videos.length.toLocaleString()} starter videos. ` +
+        `Run the <strong>Update YouTube videos</strong> workflow once to import the complete channel.`;
+      elements.status.textContent = `${state.videos.length.toLocaleString()} starter videos loaded from videos.json.`;
+    } else {
+      elements.setupPanel.classList.add("hidden");
+      const generated = payload.generatedAt ? ` Updated ${formatDate(payload.generatedAt)}.` : "";
+      elements.status.textContent =
+        `${state.videos.length.toLocaleString()} videos loaded from the GitHub library.${generated}`;
+    }
+
+    return true;
+  } catch (error) {
+    console.warn("Static library was not available:", error);
+    return false;
+  }
+}
+
+function showApiError(error) {
+  const message = String(error?.message || error);
+  elements.status.textContent = `Error: ${message}`;
+  elements.setupPanel.classList.remove("hidden");
+
+  if (/referer|referrer|blocked/i.test(message)) {
+    const allowedPattern = `${window.location.origin}/*`;
+    elements.setupTitle.textContent = "Allow your GitHub Pages address";
+    elements.setupMessage.textContent =
+      "Your Google API key is blocking requests from the published GitHub website.";
+    elements.referrerHelp.classList.remove("hidden");
+    elements.referrerHelp.innerHTML =
+      `Add this under Google Cloud → Credentials → your API key → Website restrictions: ` +
+      `<code>${allowedPattern}</code>`;
+  }
 }
 
 async function youtubeRequest(endpoint, params) {
@@ -264,25 +345,16 @@ async function loadNextPage() {
       : `All ${state.videos.length.toLocaleString()} available public videos loaded.`;
   } catch (error) {
     console.error(error);
-    elements.status.textContent = `Error: ${error.message}`;
+    showApiError(error);
   } finally {
     state.isLoading = false;
     setButtonsLoading(false);
-
-    if (state.searchLoadRequested && state.searchTerm && state.nextPageToken) {
-      state.searchLoadRequested = false;
-      loadAllVideos();
-    }
   }
 }
 
 async function loadAllVideos() {
-  if (state.isLoading) {
-    state.searchLoadRequested = true;
-    return;
-  }
+  if (state.isLoading) return;
 
-  state.searchLoadRequested = false;
   state.isLoading = true;
   setButtonsLoading(true);
 
@@ -313,7 +385,7 @@ async function loadAllVideos() {
     updateControls();
   } catch (error) {
     console.error(error);
-    elements.status.textContent = `Error: ${error.message}`;
+    showApiError(error);
   } finally {
     state.isLoading = false;
     setButtonsLoading(false);
@@ -615,8 +687,6 @@ function updateControls() {
 function setButtonsLoading(isLoading) {
   elements.loadMoreButton.disabled = isLoading;
   elements.loadAllButton.disabled = isLoading;
-  elements.loadingOverlay.classList.toggle("hidden", !isLoading);
-  elements.loadingOverlay.setAttribute("aria-busy", String(isLoading));
 }
 
 function openMegaMenu(menuName) {
@@ -675,18 +745,9 @@ document.addEventListener("click", (event) => {
 elements.searchInput.addEventListener("input", (event) => {
   state.searchTerm = normalizeTitle(event.target.value);
   renderAll();
-
-  clearTimeout(state.searchLoadTimer);
-  if (state.searchTerm && (state.nextPageToken || state.isLoading)) {
-    state.searchLoadTimer = setTimeout(() => {
-      loadAllVideos();
-    }, 350);
-  }
 });
 
 elements.clearSearchButton.addEventListener("click", () => {
-  clearTimeout(state.searchLoadTimer);
-  state.searchLoadRequested = false;
   state.searchTerm = "";
   elements.searchInput.value = "";
   renderAll();
@@ -723,9 +784,16 @@ window.addEventListener("resize", () => {
 async function init() {
   renderAll();
 
+  const staticLibraryLoaded = await loadStaticLibrary();
+  if (staticLibraryLoaded) return;
+
   if (!hasApiKey()) {
     elements.setupPanel.classList.remove("hidden");
-    elements.status.textContent = "Add your YouTube API key in app.js to load your videos.";
+    elements.setupTitle.textContent = "Generate videos.json with GitHub Actions";
+    elements.setupMessage.innerHTML =
+      `Add a repository secret named <code>YOUTUBE_API_KEY</code>, then run the ` +
+      `<strong>Update YouTube videos</strong> workflow.`;
+    elements.status.textContent = "No generated video library was found yet.";
     return;
   }
 

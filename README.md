@@ -1,64 +1,111 @@
-# Lineups10 Rich Video Library
+# Lineups10 — GitHub Pages Video Library
 
-A searchable website that loads and categorises videos directly from the Lineups10 YouTube channel.
+This version is built specifically for GitHub Pages.
 
-## New navigation features
+It does **not** expose the YouTube API key in browser JavaScript. A GitHub Actions workflow retrieves the channel videos, creates `videos.json`, and deploys the finished website.
 
-- Rich desktop mega menu
-- Mobile category navigation
-- Football categories: World Cup, nations, clubs, transfers, best players, history, future squads, and matches
-- Hockey categories: NHL teams, best players, historic seasons, since 2000, and future rosters
-- Basketball categories: NBA teams, best players, historic seasons, since 2000, and future lineups
-- Cross-sport collections by era, future year, topic, and video length
-- Dynamic category counts
-- Active category heading and breadcrumb
-- Search inside the selected category
-- Sort by newest, oldest, views, or title
-- Automatic duration and view-count retrieval
+## Repository structure
 
-## Add your API key
-
-Open `app.js` and replace:
-
-```js
-API_KEY: "PASTE_YOUR_YOUTUBE_API_KEY_HERE",
-```
-
-with your existing YouTube Data API key.
-
-The Lineups10 channel ID is already included:
+Upload these files and folders directly to the repository root:
 
 ```text
-UCAC3-d9xkkivdGzKZeNV4QQ
+.github/
+.nojekyll
+scripts/
+app.js
+index.html
+style.css
+videos.json
+README.md
 ```
 
-## Local website restrictions
+Do not upload the outer downloaded folder as one nested folder. `index.html` must appear at the top level of the repository.
 
-For VS Code Live Server, allow the ports you use in Google Cloud, such as:
+## GitHub setup
+
+### 1. Upload the files
+
+Create a repository or open your existing website repository. Upload the **contents** of this folder to the repository root and commit them to the `main` branch.
+
+### 2. Add the YouTube API key as a secret
+
+In the repository, open:
 
 ```text
-http://127.0.0.1:5500/*
-http://localhost:5500/*
-http://127.0.0.1:5501/*
-http://localhost:5501/*
+Settings → Secrets and variables → Actions → New repository secret
 ```
 
-## Run locally
+Use this exact name:
 
-Use the VS Code **Live Server** extension, or run:
-
-```bash
-python -m http.server 8000
+```text
+YOUTUBE_API_KEY
 ```
 
-Then open `http://localhost:8000`.
+Paste your YouTube Data API v3 key as the value.
 
-## How categorisation works
+Because the key is stored as a GitHub secret and used by GitHub Actions, it is not published in `app.js` or shown to website visitors.
 
-The website analyses each title and assigns:
+In Google Cloud, restrict the key to **YouTube Data API v3**. An HTTP-referrer restriction is not needed for this Actions-based version.
 
-- A sport: football, hockey, or basketball
-- Topics such as World Cup, national teams, clubs, transfers, history, future, best players, and matches
-- A length collection using the YouTube duration
+### 3. Select GitHub Actions for Pages
 
-Because the categories are generated from video titles, consistent titles produce the best results. You can expand the keyword arrays in `detectSport()` and `detectTags()` inside `app.js`.
+Open:
+
+```text
+Settings → Pages
+```
+
+Under **Build and deployment**, set **Source** to:
+
+```text
+GitHub Actions
+```
+
+### 4. Run the workflow
+
+Open:
+
+```text
+Actions → Update YouTube videos and deploy Pages → Run workflow
+```
+
+The workflow will:
+
+1. Retrieve all public Lineups10 uploads.
+2. Create a complete `videos.json` file.
+3. Categorise them in the website.
+4. Deploy the site to GitHub Pages.
+
+The workflow also refreshes the deployed video library every six hours.
+
+## GitHub Pages address
+
+For a project repository, the address normally looks like:
+
+```text
+https://YOUR-USERNAME.github.io/REPOSITORY-NAME/
+```
+
+For a repository named `YOUR-USERNAME.github.io`, the address is:
+
+```text
+https://YOUR-USERNAME.github.io/
+```
+
+## Starter data
+
+The included `videos.json` contains a small starter selection so the navigation works immediately. The first successful workflow run replaces it in the deployed website with the complete channel library.
+
+## Common errors
+
+### 404 page
+
+Make sure `index.html` is at the repository root and that Pages is configured to use GitHub Actions.
+
+### Workflow says `Missing YOUTUBE_API_KEY`
+
+The repository secret is missing or its name is not exactly `YOUTUBE_API_KEY`.
+
+### YouTube API error
+
+Confirm that YouTube Data API v3 is enabled in the same Google Cloud project as the API key and that the key is allowed to use that API.

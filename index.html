@@ -14,14 +14,9 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div id="loadingOverlay" class="loading-overlay hidden" role="status" aria-live="polite">
-    <span class="loading-spinner" aria-hidden="true"></span>
-    <span class="sr-only">Loading video cards</span>
-  </div>
-
   <header class="site-header" id="top">
     <nav class="top-nav container" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Lineups10 home">
@@ -248,7 +243,7 @@
       <p class="eyebrow">3 SPORTS · THOUSANDS OF LINEUPS · ONE LIBRARY</p>
       <h1>Find the exact sports video you want.</h1>
       <p class="hero-copy">
-        Browse FIFA,  NHL, NBA, clubs, national teams, transfers,<br> historic seasons, future squads, and more.
+        Browse clubs, national teams, transfers, historic seasons, future squads, NHL teams, NBA teams, and more.
       </p>
 
       <div class="search-wrap">
@@ -264,24 +259,23 @@
       </div>
 
       <div class="hero-shortcuts" aria-label="Popular categories">
-        <button type="button" data-filter-key="football">FIFA &amp; Football</button>
-        <button type="button" data-filter-key="hockey">NHL & Hockey</button>
-        <button type="button" data-filter-key="basketball">NBA & Basketball</button>
+        <button type="button" data-filter-key="football-world-cup">World Cup</button>
+        <button type="button" data-filter-key="football-transfers">Transfers</button>
         <button type="button" data-filter-key="since-2000">Since 2000</button>
         <button type="button" data-filter-key="year-2032">Projected 2032</button>
-        <button type="button" data-filter-key="football-transfers">Transfers</button>
-        <button type="button" data-filter-key="football-world-cup">World Cup</button>
+        <button type="button" data-filter-key="hockey">NHL & Hockey</button>
+        <button type="button" data-filter-key="basketball">NBA & Basketball</button>
       </div>
     </div>
   </section>
 
   <main class="container main-content" id="library">
     <section id="setupPanel" class="setup-panel hidden" aria-live="polite">
-      <h2>Connect your YouTube channel</h2>
-      <p>
-        Open <strong>app.js</strong> and replace
-        <code>PASTE_YOUR_YOUTUBE_API_KEY_HERE</code> with your YouTube Data API key.
+      <h2 id="setupTitle">Finish the GitHub setup</h2>
+      <p id="setupMessage">
+        Run the <strong>Update YouTube videos</strong> workflow in GitHub Actions to generate the complete <code>videos.json</code> library.
       </p>
+      <p id="referrerHelp" class="hidden"></p>
     </section>
 
     <section class="category-dashboard" aria-label="Featured video categories">
@@ -385,6 +379,6 @@
     </article>
   </template>
 
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
