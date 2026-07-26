@@ -1,6 +1,6 @@
 const CONFIG = {
   // Create an API key in Google Cloud, then paste it between the quotation marks.
-  API_KEY: "PASTE_YOUR_YOUTUBE_API_KEY_HERE",
+  API_KEY: "AIzaSyAUgER7i3ENGo9aRmDhEuz-ct_2UJ1JS80",
 
   // Lineups10 channel ID
   CHANNEL_ID: "UCAC3-d9xkkivdGzKZeNV4QQ",
