@@ -171,7 +171,8 @@
         }
 
         .control-button,
-        #startButton {
+        #startButton,
+        #stopButton {
             min-height: 54px;
             border: none;
             border-radius: 11px;
@@ -188,16 +189,43 @@
             background: #a56cff;
         }
 
-        #startButton {
+        .game-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px;
+        }
+
+        #startButton,
+        #stopButton {
             width: 100%;
             min-height: 46px;
             font-size: clamp(17px, 5vw, 21px);
+        }
+
+        #startButton {
             background: #ed257f;
         }
 
-        #startButton:active {
+        #stopButton {
+            background: #b51f35;
+        }
+
+        #startButton:active,
+        #stopButton:active:not(:disabled) {
             transform: scale(0.98);
+        }
+
+        #startButton:active {
             background: #ff4d9b;
+        }
+
+        #stopButton:active:not(:disabled) {
+            background: #e5354e;
+        }
+
+        #stopButton:disabled {
+            cursor: not-allowed;
+            opacity: 0.45;
         }
 
         .instructions {
@@ -226,7 +254,8 @@
                 font-size: 27px;
             }
 
-            #startButton {
+            #startButton,
+            #stopButton {
                 min-height: 40px;
             }
 
@@ -277,7 +306,10 @@
         <button class="control-button" data-lane="3">→</button>
     </div>
 
-    <button id="startButton">START GAME</button>
+    <div class="game-actions">
+        <button id="startButton">START GAME</button>
+        <button id="stopButton" disabled>STOP GAME</button>
+    </div>
 
     <p class="instructions">
         Tap the arrow buttons when the falling arrows reach the target. Keyboard arrows also work.
@@ -288,6 +320,7 @@
 <script>
     const game = document.getElementById("game");
     const startButton = document.getElementById("startButton");
+    const stopButton = document.getElementById("stopButton");
 
     const scoreElement = document.getElementById("score");
     const comboElement = document.getElementById("combo");
@@ -312,30 +345,49 @@
     let lives = 10;
 
     let gameRunning = false;
+    let animationFrameId = null;
     let previousTime = 0;
     let spawnTimer = 0;
 
-    let spawnInterval = 800;
-    let arrowSpeed = 280;
+    let spawnInterval = 1400;
+    let arrowSpeed = 170;
 
     function startGame() {
+        cancelAnimationFrame(animationFrameId);
         clearGame();
 
         score = 0;
         combo = 0;
         lives = 10;
 
-        arrowSpeed = 280;
-        spawnInterval = 800;
+        arrowSpeed = 170;
+        spawnInterval = 1400;
         spawnTimer = 0;
         previousTime = performance.now();
 
         gameRunning = true;
 
         startButton.textContent = "RESTART GAME";
+        stopButton.disabled = false;
 
         updateStats();
-        requestAnimationFrame(gameLoop);
+        animationFrameId = requestAnimationFrame(gameLoop);
+    }
+
+    function stopGame() {
+        if (!gameRunning) {
+            return;
+        }
+
+        gameRunning = false;
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+        clearGame();
+
+        judgementElement.textContent = `GAME STOPPED — ${score}`;
+        judgementElement.className = "judgement";
+        startButton.textContent = "START GAME";
+        stopButton.disabled = true;
     }
 
     function clearGame() {
@@ -389,7 +441,7 @@
 
         moveArrows(deltaTime);
 
-        requestAnimationFrame(gameLoop);
+        animationFrameId = requestAnimationFrame(gameLoop);
     }
 
     function moveArrows(deltaTime) {
@@ -485,6 +537,8 @@
 
     function endGame() {
         gameRunning = false;
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
 
         clearGame();
 
@@ -492,6 +546,7 @@
         judgementElement.className = "judgement miss";
 
         startButton.textContent = "PLAY AGAIN";
+        stopButton.disabled = true;
     }
 
     function activateTarget(lane) {
@@ -583,6 +638,7 @@
     }, { passive: false });
 
     startButton.addEventListener("click", startGame);
+    stopButton.addEventListener("click", stopGame);
 </script>
 
 </body>
