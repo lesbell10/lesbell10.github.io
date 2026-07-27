@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <title>Dance Rhythm Game</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            overscroll-behavior: none;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            background: radial-gradient(circle at top, #39145f, #10001c 65%);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            padding:
+                max(8px, env(safe-area-inset-top))
+                max(8px, env(safe-area-inset-right))
+                max(8px, env(safe-area-inset-bottom))
+                max(8px, env(safe-area-inset-left));
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .game-wrapper {
+            width: min(100%, 600px);
+            height: 100%;
+            min-height: 0;
+            display: grid;
+            grid-template-rows: auto auto minmax(0, 1fr) auto auto auto;
+            gap: 7px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(22px, 6vw, 42px);
+            line-height: 1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+            font-size: clamp(14px, 4vw, 18px);
+            font-weight: bold;
+        }
+
+        .game {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 230px;
+            overflow: hidden;
+            border: 3px solid white;
+            border-radius: 14px;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.05) 25%,
+                    rgba(255,255,255,0.12) 25%,
+                    rgba(255,255,255,0.12) 50%,
+                    rgba(255,255,255,0.05) 50%,
+                    rgba(255,255,255,0.05) 75%,
+                    rgba(255,255,255,0.12) 75%
+                );
+            touch-action: none;
+        }
+
+        .lanes {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .lane {
+            border-right: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .lane:last-child {
+            border-right: none;
+        }
+
+        .target-row {
+            position: absolute;
+            left: 0;
+            bottom: 24px;
+            width: 100%;
+            height: clamp(66px, 11vh, 92px);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            z-index: 3;
+        }
+
+        .target {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(38px, 12vw, 68px);
+            color: rgba(255,255,255,0.35);
+            border-top: 3px solid rgba(255,255,255,0.6);
+            border-bottom: 3px solid rgba(255,255,255,0.6);
+            transition: 0.08s;
+        }
+
+        .target.active {
+            color: #fff;
+            background: rgba(0, 255, 255, 0.35);
+            transform: scale(1.06);
+        }
+
+        .arrow {
+            position: absolute;
+            width: 25%;
+            height: clamp(58px, 10vh, 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(38px, 12vw, 68px);
+            font-weight: bold;
+            filter: drop-shadow(0 0 8px currentColor);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .arrow[data-lane="0"] { left: 0%; color: #ff4e88; }
+        .arrow[data-lane="1"] { left: 25%; color: #3de7ff; }
+        .arrow[data-lane="2"] { left: 50%; color: #7dff66; }
+        .arrow[data-lane="3"] { left: 75%; color: #ffe45e; }
+
+        .judgement {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            font-size: clamp(30px, 10vw, 42px);
+            font-weight: 900;
+            text-shadow: 0 0 12px black;
+            pointer-events: none;
+        }
+
+        .perfect { color: #fff45e; }
+        .good { color: #65ff89; }
+        .miss { color: #ff4e4e; }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 7px;
+        }
+
+        .control-button,
+        #startButton {
+            min-height: 54px;
+            border: none;
+            border-radius: 11px;
+            color: white;
+            background: #6c2bd9;
+            font-size: clamp(28px, 9vw, 40px);
+            font-weight: bold;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .control-button:active {
+            transform: scale(0.94);
+            background: #a56cff;
+        }
+
+        #startButton {
+            width: 100%;
+            min-height: 46px;
+            font-size: clamp(17px, 5vw, 21px);
+            background: #ed257f;
+        }
+
+        #startButton:active {
+            transform: scale(0.98);
+            background: #ff4d9b;
+        }
+
+        .instructions {
+            color: #ddd;
+            font-size: clamp(12px, 3.4vw, 15px);
+            line-height: 1.15;
+        }
+
+        @media (max-height: 620px), (orientation: landscape) and (max-height: 500px) {
+            .game-wrapper {
+                grid-template-rows: auto minmax(0, 1fr) auto auto;
+                gap: 5px;
+            }
+
+            h1,
+            .instructions {
+                display: none;
+            }
+
+            .stats {
+                font-size: 13px;
+            }
+
+            .control-button {
+                min-height: 44px;
+                font-size: 27px;
+            }
+
+            #startButton {
+                min-height: 40px;
+            }
+
+            .target-row {
+                bottom: 14px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game-wrapper">
+
+    <h1>Dance Rhythm</h1>
+
+    <div class="stats">
+        <span>Score: <span id="score">0</span></span>
+        <span>Combo: <span id="combo">0</span></span>
+        <span>Lives: <span id="lives">10</span></span>
+    </div>
+
+    <div class="game" id="game">
+
+        <div class="lanes">
+            <div class="lane"></div>
+            <div class="lane"></div>
+            <div class="lane"></div>
+            <div class="lane"></div>
+        </div>
+
+        <div class="target-row">
+            <div class="target">←</div>
+            <div class="target">↓</div>
+            <div class="target">↑</div>
+            <div class="target">→</div>
+        </div>
+
+        <div class="judgement" id="judgement"></div>
+
+    </div>
+
+    <div class="controls">
+        <button class="control-button" data-lane="0">←</button>
+        <button class="control-button" data-lane="1">↓</button>
+        <button class="control-button" data-lane="2">↑</button>
+        <button class="control-button" data-lane="3">→</button>
+    </div>
+
+    <button id="startButton">START GAME</button>
+
+    <p class="instructions">
+        Tap the arrow buttons when the falling arrows reach the target. Keyboard arrows also work.
+    </p>
+
+</div>
+
+<script>
+    const game = document.getElementById("game");
+    const startButton = document.getElementById("startButton");
+
+    const scoreElement = document.getElementById("score");
+    const comboElement = document.getElementById("combo");
+    const livesElement = document.getElementById("lives");
+    const judgementElement = document.getElementById("judgement");
+
+    const targets = document.querySelectorAll(".target");
+    const controlButtons = document.querySelectorAll(".control-button");
+
+    const arrowSymbols = ["←", "↓", "↑", "→"];
+
+    const keyToLane = {
+        ArrowLeft: 0,
+        ArrowDown: 1,
+        ArrowUp: 2,
+        ArrowRight: 3
+    };
+
+    let arrows = [];
+    let score = 0;
+    let combo = 0;
+    let lives = 10;
+
+    let gameRunning = false;
+    let previousTime = 0;
+    let spawnTimer = 0;
+
+    let spawnInterval = 800;
+    let arrowSpeed = 280;
+
+    function startGame() {
+        clearGame();
+
+        score = 0;
+        combo = 0;
+        lives = 10;
+
+        arrowSpeed = 280;
+        spawnInterval = 800;
+        spawnTimer = 0;
+        previousTime = performance.now();
+
+        gameRunning = true;
+
+        startButton.textContent = "RESTART GAME";
+
+        updateStats();
+        requestAnimationFrame(gameLoop);
+    }
+
+    function clearGame() {
+        arrows.forEach(arrow => arrow.element.remove());
+        arrows = [];
+
+        judgementElement.textContent = "";
+    }
+
+    function createArrow() {
+        const lane = Math.floor(Math.random() * 4);
+
+        const element = document.createElement("div");
+
+        element.className = "arrow";
+        element.dataset.lane = lane;
+        element.textContent = arrowSymbols[lane];
+
+        game.appendChild(element);
+
+        arrows.push({
+            element,
+            lane,
+            y: -80,
+            hit: false
+        });
+    }
+
+    function gameLoop(currentTime) {
+        if (!gameRunning) {
+            return;
+        }
+
+        const deltaTime = (currentTime - previousTime) / 1000;
+        previousTime = currentTime;
+
+        spawnTimer += deltaTime * 1000;
+
+        if (spawnTimer >= spawnInterval) {
+            createArrow();
+            spawnTimer = 0;
+
+            if (spawnInterval > 420) {
+                spawnInterval -= 4;
+            }
+
+            if (arrowSpeed < 500) {
+                arrowSpeed += 1;
+            }
+        }
+
+        moveArrows(deltaTime);
+
+        requestAnimationFrame(gameLoop);
+    }
+
+    function moveArrows(deltaTime) {
+        const gameHeight = game.clientHeight;
+
+        for (let index = arrows.length - 1; index >= 0; index--) {
+            const arrow = arrows[index];
+
+            arrow.y += arrowSpeed * deltaTime;
+            arrow.element.style.top = `${arrow.y}px`;
+
+            if (arrow.y > gameHeight) {
+                missArrow(index);
+            }
+        }
+    }
+
+    function pressLane(lane) {
+        if (!gameRunning) {
+            return;
+        }
+
+        activateTarget(lane);
+        playTone(lane);
+
+        const gameRect = game.getBoundingClientRect();
+        const targetRect = targets[lane].getBoundingClientRect();
+        const targetCenterY =
+            targetRect.top - gameRect.top + targetRect.height / 2;
+
+        let closestIndex = -1;
+        let closestDistance = Infinity;
+
+        arrows.forEach((arrow, index) => {
+            if (arrow.lane !== lane || arrow.hit) {
+                return;
+            }
+
+            const arrowCenterY =
+                arrow.y + arrow.element.offsetHeight / 2;
+            const distance = Math.abs(arrowCenterY - targetCenterY);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+        });
+
+        if (closestIndex === -1 || closestDistance > 85) {
+            showJudgement("MISS", "miss");
+            combo = 0;
+            updateStats();
+            return;
+        }
+
+        const arrow = arrows[closestIndex];
+
+        arrow.hit = true;
+        arrow.element.remove();
+        arrows.splice(closestIndex, 1);
+
+        if (closestDistance <= 30) {
+            score += 100 + combo * 2;
+            combo++;
+
+            showJudgement("PERFECT", "perfect");
+        } else {
+            score += 50;
+            combo++;
+
+            showJudgement("GOOD", "good");
+        }
+
+        updateStats();
+    }
+
+    function missArrow(index) {
+        const arrow = arrows[index];
+
+        arrow.element.remove();
+        arrows.splice(index, 1);
+
+        combo = 0;
+        lives--;
+
+        showJudgement("MISS", "miss");
+        updateStats();
+
+        if (lives <= 0) {
+            endGame();
+        }
+    }
+
+    function endGame() {
+        gameRunning = false;
+
+        clearGame();
+
+        judgementElement.textContent = `GAME OVER — ${score}`;
+        judgementElement.className = "judgement miss";
+
+        startButton.textContent = "PLAY AGAIN";
+    }
+
+    function activateTarget(lane) {
+        const target = targets[lane];
+
+        target.classList.add("active");
+
+        setTimeout(() => {
+            target.classList.remove("active");
+        }, 100);
+    }
+
+    function showJudgement(text, className) {
+        judgementElement.textContent = text;
+        judgementElement.className = `judgement ${className}`;
+
+        clearTimeout(showJudgement.timer);
+
+        showJudgement.timer = setTimeout(() => {
+            if (gameRunning) {
+                judgementElement.textContent = "";
+            }
+        }, 350);
+    }
+
+    function updateStats() {
+        scoreElement.textContent = score;
+        comboElement.textContent = combo;
+        livesElement.textContent = lives;
+    }
+
+    function playTone(lane) {
+        const AudioContext =
+            window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContext) {
+            return;
+        }
+
+        if (!playTone.audioContext) {
+            playTone.audioContext = new AudioContext();
+        }
+
+        const audioContext = playTone.audioContext;
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+
+        const frequencies = [220, 280, 350, 440];
+
+        oscillator.frequency.value = frequencies[lane];
+        oscillator.type = "sine";
+
+        gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioContext.currentTime + 0.12
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.12);
+    }
+
+    document.addEventListener("keydown", event => {
+        const lane = keyToLane[event.key];
+
+        if (lane === undefined) {
+            return;
+        }
+
+        event.preventDefault();
+
+        if (!event.repeat) {
+            pressLane(lane);
+        }
+    });
+
+    controlButtons.forEach(button => {
+        button.addEventListener("pointerdown", event => {
+            event.preventDefault();
+            pressLane(Number(button.dataset.lane));
+        });
+    });
+
+    document.addEventListener("touchmove", event => {
+        event.preventDefault();
+    }, { passive: false });
+
+    startButton.addEventListener("click", startGame);
+</script>
+
+</body>
+</html>
