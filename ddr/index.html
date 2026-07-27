@@ -64,6 +64,50 @@
             font-weight: bold;
         }
 
+        .game-area {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 52px;
+            gap: 7px;
+            min-height: 0;
+        }
+
+        .speed-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .speed-controls span {
+            line-height: 1.25;
+        }
+
+        .speed-button {
+            width: 100%;
+            min-height: 42px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            background: #2877d9;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .speed-button:active:not(:disabled) {
+            transform: scale(0.94);
+            background: #4b9cff;
+        }
+
+        .speed-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+
         .game {
             position: relative;
             width: 100%;
@@ -279,24 +323,31 @@
         <span>Lives: <span id="lives">10</span></span>
     </div>
 
-    <div class="game" id="game">
+    <div class="game-area">
+        <div class="game" id="game">
 
-        <div class="lanes">
-            <div class="lane"></div>
-            <div class="lane"></div>
-            <div class="lane"></div>
-            <div class="lane"></div>
+            <div class="lanes">
+                <div class="lane"></div>
+                <div class="lane"></div>
+                <div class="lane"></div>
+                <div class="lane"></div>
+            </div>
+
+            <div class="target-row">
+                <div class="target">←</div>
+                <div class="target">↓</div>
+                <div class="target">↑</div>
+                <div class="target">→</div>
+            </div>
+
+            <div class="judgement" id="judgement"></div>
         </div>
 
-        <div class="target-row">
-            <div class="target">←</div>
-            <div class="target">↓</div>
-            <div class="target">↑</div>
-            <div class="target">→</div>
+        <div class="speed-controls" aria-label="Game speed controls">
+            <button class="speed-button" id="fasterButton" aria-label="Increase speed">+</button>
+            <span>Speed<br><span id="speedValue">2×</span></span>
+            <button class="speed-button" id="slowerButton" aria-label="Decrease speed">−</button>
         </div>
-
-        <div class="judgement" id="judgement"></div>
-
     </div>
 
     <div class="controls">
@@ -321,6 +372,9 @@
     const game = document.getElementById("game");
     const startButton = document.getElementById("startButton");
     const stopButton = document.getElementById("stopButton");
+    const slowerButton = document.getElementById("slowerButton");
+    const fasterButton = document.getElementById("fasterButton");
+    const speedValue = document.getElementById("speedValue");
 
     const scoreElement = document.getElementById("score");
     const comboElement = document.getElementById("combo");
@@ -351,6 +405,7 @@
 
     let spawnInterval = 1400;
     let arrowSpeed = 170;
+    let speedMultiplier = 2;
 
     function startGame() {
         cancelAnimationFrame(animationFrameId);
@@ -426,7 +481,7 @@
 
         spawnTimer += deltaTime * 1000;
 
-        if (spawnTimer >= spawnInterval) {
+        if (spawnTimer >= spawnInterval / speedMultiplier) {
             createArrow();
             spawnTimer = 0;
 
@@ -450,13 +505,24 @@
         for (let index = arrows.length - 1; index >= 0; index--) {
             const arrow = arrows[index];
 
-            arrow.y += arrowSpeed * deltaTime;
+            arrow.y += arrowSpeed * speedMultiplier * deltaTime;
             arrow.element.style.top = `${arrow.y}px`;
 
             if (arrow.y > gameHeight) {
                 missArrow(index);
             }
         }
+    }
+
+    function changeSpeed(amount) {
+        speedMultiplier = Math.min(
+            4,
+            Math.max(0.5, speedMultiplier + amount)
+        );
+
+        speedValue.textContent = `${speedMultiplier.toFixed(2).replace(/\.?0+$/, "")}×`;
+        slowerButton.disabled = speedMultiplier <= 0.5;
+        fasterButton.disabled = speedMultiplier >= 4;
     }
 
     function pressLane(lane) {
@@ -639,6 +705,8 @@
 
     startButton.addEventListener("click", startGame);
     stopButton.addEventListener("click", stopGame);
+    slowerButton.addEventListener("click", () => changeSpeed(-0.25));
+    fasterButton.addEventListener("click", () => changeSpeed(0.25));
 </script>
 
 </body>
