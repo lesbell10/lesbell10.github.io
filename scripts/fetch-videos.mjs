@@ -104,27 +104,54 @@ const videoIds = playlistItems
   .filter(Boolean);
 const detailsById = await getDetailsById(videoIds);
 
+// REPLACE THE OLD const videos BLOCK WITH THIS
 const videos = playlistItems
   .map((item) => {
     const snippet = item.snippet || {};
-    const id = item.contentDetails?.videoId || snippet.resourceId?.videoId || "";
+
+    const id =
+      item.contentDetails?.videoId ||
+      snippet.resourceId?.videoId ||
+      "";
+
     const details = detailsById.get(id) || {};
     const title = snippet.title || "Untitled video";
+
+    const durationSeconds = parseISODuration(
+      details.contentDetails?.duration || "PT0S"
+    );
 
     return {
       id,
       title,
       publishedAt: snippet.publishedAt || "",
       thumbnail: chooseThumbnail(snippet, id),
-      durationSeconds: parseISODuration(details.contentDetails?.duration),
+      durationSeconds,
+      format: durationSeconds > 180 ? "long" : "short",
       viewCount: Number(details.statistics?.viewCount || 0),
     };
   })
   .filter(
     (video) =>
-      video.id && video.title !== "Private video" && video.title !== "Deleted video"
+      video.id &&
+      video.title !== "Private video" &&
+      video.title !== "Deleted video"
   );
 
+// PUT IT HERE
+const longVideoCount = videos.filter(
+  (video) => video.format === "long"
+).length;
+
+console.log(`Long-form videos found: ${longVideoCount}`);
+
+if (longVideoCount === 0) {
+  throw new Error(
+    "No long-form videos were detected. YouTube duration data was not loaded."
+  );
+}
+
+// KEEP OUTPUT BELOW
 const output = {
   generatedAt: new Date().toISOString(),
   starterOnly: false,
@@ -133,5 +160,10 @@ const output = {
   videos,
 };
 
-await writeFile("videos.json", `${JSON.stringify(output, null, 2)}\n`, "utf8");
+await writeFile(
+  "videos.json",
+  `${JSON.stringify(output, null, 2)}\n`,
+  "utf8"
+);
+
 console.log(`Wrote ${videos.length} public videos to videos.json.`);
