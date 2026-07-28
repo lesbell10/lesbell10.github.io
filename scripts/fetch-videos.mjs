@@ -97,6 +97,44 @@ async function getDetailsById(videoIds) {
   return details;
 }
 
+function getJpegDimensions(buffer) {
+  const bytes = new Uint8Array(buffer);
+  const startOfFrameMarkers = new Set([
+    0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7,
+    0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf,
+  ]);
+
+  if (bytes[0] !== 0xff || bytes[1] !== 0xd8) return null;
+
+  let offset = 2;
+  while (offset + 8 < bytes.length) {
+    if (bytes[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+
+    const marker = bytes[offset + 1];
+    if (marker === 0xd8 || marker === 0xd9) {
+      offset += 2;
+      continue;
+    }
+
+    const segmentLength = (bytes[offset + 2] << 8) | bytes[offset + 3];
+    if (segmentLength < 2 || offset + segmentLength + 2 > bytes.length) break;
+
+    if (startOfFrameMarkers.has(marker)) {
+      return {
+        width: (bytes[offset + 7] << 8) | bytes[offset + 8],
+        height: (bytes[offset + 5] << 8) | bytes[offset + 6],
+      };
+    }
+
+    offset += segmentLength + 2;
+  }
+
+  return null;
+}
+
 async function getFormatsById(videoIds) {
   const formats = new Map();
 
@@ -108,13 +146,23 @@ async function getFormatsById(videoIds) {
         try {
           const response = await fetch(
             `https://i.ytimg.com/vi/${videoId}/oar2.jpg`,
-            { method: "HEAD" }
+            { headers: { Range: "bytes=0-65535" } }
           );
 
-          if (response.ok) {
-            formats.set(videoId, "short");
-          } else if (response.status === 404) {
+          if (response.status === 404) {
             formats.set(videoId, "long");
+            await response.body?.cancel();
+            return;
+          }
+
+          if (response.ok) {
+            const dimensions = getJpegDimensions(await response.arrayBuffer());
+            if (dimensions) {
+              formats.set(
+                videoId,
+                dimensions.height > dimensions.width ? "short" : "long"
+              );
+            }
           }
         } catch (error) {
           console.warn(`Could not detect the aspect ratio for ${videoId}:`, error);
