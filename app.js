@@ -34,15 +34,15 @@ const FILTERS = {
   future: tagFilter("future", "Future Squads", "Potential teams, projected lineups, and future-season predictions."),
   matches: tagFilter("matches", "Finals & Matches", "Finals, knockout rounds, matchups, and tournament results."),
   "format-short": {
-    eyebrow: "By video length",
-    title: "Short & Quick Videos",
-    description: "Videos lasting three minutes or less.",
+    eyebrow: "By video format",
+    title: "Vertical Videos",
+    description: "Portrait videos made for the YouTube Shorts format.",
     predicate: (video) => video.format === "short",
   },
   "format-long": {
-    eyebrow: "By video length",
-    title: "Long-Form Videos",
-    description: "Videos longer than three minutes.",
+    eyebrow: "By video format",
+    title: "Long Videos",
+    description: "Every video presented in the 16:9 landscape format.",
     predicate: (video) => video.format === "long",
   },
   "football-since-2000": sportAndTextFilter("football", "since 2000", "Football Since 2000", "Football clubs, players, and lineups from the 2000s to today."),
@@ -50,13 +50,13 @@ const FILTERS = {
   "football-era-1990": sportAndTextFilter("football", "1990-2000", "Football 1990–2000", "Football players and teams from the 1990–2000 era."),
   "football-2026": sportAndTextFilter("football", "2026-27", "Football 2026–27", "Football squads, transfers, and projections for 2026–27."),
   "football-2032": sportAndTextFilter("football", "2032", "Football Projected in 2032", "Future national teams and football player projections for 2032."),
-  "hockey-short": sportFormatFilter("hockey", "short", "Quick Hockey Videos", "Hockey videos lasting three minutes or less."),
-  "hockey-long": sportFormatFilter("hockey", "long", "Long-Form Hockey Videos", "Hockey videos longer than three minutes."),
+  "hockey-short": sportFormatFilter("hockey", "short", "Vertical Hockey Videos", "Hockey videos made for the YouTube Shorts format."),
+  "hockey-long": sportFormatFilter("hockey", "long", "Long Hockey Videos", "Hockey videos presented in 16:9 landscape format."),
   "hockey-2026": sportAndTextFilter("hockey", "2026-27", "Hockey 2026–27", "NHL and hockey projections for the 2026–27 season."),
   "hockey-every-season": combinedFilter("hockey", "every-season", "Hockey Every Season", "Season-by-season NHL and hockey collections."),
   "hockey-era-1990": sportAndTextFilter("hockey", "1990-2000", "Hockey 1990–2000", "Hockey players and teams from the 1990–2000 era."),
-  "basketball-short": sportFormatFilter("basketball", "short", "Quick Basketball Videos", "Basketball videos lasting three minutes or less."),
-  "basketball-long": sportFormatFilter("basketball", "long", "Long-Form Basketball Videos", "Basketball videos longer than three minutes."),
+  "basketball-short": sportFormatFilter("basketball", "short", "Vertical Basketball Videos", "Basketball videos made for the YouTube Shorts format."),
+  "basketball-long": sportFormatFilter("basketball", "long", "Long Basketball Videos", "Basketball videos presented in 16:9 landscape format."),
   "basketball-2026": sportAndTextFilter("basketball", "2026-27", "Basketball 2026–27", "NBA and basketball projections for the 2026–27 season."),
   "basketball-every-season": combinedFilter("basketball", "every-season", "Basketball Every Season", "Season-by-season NBA and basketball collections."),
   "basketball-era-1990": sportAndTextFilter("basketball", "1990-2000", "Basketball 1990–2000", "Basketball players and teams from the 1990–2000 era."),
@@ -214,7 +214,17 @@ async function loadStaticLibrary() {
     const records = Array.isArray(payload) ? payload : payload.videos;
     if (!Array.isArray(records) || records.length === 0) return false;
 
-    state.videos = records.map(hydrateStoredVideo).filter((video) => video.id);
+    const hydratedVideos = await Promise.all(
+      records.map(async (record) => {
+        const video = hydrateStoredVideo(record);
+        if (!record.format && video.id) {
+          video.format = await detectVideoFormat(video.id, video.durationSeconds);
+        }
+        return video;
+      })
+    );
+
+    state.videos = hydratedVideos.filter((video) => video.id);
     state.staticDataLoaded = true;
     state.nextPageToken = "";
     renderAll();
@@ -311,9 +321,21 @@ async function processPlaylistItems(items) {
 
   const details = await getVideoDetails(videoIds);
 
-  return items
-    .map((item) => createVideoObject(item, details.get(item.contentDetails?.videoId || item.snippet?.resourceId?.videoId)))
-    .filter((video) => video.id && video.title !== "Private video" && video.title !== "Deleted video");
+  const videos = await Promise.all(
+    items.map((item) =>
+      createVideoObject(
+        item,
+        details.get(item.contentDetails?.videoId || item.snippet?.resourceId?.videoId)
+      )
+    )
+  );
+
+  return videos.filter(
+    (video) =>
+      video.id &&
+      video.title !== "Private video" &&
+      video.title !== "Deleted video"
+  );
 }
 
 async function loadNextPage() {
@@ -392,7 +414,7 @@ async function loadAllVideos() {
   }
 }
 
-function createVideoObject(item, details = {}) {
+async function createVideoObject(item, details = {}) {
   const snippet = item.snippet || {};
   const id = item.contentDetails?.videoId || snippet.resourceId?.videoId || "";
   const title = snippet.title || "Untitled video";
@@ -418,9 +440,27 @@ function createVideoObject(item, details = {}) {
     sport,
     tags,
     durationSeconds,
-    format: durationSeconds > 180 ? "long" : "short",
+    format: await detectVideoFormat(id, durationSeconds),
     viewCount: Number(details.statistics?.viewCount || 0),
   };
+}
+
+function detectVideoFormat(videoId, durationSeconds) {
+  return new Promise((resolve) => {
+    const image = new Image();
+    const fallback = durationSeconds > 180 ? "long" : "short";
+    const timeout = window.setTimeout(() => resolve(fallback), 8000);
+
+    image.onload = () => {
+      window.clearTimeout(timeout);
+      resolve(image.naturalHeight > image.naturalWidth ? "short" : "long");
+    };
+    image.onerror = () => {
+      window.clearTimeout(timeout);
+      resolve("long");
+    };
+    image.src = `https://i.ytimg.com/vi/${videoId}/oar2.jpg`;
+  });
 }
 
 function addUniqueVideos(incomingVideos) {

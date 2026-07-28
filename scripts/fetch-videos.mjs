@@ -97,12 +97,44 @@ async function getDetailsById(videoIds) {
   return details;
 }
 
+async function getFormatsById(videoIds) {
+  const formats = new Map();
+
+  for (let index = 0; index < videoIds.length; index += 20) {
+    const batch = videoIds.slice(index, index + 20);
+
+    await Promise.all(
+      batch.map(async (videoId) => {
+        try {
+          const response = await fetch(
+            `https://i.ytimg.com/vi/${videoId}/oar2.jpg`,
+            { method: "HEAD" }
+          );
+
+          if (response.ok) {
+            formats.set(videoId, "short");
+          } else if (response.status === 404) {
+            formats.set(videoId, "long");
+          }
+        } catch (error) {
+          console.warn(`Could not detect the aspect ratio for ${videoId}:`, error);
+        }
+      })
+    );
+
+    console.log(`Checked formats for ${Math.min(index + 20, videoIds.length)} videos...`);
+  }
+
+  return formats;
+}
+
 const uploadsPlaylistId = await getUploadsPlaylistId();
 const playlistItems = await getAllPlaylistItems(uploadsPlaylistId);
 const videoIds = playlistItems
   .map((item) => item.contentDetails?.videoId || item.snippet?.resourceId?.videoId)
   .filter(Boolean);
 const detailsById = await getDetailsById(videoIds);
+const formatsById = await getFormatsById(videoIds);
 
 // REPLACE THE OLD const videos BLOCK WITH THIS
 const videos = playlistItems
@@ -127,7 +159,7 @@ const videos = playlistItems
       publishedAt: snippet.publishedAt || "",
       thumbnail: chooseThumbnail(snippet, id),
       durationSeconds,
-      format: durationSeconds > 180 ? "long" : "short",
+      format: formatsById.get(id) || (durationSeconds > 180 ? "long" : "short"),
       viewCount: Number(details.statistics?.viewCount || 0),
     };
   })
