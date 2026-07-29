@@ -291,9 +291,24 @@ function belongsToWorld(video) {
 
 async function loadVideos() {
   try {
-    const response = await fetch("./videos.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("videos.json not found");
-    const payload = await response.json();
+    const publishedLibrary = "https://lesbell10.github.io/videos.json";
+    const sources = window.location.hostname === "lesbell10.github.io"
+      ? ["./videos.json"]
+      : [publishedLibrary, "./videos.json"];
+    let payload = null;
+
+    for (const source of sources) {
+      try {
+        const response = await fetch(source, { cache: "no-store" });
+        if (!response.ok) continue;
+        payload = await response.json();
+        break;
+      } catch {
+        // Try the local starter library if the published library is unavailable.
+      }
+    }
+
+    if (!payload) throw new Error("videos.json not found");
     const rawVideos = Array.isArray(payload) ? payload : (payload.videos || payload.items || []);
     const extracted = rawVideos.map(extractVideo);
     const detected = await Promise.all(extracted.map(async video => {
