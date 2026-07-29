@@ -122,6 +122,42 @@ function normalize(text = "") {
   return String(text).toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, " ").replace(/\s+/g, " ").trim();
 }
 
+function detectWorld(text) {
+  const normalized = normalize(text);
+  const hockeySignals = [
+    "nhl", "hockey", "boston bruins", "ottawa senators", "montreal canadiens",
+    "toronto maple leafs", "chicago blackhawks", "colorado avalanche", "edmonton oilers",
+    "calgary flames", "vancouver canucks", "winnipeg jets", "new york rangers",
+    "new york islanders", "new jersey devils", "pittsburgh penguins", "philadelphia flyers",
+    "washington capitals", "carolina hurricanes", "tampa bay lightning", "florida panthers",
+    "buffalo sabres", "detroit red wings", "columbus blue jackets", "nashville predators",
+    "minnesota wild", "st louis blues", "dallas stars", "san jose sharks", "anaheim ducks",
+    "los angeles kings", "vegas golden knights", "seattle kraken", "arizona coyotes"
+  ];
+  const basketballSignals = [
+    "nba", "basketball", "los angeles lakers", "boston celtics", "chicago bulls",
+    "golden state warriors", "san antonio spurs", "oklahoma city thunder", "phoenix suns",
+    "brooklyn nets", "new jersey nets", "new york knicks", "toronto raptors", "miami heat",
+    "dallas mavericks", "houston rockets", "la clippers", "los angeles clippers",
+    "denver nuggets", "milwaukee bucks", "cleveland cavaliers", "detroit pistons",
+    "indiana pacers", "atlanta hawks", "charlotte hornets", "orlando magic",
+    "washington wizards", "minnesota timberwolves", "new orleans pelicans",
+    "memphis grizzlies", "portland trail blazers", "philadelphia 76ers", "sacramento kings"
+  ];
+
+  if (basketballSignals.some(signal => normalized.includes(signal))) return "nba";
+  if (hockeySignals.some(signal => normalized.includes(signal))) return "nhl";
+  return "fifa";
+}
+
+function normalizeWorld(value) {
+  const world = normalize(value);
+  if (["nba", "basketball"].includes(world)) return "nba";
+  if (["nhl", "hockey"].includes(world)) return "nhl";
+  if (["fifa", "football", "soccer"].includes(world)) return "fifa";
+  return "";
+}
+
 function formatViews(number = 0) {
   return new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 }).format(Number(number) || 0) + " views";
 }
@@ -200,19 +236,21 @@ function extractVideo(raw, index) {
   const title = raw.title || raw.snippet?.title || `Lineups10 video ${index + 1}`;
   const tags = raw.tags || raw.snippet?.tags || [];
   const description = raw.description || raw.snippet?.description || "";
+  const searchText = normalize(`${title} ${description} ${Array.isArray(tags) ? tags.join(" ") : tags}`);
   const videoId = raw.videoId || raw.id?.videoId || raw.id || "";
   const publishedAt = raw.publishedAt || raw.snippet?.publishedAt || new Date().toISOString();
   const views = Number(raw.views || raw.viewCount || raw.statistics?.viewCount || 0);
   const duration = raw.duration || raw.contentDetails?.duration || "";
   const durationSeconds = Number(raw.durationSeconds || raw.lengthSeconds || durationToSeconds(duration));
   const thumbnail = raw.thumbnail || raw.thumbnails?.high?.url || raw.snippet?.thumbnails?.high?.url ||
-    makeThumb(title, config.icon, config.accent);
+    (videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : makeThumb(title, config.icon, config.accent));
 
   return {
     id: String(videoId || `${state.world}-${index}`),
     title,
     tags: Array.isArray(tags) ? tags : String(tags).split(","),
-    searchText: normalize(`${title} ${description} ${Array.isArray(tags) ? tags.join(" ") : tags}`),
+    searchText,
+    world: normalizeWorld(raw.world || raw.sport) || detectWorld(searchText),
     views,
     publishedAt,
     duration: String(duration).replace(/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/, (_, h, m, s) =>
@@ -225,9 +263,7 @@ function extractVideo(raw, index) {
 }
 
 function belongsToWorld(video) {
-  const text = normalize(`${video.title} ${video.tags.join(" ")}`);
-  return config.aliases.some(alias => text.includes(alias)) ||
-    Object.values(config.filters).flat().some(keyword => keyword !== "all" && text.includes(keyword));
+  return video.world === state.world;
 }
 
 async function loadVideos() {
