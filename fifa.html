@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-8" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-9" />
 
 </head>
 <body data-world="fifa">
@@ -46,12 +46,12 @@
         <p class="hero-copy">Explore clubs, national teams, transfers, World Cups, historic eras, and future squads without leaving the football experience.</p>
 
         <div class="search-row">
-          <div class="search-wrap">
-            <span aria-hidden="true">⌕</span>
+          <form class="search-wrap" id="searchForm" role="search">
+            <button class="search-submit" type="submit" aria-label="Show search results">⌕</button>
             <label class="sr-only" for="searchInput">Search videos</label>
             <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..." autocomplete="off" />
             <button id="clearSearch" type="button" class="hidden">Clear</button>
-          </div>
+          </form>
           <output id="searchResultCount" class="search-result-count hidden" aria-live="polite"></output>
         </div>
 
@@ -187,6 +187,6 @@
     </article>
   </template>
 
-  <script src="./worlds.js?v=20260729-8"></script>
+  <script src="./worlds.js?v=20260729-9"></script>
 </body>
 </html>

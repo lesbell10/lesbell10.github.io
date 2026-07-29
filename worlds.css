@@ -254,9 +254,14 @@ button {
   box-shadow: var(--shadow);
 }
 
-.search-wrap>span {
+.search-wrap .search-submit {
+  padding: 0;
+  border: 0;
   color: var(--accent);
+  background: transparent;
   font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .search-wrap input {

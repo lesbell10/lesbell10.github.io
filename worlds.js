@@ -105,6 +105,7 @@ const els = {
   status: document.querySelector("#status"),
   empty: document.querySelector("#emptyState"),
   count: document.querySelector("#videoCount"),
+  searchForm: document.querySelector("#searchForm"),
   search: document.querySelector("#searchInput"),
   searchResultCount: document.querySelector("#searchResultCount"),
   clearSearch: document.querySelector("#clearSearch"),
@@ -488,6 +489,14 @@ els.search.addEventListener("input", () => {
   state.query = normalize(els.search.value);
   state.visible = 12;
   applyFilters();
+});
+
+els.searchForm.addEventListener("submit", event => {
+  event.preventDefault();
+  state.query = normalize(els.search.value);
+  state.visible = 12;
+  applyFilters();
+  document.querySelector(".library")?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 els.clearSearch.addEventListener("click", () => {
