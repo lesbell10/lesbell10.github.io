@@ -3,382 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Browse football, hockey, and basketball videos from Lineups10 by sport, team, tournament, era, and series."
-  />
-  <title>Lineups10 Video Library</title>
+  <meta name="description" content="Choose the FIFA, NHL, or NBA Lineups10 sports world." />
+  <title>Lineups10 Sports Worlds</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./worlds.css" />
 </head>
-<body>
-  <header class="site-header" id="top">
-    <nav class="top-nav container" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Lineups10 home">
+<body class="portal-page">
+  <main class="portal">
+    <div class="portal-copy">
+      <a class="brand portal-brand" href="https://www.youtube.com/@lineups10" target="_blank" rel="noopener">
         <span class="brand-mark">L10</span>
-        <span class="brand-copy">
-          <strong>Lineups10</strong>
-          <small>Video Library</small>
-        </span>
+        <span><strong>Lineups10</strong><small>Sports Worlds</small></span>
       </a>
-
-      <button
-        class="mobile-nav-toggle"
-        id="mobileNavToggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="primaryNav"
-      >
-        <span></span><span></span><span></span>
-        <span class="sr-only">Open navigation</span>
-      </button>
-
-      <div class="primary-nav" id="primaryNav">
-        <button class="nav-menu-button" type="button" data-menu-target="explore" aria-expanded="false">
-          Explore <span aria-hidden="true">⌄</span>
-        </button>
-        <button class="nav-menu-button football-nav" type="button" data-menu-target="football" aria-expanded="false">
-          <span aria-hidden="true">⚽</span> Football <span aria-hidden="true">⌄</span>
-        </button>
-        <button class="nav-menu-button hockey-nav" type="button" data-menu-target="hockey" aria-expanded="false">
-          <span aria-hidden="true">🏒</span> Hockey <span aria-hidden="true">⌄</span>
-        </button>
-        <button class="nav-menu-button basketball-nav" type="button" data-menu-target="basketball" aria-expanded="false">
-          <span aria-hidden="true">🏀</span> Basketball <span aria-hidden="true">⌄</span>
-        </button>
-        <button class="nav-menu-button" type="button" data-menu-target="collections" aria-expanded="false">
-          Collections <span aria-hidden="true">⌄</span>
-        </button>
-        <button class="nav-direct-button" type="button" data-filter-key="all">All Videos</button>
-      </div>
-
-      <a
-        class="youtube-button"
-        href="https://www.youtube.com/@lineups10?sub_confirmation=1"
-        target="_blank"
-        rel="noopener"
-      >
-        Subscribe
+      <p class="eyebrow">3 SPORTS · 3 WORLDS · ONE CHANNEL</p>
+      <h1>Choose your world.</h1>
+      <p>Enter a dedicated video library built for football, hockey, or basketball.</p>
+      <a class="portal-subscribe" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank" rel="noopener">
+        Subscribe on YouTube
       </a>
-    </nav>
-
-    <div class="mega-menu" id="megaMenu">
-      <div class="container">
-        <section class="mega-panel" data-menu-panel="explore" aria-label="Explore videos">
-          <button class="mega-feature" type="button" data-filter-key="all">
-            <span class="mega-feature-kicker">Complete library</span>
-            <strong>Explore every Lineups10 upload</strong>
-            <span>Search thousands of sports lineups, rankings, teams, and seasons.</span>
-            <em>View all videos →</em>
-          </button>
-
-          <div class="mega-columns">
-            <div class="mega-group">
-              <h2>Discover</h2>
-              <button type="button" data-filter-key="all">All videos <span data-count-filter="all">0</span></button>
-              <button type="button" data-filter-key="latest">Latest uploads <span data-count-filter="latest">0</span></button>
-              <button type="button" data-filter-key="format-short">Vertical videos <span data-count-filter="format-short">0</span></button>
-              <button type="button" data-filter-key="format-long">Long videos<span data-count-filter="format-long">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Popular topics</h2>
-              <button type="button" data-filter-key="best">Best Players & XI <span data-count-filter="best">0</span></button>
-              <button type="button" data-filter-key="transfers">Transfers & Rumours <span data-count-filter="transfers">0</span></button>
-              <button type="button" data-filter-key="history">Historic eras <span data-count-filter="history">0</span></button>
-              <button type="button" data-filter-key="future">Future squads <span data-count-filter="future">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Sports</h2>
-              <button type="button" data-filter-key="football">Football <span data-count-filter="football">0</span></button>
-              <button type="button" data-filter-key="hockey">Hockey <span data-count-filter="hockey">0</span></button>
-              <button type="button" data-filter-key="basketball">Basketball <span data-count-filter="basketball">0</span></button>
-              <button type="button" data-filter-key="matches">Finals & matches <span data-count-filter="matches">0</span></button>
-            </div>
-          </div>
-        </section>
-
-        <section class="mega-panel" data-menu-panel="football" aria-label="Football categories">
-          <div class="mega-sport-heading football-heading">
-            <span class="mega-sport-icon">⚽</span>
-            <div><small>Football library</small><strong>Clubs, nations, tournaments and transfers</strong></div>
-            <button type="button" data-filter-key="football">View all football</button>
-          </div>
-          <div class="mega-columns four-columns">
-            <div class="mega-group">
-              <h2>Tournaments</h2>
-              <button type="button" data-filter-key="football-world-cup">World Cup <span data-count-filter="football-world-cup">0</span></button>
-              <button type="button" data-filter-key="football-nations">National teams <span data-count-filter="football-nations">0</span></button>
-              <button type="button" data-filter-key="football-tournaments">Euro, Copa & tournaments <span data-count-filter="football-tournaments">0</span></button>
-              <button type="button" data-filter-key="football-matches">Finals & matches <span data-count-filter="football-matches">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Clubs</h2>
-              <button type="button" data-filter-key="football-clubs">Club teams <span data-count-filter="football-clubs">0</span></button>
-              <button type="button" data-filter-key="football-best">Best Players & XI <span data-count-filter="football-best">0</span></button>
-              <button type="button" data-filter-key="football-history">Historic clubs & eras <span data-count-filter="football-history">0</span></button>
-              <button type="button" data-filter-key="football-since-2000">Best since 2000 <span data-count-filter="football-since-2000">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Transfers</h2>
-              <button type="button" data-filter-key="football-transfers">Transfers & rumours <span data-count-filter="football-transfers">0</span></button>
-              <button type="button" data-filter-key="football-2026">2026–27 squads <span data-count-filter="football-2026">0</span></button>
-              <button type="button" data-filter-key="football-future">Potential squads <span data-count-filter="football-future">0</span></button>
-              <button type="button" data-filter-key="football-2032">Projected in 2032 <span data-count-filter="football-2032">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Series</h2>
-              <button type="button" data-filter-key="football-every-season">Every season <span data-count-filter="football-every-season">0</span></button>
-              <button type="button" data-filter-key="football-era-1990">1990–2000 <span data-count-filter="football-era-1990">0</span></button>
-              <button type="button" data-filter-key="history">All historical videos <span data-count-filter="history">0</span></button>
-              <button type="button" data-filter-key="future">All future videos <span data-count-filter="future">0</span></button>
-            </div>
-          </div>
-        </section>
-
-        <section class="mega-panel" data-menu-panel="hockey" aria-label="Hockey categories">
-          <div class="mega-sport-heading hockey-heading">
-            <span class="mega-sport-icon">🏒</span>
-            <div><small>Hockey library</small><strong>NHL teams, eras, legends and future rosters</strong></div>
-            <button type="button" data-filter-key="hockey">View all hockey</button>
-          </div>
-          <div class="mega-columns">
-            <div class="mega-group">
-              <h2>NHL</h2>
-              <button type="button" data-filter-key="hockey-teams">NHL teams <span data-count-filter="hockey-teams">0</span></button>
-              <button type="button" data-filter-key="hockey-best">Best Players <span data-count-filter="hockey-best">0</span></button>
-              <button type="button" data-filter-key="hockey-history">Historic seasons <span data-count-filter="hockey-history">0</span></button>
-              <button type="button" data-filter-key="hockey-since-2000">Since 2000 <span data-count-filter="hockey-since-2000">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Future</h2>
-              <button type="button" data-filter-key="hockey-future">Potential & projected <span data-count-filter="hockey-future">0</span></button>
-              <button type="button" data-filter-key="hockey-2026">2026–27 <span data-count-filter="hockey-2026">0</span></button>
-              <button type="button" data-filter-key="hockey-every-season">Every season <span data-count-filter="hockey-every-season">0</span></button>
-              <button type="button" data-filter-key="hockey-era-1990">1990–2000 <span data-count-filter="hockey-era-1990">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Video format</h2>
-              <button type="button" data-filter-key="hockey-short">Vertical hockey videos <span data-count-filter="hockey-short">0</span></button>
-              <button type="button" data-filter-key="hockey-long">Long hockey videos <span data-count-filter="hockey-long">0</span></button>
-              <button type="button" data-filter-key="latest">Newest uploads <span data-count-filter="latest">0</span></button>
-              <button type="button" data-filter-key="all">Complete library <span data-count-filter="all">0</span></button>
-            </div>
-          </div>
-        </section>
-
-        <section class="mega-panel" data-menu-panel="basketball" aria-label="Basketball categories">
-          <div class="mega-sport-heading basketball-heading">
-            <span class="mega-sport-icon">🏀</span>
-            <div><small>Basketball library</small><strong>NBA teams, stars, historic seasons and projections</strong></div>
-            <button type="button" data-filter-key="basketball">View all basketball</button>
-          </div>
-          <div class="mega-columns">
-            <div class="mega-group">
-              <h2>NBA</h2>
-              <button type="button" data-filter-key="basketball-teams">NBA teams <span data-count-filter="basketball-teams">0</span></button>
-              <button type="button" data-filter-key="basketball-best">Best Players <span data-count-filter="basketball-best">0</span></button>
-              <button type="button" data-filter-key="basketball-history">Historic seasons <span data-count-filter="basketball-history">0</span></button>
-              <button type="button" data-filter-key="basketball-since-2000">Since 2000 <span data-count-filter="basketball-since-2000">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Future</h2>
-              <button type="button" data-filter-key="basketball-future">Potential & projected <span data-count-filter="basketball-future">0</span></button>
-              <button type="button" data-filter-key="basketball-2026">2026–27 <span data-count-filter="basketball-2026">0</span></button>
-              <button type="button" data-filter-key="basketball-every-season">Every season <span data-count-filter="basketball-every-season">0</span></button>
-              <button type="button" data-filter-key="basketball-era-1990">1990–2000 <span data-count-filter="basketball-era-1990">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>Video format</h2>
-              <button type="button" data-filter-key="basketball-short">Vertical basketball videos <span data-count-filter="basketball-short">0</span></button>
-              <button type="button" data-filter-key="basketball-long">Long basketball videos <span data-count-filter="basketball-long">0</span></button>
-              <button type="button" data-filter-key="latest">Newest uploads <span data-count-filter="latest">0</span></button>
-              <button type="button" data-filter-key="all">Complete library <span data-count-filter="all">0</span></button>
-            </div>
-          </div>
-        </section>
-
-        <section class="mega-panel" data-menu-panel="collections" aria-label="Video collections">
-          <div class="mega-columns four-columns">
-            <div class="mega-group">
-              <h2>By era</h2>
-              <button type="button" data-filter-key="era-1990">1990–2000 <span data-count-filter="era-1990">0</span></button>
-              <button type="button" data-filter-key="since-2000">Since 2000 <span data-count-filter="since-2000">0</span></button>
-              <button type="button" data-filter-key="history">Historical videos <span data-count-filter="history">0</span></button>
-              <button type="button" data-filter-key="every-season">Every season <span data-count-filter="every-season">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>By future year</h2>
-              <button type="button" data-filter-key="season-2026">2026–27 <span data-count-filter="season-2026">0</span></button>
-              <button type="button" data-filter-key="year-2032">2032 projections <span data-count-filter="year-2032">0</span></button>
-              <button type="button" data-filter-key="future">All future squads <span data-count-filter="future">0</span></button>
-              <button type="button" data-filter-key="transfers">Transfers & rumours <span data-count-filter="transfers">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>By theme</h2>
-              <button type="button" data-filter-key="best">Best Players & XI <span data-count-filter="best">0</span></button>
-              <button type="button" data-filter-key="matches">Finals & matches <span data-count-filter="matches">0</span></button>
-              <button type="button" data-filter-key="football-nations">National teams <span data-count-filter="football-nations">0</span></button>
-              <button type="button" data-filter-key="football-clubs">Football clubs <span data-count-filter="football-clubs">0</span></button>
-            </div>
-            <div class="mega-group">
-              <h2>By format</h2>
-              <button type="button" data-filter-key="format-short">Vertical videos <span data-count-filter="format-short">0</span></button>
-              <button type="button" data-filter-key="format-long">Long videos <span data-count-filter="format-long">0</span></button>
-              <button type="button" data-filter-key="latest">Latest uploads <span data-count-filter="latest">0</span></button>
-              <button type="button" data-filter-key="all">All videos <span data-count-filter="all">0</span></button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content container">
-      <p class="eyebrow">3 SPORTS · THOUSANDS OF LINEUPS · ONE LIBRARY</p>
-      <h1>Find the exact sports video you want.</h1>
-      <p class="hero-copy">
-        Browse clubs, national teams, transfers, historic seasons, future squads, NHL teams, NBA teams, and more.
-      </p>
-
-      <div class="search-wrap">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-        <label class="sr-only" for="searchInput">Search videos</label>
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Search Arsenal, Argentina, NHL, 2032, transfers..."
-          autocomplete="off"
-        />
-        <button id="clearSearchButton" class="clear-search hidden" type="button">Clear</button>
-      </div>
-
-      <div class="hero-shortcuts" aria-label="Popular categories">
-        <button type="button" data-filter-key="football-world-cup">World Cup</button>
-        <button type="button" data-filter-key="football-transfers">Transfers</button>
-        <button type="button" data-filter-key="since-2000">Since 2000</button>
-        <button type="button" data-filter-key="year-2032">Projected 2032</button>
-        <button type="button" data-filter-key="hockey">NHL & Hockey</button>
-        <button type="button" data-filter-key="basketball">NBA & Basketball</button>
-      </div>
-    </div>
-  </section>
-
-  <main class="container main-content" id="library">
-    <section id="setupPanel" class="setup-panel hidden" aria-live="polite">
-      <h2 id="setupTitle">Finish the GitHub setup</h2>
-      <p id="setupMessage">
-        Run the <strong>Update YouTube videos</strong> workflow in GitHub Actions to generate the complete <code>videos.json</code> library.
-      </p>
-      <p id="referrerHelp" class="hidden"></p>
-    </section>
-
-    <section class="category-dashboard" aria-label="Featured video categories">
-      <button class="category-tile football-tile" type="button" data-filter-key="football">
-        <span class="tile-icon">⚽</span>
-        <span><small>Browse sport</small><strong>Football</strong><em>Clubs, nations, transfers</em></span>
-        <b data-count-filter="football">0</b>
-      </button>
-      <button class="category-tile hockey-tile" type="button" data-filter-key="hockey">
-        <span class="tile-icon">🏒</span>
-        <span><small>Browse sport</small><strong>Hockey</strong><em>NHL teams and legends</em></span>
-        <b data-count-filter="hockey">0</b>
-      </button>
-      <button class="category-tile basketball-tile" type="button" data-filter-key="basketball">
-        <span class="tile-icon">🏀</span>
-        <span><small>Browse sport</small><strong>Basketball</strong><em>NBA teams and stars</em></span>
-        <b data-count-filter="basketball">0</b>
-      </button>
-      <button class="category-tile collection-tile" type="button" data-filter-key="future">
-        <span class="tile-icon">◈</span>
-        <span><small>Popular collection</small><strong>Future Squads</strong><em>Potential and projected</em></span>
-        <b data-count-filter="future">0</b>
-      </button>
-    </section>
-
-    <section class="library-header">
-      <div>
-        <p id="activeFilterEyebrow" class="section-eyebrow">Complete library</p>
-        <h2 id="activeFilterTitle">All Videos</h2>
-        <p id="activeFilterDescription" class="filter-description">
-          Every currently loaded public video from Lineups10.
-        </p>
-      </div>
-      <div class="library-controls">
-        <label for="sortSelect">Sort</label>
-        <select id="sortSelect">
-          <option value="newest">Newest first</option>
-          <option value="oldest">Oldest first</option>
-          <option value="views">Most viewed</option>
-          <option value="title">Title A–Z</option>
-        </select>
-        <button id="clearFilterButton" class="clear-filter hidden" type="button">Reset filters</button>
-      </div>
-    </section>
-
-    <section class="active-filter-bar" aria-label="Active category">
-      <div class="filter-path">
-        <span>Library</span><b>›</b><strong id="filterPathLabel">All Videos</strong>
-      </div>
-      <p id="videoCount" class="video-count">0 videos loaded</p>
-    </section>
-
-    <p id="status" class="status" aria-live="polite">Loading videos...</p>
-
-    <section id="videoGrid" class="video-grid" aria-label="Lineups10 videos"></section>
-
-    <div id="emptyState" class="empty-state hidden">
-      <span>⌕</span>
-      <h2>No matching videos</h2>
-      <p>Try another search or select a broader category.</p>
-      <button type="button" data-filter-key="all">Show all videos</button>
     </div>
 
-    <div class="actions">
-      <button id="loadMoreButton" class="action-button hidden">Load 50 more</button>
-      <button id="loadAllButton" class="action-button secondary hidden">Load complete library</button>
-    </div>
+    <section class="world-cards">
+      <a class="world-card fifa-world" href="./fifa.html">
+        <span class="world-emoji">⚽</span>
+        <small>Football universe</small>
+        <h2>FIFA World</h2>
+        <p>Clubs, nations, World Cups, transfers, legends, and future squads.</p>
+        <b>Enter FIFA World →</b>
+      </a>
+      <a class="world-card nhl-world" href="./nhl.html">
+        <span class="world-emoji">🏒</span>
+        <small>Hockey universe</small>
+        <h2>NHL World</h2>
+        <p>Teams, trades, playoffs, legends, prospects, and future rosters.</p>
+        <b>Enter NHL World →</b>
+      </a>
+      <a class="world-card nba-world" href="./nba.html">
+        <span class="world-emoji">🏀</span>
+        <small>Basketball universe</small>
+        <h2>NBA World</h2>
+        <p>Teams, trades, free agency, playoffs, stars, and future lineups.</p>
+        <b>Enter NBA World →</b>
+      </a>
+    </section>
   </main>
-
-  <footer>
-    <div class="container footer-content">
-      <div>
-        <strong>Lineups10</strong>
-        <p>Football, hockey, and basketball lineups in one searchable library.</p>
-      </div>
-      <div class="footer-links">
-        <button type="button" data-filter-key="football">Football</button>
-        <button type="button" data-filter-key="hockey">Hockey</button>
-        <button type="button" data-filter-key="basketball">Basketball</button>
-        <a href="https://www.youtube.com/@lineups10" target="_blank" rel="noopener">YouTube Channel ↗</a>
-      </div>
-    </div>
-  </footer>
-
-  <template id="videoCardTemplate">
-    <article class="video-card">
-      <a class="thumbnail-link" target="_blank" rel="noopener">
-        <img class="thumbnail" loading="lazy" alt="" />
-        <span class="sport-badge"></span>
-        <span class="duration-badge"></span>
-      </a>
-      <div class="card-body">
-        <div class="card-meta">
-          <p class="published-date"></p>
-          <p class="view-count"></p>
-        </div>
-        <h2 class="video-title"></h2>
-        <div class="tag-row"></div>
-        <a class="watch-link" target="_blank" rel="noopener">Watch on YouTube <span>→</span></a>
-      </div>
-    </article>
-  </template>
-
-  <script src="./app.js"></script>
 </body>
 </html>

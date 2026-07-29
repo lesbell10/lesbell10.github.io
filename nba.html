@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NBA teams, trades, free agency, playoffs, historic seasons, stars, and future lineups." />
+  <title>NBA World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./worlds.css" />
+
+</head>
+<body data-world="nba">
+  <header class="site-header">
+    <nav class="top-nav container" aria-label="Main navigation">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">L10</span>
+        <span><strong>Lineups10</strong><small>Sports Worlds</small></span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-expanded="false" aria-controls="worldNav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <div class="world-nav" id="worldNav">
+        <a href="./fifa.html" data-world-link="fifa">⚽ FIFA World</a>
+        <a href="./nhl.html" data-world-link="nhl">🏒 NHL World</a>
+        <a href="./nba.html" data-world-link="nba">🏀 NBA World</a>
+      </div>
+
+      <a class="subscribe-button" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank" rel="noopener">
+        Subscribe
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-content container">
+        <p class="eyebrow">🏀 LINEUPS10 · NBA WORLD</p>
+        <h1>Every basketball lineup in one world.</h1>
+        <p class="hero-copy">Explore NBA teams, free agency, trades, playoffs, historic seasons, superstar rankings, and future starting fives.</p>
+
+        <div class="search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <label class="sr-only" for="searchInput">Search videos</label>
+          <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..." autocomplete="off" />
+          <button id="clearSearch" type="button" class="hidden">Clear</button>
+        </div>
+
+        <div class="hero-shortcuts">
+          <button type="button" data-filter="all">All NBA</button>
+          <button type="button" data-filter="teams">Teams</button>
+          <button type="button" data-filter="transfers">Transfers</button>
+          <button type="button" data-filter="playoffs">Playoffs</button>
+          <button type="button" data-filter="future">Future Lineups</button>
+          <button type="button" data-filter="shorts">Shorts</button>
+          <button type="button" data-filter="long-form">Long Form</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container dashboard" aria-label="NBA World categories">
+        <button class="category-card" type="button" data-filter="teams">
+          <span class="category-icon">🏟️</span>
+          <span><small>League library</small><strong>NBA Teams</strong><em>Starting fives and benches</em></span>
+          <b data-count="teams">0</b>
+        </button>
+        <button class="category-card" type="button" data-filter="transfers">
+          <span class="category-icon">↔</span>
+          <span><small>Player movement</small><strong>Transfers</strong><em>Trades and free agency</em></span>
+          <b data-count="transfers">0</b>
+        </button>
+        <button class="category-card" type="button" data-filter="playoffs">
+          <span class="category-icon">🏆</span>
+          <span><small>Postseason</small><strong>Playoffs</strong><em>Finals and great series</em></span>
+          <b data-count="playoffs">0</b>
+        </button>
+        <button class="category-card" type="button" data-filter="history">
+          <span class="category-icon">⌛</span>
+          <span><small>Classic basketball</small><strong>Historic Seasons</strong><em>Best teams since 2000</em></span>
+          <b data-count="history">0</b>
+        </button>
+        <button class="category-card" type="button" data-filter="future">
+          <span class="category-icon">◈</span>
+          <span><small>Tomorrow's NBA</small><strong>Future Lineups</strong><em>Prospects and projections</em></span>
+          <b data-count="future">0</b>
+        </button>
+        <button class="category-card" type="button" data-filter="best">
+          <span class="category-icon">★</span>
+          <span><small>Elite players</small><strong>Best Players</strong><em>Stars and all-time rankings</em></span>
+          <b data-count="best">0</b>
+        </button>
+        <button class="category-card format-card" type="button" data-filter="shorts">
+          <span class="category-icon">▯</span>
+          <span><small>Vertical format</small><strong>Shorts</strong><em>Quick videos under 60 seconds</em></span>
+          <b data-count="shorts">0</b>
+        </button>
+        <button class="category-card format-card" type="button" data-filter="long-form">
+          <span class="category-icon">▰</span>
+          <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 60 seconds</em></span>
+          <b data-count="long-form">0</b>
+        </button>
+    </section>
+
+    <section class="container library">
+      <div class="library-heading">
+        <div>
+          <p class="section-kicker" id="activeKicker">Complete world</p>
+          <h2 id="activeTitle">All NBA World Videos</h2>
+          <p id="activeDescription">Browse every loaded video in this sports world.</p>
+        </div>
+        <div class="controls">
+          <label for="sortSelect">Sort</label>
+          <select id="sortSelect">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="views">Most viewed</option>
+            <option value="title">Title A–Z</option>
+          </select>
+          <button id="resetFilters" class="secondary-button hidden" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <p><span>World</span><b>›</b><strong id="filterLabel">All videos</strong></p>
+        <span id="videoCount">0 videos</span>
+      </div>
+
+      <p id="status" class="status">Loading videos...</p>
+      <section id="videoGrid" class="video-grid" aria-label="NBA World videos"></section>
+
+      <div id="emptyState" class="empty-state hidden">
+        <span>⌕</span>
+        <h2>No matching videos</h2>
+        <p>Try a different search or select a broader category.</p>
+        <button type="button" data-filter="all">Show all videos</button>
+      </div>
+
+      <div class="load-actions">
+        <button id="loadMore" type="button" class="primary-button hidden">Load more</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <strong>Lineups10 NBA World</strong>
+        <p>NBA teams, trades, free agency, playoffs, historic seasons, stars, and future lineups.</p>
+      </div>
+      <div>
+        <a href="./fifa.html">FIFA</a>
+        <a href="./nhl.html">NHL</a>
+        <a href="./nba.html">NBA</a>
+        <a href="https://www.youtube.com/@lineups10" target="_blank" rel="noopener">YouTube ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <template id="videoTemplate">
+    <article class="video-card">
+      <a class="thumbnail-link" target="_blank" rel="noopener">
+        <img class="thumbnail" loading="lazy" alt="" />
+        <span class="sport-badge"></span>
+        <span class="duration-badge"></span>
+      </a>
+      <div class="card-body">
+        <div class="card-meta"><span class="published-date"></span><span class="view-count"></span></div>
+        <h3 class="video-title"></h3>
+        <div class="tag-row"></div>
+        <a class="watch-link" target="_blank" rel="noopener">Watch on YouTube <span>→</span></a>
+      </div>
+    </article>
+  </template>
+
+  <script src="./worlds.js"></script>
+</body>
+</html>
