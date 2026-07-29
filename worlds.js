@@ -185,13 +185,34 @@ function durationToSeconds(value = "") {
 }
 
 function isShortVideo(video) {
+  if (video.format === "short") return true;
+  if (video.format === "long") return false;
   const text = normalize(`${video.title} ${video.tags.join(" ")}`);
   if (text.includes("shorts") || text.includes("#shorts") || text.includes("vertical")) return true;
-  return video.durationSeconds > 0 && video.durationSeconds <= 60;
+  return video.durationSeconds > 0 && video.durationSeconds <= 180;
 }
 
 function isLongFormVideo(video) {
-  return !isShortVideo(video) && video.durationSeconds > 60;
+  return !isShortVideo(video);
+}
+
+function detectVideoFormat(videoId, durationSeconds) {
+  return new Promise((resolve) => {
+    const image = new Image();
+    const fallback = durationSeconds > 180 ? "long" : "short";
+    const timeout = window.setTimeout(() => resolve(fallback), 5000);
+
+    image.onload = () => {
+      window.clearTimeout(timeout);
+      const isVertical = image.naturalHeight > image.naturalWidth;
+      resolve(isVertical && durationSeconds <= 180 ? "short" : "long");
+    };
+    image.onerror = () => {
+      window.clearTimeout(timeout);
+      resolve(fallback);
+    };
+    image.src = `https://i.ytimg.com/vi/${videoId}/oar2.jpg`;
+  });
 }
 
 function makeThumb(title, icon, accent) {
@@ -227,6 +248,7 @@ function mapFallback(item, index) {
     publishedAt,
     duration: index % 3 === 0 ? "0:42" : index % 3 === 1 ? "3:45" : "0:51",
     durationSeconds: index % 3 === 0 ? 42 : index % 3 === 1 ? 225 : 51,
+    format: index % 3 === 1 ? "long" : "short",
     url: "https://www.youtube.com/@lineups10",
     thumbnail: makeThumb(title, config.icon, config.accent)
   };
@@ -257,6 +279,7 @@ function extractVideo(raw, index) {
       [h, m, s].filter((v, i) => v || i > 0).map(v => String(v || 0).padStart(2, "0")).join(":").replace(/^00:/, "")
     ),
     durationSeconds,
+    format: raw.format === "long" || raw.format === "short" ? raw.format : "",
     url: raw.url || (videoId ? `https://www.youtube.com/watch?v=${videoId}` : "https://www.youtube.com/@lineups10"),
     thumbnail
   };
@@ -272,7 +295,14 @@ async function loadVideos() {
     if (!response.ok) throw new Error("videos.json not found");
     const payload = await response.json();
     const rawVideos = Array.isArray(payload) ? payload : (payload.videos || payload.items || []);
-    const mapped = rawVideos.map(extractVideo).filter(belongsToWorld);
+    const extracted = rawVideos.map(extractVideo);
+    const detected = await Promise.all(extracted.map(async video => {
+      if (!video.format && video.id) {
+        video.format = await detectVideoFormat(video.id, video.durationSeconds);
+      }
+      return video;
+    }));
+    const mapped = detected.filter(belongsToWorld);
     if (!mapped.length) throw new Error("No matching videos");
     state.allVideos = mapped;
   } catch {
