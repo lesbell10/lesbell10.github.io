@@ -116,6 +116,7 @@ const els = {
   activeKicker: document.querySelector("#activeKicker"),
   activeTitle: document.querySelector("#activeTitle"),
   activeDescription: document.querySelector("#activeDescription"),
+  selectedButtonCount: document.querySelector("#selectedButtonCount"),
   nav: document.querySelector("#worldNav"),
   mobileToggle: document.querySelector("#mobileToggle")
 };
@@ -284,8 +285,7 @@ function mapFallback(item, index) {
 function extractVideo(raw, index) {
   const title = raw.title || raw.snippet?.title || `Lineups10 video ${index + 1}`;
   const tags = raw.tags || raw.snippet?.tags || [];
-  const description = raw.description || raw.snippet?.description || "";
-  const searchText = normalize(`${title} ${description} ${Array.isArray(tags) ? tags.join(" ") : tags}`);
+  const searchText = normalize(title);
   const videoId = raw.videoId || raw.id?.videoId || raw.id || "";
   const publishedAt = raw.publishedAt || raw.snippet?.publishedAt || new Date().toISOString();
   const views = Number(raw.views || raw.viewCount || raw.statistics?.viewCount || 0);
@@ -462,6 +462,11 @@ function updateHeading() {
   els.activeDescription.textContent = state.query
     ? `${state.filtered.length} result${state.filtered.length === 1 ? "" : "s"} matching your search.`
     : `Browse ${label.toLowerCase()} in the Lineups10 ${config.title}.`;
+  if (els.selectedButtonCount) {
+    const count = state.filters.size;
+    els.selectedButtonCount.textContent =
+      `${count} selected ${count === 1 ? "category" : "categories"}`;
+  }
 
   document.querySelectorAll("[data-filter]").forEach(button => {
     const isAll = button.dataset.filter === "all";
@@ -471,7 +476,7 @@ function updateHeading() {
   });
 }
 
-function setFilter(filter) {
+function setFilter(filter, scrollToResults = true) {
   if (filter === "all") {
     state.filters.clear();
   } else if (state.filters.has(filter)) {
@@ -483,12 +488,16 @@ function setFilter(filter) {
   }
   state.visible = 12;
   applyFilters();
-  document.querySelector(".library")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (scrollToResults) {
+    document.querySelector(".library")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 document.addEventListener("click", event => {
   const filterButton = event.target.closest("[data-filter]");
-  if (filterButton) setFilter(filterButton.dataset.filter);
+  if (filterButton) {
+    setFilter(filterButton.dataset.filter, !filterButton.classList.contains("category-card"));
+  }
 });
 
 els.search.addEventListener("input", () => {

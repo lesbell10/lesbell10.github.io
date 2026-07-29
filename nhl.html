@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8" />
@@ -8,10 +9,12 @@
   <title>NHL World</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-9" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-16" />
 
 </head>
+
 <body data-world="nhl">
   <header class="site-header">
     <nav class="top-nav container" aria-label="Main navigation">
@@ -31,7 +34,8 @@
         <a href="./nba.html" data-world-link="nba">🏀 NBA World</a>
       </div>
 
-      <a class="subscribe-button" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank" rel="noopener">
+      <a class="subscribe-button" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank"
+        rel="noopener">
         Subscribe
       </a>
     </nav>
@@ -43,13 +47,15 @@
       <div class="hero-content container">
         <p class="eyebrow">🏒 LINEUPS10 · NHL WORLD</p>
         <h1>Every hockey lineup in one world.</h1>
-        <p class="hero-copy">Browse NHL teams, trades, classic seasons, legends, prospects, playoff lineups, and future rosters in a dedicated hockey experience.</p>
+        <p class="hero-copy">Browse NHL teams, trades, classic seasons, legends, prospects, playoff lineups, and future
+          rosters in a dedicated hockey experience.</p>
 
         <div class="search-row">
           <form class="search-wrap" id="searchForm" role="search">
             <button class="search-submit" type="submit" aria-label="Show search results">⌕</button>
             <label class="sr-only" for="searchInput">Search videos</label>
-            <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..." autocomplete="off" />
+            <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..."
+              autocomplete="off" />
             <button id="clearSearch" type="button" class="hidden">Clear</button>
           </form>
           <output id="searchResultCount" class="search-result-count hidden" aria-live="polite"></output>
@@ -69,51 +75,51 @@
     </section>
 
     <section class="container dashboard" aria-label="NHL World categories">
-        <button class="category-card" type="button" data-filter="teams">
-          <span class="category-icon">🛡️</span>
-          <span><small>League library</small><strong>NHL Teams</strong><em>Every franchise and roster</em></span>
-          <b data-count="teams">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="trades">
-          <span class="category-icon">↔</span>
-          <span><small>Player movement</small><strong>Trades</strong><em>Major moves and rumours</em></span>
-          <b data-count="trades">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="playoffs">
-          <span class="category-icon">🏆</span>
-          <span><small>Postseason</small><strong>Playoffs</strong><em>Series and championship teams</em></span>
-          <b data-count="playoffs">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="history">
-          <span class="category-icon">⌛</span>
-          <span><small>Classic hockey</small><strong>Historic Seasons</strong><em>Best teams since 2000</em></span>
-          <b data-count="history">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="future">
-          <span class="category-icon">◈</span>
-          <span><small>Tomorrow's NHL</small><strong>Future Rosters</strong><em>Prospects and projections</em></span>
-          <b data-count="future">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="best">
-          <span class="category-icon">★</span>
-          <span><small>Elite players</small><strong>Best Players</strong><em>Stars, legends and rankings</em></span>
-          <b data-count="best">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="games">
-          <span class="category-icon">VS</span>
-          <span><small>Hockey action</small><strong>Games</strong><em>Games, playoffs and finals</em></span>
-          <b data-count="games">0</b>
-        </button>
-        <button class="category-card format-card" type="button" data-filter="shorts">
-          <span class="category-icon">▯</span>
-          <span><small>Vertical format</small><strong>Shorts</strong><em>Quick videos up to 3 minutes</em></span>
-          <b data-count="shorts">0</b>
-        </button>
-        <button class="category-card format-card" type="button" data-filter="long-form">
-          <span class="category-icon">▰</span>
-          <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 3 minutes</em></span>
-          <b data-count="long-form">0</b>
-        </button>
+      <button class="category-card" type="button" data-filter="teams">
+        <span class="category-icon">🛡️</span>
+        <span><small>League library</small><strong>NHL Teams</strong><em>Every franchise and roster</em></span>
+        <b data-count="teams">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="trades">
+        <span class="category-icon">↔</span>
+        <span><small>Player movement</small><strong>Trades</strong><em>Major moves and rumours</em></span>
+        <b data-count="trades">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="playoffs">
+        <span class="category-icon">🏆</span>
+        <span><small>Postseason</small><strong>Playoffs</strong><em>Series and championship teams</em></span>
+        <b data-count="playoffs">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="history">
+        <span class="category-icon">⌛</span>
+        <span><small>Classic hockey</small><strong>Historic Seasons</strong><em>Best teams since 2000</em></span>
+        <b data-count="history">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="future">
+        <span class="category-icon">◈</span>
+        <span><small>Tomorrow's NHL</small><strong>Future Rosters</strong><em>Prospects and projections</em></span>
+        <b data-count="future">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="best">
+        <span class="category-icon">★</span>
+        <span><small>Elite players</small><strong>Best Players</strong><em>Stars, legends and rankings</em></span>
+        <b data-count="best">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="games">
+        <span class="category-icon">VS</span>
+        <span><small>Hockey action</small><strong>Games</strong><em>Games, playoffs and finals</em></span>
+        <b data-count="games">0</b>
+      </button>
+      <button class="category-card format-card" type="button" data-filter="shorts">
+        <span class="category-icon">▯</span>
+        <span><small>Vertical format</small><strong>Shorts</strong><em>Quick videos up to 3 minutes</em></span>
+        <b data-count="shorts">0</b>
+      </button>
+      <button class="category-card format-card" type="button" data-filter="long-form">
+        <span class="category-icon">▰</span>
+        <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 3 minutes</em></span>
+        <b data-count="long-form">0</b>
+      </button>
     </section>
 
     <section class="container library">
@@ -189,4 +195,5 @@
 
   <script src="./worlds.js?v=20260729-11"></script>
 </body>
+
 </html>

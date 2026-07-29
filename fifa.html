@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Football clubs, nations, World Cups, transfers, historic teams, and future squads." />
+  <meta name="description"
+    content="Football clubs, nations, World Cups, transfers, historic teams, and future squads." />
   <title>FIFA World</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-9" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-16" />
 
 </head>
+
 <body data-world="fifa">
   <header class="site-header">
     <nav class="top-nav container" aria-label="Main navigation">
@@ -31,7 +35,8 @@
         <a href="./nba.html" data-world-link="nba">🏀 NBA World</a>
       </div>
 
-      <a class="subscribe-button" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank" rel="noopener">
+      <a class="subscribe-button" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank"
+        rel="noopener">
         Subscribe
       </a>
     </nav>
@@ -43,13 +48,15 @@
       <div class="hero-content container">
         <p class="eyebrow">⚽ LINEUPS10 · FIFA WORLD</p>
         <h1>Every football lineup in one world.</h1>
-        <p class="hero-copy">Explore clubs, national teams, transfers, World Cups, historic eras, and future squads without leaving the football experience.</p>
+        <p class="hero-copy">Explore clubs, national teams, transfers, World Cups, historic eras, and future squads
+          without leaving the football experience.</p>
 
         <div class="search-row">
           <form class="search-wrap" id="searchForm" role="search">
             <button class="search-submit" type="submit" aria-label="Show search results">⌕</button>
             <label class="sr-only" for="searchInput">Search videos</label>
-            <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..." autocomplete="off" />
+            <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..."
+              autocomplete="off" />
             <button id="clearSearch" type="button" class="hidden">Clear</button>
           </form>
           <output id="searchResultCount" class="search-result-count hidden" aria-live="polite"></output>
@@ -69,51 +76,51 @@
     </section>
 
     <section class="container dashboard" aria-label="FIFA World categories">
-        <button class="category-card" type="button" data-filter="world-cup">
-          <span class="category-icon">🌍</span>
-          <span><small>Tournaments</small><strong>World Cup</strong><em>Nations, matches and stars</em></span>
-          <b data-count="world-cup">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="clubs">
-          <span class="category-icon">🏟️</span>
-          <span><small>Club football</small><strong>Clubs & XI</strong><em>Current and historic teams</em></span>
-          <b data-count="clubs">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="transfers">
-          <span class="category-icon">↔</span>
-          <span><small>Player movement</small><strong>Transfers</strong><em>Done deals and rumours</em></span>
-          <b data-count="transfers">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="history">
-          <span class="category-icon">⌛</span>
-          <span><small>Classic football</small><strong>Historic Eras</strong><em>Legends and great teams</em></span>
-          <b data-count="history">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="future">
-          <span class="category-icon">◈</span>
-          <span><small>Tomorrow's teams</small><strong>Future Squads</strong><em>Projected lineups</em></span>
-          <b data-count="future">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="best">
-          <span class="category-icon">★</span>
-          <span><small>Elite players</small><strong>Best Players</strong><em>Rankings and dream XIs</em></span>
-          <b data-count="best">0</b>
-        </button>
-        <button class="category-card" type="button" data-filter="games">
-          <span class="category-icon">VS</span>
-          <span><small>Football action</small><strong>Games</strong><em>Matches, friendlies and finals</em></span>
-          <b data-count="games">0</b>
-        </button>
-        <button class="category-card format-card" type="button" data-filter="shorts">
-          <span class="category-icon">▯</span>
-          <span><small>Vertical format</small><strong>Shorts</strong><em>Quick videos up to 3 minutes</em></span>
-          <b data-count="shorts">0</b>
-        </button>
-        <button class="category-card format-card" type="button" data-filter="long-form">
-          <span class="category-icon">▰</span>
-          <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 3 minutes</em></span>
-          <b data-count="long-form">0</b>
-        </button>
+      <button class="category-card" type="button" data-filter="world-cup">
+        <span class="category-icon">🌍</span>
+        <span><small>Tournaments</small><strong>World Cup</strong><em>Nations, matches and stars</em></span>
+        <b data-count="world-cup">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="clubs">
+        <span class="category-icon">🏟️</span>
+        <span><small>Club football</small><strong>Clubs & XI</strong><em>Current and historic teams</em></span>
+        <b data-count="clubs">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="transfers">
+        <span class="category-icon">↔</span>
+        <span><small>Player movement</small><strong>Transfers</strong><em>Done deals and rumours</em></span>
+        <b data-count="transfers">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="history">
+        <span class="category-icon">⌛</span>
+        <span><small>Classic football</small><strong>Historic Eras</strong><em>Legends and great teams</em></span>
+        <b data-count="history">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="future">
+        <span class="category-icon">◈</span>
+        <span><small>Tomorrow's teams</small><strong>Future Squads</strong><em>Projected lineups</em></span>
+        <b data-count="future">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="best">
+        <span class="category-icon">★</span>
+        <span><small>Elite players</small><strong>Best Players</strong><em>Rankings and dream XIs</em></span>
+        <b data-count="best">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="games">
+        <span class="category-icon">VS</span>
+        <span><small>Football action</small><strong>Games</strong><em>Matches, friendlies and finals</em></span>
+        <b data-count="games">0</b>
+      </button>
+      <button class="category-card format-card" type="button" data-filter="shorts">
+        <span class="category-icon">▯</span>
+        <span><small>Vertical format</small><strong>Shorts</strong><em>Quick videos up to 3 minutes</em></span>
+        <b data-count="shorts">0</b>
+      </button>
+      <button class="category-card format-card" type="button" data-filter="long-form">
+        <span class="category-icon">▰</span>
+        <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 3 minutes</em></span>
+        <b data-count="long-form">0</b>
+      </button>
     </section>
 
     <section class="container library">
@@ -189,4 +196,5 @@
 
   <script src="./worlds.js?v=20260729-11"></script>
 </body>
+
 </html>
