@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-16" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-25" />
 
 </head>
 
@@ -75,11 +75,24 @@
     </section>
 
     <section class="container dashboard" aria-label="NHL World categories">
-      <button class="category-card" type="button" data-filter="teams">
-        <span class="category-icon">🛡️</span>
-        <span><small>League library</small><strong>NHL Teams</strong><em>Every franchise and roster</em></span>
-        <b data-count="teams">0</b>
-      </button>
+      <div class="category-card-wrap card-picker team-picker">
+        <button class="category-card" type="button" data-filter="teams">
+          <span class="category-icon">🛡️</span>
+          <span><small>League library</small><strong>NHL Teams</strong><em>Every franchise and roster</em></span>
+          <b data-count="teams">0</b>
+        </button>
+        <button class="team-menu-toggle" type="button" aria-label="Browse NHL teams 2026-27"
+          aria-expanded="false" aria-controls="nhlTeamMenu">
+          <span class="team-menu-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="team-menu-panel" id="nhlTeamMenu" role="menu" aria-label="NHL Teams 2026-27" aria-hidden="true">
+          <div class="team-menu-header">
+            <small>2026–27 Season</small>
+            <strong>All NHL Teams</strong>
+          </div>
+          <div class="team-menu-divisions" id="nhlTeamList"></div>
+        </div>
+      </div>
       <button class="category-card" type="button" data-filter="trades">
         <span class="category-icon">↔</span>
         <span><small>Player movement</small><strong>Trades</strong><em>Major moves and rumours</em></span>
@@ -90,11 +103,24 @@
         <span><small>Postseason</small><strong>Playoffs</strong><em>Series and championship teams</em></span>
         <b data-count="playoffs">0</b>
       </button>
-      <button class="category-card" type="button" data-filter="history">
-        <span class="category-icon">⌛</span>
-        <span><small>Classic hockey</small><strong>Historic Seasons</strong><em>Best teams since 2000</em></span>
-        <b data-count="history">0</b>
-      </button>
+      <div class="category-card-wrap card-picker season-picker">
+        <button class="category-card" type="button" data-filter="history">
+          <span class="category-icon">⌛</span>
+          <span><small>Classic hockey</small><strong>Historic Seasons</strong><em>Best teams since 2000</em></span>
+          <b data-count="history">0</b>
+        </button>
+        <button class="team-menu-toggle" type="button" aria-label="Browse historic NHL seasons"
+          aria-expanded="false" aria-controls="nhlSeasonMenu">
+          <span class="team-menu-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="team-menu-panel" id="nhlSeasonMenu" role="menu" aria-label="Historic NHL seasons" aria-hidden="true">
+          <div class="team-menu-header">
+            <small>2000–01 to 2025–26</small>
+            <strong>Historic Seasons</strong>
+          </div>
+          <div class="team-menu-divisions" id="nhlSeasonList"></div>
+        </div>
+      </div>
       <button class="category-card" type="button" data-filter="future">
         <span class="category-icon">◈</span>
         <span><small>Tomorrow's NHL</small><strong>Future Rosters</strong><em>Prospects and projections</em></span>
@@ -120,9 +146,13 @@
         <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 3 minutes</em></span>
         <b data-count="long-form">0</b>
       </button>
+      <div class="dashboard-actions">
+        <output id="selectedButtonCount" aria-live="polite">0 selected categories</output>
+        <a class="primary-button" href="#search-results">Search Results</a>
+      </div>
     </section>
 
-    <section class="container library">
+    <section class="container library" id="search-results">
       <div class="library-heading">
         <div>
           <p class="section-kicker" id="activeKicker">Complete world</p>
@@ -193,7 +223,7 @@
     </article>
   </template>
 
-  <script src="./worlds.js?v=20260729-11"></script>
+  <script src="./worlds.js?v=20260729-26"></script>
 </body>
 
 </html>

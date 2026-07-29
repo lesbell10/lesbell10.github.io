@@ -386,7 +386,7 @@ function render() {
   els.grid.replaceChildren();
   const visibleVideos = state.filtered.slice(0, state.visible);
 
-  visibleVideos.forEach(video => {
+  visibleVideos.forEach((video, index) => {
     const node = els.template.content.cloneNode(true);
     const card = node.querySelector(".video-card");
     const thumbLink = node.querySelector(".thumbnail-link");
@@ -414,6 +414,12 @@ function render() {
     });
 
     els.grid.append(card);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        card.style.transitionDelay = `${Math.min(index, 11) * 35}ms`;
+        card.classList.add("is-visible");
+      });
+    });
   });
 
   const hasResults = state.filtered.length > 0;
@@ -542,4 +548,188 @@ els.mobileToggle.addEventListener("click", () => {
 
 document.querySelector(`[data-world-link="${state.world}"]`)?.classList.add("active");
 
+const NHL_TEAMS_2026_27 = [
+  "Anaheim Ducks",
+  "Boston Bruins",
+  "Buffalo Sabres",
+  "Calgary Flames",
+  "Carolina Hurricanes",
+  "Chicago Blackhawks",
+  "Colorado Avalanche",
+  "Columbus Blue Jackets",
+  "Dallas Stars",
+  "Detroit Red Wings",
+  "Edmonton Oilers",
+  "Florida Panthers",
+  "Los Angeles Kings",
+  "Minnesota Wild",
+  "Montreal Canadiens",
+  "Nashville Predators",
+  "New Jersey Devils",
+  "New York Islanders",
+  "New York Rangers",
+  "Ottawa Senators",
+  "Philadelphia Flyers",
+  "Pittsburgh Penguins",
+  "San Jose Sharks",
+  "Seattle Kraken",
+  "St. Louis Blues",
+  "Tampa Bay Lightning",
+  "Toronto Maple Leafs",
+  "Utah Mammoth",
+  "Vancouver Canucks",
+  "Vegas Golden Knights",
+  "Washington Capitals",
+  "Winnipeg Jets"
+];
+
+const NBA_TEAMS_2026_27 = [
+  "Atlanta Hawks",
+  "Boston Celtics",
+  "Brooklyn Nets",
+  "Charlotte Hornets",
+  "Chicago Bulls",
+  "Cleveland Cavaliers",
+  "Dallas Mavericks",
+  "Denver Nuggets",
+  "Detroit Pistons",
+  "Golden State Warriors",
+  "Houston Rockets",
+  "Indiana Pacers",
+  "LA Clippers",
+  "Los Angeles Lakers",
+  "Memphis Grizzlies",
+  "Miami Heat",
+  "Milwaukee Bucks",
+  "Minnesota Timberwolves",
+  "New Orleans Pelicans",
+  "New York Knicks",
+  "Oklahoma City Thunder",
+  "Orlando Magic",
+  "Philadelphia 76ers",
+  "Phoenix Suns",
+  "Portland Trail Blazers",
+  "Sacramento Kings",
+  "San Antonio Spurs",
+  "Toronto Raptors",
+  "Utah Jazz",
+  "Washington Wizards"
+];
+
+function buildSeasonList(startYear = 2000, endStartYear = 2025) {
+  const seasons = [];
+  for (let year = endStartYear; year >= startYear; year -= 1) {
+    seasons.push(`${year}-${String(year + 1).slice(-2)}`);
+  }
+  return seasons;
+}
+
+function searchFromPicker(query) {
+  els.search.value = query;
+  state.query = normalize(query);
+  state.filters.clear();
+  state.visible = 12;
+  applyFilters();
+  document.querySelector(".library")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setCardMenuOpen(picker, open) {
+  if (!picker) return;
+  if (open) {
+    document.querySelectorAll(".card-picker.is-open").forEach(openPicker => {
+      if (openPicker !== picker) setCardMenuOpen(openPicker, false);
+    });
+  }
+  picker.classList.toggle("is-open", open);
+  const toggle = picker.querySelector(".team-menu-toggle");
+  const panel = picker.querySelector(".team-menu-panel");
+  toggle?.setAttribute("aria-expanded", String(open));
+  panel?.setAttribute("aria-hidden", String(!open));
+}
+
+function bindCardPicker(picker, { onSelect } = {}) {
+  const toggle = picker.querySelector(".team-menu-toggle");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", event => {
+    event.preventDefault();
+    event.stopPropagation();
+    setCardMenuOpen(picker, !picker.classList.contains("is-open"));
+  });
+
+  picker.addEventListener("click", event => {
+    const item = event.target.closest(".team-menu-item");
+    if (!item) return;
+    event.preventDefault();
+    event.stopPropagation();
+    onSelect?.(item);
+    setCardMenuOpen(picker, false);
+  });
+}
+
+function fillPickerList(list, values, { uppercase = false } = {}) {
+  const menuList = document.createElement("div");
+  menuList.className = "team-menu-list";
+
+  values.forEach(value => {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "team-menu-item";
+    item.setAttribute("role", "menuitem");
+    item.dataset.query = value;
+    item.textContent = uppercase ? value.toUpperCase() : value;
+    menuList.append(item);
+  });
+
+  list.append(menuList);
+}
+
+function initTeamPicker(listSelector, teams) {
+  const list = document.querySelector(listSelector);
+  const picker = list?.closest(".card-picker");
+  if (!picker || !list || !teams?.length) return;
+
+  fillPickerList(list, teams, { uppercase: true });
+  bindCardPicker(picker, {
+    onSelect: item => searchFromPicker(item.dataset.query)
+  });
+}
+
+function initSeasonPicker(listSelector) {
+  const list = document.querySelector(listSelector);
+  const picker = list?.closest(".card-picker");
+  if (!picker || !list) return;
+
+  fillPickerList(list, buildSeasonList());
+  bindCardPicker(picker, {
+    onSelect: item => searchFromPicker(item.dataset.query)
+  });
+}
+
+function initCardPickers() {
+  if (state.world === "nhl") {
+    initTeamPicker("#nhlTeamList", NHL_TEAMS_2026_27);
+    initSeasonPicker("#nhlSeasonList");
+  } else if (state.world === "nba") {
+    initTeamPicker("#nbaTeamList", NBA_TEAMS_2026_27);
+    initSeasonPicker("#nbaSeasonList");
+  } else {
+    return;
+  }
+
+  document.addEventListener("click", event => {
+    document.querySelectorAll(".card-picker.is-open").forEach(picker => {
+      if (!picker.contains(event.target)) setCardMenuOpen(picker, false);
+    });
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key !== "Escape") return;
+    document.querySelectorAll(".card-picker.is-open").forEach(picker => {
+      setCardMenuOpen(picker, false);
+    });
+  });
+}
+
+initCardPickers();
 loadVideos();

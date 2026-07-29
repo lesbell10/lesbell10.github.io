@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-16" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-20" />
 
 </head>
 
@@ -121,9 +121,13 @@
         <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 3 minutes</em></span>
         <b data-count="long-form">0</b>
       </button>
+      <div class="dashboard-actions">
+        <output id="selectedButtonCount" aria-live="polite">0 selected categories</output>
+        <a class="primary-button" href="#search-results">Search Results</a>
+      </div>
     </section>
 
-    <section class="container library">
+    <section class="container library" id="search-results">
       <div class="library-heading">
         <div>
           <p class="section-kicker" id="activeKicker">Complete world</p>
@@ -194,7 +198,7 @@
     </article>
   </template>
 
-  <script src="./worlds.js?v=20260729-11"></script>
+  <script src="./worlds.js?v=20260729-18"></script>
 </body>
 
 </html>
