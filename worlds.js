@@ -616,6 +616,42 @@ const NBA_TEAMS_2026_27 = [
   "Washington Wizards"
 ];
 
+const FIFA_TOP_20_CLUBS = [
+  "Real Madrid",
+  "Manchester City",
+  "Bayern Munich",
+  "Liverpool",
+  "Barcelona",
+  "Arsenal",
+  "Inter Milan",
+  "Paris Saint-Germain",
+  "Chelsea",
+  "Manchester United",
+  "Atletico Madrid",
+  "Juventus",
+  "Borussia Dortmund",
+  "AC Milan",
+  "Tottenham Hotspur",
+  "Napoli",
+  "Bayer Leverkusen",
+  "Benfica",
+  "Ajax",
+  "Porto"
+];
+
+const FIFA_TOP_10_NATIONS = [
+  "Argentina",
+  "France",
+  "Spain",
+  "England",
+  "Brazil",
+  "Portugal",
+  "Netherlands",
+  "Germany",
+  "Italy",
+  "Belgium"
+];
+
 function buildSeasonList(startYear = 2000, endStartYear = 2025) {
   const seasons = [];
   for (let year = endStartYear; year >= startYear; year -= 1) {
@@ -684,12 +720,49 @@ function fillPickerList(list, values, { uppercase = false } = {}) {
   list.append(menuList);
 }
 
+function appendPickerItems(menuList, values, { uppercase = false } = {}) {
+  values.forEach(value => {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "team-menu-item";
+    item.setAttribute("role", "menuitem");
+    item.dataset.query = value;
+    item.textContent = uppercase ? value.toUpperCase() : value;
+    menuList.append(item);
+  });
+}
+
 function initTeamPicker(listSelector, teams) {
   const list = document.querySelector(listSelector);
   const picker = list?.closest(".card-picker");
   if (!picker || !list || !teams?.length) return;
 
   fillPickerList(list, teams, { uppercase: true });
+  bindCardPicker(picker, {
+    onSelect: item => searchFromPicker(item.dataset.query)
+  });
+}
+
+function initFifaClubPicker() {
+  const list = document.querySelector("#fifaClubList");
+  const picker = list?.closest(".card-picker");
+  if (!picker || !list) return;
+
+  const menuList = document.createElement("div");
+  menuList.className = "team-menu-list";
+
+  appendPickerItems(menuList, FIFA_TOP_20_CLUBS, { uppercase: true });
+
+  const bar = document.createElement("div");
+  bar.className = "team-menu-bar";
+  bar.setAttribute("role", "separator");
+  bar.setAttribute("aria-label", "Top nations");
+  bar.innerHTML = "<span>NATIONS</span>";
+  menuList.append(bar);
+
+  appendPickerItems(menuList, FIFA_TOP_10_NATIONS, { uppercase: true });
+
+  list.append(menuList);
   bindCardPicker(picker, {
     onSelect: item => searchFromPicker(item.dataset.query)
   });
@@ -713,6 +786,9 @@ function initCardPickers() {
   } else if (state.world === "nba") {
     initTeamPicker("#nbaTeamList", NBA_TEAMS_2026_27);
     initSeasonPicker("#nbaSeasonList");
+  } else if (state.world === "fifa") {
+    initFifaClubPicker();
+    initSeasonPicker("#fifaSeasonList");
   } else {
     return;
   }

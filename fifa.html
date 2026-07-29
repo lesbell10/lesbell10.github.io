@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-20" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-29" />
 
 </head>
 
@@ -76,26 +76,52 @@
     </section>
 
     <section class="container dashboard" aria-label="FIFA World categories">
+      <div class="category-card-wrap card-picker team-picker">
+        <button class="category-card" type="button" data-filter="clubs">
+          <span class="category-icon">🏟️</span>
+          <span><small>Club football</small><strong>Clubs & XI</strong><em>Current and historic teams</em></span>
+          <b data-count="clubs">0</b>
+        </button>
+        <button class="team-menu-toggle" type="button" aria-label="Browse top clubs and nations"
+          aria-expanded="false" aria-controls="fifaClubMenu">
+          <span class="team-menu-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="team-menu-panel" id="fifaClubMenu" role="menu" aria-label="Top clubs and nations" aria-hidden="true">
+          <div class="team-menu-header">
+            <small>Top 20 Clubs · Top 10 Nations</small>
+            <strong>Clubs & XI</strong>
+          </div>
+          <div class="team-menu-divisions" id="fifaClubList"></div>
+        </div>
+      </div>
       <button class="category-card" type="button" data-filter="world-cup">
         <span class="category-icon">🌍</span>
         <span><small>Tournaments</small><strong>World Cup</strong><em>Nations, matches and stars</em></span>
         <b data-count="world-cup">0</b>
-      </button>
-      <button class="category-card" type="button" data-filter="clubs">
-        <span class="category-icon">🏟️</span>
-        <span><small>Club football</small><strong>Clubs & XI</strong><em>Current and historic teams</em></span>
-        <b data-count="clubs">0</b>
       </button>
       <button class="category-card" type="button" data-filter="transfers">
         <span class="category-icon">↔</span>
         <span><small>Player movement</small><strong>Transfers</strong><em>Done deals and rumours</em></span>
         <b data-count="transfers">0</b>
       </button>
-      <button class="category-card" type="button" data-filter="history">
-        <span class="category-icon">⌛</span>
-        <span><small>Classic football</small><strong>Historic Eras</strong><em>Legends and great teams</em></span>
-        <b data-count="history">0</b>
-      </button>
+      <div class="category-card-wrap card-picker season-picker">
+        <button class="category-card" type="button" data-filter="history">
+          <span class="category-icon">⌛</span>
+          <span><small>Classic football</small><strong>Historic Eras</strong><em>Legends and great teams</em></span>
+          <b data-count="history">0</b>
+        </button>
+        <button class="team-menu-toggle" type="button" aria-label="Browse historic football seasons"
+          aria-expanded="false" aria-controls="fifaSeasonMenu">
+          <span class="team-menu-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="team-menu-panel" id="fifaSeasonMenu" role="menu" aria-label="Historic football seasons" aria-hidden="true">
+          <div class="team-menu-header">
+            <small>2000–01 to 2025–26</small>
+            <strong>Historic Seasons</strong>
+          </div>
+          <div class="team-menu-divisions" id="fifaSeasonList"></div>
+        </div>
+      </div>
       <button class="category-card" type="button" data-filter="future">
         <span class="category-icon">◈</span>
         <span><small>Tomorrow's teams</small><strong>Future Squads</strong><em>Projected lineups</em></span>
@@ -198,7 +224,7 @@
     </article>
   </template>
 
-  <script src="./worlds.js?v=20260729-18"></script>
+  <script src="./worlds.js?v=20260729-29"></script>
 </body>
 
 </html>
