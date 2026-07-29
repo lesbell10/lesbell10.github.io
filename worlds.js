@@ -134,7 +134,10 @@ function detectWorld(text) {
     "washington capitals", "carolina hurricanes", "tampa bay lightning", "florida panthers",
     "buffalo sabres", "detroit red wings", "columbus blue jackets", "nashville predators",
     "minnesota wild", "st louis blues", "dallas stars", "san jose sharks", "anaheim ducks",
-    "los angeles kings", "vegas golden knights", "seattle kraken", "arizona coyotes"
+    "los angeles kings", "vegas golden knights", "seattle kraken", "arizona coyotes",
+    "utah mammoth", "utah hockey club", "phoenix coyotes", "atlanta thrashers",
+    "quebec nordiques", "hartford whalers", "mighty ducks of anaheim",
+    "la kings", "ny rangers", "ny islanders", "nj devils", "tb lightning", "sj sharks"
   ];
   const basketballSignals = [
     "nba", "basketball", "los angeles lakers", "boston celtics", "chicago bulls",
@@ -144,7 +147,10 @@ function detectWorld(text) {
     "denver nuggets", "milwaukee bucks", "cleveland cavaliers", "detroit pistons",
     "indiana pacers", "atlanta hawks", "charlotte hornets", "orlando magic",
     "washington wizards", "minnesota timberwolves", "new orleans pelicans",
-    "memphis grizzlies", "portland trail blazers", "philadelphia 76ers", "sacramento kings"
+    "memphis grizzlies", "portland trail blazers", "philadelphia 76ers", "sacramento kings",
+    "utah jazz", "seattle supersonics", "seattle sonics", "vancouver grizzlies",
+    "charlotte bobcats", "new orleans hornets", "washington bullets",
+    "la lakers", "la clippers", "okc thunder", "knicks", "sixers"
   ];
 
   if (basketballSignals.some(signal => normalized.includes(signal))) return "nba";
