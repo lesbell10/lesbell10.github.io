@@ -231,6 +231,16 @@ button {
   line-height: 1.7;
 }
 
+.search-row {
+  position: relative;
+  max-width: 760px;
+  margin: 34px auto 0;
+}
+
+.search-row .search-wrap {
+  margin: 0;
+}
+
 .search-wrap {
   max-width: 760px;
   margin: 34px auto 0;
@@ -263,6 +273,17 @@ button {
   color: #7588a2;
 }
 
+.search-result-count {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 16px);
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
 .search-wrap button,
 .secondary-button {
   padding: 10px 13px;
@@ -289,9 +310,11 @@ button {
   cursor: pointer;
 }
 
-.hero-shortcuts button:hover {
+.hero-shortcuts button:hover,
+.hero-shortcuts button.active {
   color: var(--text);
   border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .dashboard {
@@ -500,6 +523,7 @@ button {
 }
 
 .duration-badge {
+  display: none;
   right: 10px;
 }
 
@@ -811,6 +835,18 @@ footer {
 
   .hero-copy {
     font-size: 15px;
+  }
+
+  .search-result-count {
+    position: static;
+    transform: none;
+    max-width: none;
+    text-align: right;
+  }
+
+  .search-row {
+    display: grid;
+    gap: 8px;
   }
 
   .dashboard,

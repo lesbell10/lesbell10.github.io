@@ -93,7 +93,7 @@ const state = {
   world: document.body.dataset.world,
   allVideos: [],
   filtered: [],
-  filter: "all",
+  filters: new Set(),
   query: "",
   visible: 12
 };
@@ -106,6 +106,7 @@ const els = {
   empty: document.querySelector("#emptyState"),
   count: document.querySelector("#videoCount"),
   search: document.querySelector("#searchInput"),
+  searchResultCount: document.querySelector("#searchResultCount"),
   clearSearch: document.querySelector("#clearSearch"),
   sort: document.querySelector("#sortSelect"),
   reset: document.querySelector("#resetFilters"),
@@ -194,6 +195,25 @@ function isShortVideo(video) {
 
 function isLongFormVideo(video) {
   return !isShortVideo(video);
+}
+
+function isGameVideo(video) {
+  const text = ` ${normalize(`${video.title} ${video.tags.join(" ")}`)} `;
+  const gameSignals = [
+    /\bvs\b/,
+    /\bversus\b/,
+    /\bfriendly\b/,
+    /\bmatch(?:day)?\b/,
+    /\bgame(?: \d+)?\b/,
+    /\bfinals?\b/,
+    /\bsemi final\b/,
+    /\bquarter final\b/,
+    /\bround of (?:16|32|64)\b/,
+    /\bplayoffs?\b/,
+    /\bchampionship\b/,
+    /\bstanley cup\b/
+  ];
+  return isLongFormVideo(video) && gameSignals.some(pattern => pattern.test(text));
 }
 
 function detectVideoFormat(videoId, durationSeconds) {
@@ -327,19 +347,20 @@ async function loadVideos() {
   applyFilters();
 }
 
-function matchesFilter(video) {
-  if (state.filter === "all") return true;
-  if (state.filter === "shorts") return isShortVideo(video);
-  if (state.filter === "long-form") return isLongFormVideo(video);
+function matchesFilter(video, filter) {
+  if (filter === "shorts") return isShortVideo(video);
+  if (filter === "long-form") return isLongFormVideo(video);
+  if (filter === "games") return isGameVideo(video);
 
-  const keywords = config.filters[state.filter] || [];
+  const keywords = config.filters[filter] || [];
   return keywords.some(keyword => video.searchText.includes(normalize(keyword)));
 }
 
 function applyFilters() {
   state.filtered = state.allVideos.filter(video => {
     const matchesQuery = !state.query || video.searchText.includes(state.query);
-    return matchesQuery && matchesFilter(video);
+    const matchesSelectedFilters = [...state.filters].every(filter => matchesFilter(video, filter));
+    return matchesQuery && matchesSelectedFilters;
   });
 
   const sort = els.sort.value;
@@ -372,7 +393,9 @@ function render() {
     image.alt = `${video.title} thumbnail`;
     title.textContent = video.title;
     node.querySelector(".sport-badge").textContent = `${config.icon} ${config.badge}`;
-    node.querySelector(".duration-badge").textContent = video.duration || "Short";
+    const durationBadge = node.querySelector(".duration-badge");
+    durationBadge.textContent = video.duration || "";
+    durationBadge.classList.toggle("hidden", !video.duration);
     node.querySelector(".published-date").textContent = formatDate(video.publishedAt);
     node.querySelector(".view-count").textContent = formatViews(video.views);
 
@@ -390,8 +413,11 @@ function render() {
   els.status.classList.add("hidden");
   els.empty.classList.toggle("hidden", hasResults);
   els.count.textContent = `${state.filtered.length} video${state.filtered.length === 1 ? "" : "s"}`;
+  els.searchResultCount.textContent =
+    `${state.filtered.length} video${state.filtered.length === 1 ? "" : "s"} found`;
+  els.searchResultCount.classList.toggle("hidden", !state.query);
   els.loadMore.classList.toggle("hidden", state.visible >= state.filtered.length);
-  els.reset.classList.toggle("hidden", state.filter === "all" && !state.query);
+  els.reset.classList.toggle("hidden", state.filters.size === 0 && !state.query);
   els.clearSearch.classList.toggle("hidden", !state.query);
 }
 
@@ -402,6 +428,7 @@ function updateCounts() {
       if (key === "all") return true;
       if (key === "shorts") return isShortVideo(video);
       if (key === "long-form") return isLongFormVideo(video);
+      if (key === "games") return isGameVideo(video);
 
       const keywords = config.filters[key] || [];
       return keywords.some(keyword => video.searchText.includes(normalize(keyword)));
@@ -411,25 +438,42 @@ function updateCounts() {
 }
 
 function updateHeading() {
-  const label = state.filter === "all"
-    ? `All ${config.title} Videos`
-    : document.querySelector(`[data-filter="${state.filter}"] strong`)?.textContent ||
-      state.filter.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  const selectedFilters = [...state.filters];
+  const labels = selectedFilters.map(filter => {
+    const card = [...document.querySelectorAll(`[data-filter="${filter}"]`)]
+      .find(button => button.querySelector("strong"));
+    return card?.querySelector("strong")?.textContent ||
+      filter.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  });
+  const label = labels.length ? labels.join(" + ") : `All ${config.title} Videos`;
 
-  els.filterLabel.textContent = state.filter === "all" ? "All videos" : label;
-  els.activeKicker.textContent = state.query ? `Search: “${els.search.value.trim()}”` : (state.filter === "all" ? "Complete world" : "Selected collection");
+  els.filterLabel.textContent = labels.length ? labels.join(" + ") : "All videos";
+  els.activeKicker.textContent = state.query
+    ? `Search: “${els.search.value.trim()}”`
+    : (labels.length ? "Selected collections" : "Complete world");
   els.activeTitle.textContent = label;
   els.activeDescription.textContent = state.query
     ? `${state.filtered.length} result${state.filtered.length === 1 ? "" : "s"} matching your search.`
     : `Browse ${label.toLowerCase()} in the Lineups10 ${config.title}.`;
 
   document.querySelectorAll("[data-filter]").forEach(button => {
-    button.classList.toggle("active", button.dataset.filter === state.filter);
+    const isAll = button.dataset.filter === "all";
+    const active = isAll ? state.filters.size === 0 : state.filters.has(button.dataset.filter);
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
 }
 
 function setFilter(filter) {
-  state.filter = filter;
+  if (filter === "all") {
+    state.filters.clear();
+  } else if (state.filters.has(filter)) {
+    state.filters.delete(filter);
+  } else {
+    if (filter === "shorts") state.filters.delete("long-form");
+    if (filter === "long-form") state.filters.delete("shorts");
+    state.filters.add(filter);
+  }
   state.visible = 12;
   applyFilters();
   document.querySelector(".library")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -454,7 +498,7 @@ els.clearSearch.addEventListener("click", () => {
 });
 
 els.reset.addEventListener("click", () => {
-  state.filter = "all";
+  state.filters.clear();
   state.query = "";
   state.visible = 12;
   els.search.value = "";

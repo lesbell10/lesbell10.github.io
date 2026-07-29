@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-2" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-8" />
 
 </head>
 <body data-world="nhl">
@@ -45,15 +45,19 @@
         <h1>Every hockey lineup in one world.</h1>
         <p class="hero-copy">Browse NHL teams, trades, classic seasons, legends, prospects, playoff lineups, and future rosters in a dedicated hockey experience.</p>
 
-        <div class="search-wrap">
-          <span aria-hidden="true">⌕</span>
-          <label class="sr-only" for="searchInput">Search videos</label>
-          <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..." autocomplete="off" />
-          <button id="clearSearch" type="button" class="hidden">Clear</button>
+        <div class="search-row">
+          <div class="search-wrap">
+            <span aria-hidden="true">⌕</span>
+            <label class="sr-only" for="searchInput">Search videos</label>
+            <input id="searchInput" type="search" placeholder="Search teams, players, seasons, transfers..." autocomplete="off" />
+            <button id="clearSearch" type="button" class="hidden">Clear</button>
+          </div>
+          <output id="searchResultCount" class="search-result-count hidden" aria-live="polite"></output>
         </div>
 
         <div class="hero-shortcuts">
           <button type="button" data-filter="all">All NHL</button>
+          <button type="button" data-filter="games">Games</button>
           <button type="button" data-filter="teams">Teams</button>
           <button type="button" data-filter="trades">Trades</button>
           <button type="button" data-filter="history">Historic</button>
@@ -94,6 +98,11 @@
           <span class="category-icon">★</span>
           <span><small>Elite players</small><strong>Best Players</strong><em>Stars, legends and rankings</em></span>
           <b data-count="best">0</b>
+        </button>
+        <button class="category-card" type="button" data-filter="games">
+          <span class="category-icon">VS</span>
+          <span><small>Hockey action</small><strong>Games</strong><em>Games, playoffs and finals</em></span>
+          <b data-count="games">0</b>
         </button>
         <button class="category-card format-card" type="button" data-filter="shorts">
           <span class="category-icon">▯</span>
@@ -178,6 +187,6 @@
     </article>
   </template>
 
-  <script src="./worlds.js?v=20260729-2"></script>
+  <script src="./worlds.js?v=20260729-8"></script>
 </body>
 </html>
