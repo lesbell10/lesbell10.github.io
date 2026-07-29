@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260729-3" />
+  <link rel="stylesheet" href="./worlds.css?v=20260729-12" />
 </head>
 
 <body class="portal-page">
@@ -27,8 +27,19 @@
         rel="noopener">
         Subscribe on YouTube
       </a>
-      <a class="all-videos-link" href="https://www.youtube.com/@lineups10/videos" target="_blank"
-        rel="noopener">All Videos →</a>
+      <details class="latest-videos">
+        <summary>
+          <span><small>Whole channel</small><strong>Last 5 Videos</strong></span>
+          <span class="latest-videos-toggle">Show</span>
+        </summary>
+        <div class="latest-videos-content">
+          <div class="latest-videos-heading">
+            <a href="https://www.youtube.com/@lineups10/videos" target="_blank" rel="noopener">View all →</a>
+          </div>
+          <p id="latestVideosStatus">Loading latest videos...</p>
+          <div id="latestVideosList"></div>
+        </div>
+      </details>
     </div>
 
     <section class="world-cards">
@@ -56,6 +67,65 @@
     </section>
 
   </main>
+
+  <script>
+    const latestList = document.querySelector("#latestVideosList");
+    const latestStatus = document.querySelector("#latestVideosStatus");
+    const latestPanel = document.querySelector(".latest-videos");
+    const publishedLibrary = "https://lesbell10.github.io/videos.json";
+    const videoSources = window.location.hostname === "lesbell10.github.io"
+      ? ["./videos.json"]
+      : [publishedLibrary, "./videos.json"];
+
+    async function loadLatestVideos() {
+      let videos = [];
+
+      for (const source of videoSources) {
+        try {
+          const response = await fetch(source, { cache: "no-store" });
+          if (!response.ok) continue;
+          const data = await response.json();
+          videos = Array.isArray(data) ? data : (data.videos || []);
+          if (videos.length) break;
+        } catch {
+          // Try the next source.
+        }
+      }
+
+      videos
+        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+        .slice(0, 5)
+        .forEach((video) => {
+          const link = document.createElement("a");
+          link.className = "latest-video";
+          link.href = video.url || `https://www.youtube.com/watch?v=${video.id}`;
+          link.target = "_blank";
+          link.rel = "noopener";
+
+          const image = document.createElement("img");
+          image.src = video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+          image.alt = `${video.title} thumbnail`;
+
+          const title = document.createElement("strong");
+          title.textContent = video.title;
+
+          link.append(image, title);
+          latestList.append(link);
+        });
+
+      latestStatus.textContent = videos.length ? "" : "Latest videos are unavailable.";
+      latestStatus.classList.toggle("hidden", videos.length > 0);
+    }
+
+    latestPanel.addEventListener("mouseenter", () => {
+      latestPanel.open = true;
+    });
+    latestPanel.addEventListener("mouseleave", () => {
+      latestPanel.open = false;
+    });
+
+    loadLatestVideos();
+  </script>
 </body>
 
 </html>

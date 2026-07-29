@@ -780,17 +780,125 @@ footer {
   color: var(--card-accent);
 }
 
+.latest-videos {
+  position: absolute;
+  z-index: 30;
+  top: 54px;
+  right: 0;
+  width: 190px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(15, 29, 50, .82);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.latest-videos summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.latest-videos summary::-webkit-details-marker {
+  display: none;
+}
+
+.latest-videos summary small {
+  display: block;
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.latest-videos summary strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.latest-videos-toggle {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.latest-videos[open] .latest-videos-toggle {
+  font-size: 0;
+}
+
+.latest-videos[open] .latest-videos-toggle::after {
+  content: "Hide";
+  font-size: 10px;
+}
+
+.latest-videos-content {
+  padding-top: 10px;
+}
+
+.latest-videos-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.latest-videos-heading a {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.latest-videos>p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#latestVideosList {
+  display: grid;
+  gap: 7px;
+}
+
+.latest-video {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.latest-video img {
+  width: 48px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.latest-video strong {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 1.25;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.latest-video:hover strong {
+  color: var(--accent);
+}
+
 @media (max-width: 900px) {
 
   .dashboard,
   .video-grid,
   .world-cards {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .world-card:last-child {
-    grid-column: 1 / -1;
-    min-height: 310px;
   }
 
   .world-nav {
@@ -817,6 +925,29 @@ footer {
 
   .subscribe-button {
     display: none;
+  }
+
+  .portal-subscribe {
+    position: static;
+    display: inline-flex;
+    margin-top: 26px;
+  }
+
+  .all-videos-link {
+    position: static;
+    display: block;
+    width: auto;
+    margin: 12px auto 0;
+  }
+
+  .latest-videos {
+    position: static;
+    width: min(100%, 320px);
+    margin: 12px auto 0;
+  }
+
+  .world-cards {
+    margin-top: 32px;
   }
 }
 
@@ -853,10 +984,6 @@ footer {
   .video-grid,
   .world-cards {
     grid-template-columns: 1fr;
-  }
-
-  .world-card:last-child {
-    grid-column: auto;
   }
 
   .library-heading,
