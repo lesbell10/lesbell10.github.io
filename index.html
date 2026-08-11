@@ -2,130 +2,230 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Choose the FIFA, NHL, or NBA Lineups10 sports world." />
-  <title>Lineups10 Sports Worlds</title>
+  <meta name="description"
+    content="Football clubs, nations, World Cups, transfers, historic teams, and future squads." />
+  <title>Lineups10 Football</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./worlds.css?v=20260730-3" />
+  <link rel="stylesheet" href="./worlds.css?v=20260811-2" />
+
 </head>
 
-<body class="portal-page">
-  <main class="portal">
-    <div class="portal-copy">
-      <a class="brand portal-brand" href="https://www.youtube.com/@lineups10" target="_blank" rel="noopener">
-        <span class="brand-mark">L10</span>
-        <span><strong>Lineups10</strong><small>Sports Worlds</small></span>
+<body data-world="fifa" id="top" class="page-home">
+  <header class="site-header">
+    <nav class="top-nav container" aria-label="Main navigation">
+      <a class="brand" href="#top">
+        <img class="brand-mark" src="./images/lineups10-ball.png" alt="Lineups10" width="42" height="42" />
+        <span><strong>Lineups10</strong><small>Football</small></span>
       </a>
-      <p class="eyebrow">3 SPORTS · 3 WORLDS · ONE CHANNEL</p>
-      <h1>Choose your world.</h1>
-      <p>Enter a dedicated video library built for football, hockey, or basketball.</p>
-      <a class="portal-subscribe" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank"
-        rel="noopener">
-        Subscribe on YouTube
-      </a>
-      <details class="latest-videos">
-        <summary>
-          <span><small>Whole channel</small><strong>Last 5 Videos</strong></span>
-          <span class="latest-videos-toggle">Show</span>
-        </summary>
-        <div class="latest-videos-content">
-          <div class="latest-videos-heading">
-            <a href="https://www.youtube.com/@lineups10/videos" target="_blank" rel="noopener">View all →</a>
-          </div>
-          <p id="latestVideosStatus">Loading latest videos...</p>
-          <div id="latestVideosList"></div>
-        </div>
-      </details>
-    </div>
 
-    <section class="world-cards">
-      <a class="world-card fifa-world" href="./fifa.html">
-        <span class="world-emoji">⚽</span>
-        <small>Football universe</small>
-        <h2>FIFA World</h2>
-        <p>Clubs, nations, World Cups, transfers, legends, and future squads.</p>
-        <b>Enter FIFA World →</b>
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-expanded="false" aria-controls="worldNav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <div class="world-nav" id="worldNav">
+        <a href="#football-categories">Categories</a>
+        <a href="#search-results">Videos</a>
+        <a href="https://www.youtube.com/@lineups10" target="_blank" rel="noopener">YouTube ↗</a>
+      </div>
+
+      <a class="subscribe-button" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank"
+        rel="noopener">
+        Subscribe
       </a>
-      <a class="world-card nhl-world" href="./nhl.html">
-        <span class="world-emoji">🏒</span>
-        <small>Hockey universe</small>
-        <h2>NHL World</h2>
-        <p>Teams, trades, playoffs, legends, prospects, and future rosters.</p>
-        <b>Enter NHL World →</b>
-      </a>
-      <a class="world-card nba-world" href="./nba.html">
-        <span class="world-emoji">🏀</span>
-        <small>Basketball universe</small>
-        <h2>NBA World</h2>
-        <p>Teams, trades, free agency, playoffs, stars, and future lineups.</p>
-        <b>Enter NBA World →</b>
-      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-content container">
+        <p class="eyebrow">⚽ LINEUPS10 · FOOTBALL</p>
+        <h1>Every team. Every era. One football world.</h1>
+        <p class="hero-copy">Explore clubs, national teams, transfers, World Cups, historic eras, and future squads
+          without leaving the football experience.</p>
+
+        <div class="search-row">
+          <form class="search-wrap" id="searchForm" role="search">
+            <button class="search-submit" type="submit" aria-label="Show search results">⌕</button>
+            <label class="sr-only" for="searchInput">Search videos</label>
+            <input id="searchInput" type="search" placeholder="Search teams, seasons, competitions, transfers..."
+              autocomplete="off" />
+            <button id="clearSearch" type="button" class="hidden">Clear</button>
+          </form>
+          <output id="searchResultCount" class="search-result-count hidden" aria-live="polite"></output>
+        </div>
+
+        <!-- <div class="hero-shortcuts">
+          <button type="button" data-filter="all">All Football</button>
+          <button type="button" data-filter="games">Games</button>
+          <button type="button" data-filter="world-cup">World Cup</button>
+          <button type="button" data-filter="transfers">Transfers</button>
+          <button type="button" data-filter="clubs">Clubs</button>
+          <button type="button" data-filter="future">Future Squads</button>
+          <button type="button" data-filter="shorts">Shorts</button>
+          <button type="button" data-filter="long-form">Long Form</button>
+        </div> -->
+      </div>
     </section>
 
+    <section class="container dashboard" id="football-categories" aria-label="Football categories">
+      <div class="category-card-wrap card-picker team-picker">
+        <button class="category-card" type="button" data-filter="clubs">
+          <span class="category-icon">🏟️</span>
+          <span><small>Club football</small><strong>Clubs & XI</strong><em>Current and historic teams</em></span>
+          <b data-count="clubs">0</b>
+        </button>
+        <button class="team-menu-toggle" type="button" aria-label="Browse top clubs and nations" aria-expanded="false"
+          aria-controls="fifaClubMenu">
+          <span class="team-menu-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="team-menu-panel" id="fifaClubMenu" role="menu" aria-label="Top clubs and nations"
+          aria-hidden="true">
+          <div class="team-menu-header">
+            <small>Top 20 Clubs · Top 10 Nations</small>
+            <strong>Clubs & XI</strong>
+          </div>
+          <div class="team-menu-divisions" id="fifaClubList"></div>
+        </div>
+      </div>
+      <button class="category-card" type="button" data-filter="world-cup">
+        <span class="category-icon">🌍</span>
+        <span><small>Tournaments</small><strong>World Cup</strong><em>Nations, matches and stars</em></span>
+        <b data-count="world-cup">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="transfers">
+        <span class="category-icon">↔</span>
+        <span><small>Player movement</small><strong>Transfers</strong><em>Done deals and rumours</em></span>
+        <b data-count="transfers">0</b>
+      </button>
+      <div class="category-card-wrap card-picker season-picker">
+        <button class="category-card" type="button" data-filter="history">
+          <span class="category-icon">⌛</span>
+          <span><small>Classic football</small><strong>Historic Eras</strong><em>Legends and great teams</em></span>
+          <b data-count="history">0</b>
+        </button>
+        <button class="team-menu-toggle" type="button" aria-label="Browse historic football seasons"
+          aria-expanded="false" aria-controls="fifaSeasonMenu">
+          <span class="team-menu-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="team-menu-panel" id="fifaSeasonMenu" role="menu" aria-label="Historic football seasons"
+          aria-hidden="true">
+          <div class="team-menu-header">
+            <small>2000–01 to 2025–26</small>
+            <strong>Historic Seasons</strong>
+          </div>
+          <div class="team-menu-divisions" id="fifaSeasonList"></div>
+        </div>
+      </div>
+      <button class="category-card" type="button" data-filter="future">
+        <span class="category-icon">◈</span>
+        <span><small>Tomorrow's teams</small><strong>Future Squads</strong><em>Projected lineups</em></span>
+        <b data-count="future">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="best">
+        <span class="category-icon">★</span>
+        <span><small>Elite players</small><strong>Best Players</strong><em>Rankings and dream XIs</em></span>
+        <b data-count="best">0</b>
+      </button>
+      <button class="category-card" type="button" data-filter="games">
+        <span class="category-icon">VS</span>
+        <span><small>Football action</small><strong>Games</strong><em>Matches, friendlies and finals</em></span>
+        <b data-count="games">0</b>
+      </button>
+      <button class="category-card format-card" type="button" data-filter="shorts">
+        <span class="category-icon">▯</span>
+        <span><small>Vertical format</small><strong>Shorts</strong><em>Quick videos up to 3 minutes</em></span>
+        <b data-count="shorts">0</b>
+      </button>
+      <button class="category-card format-card" type="button" data-filter="long-form">
+        <span class="category-icon">▰</span>
+        <span><small>Full videos</small><strong>Long Form</strong><em>Extended videos over 3 minutes</em></span>
+        <b data-count="long-form">0</b>
+      </button>
+      <div class="dashboard-actions">
+        <output id="selectedButtonCount" aria-live="polite">0 selected categories</output>
+        <a class="primary-button" href="#search-results">Search Results</a>
+      </div>
+    </section>
+
+    <section class="container library" id="search-results">
+      <div class="library-heading">
+        <div>
+          <p class="section-kicker" id="activeKicker">Complete library</p>
+          <h2 id="activeTitle">All Football Videos</h2>
+          <p id="activeDescription">Browse every loaded video in the Lineups10 football library.</p>
+        </div>
+        <div class="controls">
+          <label for="sortSelect">Sort</label>
+          <select id="sortSelect">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="views">Most viewed</option>
+            <option value="title">Title A–Z</option>
+          </select>
+          <button id="resetFilters" class="secondary-button hidden" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <p><span>Football</span><b>›</b><strong id="filterLabel">All videos</strong></p>
+        <span id="videoCount">0 videos</span>
+      </div>
+
+      <p id="status" class="status">Loading videos...</p>
+      <section id="videoGrid" class="video-grid" aria-label="Football videos"></section>
+
+      <div id="emptyState" class="empty-state hidden">
+        <span>⌕</span>
+        <h2>No matching videos</h2>
+        <p>Try a different search or select a broader category.</p>
+        <button type="button" data-filter="all">Show all videos</button>
+      </div>
+
+      <div class="load-actions">
+        <button id="loadMore" type="button" class="primary-button hidden">Load more</button>
+      </div>
+    </section>
   </main>
 
-  <script>
-    const latestList = document.querySelector("#latestVideosList");
-    const latestStatus = document.querySelector("#latestVideosStatus");
-    const latestPanel = document.querySelector(".latest-videos");
-    const publishedLibrary = "https://lesbell10.github.io/videos.json";
-    const videoSources = window.location.hostname === "lesbell10.github.io"
-      ? ["./videos.json"]
-      : [publishedLibrary, "./videos.json"];
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <strong>Lineups10 Football</strong>
+        <p>Football clubs, nations, World Cups, transfers, historic teams, and future squads.</p>
+      </div>
+      <div>
+        <a href="#football-categories">Categories</a>
+        <a href="#search-results">Videos</a>
+        <a href="https://www.youtube.com/@lineups10" target="_blank" rel="noopener">YouTube ↗</a>
+      </div>
+    </div>
+  </footer>
 
-    async function loadLatestVideos() {
-      let videos = [];
+  <template id="videoTemplate">
+    <article class="video-card">
+      <a class="thumbnail-link" target="_blank" rel="noopener">
+        <img class="thumbnail" loading="lazy" alt="" />
+        <span class="sport-badge"></span>
+        <span class="duration-badge"></span>
+      </a>
+      <div class="card-body">
+        <div class="card-meta"><span class="published-date"></span><span class="view-count"></span></div>
+        <h3 class="video-title"></h3>
+        <div class="tag-row"></div>
+        <a class="watch-link" target="_blank" rel="noopener">Watch on YouTube <span>→</span></a>
+      </div>
+    </article>
+  </template>
 
-      for (const source of videoSources) {
-        try {
-          const response = await fetch(source, { cache: "no-store" });
-          if (!response.ok) continue;
-          const data = await response.json();
-          videos = Array.isArray(data) ? data : (data.videos || []);
-          if (videos.length) break;
-        } catch {
-          // Try the next source.
-        }
-      }
-
-      videos
-        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-        .slice(0, 5)
-        .forEach((video) => {
-          const link = document.createElement("a");
-          link.className = "latest-video";
-          link.href = video.url || `https://www.youtube.com/watch?v=${video.id}`;
-          link.target = "_blank";
-          link.rel = "noopener";
-
-          const image = document.createElement("img");
-          image.src = video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
-          image.alt = `${video.title} thumbnail`;
-
-          const title = document.createElement("strong");
-          title.textContent = video.title;
-
-          link.append(image, title);
-          latestList.append(link);
-        });
-
-      latestStatus.textContent = videos.length ? "" : "Latest videos are unavailable.";
-      latestStatus.classList.toggle("hidden", videos.length > 0);
-    }
-
-    latestPanel.addEventListener("mouseenter", () => {
-      latestPanel.open = true;
-    });
-    latestPanel.addEventListener("mouseleave", () => {
-      latestPanel.open = false;
-    });
-
-    loadLatestVideos();
-  </script>
+  <script src="./worlds.js?v=20260729-29"></script>
 </body>
 
 </html>

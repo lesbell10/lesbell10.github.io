@@ -58,6 +58,26 @@ body[data-world="fifa"] {
   --accent-soft: rgba(99, 229, 140, .14);
 }
 
+body.page-home {
+  position: relative;
+}
+
+body.page-home::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    url("./images/lineups10-ball.png") center 12% / min(820px, 88vw) no-repeat;
+  opacity: .07;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.page-home > * {
+  position: relative;
+  z-index: 1;
+}
+
 body[data-world="nhl"] {
   --accent: #6bbcff;
   --accent-soft: rgba(107, 188, 255, .14);
@@ -142,6 +162,15 @@ button {
   background: var(--accent);
   font-weight: 900;
   letter-spacing: -1px;
+  flex-shrink: 0;
+}
+
+img.brand-mark {
+  display: block;
+  object-fit: cover;
+  color: transparent;
+  background: #000;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .brand>span:last-child {
@@ -1556,4 +1585,13 @@ footer {
     opacity: 1;
     transform: none;
   }
+}
+
+.world-cards.one-world {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
+
+.world-cards.one-world .world-card {
+  width: 100%;
 }

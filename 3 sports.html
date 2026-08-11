@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Choose the FIFA, NHL, or NBA Lineups10 sports world." />
+  <title>Lineups10 Sports Worlds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./worlds.css?v=20260811-1" />
+</head>
+
+<body class="portal-page">
+  <main class="portal">
+    <div class="portal-copy">
+      <a class="brand portal-brand" href="https://www.youtube.com/@lineups10" target="_blank" rel="noopener">
+        <span class="brand-mark">L10</span>
+        <span><strong>Lineups10</strong><small>Sports Worlds</small></span>
+      </a>
+      <p class="eyebrow">3 SPORTS · 3 WORLDS · ONE CHANNEL</p>
+      <h1>Choose your world.</h1>
+      <p>Enter a dedicated video library built for football, hockey, or basketball.</p>
+      <a class="portal-subscribe" href="https://www.youtube.com/@lineups10?sub_confirmation=1" target="_blank"
+        rel="noopener">
+        Subscribe on YouTube
+      </a>
+      <details class="latest-videos">
+        <summary>
+          <span><small>Whole channel</small><strong>Last 5 Videos</strong></span>
+          <span class="latest-videos-toggle">Show</span>
+        </summary>
+        <div class="latest-videos-content">
+          <div class="latest-videos-heading">
+            <a href="https://www.youtube.com/@lineups10/videos" target="_blank" rel="noopener">View all →</a>
+          </div>
+          <p id="latestVideosStatus">Loading latest videos...</p>
+          <div id="latestVideosList"></div>
+        </div>
+      </details>
+    </div>
+
+    <section class="world-cards">
+      <a class="world-card fifa-world" href="./fifa.html">
+        <span class="world-emoji">⚽</span>
+        <small>Football universe</small>
+        <h2>FIFA World</h2>
+        <p>Clubs, nations, World Cups, transfers, legends, and future squads.</p>
+        <b>Enter FIFA World →</b>
+      </a>
+      <a class="world-card nhl-world" href="./nhl.html">
+        <span class="world-emoji">🏒</span>
+        <small>Hockey universe</small>
+        <h2>NHL World</h2>
+        <p>Teams, trades, playoffs, legends, prospects, and future rosters.</p>
+        <b>Enter NHL World →</b>
+      </a>
+      <a class="world-card nba-world" href="./nba.html">
+        <span class="world-emoji">🏀</span>
+        <small>Basketball universe</small>
+        <h2>NBA World</h2>
+        <p>Teams, trades, free agency, playoffs, stars, and future lineups.</p>
+        <b>Enter NBA World →</b>
+      </a>
+    </section>
+
+  </main>
+
+  <script>
+    const latestList = document.querySelector("#latestVideosList");
+    const latestStatus = document.querySelector("#latestVideosStatus");
+    const latestPanel = document.querySelector(".latest-videos");
+    const publishedLibrary = "https://lesbell10.github.io/videos.json";
+    const videoSources = window.location.hostname === "lesbell10.github.io"
+      ? ["./videos.json"]
+      : [publishedLibrary, "./videos.json"];
+
+    async function loadLatestVideos() {
+      let videos = [];
+
+      for (const source of videoSources) {
+        try {
+          const response = await fetch(source, { cache: "no-store" });
+          if (!response.ok) continue;
+          const data = await response.json();
+          videos = Array.isArray(data) ? data : (data.videos || []);
+          if (videos.length) break;
+        } catch {
+          // Try the next source.
+        }
+      }
+
+      videos
+        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+        .slice(0, 5)
+        .forEach((video) => {
+          const link = document.createElement("a");
+          link.className = "latest-video";
+          link.href = video.url || `https://www.youtube.com/watch?v=${video.id}`;
+          link.target = "_blank";
+          link.rel = "noopener";
+
+          const image = document.createElement("img");
+          image.src = video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+          image.alt = `${video.title} thumbnail`;
+
+          const title = document.createElement("strong");
+          title.textContent = video.title;
+
+          link.append(image, title);
+          latestList.append(link);
+        });
+
+      latestStatus.textContent = videos.length ? "" : "Latest videos are unavailable.";
+      latestStatus.classList.toggle("hidden", videos.length > 0);
+    }
+
+    latestPanel.addEventListener("mouseenter", () => {
+      latestPanel.open = true;
+    });
+    latestPanel.addEventListener("mouseleave", () => {
+      latestPanel.open = false;
+    });
+
+    loadLatestVideos();
+  </script>
+</body>
+
+</html>
