@@ -128,7 +128,8 @@ function normalize(text = "") {
 function detectWorld(text) {
   const normalized = normalize(text);
   const hockeySignals = [
-    "nhl", "hockey", "boston bruins", "ottawa senators", "montreal canadiens",
+    "nhl", "hockey", "stanley cup", "conn smythe", "hart trophy", "vezina",
+    "boston bruins", "ottawa senators", "montreal canadiens",
     "toronto maple leafs", "chicago blackhawks", "colorado avalanche", "edmonton oilers",
     "calgary flames", "vancouver canucks", "winnipeg jets", "new york rangers",
     "new york islanders", "new jersey devils", "pittsburgh penguins", "philadelphia flyers",
