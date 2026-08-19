@@ -581,6 +581,22 @@
             Reset Entire Week
         </button>
 
+        <section class="card sync-card">
+            <p class="small-title">PHONE SYNC</p>
+            <h2>Keep checks on every device</h2>
+            <p class="description sync-copy">
+                Tap <strong>Copy sync link</strong>, open that link on your phone, and your checks will load.
+                Or paste a sync code below and tap <strong>Apply code</strong>.
+            </p>
+            <div class="sync-row">
+                <button type="button" id="syncSaveButton">Copy sync link</button>
+                <button type="button" id="syncCopyCodeButton" class="sync-secondary">Copy sync code</button>
+                <button type="button" id="syncApplyButton" class="sync-secondary">Apply code</button>
+            </div>
+            <textarea id="syncCodeInput" class="sync-code" placeholder="Paste sync code here" rows="3" spellcheck="false"></textarea>
+            <p id="syncStatus" class="sync-status"></p>
+        </section>
+
     </main>
 
 </body>

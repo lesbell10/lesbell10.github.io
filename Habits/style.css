@@ -338,14 +338,55 @@ textarea {
 /* CHECKBOXES */
 
 .habit-check {
-    width: 22px;
-    height: 22px;
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
 
     margin: auto;
 
     cursor: pointer;
 
-    accent-color: #7c8cff;
+    border: 2px solid #4a5163;
+    border-radius: 6px;
+    background: #10131a;
+
+    display: grid;
+    place-items: center;
+
+    transition:
+        background 0.15s,
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+.habit-check::after {
+    content: "";
+    width: 10px;
+    height: 6px;
+    border-left: 2.5px solid #fff;
+    border-bottom: 2.5px solid #fff;
+    transform: rotate(-45deg) scale(0);
+    margin-top: -2px;
+    transition: transform 0.12s ease;
+}
+
+.habit-check:checked {
+    background: #7c8cff;
+    border-color: #7c8cff;
+    box-shadow: 0 0 0 3px rgba(124, 140, 255, 0.22);
+}
+
+.habit-check:checked::after {
+    transform: rotate(-45deg) scale(1);
+}
+
+.habit-check:focus-visible {
+    outline: 2px solid #aab4ff;
+    outline-offset: 2px;
 }
 
 
@@ -505,6 +546,70 @@ textarea {
 }
 
 
+.sync-card {
+    margin-top: 18px;
+}
+
+.sync-copy {
+    margin-bottom: 14px;
+}
+
+.sync-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.sync-row input {
+    width: 100%;
+    background: #10131a;
+    border: 1px solid #272c38;
+    border-radius: 10px;
+    color: #f3f5fb;
+    padding: 12px 14px;
+    font: inherit;
+}
+
+.sync-code {
+    width: 100%;
+    margin-top: 12px;
+    background: #10131a;
+    border: 1px solid #272c38;
+    border-radius: 10px;
+    color: #f3f5fb;
+    padding: 12px 14px;
+    font: inherit;
+    resize: vertical;
+    min-height: 74px;
+}
+
+.sync-row button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    background: #7c8cff;
+    color: #0b0d12;
+    white-space: nowrap;
+}
+
+.sync-row button.sync-secondary {
+    background: #171a22;
+    color: #f3f5fb;
+    border: 1px solid #272c38;
+}
+
+.sync-status {
+    margin-top: 12px;
+    color: #9097a5;
+    font-size: 13px;
+    min-height: 1.2em;
+}
+
+
 /* TABLE SCROLLBAR */
 
 .table-wrapper::-webkit-scrollbar {
@@ -587,6 +692,21 @@ textarea {
 
     .week-top {
         align-items: flex-start;
+    }
+
+    .habit-check {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+    }
+
+    .habit-row {
+        min-height: 52px;
+    }
+
+    .sync-row {
+        grid-template-columns: 1fr;
     }
 
 }
