@@ -215,6 +215,10 @@ function updateRows() {
                 ".habit-check"
             );
 
+        if (!rowCheckboxes.length) {
+            return;
+        }
+
 
         let completed = 0;
 
