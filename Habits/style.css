@@ -1,0 +1,578 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #090b10;
+    color: #f5f7fa;
+}
+
+
+.container {
+    width: 94%;
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding:
+        45px
+        0
+        100px;
+}
+
+
+/* HEADER */
+
+.header {
+    margin-bottom: 25px;
+}
+
+
+.small-title {
+    color: #7c8cff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+h1 {
+    font-size: clamp(
+        35px,
+        6vw,
+        60px
+    );
+
+    margin-bottom: 10px;
+}
+
+
+h2 {
+    font-size: 24px;
+
+    margin-bottom: 20px;
+}
+
+
+.description {
+    color: #9299a8;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* STATS */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+
+.stat-card {
+    background: #11141b;
+
+    border: 1px solid #242936;
+
+    border-radius: 16px;
+
+    padding: 20px;
+}
+
+
+.stat-card span {
+    display: block;
+
+    font-size: 30px;
+    font-weight: 900;
+}
+
+
+.stat-card p {
+    color: #858c99;
+
+    margin-top: 5px;
+}
+
+
+/* CARD */
+
+.card {
+    background: #11141b;
+
+    border: 1px solid #242936;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+}
+
+
+/* WEEK PROGRESS */
+
+.week-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.week-top strong {
+    color: #7c8cff;
+
+    font-size: 30px;
+}
+
+
+.progress-bar {
+    width: 100%;
+
+    height: 13px;
+
+    background: #242832;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+}
+
+
+#progressFill {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5865f2,
+            #9f7cff
+        );
+
+    transition: width 0.3s ease;
+}
+
+
+.week-input {
+    display: grid;
+
+    gap: 8px;
+}
+
+
+/* INPUTS */
+
+label {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #a6adba;
+}
+
+
+input[type="text"],
+textarea {
+    width: 100%;
+
+    background: #171a22;
+
+    border: 1px solid #2b3040;
+
+    border-radius: 12px;
+
+    color: white;
+
+    padding: 13px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #7c8cff;
+}
+
+
+textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+/* HABIT TABLE */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+
+.habit-table {
+    min-width: 800px;
+}
+
+
+.habit-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(240px, 2fr)
+        repeat(7, minmax(60px, 1fr));
+
+    align-items: center;
+
+    border-bottom: 1px solid #252a36;
+
+    transition:
+        background 0.2s,
+        opacity 0.2s;
+}
+
+
+.habit-row:hover:not(.habit-header) {
+    background: #171a22;
+}
+
+
+.habit-header {
+    background: #171a22;
+
+    color: #949baa;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    border-radius: 10px;
+}
+
+
+.habit-header div {
+    padding: 15px 5px;
+}
+
+
+.habit-header div:first-child {
+    text-align: left;
+
+    padding-left: 15px;
+}
+
+
+.habit-name {
+    padding: 17px 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.habit-row.priority {
+    border-left: 4px solid #7c8cff;
+}
+
+
+.habit-row.completed {
+    background:
+        rgba(
+            124,
+            140,
+            255,
+            0.08
+        );
+}
+
+
+/* CHECKBOXES */
+
+.habit-check {
+    width: 22px;
+    height: 22px;
+
+    margin: auto;
+
+    cursor: pointer;
+
+    accent-color: #7c8cff;
+}
+
+
+/* DAILY SCORE */
+
+.day-scores {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 10px;
+}
+
+
+.day-card {
+    background: #171a22;
+
+    border: 1px solid #272c38;
+
+    border-radius: 12px;
+
+    padding: 15px 8px;
+
+    text-align: center;
+}
+
+
+.day-card strong {
+    display: block;
+
+    color: #7c8cff;
+
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+
+.day-card p {
+    color: #9097a5;
+
+    font-size: 12px;
+}
+
+
+/* FOCUS */
+
+.focus-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 12px;
+}
+
+
+.focus-card {
+    background: #171a22;
+
+    border: 1px solid #272c38;
+
+    border-radius: 14px;
+
+    padding: 20px 10px;
+
+    text-align: center;
+}
+
+
+.focus-card span {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+
+.focus-card p {
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* FORM */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.form-grid div {
+    display: grid;
+
+    gap: 7px;
+}
+
+
+/* REVIEW */
+
+.review-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+.review-grid div {
+    display: grid;
+
+    gap: 7px;
+}
+
+
+/* RESET BUTTON */
+
+#resetButton {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 13px;
+
+    padding: 17px;
+
+    background: #d94848;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+
+
+#resetButton:hover {
+    background: #ed5151;
+
+    transform: translateY(-2px);
+}
+
+
+/* TABLE SCROLLBAR */
+
+.table-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #171a22;
+}
+
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #3a4050;
+
+    border-radius: 10px;
+}
+
+
+/* TABLET */
+
+@media (max-width: 850px) {
+
+    .day-scores {
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+
+
+    .focus-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+
+        padding-top: 25px;
+    }
+
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+
+    .card {
+        padding: 18px;
+    }
+
+
+    .day-scores {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .focus-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .week-top {
+        align-items: flex-start;
+    }
+
+}

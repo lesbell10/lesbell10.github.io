@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leslie's Weekly Habit Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <p class="small-title">PERSONAL DASHBOARD</p>
+
+            <h1>Weekly Habit Tracker</h1>
+
+            <p class="description">
+                Stay consistent with water, protein, movement, language, sleep and Lineups10.
+            </p>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span id="completedCount">0</span>
+                    <p>Completed</p>
+                </div>
+
+                <div class="stat-card">
+                    <span id="totalCount">84</span>
+                    <p>Total</p>
+                </div>
+
+                <div class="stat-card">
+                    <span id="percentage">0%</span>
+                    <p>Progress</p>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WEEK -->
+
+        <section class="card">
+
+            <div class="week-top">
+
+                <div>
+                    <p class="small-title">THIS WEEK</p>
+                    <h2>Weekly Progress</h2>
+                </div>
+
+                <strong id="weeklyPercent">0%</strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+
+            <div class="week-input">
+
+                <label for="weekName">
+                    Week of
+                </label>
+
+                <input
+                    type="text"
+                    id="weekName"
+                    placeholder="Example: August 17 - August 23"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- HABIT TRACKER -->
+
+        <section class="card">
+
+            <p class="small-title">DAILY</p>
+
+            <h2>Core Habits</h2>
+
+            <div class="table-wrapper">
+
+                <div class="habit-table">
+
+                    <!-- HEADER -->
+
+                    <div class="habit-row habit-header">
+
+                        <div>Habit</div>
+
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                        <div>Sun</div>
+
+                    </div>
+
+
+                    <!-- WATER 1 -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            💧 Water bottle
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="water1" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="water1" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="water1" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="water1" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="water1" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="water1" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="water1" data-day="sun">
+
+                    </div>
+
+
+                    <!-- PROTEIN 1 -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            🥤 Protein shake
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="protein1" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="protein1" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="protein1" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="protein1" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="protein1" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="protein1" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="protein1" data-day="sun">
+
+                    </div>
+
+
+                    <!-- WATER 2 -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            💧 Water bottle
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="water2" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="water2" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="water2" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="water2" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="water2" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="water2" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="water2" data-day="sun">
+
+                    </div>
+
+
+                    <!-- RUN -->
+
+                    <div class="habit-row priority">
+
+                        <div class="habit-name">
+                            🏃 Run 10 min
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="run" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="run" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="run" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="run" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="run" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="run" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="run" data-day="sun">
+
+                    </div>
+
+
+                    <!-- WATER 3 -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            💧 Water bottle
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="water3" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="water3" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="water3" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="water3" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="water3" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="water3" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="water3" data-day="sun">
+
+                    </div>
+
+
+                    <!-- PROTEIN 2 -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            🥤 Protein shake
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="protein2" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="protein2" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="protein2" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="protein2" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="protein2" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="protein2" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="protein2" data-day="sun">
+
+                    </div>
+
+
+                    <!-- WATER 4 -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            💧 Water bottle
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="water4" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="water4" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="water4" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="water4" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="water4" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="water4" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="water4" data-day="sun">
+
+                    </div>
+
+
+                    <!-- LANGUAGE -->
+
+                    <div class="habit-row priority">
+
+                        <div class="habit-name">
+                            🗣️ Language practice 10 min
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="language" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="language" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="language" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="language" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="language" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="language" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="language" data-day="sun">
+
+                    </div>
+
+
+                    <!-- SLEEP -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            😴 Get 7+ hours of sleep
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="sleep" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="sleep" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="sleep" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="sleep" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="sleep" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="sleep" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="sleep" data-day="sun">
+
+                    </div>
+
+
+                    <!-- DUMBBELLS -->
+
+                    <div class="habit-row priority">
+
+                        <div class="habit-name">
+                            🏋️ Dumbbells 10 min
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="dumbbells" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="dumbbells" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="dumbbells" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="dumbbells" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="dumbbells" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="dumbbells" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="dumbbells" data-day="sun">
+
+                    </div>
+
+
+                    <!-- LINEUPS10 -->
+
+                    <div class="habit-row priority">
+
+                        <div class="habit-name">
+                            ⚽ Work on Lineups10 All Day
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="lineups10" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="lineups10" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="lineups10" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="lineups10" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="lineups10" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="lineups10" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="lineups10" data-day="sun">
+
+                    </div>
+
+
+                    <!-- CLEANUP -->
+
+                    <div class="habit-row">
+
+                        <div class="habit-name">
+                            🧹 Little cleanup 5 min
+                        </div>
+
+                        <input type="checkbox" class="habit-check" data-habit="cleanup" data-day="mon">
+                        <input type="checkbox" class="habit-check" data-habit="cleanup" data-day="tue">
+                        <input type="checkbox" class="habit-check" data-habit="cleanup" data-day="wed">
+                        <input type="checkbox" class="habit-check" data-habit="cleanup" data-day="thu">
+                        <input type="checkbox" class="habit-check" data-habit="cleanup" data-day="fri">
+                        <input type="checkbox" class="habit-check" data-habit="cleanup" data-day="sat">
+                        <input type="checkbox" class="habit-check" data-habit="cleanup" data-day="sun">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DAILY SCORE -->
+
+        <section class="card">
+
+            <p class="small-title">SCORE</p>
+
+            <h2>Daily Progress</h2>
+
+            <div class="day-scores">
+
+                <div class="day-card">
+                    <strong id="score-mon">0 / 12</strong>
+                    <p>Monday</p>
+                </div>
+
+                <div class="day-card">
+                    <strong id="score-tue">0 / 12</strong>
+                    <p>Tuesday</p>
+                </div>
+
+                <div class="day-card">
+                    <strong id="score-wed">0 / 12</strong>
+                    <p>Wednesday</p>
+                </div>
+
+                <div class="day-card">
+                    <strong id="score-thu">0 / 12</strong>
+                    <p>Thursday</p>
+                </div>
+
+                <div class="day-card">
+                    <strong id="score-fri">0 / 12</strong>
+                    <p>Friday</p>
+                </div>
+
+                <div class="day-card">
+                    <strong id="score-sat">0 / 12</strong>
+                    <p>Saturday</p>
+                </div>
+
+                <div class="day-card">
+                    <strong id="score-sun">0 / 12</strong>
+                    <p>Sunday</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRIORITIES -->
+
+        <section class="card">
+
+            <p class="small-title">FOCUS</p>
+
+            <h2>5 Most Important Habits</h2>
+
+            <div class="focus-grid">
+
+                <div class="focus-card">
+                    <span>🏃</span>
+                    <p>Run 10 min</p>
+                </div>
+
+                <div class="focus-card">
+                    <span>🏋️</span>
+                    <p>Dumbbells 10 min</p>
+                </div>
+
+                <div class="focus-card">
+                    <span>🗣️</span>
+                    <p>Language Practice</p>
+                </div>
+
+                <div class="focus-card">
+                    <span>😴</span>
+                    <p>7+ Hours Sleep</p>
+                </div>
+
+                <div class="focus-card">
+                    <span>⚽</span>
+                    <p>Lineups10 All Day</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CODING -->
+
+        <section class="card">
+
+            <p class="small-title">DEVELOPER</p>
+
+            <h2>This Week's Coding Focus</h2>
+
+            <div class="form-grid">
+
+                <div>
+                    <label for="codingTopic">
+                        Topic
+                    </label>
+
+                    <input
+                        type="text"
+                        id="codingTopic"
+                        placeholder="JavaScript, TypeScript, React..."
+                    >
+                </div>
+
+
+                <div>
+                    <label for="codingProject">
+                        Project
+                    </label>
+
+                    <input
+                        type="text"
+                        id="codingProject"
+                        placeholder="Project name"
+                    >
+                </div>
+
+
+                <div>
+                    <label for="codingFeature">
+                        Feature to finish
+                    </label>
+
+                    <input
+                        type="text"
+                        id="codingFeature"
+                        placeholder="What will you build?"
+                    >
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WEEKLY REVIEW -->
+
+        <section class="card">
+
+            <p class="small-title">REFLECTION</p>
+
+            <h2>Weekly Review</h2>
+
+            <div class="review-grid">
+
+                <div>
+                    <label for="biggestWin">
+                        Biggest win
+                    </label>
+
+                    <textarea id="biggestWin"></textarea>
+                </div>
+
+
+                <div>
+                    <label for="learned">
+                        What I learned
+                    </label>
+
+                    <textarea id="learned"></textarea>
+                </div>
+
+
+                <div>
+                    <label for="slowedDown">
+                        What slowed me down
+                    </label>
+
+                    <textarea id="slowedDown"></textarea>
+                </div>
+
+
+                <div>
+                    <label for="bestHabit">
+                        Habit I was most consistent with
+                    </label>
+
+                    <textarea id="bestHabit"></textarea>
+                </div>
+
+
+                <div>
+                    <label for="improveHabit">
+                        Habit that needs improvement
+                    </label>
+
+                    <textarea id="improveHabit"></textarea>
+                </div>
+
+
+                <div>
+                    <label for="nextGoal">
+                        #1 goal for next week
+                    </label>
+
+                    <textarea id="nextGoal"></textarea>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <button id="resetButton">
+            Reset Entire Week
+        </button>
+
+    </main>
+
+</body>
+
+</html>
