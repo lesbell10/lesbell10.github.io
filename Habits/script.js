@@ -26,9 +26,6 @@ const syncCodeInput =
 const syncSaveButton =
     document.getElementById("syncSaveButton");
 
-const syncCopyCodeButton =
-    document.getElementById("syncCopyCodeButton");
-
 const syncApplyButton =
     document.getElementById("syncApplyButton");
 
@@ -81,7 +78,6 @@ const days = [
 const HABITS_KEY = "weeklyHabits";
 const TEXT_KEY = "habitTrackerText";
 const UPDATED_KEY = "habitTrackerUpdatedAt";
-const PASTE_BASE = "https://paste.rs";
 
 
 /* -------------------------
@@ -108,59 +104,87 @@ function setSyncStatus(message) {
 }
 
 
-function collectPayload() {
-    const habits = {};
+function getTextData() {
+    return {
+        weekName: weekName.value,
+        codingTopic: codingTopic.value,
+        codingProject: codingProject.value,
+        codingFeature: codingFeature.value,
+        biggestWin: biggestWin.value,
+        learned: learned.value,
+        slowedDown: slowedDown.value,
+        bestHabit: bestHabit.value,
+        improveHabit: improveHabit.value,
+        nextGoal: nextGoal.value
+    };
+}
 
-    checkboxes.forEach(checkbox => {
-        habits[getCheckboxKey(checkbox)] = checkbox.checked;
-    });
+
+function setTextData(text = {}) {
+    weekName.value = text.weekName || "";
+    codingTopic.value = text.codingTopic || "";
+    codingProject.value = text.codingProject || "";
+    codingFeature.value = text.codingFeature || "";
+    biggestWin.value = text.biggestWin || "";
+    learned.value = text.learned || "";
+    slowedDown.value = text.slowedDown || "";
+    bestHabit.value = text.bestHabit || "";
+    improveHabit.value = text.improveHabit || "";
+    nextGoal.value = text.nextGoal || "";
+}
+
+
+function collectPayload() {
+    const bits = Array.from(checkboxes)
+        .map(checkbox => (checkbox.checked ? "1" : "0"))
+        .join("");
 
     return {
-        updatedAt: Date.now(),
-        habits,
-        text: {
-            weekName: weekName.value,
-            codingTopic: codingTopic.value,
-            codingProject: codingProject.value,
-            codingFeature: codingFeature.value,
-            biggestWin: biggestWin.value,
-            learned: learned.value,
-            slowedDown: slowedDown.value,
-            bestHabit: bestHabit.value,
-            improveHabit: improveHabit.value,
-            nextGoal: nextGoal.value
-        }
+        v: 1,
+        u: Date.now(),
+        b: bits,
+        t: getTextData()
     };
 }
 
 
 function applyPayload(payload) {
-    if (!payload || typeof payload !== "object") return false;
+    if (!payload || typeof payload !== "object") {
+        return false;
+    }
 
-    if (payload.habits && typeof payload.habits === "object") {
+    // New compact format
+    if (typeof payload.b === "string" && payload.b.length) {
+        const bits = payload.b;
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.checked = bits[index] === "1";
+        });
+    }
+    // Older full habits format
+    else if (payload.habits && typeof payload.habits === "object") {
         checkboxes.forEach(checkbox => {
             const key = getCheckboxKey(checkbox);
             checkbox.checked = Boolean(payload.habits[key]);
         });
-        localStorage.setItem(HABITS_KEY, JSON.stringify(payload.habits));
+    } else {
+        return false;
     }
 
-    if (payload.text && typeof payload.text === "object") {
-        weekName.value = payload.text.weekName || "";
-        codingTopic.value = payload.text.codingTopic || "";
-        codingProject.value = payload.text.codingProject || "";
-        codingFeature.value = payload.text.codingFeature || "";
-        biggestWin.value = payload.text.biggestWin || "";
-        learned.value = payload.text.learned || "";
-        slowedDown.value = payload.text.slowedDown || "";
-        bestHabit.value = payload.text.bestHabit || "";
-        improveHabit.value = payload.text.improveHabit || "";
-        nextGoal.value = payload.text.nextGoal || "";
-        localStorage.setItem(TEXT_KEY, JSON.stringify(payload.text));
-    }
+    const habits = {};
+    checkboxes.forEach(checkbox => {
+        habits[getCheckboxKey(checkbox)] = checkbox.checked;
+    });
+    localStorage.setItem(HABITS_KEY, JSON.stringify(habits));
 
-    if (payload.updatedAt) {
-        localStorage.setItem(UPDATED_KEY, String(payload.updatedAt));
+    const text = payload.t || payload.text || {};
+    setTextData(text);
+    localStorage.setItem(TEXT_KEY, JSON.stringify(getTextData()));
+
+    if (payload.u || payload.updatedAt) {
+        localStorage.setItem(
+            UPDATED_KEY,
+            String(payload.u || payload.updatedAt)
+        );
     }
 
     updateProgress();
@@ -171,7 +195,12 @@ function applyPayload(payload) {
 
 function encodeSyncCode(payload) {
     const json = JSON.stringify(payload);
-    return btoa(unescape(encodeURIComponent(json)));
+    const bytes = new TextEncoder().encode(json);
+    let binary = "";
+    bytes.forEach(byte => {
+        binary += String.fromCharCode(byte);
+    });
+    return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
 }
 
 
@@ -181,7 +210,14 @@ function decodeSyncCode(code) {
         throw new Error("Empty sync code");
     }
 
-    const json = decodeURIComponent(escape(atob(cleaned)));
+    let base64 = cleaned.replace(/-/g, "+").replace(/_/g, "/");
+    while (base64.length % 4) {
+        base64 += "=";
+    }
+
+    const binary = atob(base64);
+    const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+    const json = new TextDecoder().decode(bytes);
     return JSON.parse(json);
 }
 
@@ -196,42 +232,51 @@ function refreshSyncCodeField() {
 async function copyText(text) {
     if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(text);
-        return;
+        return true;
     }
 
     const area = document.createElement("textarea");
     area.value = text;
     area.setAttribute("readonly", "");
     area.style.position = "fixed";
-    area.style.opacity = "0";
+    area.style.left = "-9999px";
     document.body.appendChild(area);
     area.select();
-    document.execCommand("copy");
+    const ok = document.execCommand("copy");
     area.remove();
+    if (!ok) {
+        throw new Error("Copy failed");
+    }
+    return true;
 }
 
 
-function getPasteIdFromLocation() {
+function buildPhoneLink(code) {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.hash = `h=${code}`;
+    return url.toString();
+}
+
+
+function getCodeFromLocation() {
     const params = new URLSearchParams(window.location.search);
-    if (params.get("paste")) return params.get("paste");
+    if (params.get("h")) return params.get("h");
 
     const hash = window.location.hash.replace(/^#/, "");
     if (!hash) return "";
 
+    if (hash.startsWith("h=")) {
+        return decodeURIComponent(hash.slice(2));
+    }
+
+    // Support older paste links by ignoring them cleanly
     if (hash.startsWith("paste=")) {
-        return decodeURIComponent(hash.slice(6));
+        return "";
     }
 
     const hashParams = new URLSearchParams(hash);
-    return hashParams.get("paste") || "";
-}
-
-
-function buildShareLink(pasteId) {
-    const url = new URL(window.location.href);
-    url.search = "";
-    url.hash = `paste=${pasteId}`;
-    return url.toString();
+    return hashParams.get("h") || "";
 }
 
 
@@ -295,83 +340,65 @@ function loadHabits() {
 
 
 /* -------------------------
-   CLOUD / SHARE SYNC
+   SYNC ACTIONS
 ------------------------- */
 
-async function createShareLink() {
+async function copyPhoneLink() {
     const payload = collectPayload();
-    localStorage.setItem(HABITS_KEY, JSON.stringify(payload.habits));
-    localStorage.setItem(TEXT_KEY, JSON.stringify(payload.text));
-    localStorage.setItem(UPDATED_KEY, String(payload.updatedAt));
-    refreshSyncCodeField();
+    localStorage.setItem(HABITS_KEY, JSON.stringify(
+        Object.fromEntries(
+            Array.from(checkboxes).map(checkbox => [
+                getCheckboxKey(checkbox),
+                checkbox.checked
+            ])
+        )
+    ));
+    localStorage.setItem(TEXT_KEY, JSON.stringify(payload.t));
+    localStorage.setItem(UPDATED_KEY, String(payload.u));
 
-    setSyncStatus("Creating sync link...");
-
-    const response = await fetch(PASTE_BASE, {
-        method: "POST",
-        headers: {
-            "Content-Type": "text/plain; charset=utf-8"
-        },
-        body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-        throw new Error("Share service unavailable");
+    const code = encodeSyncCode(payload);
+    if (syncCodeInput) {
+        syncCodeInput.value = code;
     }
 
-    const pasteUrl = (await response.text()).trim();
-    const pasteId = pasteUrl.split("/").filter(Boolean).pop();
+    const link = buildPhoneLink(code);
+    history.replaceState(null, "", `#h=${code}`);
 
-    if (!pasteId) {
-        throw new Error("Missing paste id");
+    try {
+        await copyText(link);
+        setSyncStatus("Phone link copied. Open it on your phone now.");
+    } catch (error) {
+        if (syncCodeInput) {
+            syncCodeInput.focus();
+            syncCodeInput.select();
+        }
+        setSyncStatus("Copy blocked. Long-press the code below, copy it, then use Apply on your phone.");
     }
-
-    const shareLink = buildShareLink(pasteId);
-    await copyText(shareLink);
-    history.replaceState(null, "", `#paste=${pasteId}`);
-    setSyncStatus("Sync link copied. Open it on your phone.");
-    return shareLink;
-}
-
-
-async function loadFromPasteId(pasteId) {
-    if (!pasteId) return false;
-
-    setSyncStatus("Loading checks from sync link...");
-
-    const response = await fetch(`${PASTE_BASE}/${pasteId}`, {
-        cache: "no-store"
-    });
-
-    if (!response.ok) {
-        throw new Error("Could not load sync link");
-    }
-
-    const payload = await response.json();
-    applyPayload(payload);
-    setSyncStatus("Loaded checks from sync link.");
-    return true;
 }
 
 
 function applySyncCodeFromInput() {
     try {
-        const payload = decodeSyncCode(syncCodeInput.value);
+        const raw = (syncCodeInput?.value || "").trim();
+        if (!raw) {
+            setSyncStatus("Paste a sync code first.");
+            return;
+        }
+
+        // Allow pasting a full link too
+        let code = raw;
+        if (raw.includes("#h=")) {
+            code = raw.split("#h=")[1];
+        } else if (raw.includes("?h=")) {
+            code = raw.split("?h=")[1].split("&")[0];
+        }
+
+        const payload = decodeSyncCode(code);
         applyPayload(payload);
-        setSyncStatus("Applied sync code on this device.");
+        setSyncStatus("Checks applied on this device.");
     } catch (error) {
-        setSyncStatus("That sync code looks invalid.");
+        setSyncStatus("Could not read that code. Copy the phone link again.");
     }
-}
-
-
-async function copySyncCode() {
-    const code = encodeSyncCode(collectPayload());
-    if (syncCodeInput) {
-        syncCodeInput.value = code;
-    }
-    await copyText(code);
-    setSyncStatus("Sync code copied. Paste it on your phone and tap Apply code.");
 }
 
 
@@ -546,39 +573,7 @@ function updateDailyScores() {
 
 function saveTextInputs() {
 
-    const textData = {
-
-        weekName:
-            weekName.value,
-
-        codingTopic:
-            codingTopic.value,
-
-        codingProject:
-            codingProject.value,
-
-        codingFeature:
-            codingFeature.value,
-
-        biggestWin:
-            biggestWin.value,
-
-        learned:
-            learned.value,
-
-        slowedDown:
-            slowedDown.value,
-
-        bestHabit:
-            bestHabit.value,
-
-        improveHabit:
-            improveHabit.value,
-
-        nextGoal:
-            nextGoal.value
-
-    };
+    const textData = getTextData();
 
 
     localStorage.setItem(
@@ -610,45 +605,7 @@ function loadTextInputs() {
         return;
     }
 
-
-    weekName.value =
-        saved.weekName || "";
-
-
-    codingTopic.value =
-        saved.codingTopic || "";
-
-
-    codingProject.value =
-        saved.codingProject || "";
-
-
-    codingFeature.value =
-        saved.codingFeature || "";
-
-
-    biggestWin.value =
-        saved.biggestWin || "";
-
-
-    learned.value =
-        saved.learned || "";
-
-
-    slowedDown.value =
-        saved.slowedDown || "";
-
-
-    bestHabit.value =
-        saved.bestHabit || "";
-
-
-    improveHabit.value =
-        saved.improveHabit || "";
-
-
-    nextGoal.value =
-        saved.nextGoal || "";
+    setTextData(saved);
 
 }
 
@@ -704,21 +661,7 @@ textInputs.forEach(input => {
 
 
 syncSaveButton?.addEventListener("click", () => {
-    createShareLink()
-        .catch(async () => {
-            try {
-                await copySyncCode();
-                setSyncStatus("Link sync unavailable. Sync code copied instead — paste it on your phone.");
-            } catch (error) {
-                setSyncStatus("Sync failed. Try Copy sync code.");
-            }
-        });
-});
-
-syncCopyCodeButton?.addEventListener("click", () => {
-    copySyncCode().catch(() => {
-        setSyncStatus("Could not copy. Select the code and copy manually.");
-    });
+    copyPhoneLink();
 });
 
 syncApplyButton?.addEventListener("click", () => {
@@ -790,24 +733,24 @@ resetButton.addEventListener(
    START APP
 ------------------------- */
 
-async function startTracker() {
+function startTracker() {
 
     loadHabits();
-
     loadTextInputs();
-
     updateProgress();
     refreshSyncCodeField();
 
-    const pasteId = getPasteIdFromLocation();
-    if (pasteId) {
+    const code = getCodeFromLocation();
+    if (code) {
         try {
-            await loadFromPasteId(pasteId);
+            const payload = decodeSyncCode(code);
+            applyPayload(payload);
+            setSyncStatus("Loaded checks from phone link.");
         } catch (error) {
-            setSyncStatus("Could not load that sync link. Try Copy sync code instead.");
+            setSyncStatus("That phone link is invalid. Copy a new one from your computer.");
         }
     } else {
-        setSyncStatus("Tap Copy sync link, then open it on your phone.");
+        setSyncStatus("Tap Copy phone link, then open it on your phone.");
     }
 
 }
